@@ -72,7 +72,9 @@ export const authChecker = async ()=>{
        headers: {"Content-Type": 'application/json'}
       })
       
-          if (!res) throw new Error("Server error and userprofile not fetched")
+          if (!res){
+            throw new Error("Server error and userprofile not fetched")
+          } 
           return await res.json()
       
     }

@@ -78,8 +78,9 @@ useEffect(()=>{
         <SheetContent side='top' className="p-0">
         
         
-          {isLoggedIn ?
+          {isLoggedIn && userProfile ?
           <div className='  bg-black border-r-4 flex flex-col justify-center items-center'>
+          
           {userProfile.map((user: any, index)=>
           <ul key={index} className='text-sm text-center text-white py-2 '>
           <li>Username: {user.username}</li>
