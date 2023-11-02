@@ -12,7 +12,12 @@ const page = () => {
 
     <div className=' py-4 px-4'>
     
-       <div className='flex flex-col justify-center items-center'>
+       <div className='flex flex-col gap-4 justify-center items-center'>
+
+        <p className='leading-10 text-3xl font-extrabold'>Welcome to Fixupe</p>
+        <p className='leading-2 px-4 font-extrabold'>
+          AI Tools For Faster Task Completion
+          </p>
       <Button>
        <Link href='/dashboard'>Go to Dashboard</Link>
       </Button>
