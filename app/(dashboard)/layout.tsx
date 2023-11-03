@@ -6,7 +6,8 @@ import {Navbar} from "@/components/navbar";
 import { Button } from '@/components/ui/button';
 import  Link  from 'next/link';
 import PropTypes from 'prop-types'
-import { authChecker } from '@/components/auth';
+import { getcsrfToken } from '@/components/auth';
+import { getUserProfile } from '@/components/auth';
 import Image from 'next/image'
 import { Footer } from '@/components/footer';
 
@@ -20,39 +21,55 @@ const DashboardLayout = ({
     children: React.ReactNode;
 })=>{
 
-    const [isLoggedIn, setIsLoggedIn] = useState(true)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isChecking, setIsChecking] = useState(false)
     const [user, setUser] = useState(null)
+    const [csrftoken, setCsrftoken] = useState(null)
 
 
  const loading = "Checking Authentication..."
 
-  // Check Authentication
+//   Get CSRF TOKEN
 
-//   useEffect(()=>{
+  useEffect(()=>{
 
-//     const handleAuthChecker = async ()=>{
+    const handleCsrfToken = async ()=>{
 
-//     try{
+    try{
     
-//     const response: any = await authChecker()
-//     if (! response)throw new Error("authChecker error") 
-//     if(response.status === 200)
-//     console.log(response)
-//     setIsLoggedIn(true)
+    const response: any = await getcsrfToken()
+    if (! response)throw new Error("authChecker error") 
+    setCsrftoken(response)
     
-//   }
-//   catch(err){
-//     // console.log(err)
-//     setIsLoggedIn(false)
-//   }finally {
-//     setIsChecking(false)
-//   }
-// }
+  }
+  catch(err){
+  console.log(err)
+}
+    }
 
-// handleAuthChecker()
+handleCsrfToken()
+  }, [])  
 
-//   }, [])  
+  if (csrftoken){
+    console.log(csrftoken)
+  }
+
+
+  //   GET USERPROFILE
+  useEffect(()=>{
+
+    const handleUserProfile = async ()=>{
+    if (!csrftoken) return
+    const response = await getUserProfile(csrftoken)
+    if (!response) throw new Error("No response from server")
+    setIsLoggedIn(true)
+    setIsChecking(false)
+    }
+
+    handleUserProfile()
+      }, [csrftoken])
+
+
 
 
   

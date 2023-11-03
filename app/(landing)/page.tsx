@@ -6,6 +6,9 @@ import { ChatbotTeamPage } from '@/components/chatbotteam'
 import { Footer } from '@/components/footer'
 
 const page = () => {
+
+  const loginURL: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGIN_URL
+
   return (
 
     <div>
@@ -20,6 +23,9 @@ const page = () => {
           </p>
       <Button>
        <Link href='/dashboard'>Go to Dashboard</Link>
+      </Button>
+      <Button>
+       <Link href={loginURL}>Login</Link>
       </Button>
       </div>
 

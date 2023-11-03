@@ -5,7 +5,7 @@ import { string } from "zod"
 import { Button } from "./ui/button"
 import  Link  from "next/link"
 import { SheetContent, Sheet, SheetTrigger } from "./ui/sheet"
-import { authChecker } from './auth'
+import { getcsrfToken } from './auth'
 import { getUserProfile } from './auth'
 
 
@@ -18,6 +18,7 @@ export const ProfileAvatar = ()=>{
 const [userProfile, setUserProfile] = useState< []>([])
 const [isLoggedIn, setIsLoggedIn] = useState(false)
 const [toggleBtn, setToggleBtn] = useState(false)
+const [csrftoken, setCsrftoken] = useState(null)
 
 const handleClose = ()=>{
   setToggleBtn(false)
@@ -31,29 +32,46 @@ const GOOGLE_LOGOUT_URL = process.env.NEXT_PUBLIC_SSO_LOGOUT_URL
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
 
-// Get User Profile
-const handleUserProfile = async ()=>{
-  
-  const response: any = await getUserProfile()
-  if (!response) throw new Error("getUserProfile function error")
-  console.log(`${userProfile} is found`)
-  setUserProfile(response.message)
-  
-}
 
-
- // Check Authentication 
-
-const handleAuthCheck = async ()=>{
-   const response = await authChecker()
-   if (!response) throw new Error("authChecker error")
-   setIsLoggedIn(true)
-}
+//   Get CSRF TOKEN
 
 useEffect(()=>{
+
+  const handleCsrfToken = async ()=>{
+
+  try{
+  
+  const response: any = await getcsrfToken()
+  if (! response)throw new Error("authChecker error") 
+  setCsrftoken(response)
+  
+}
+catch(err){
+console.log(err)
+}
+  }
+
+handleCsrfToken()
+}, [])  
+
+if (csrftoken){
+  console.log(csrftoken)
+}
+
+
+//   GET USERPROFILE
+useEffect(()=>{
+
+  const handleUserProfile = async ()=>{
+  if (!csrftoken) return
+  const response = await getUserProfile(csrftoken)
+  if (!response) throw new Error("No response from server")
+  console.log(response)
+setUserProfile(response.message)
+  }
+
   handleUserProfile()
-  handleAuthCheck()
-}, [])
+    }, [csrftoken])
  
   
 
@@ -78,7 +96,7 @@ useEffect(()=>{
         <SheetContent side='top' className="p-0">
         
         
-          {isLoggedIn && userProfile ?
+          {userProfile ?
           <div className='  bg-black border-r-4 flex flex-col justify-center items-center'>
           
           {userProfile.map((user: any, index)=>
