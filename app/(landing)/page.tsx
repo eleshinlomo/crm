@@ -20,10 +20,8 @@ const HomePage = () => {
         <p className='leading-2 px-4 font-extrabold'>
           AI Tools For Faster Task Completion
           </p>
-      <Button>
-       <Link href='/dashboard'>Go to Dashboard</Link>
-      </Button>
-      <Button>
+      
+      <Button size='lg'>
        <Link href={loginURL}>Login</Link>
       </Button>
       </div>
