@@ -22,12 +22,12 @@ const DashboardLayout = ({
 })=>{
 
     const [isLoggedIn, setIsLoggedIn] = useState(false)
-    const [isChecking, setIsChecking] = useState(false)
+    const [isChecking, setIsChecking] = useState(true)
     const [user, setUser] = useState(null)
     const [csrftoken, setCsrftoken] = useState(null)
 
 
- const loading = "Checking Authentication..."
+ const checkUser = "Checking if User exist..."
 
 //   Get CSRF TOKEN
 
@@ -107,7 +107,7 @@ handleCsrfToken()
              <div className='text-center animate-spin'>
              <Image src='/logo.png' alt='logo' width='50' height='50' />
              </div>
-             {loading}
+             {checkUser}
             </div>:null
             }
             

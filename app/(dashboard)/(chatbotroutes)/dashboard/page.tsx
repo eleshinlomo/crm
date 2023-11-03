@@ -5,7 +5,7 @@ import { ArrowRight, Code, CodeIcon, EyeIcon, ImageIcon, MenuIcon, MessageSquare
 import { Card } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import {useRouter} from 'next/navigation'
-import { authChecker } from '@/components/auth'
+
 
 
 
