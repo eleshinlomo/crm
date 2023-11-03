@@ -1,11 +1,10 @@
 import { Button } from '@/components/ui/button'
 import React from 'react'
 import Link from 'next/link'
-import { NewNavBar } from '@/components/newnavbar'
 import { ChatbotTeamPage } from '@/components/chatbotteam'
 import { Footer } from '@/components/footer'
 
-const page = () => {
+const HomePage = () => {
 
   const loginURL: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGIN_URL
 
@@ -38,4 +37,4 @@ const page = () => {
   )
 }
 
-export default page
+export default HomePage
