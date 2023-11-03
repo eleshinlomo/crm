@@ -11,6 +11,7 @@ import { getUserProfile } from './auth'
 
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+const GOOGLE_LOGOUT_URL = process.env.NEXT_PUBLIC_SSO_LOGOUT_URL
 
 
 
@@ -28,8 +29,8 @@ const handleOpen = ()=>{
   setToggleBtn(true)
 }
 
-const GOOGLE_LOGOUT_URL = process.env.NEXT_PUBLIC_SSO_LOGOUT_URL
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+
+
 
 
 
