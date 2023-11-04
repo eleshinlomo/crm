@@ -31,15 +31,18 @@ export const getcsrfToken = async ()=>{
 
 
    // Get Access Token
-export const getAccessToken = async (csrf_token: string | null)=>{
+export const getAccessToken = async (csrftoken: string | null)=>{
+
+  const headers = new Headers();
+  headers.append("Content-Type", "application/json");
+  headers.append("X-CSRFToken", `${csrftoken}`);
+  
 
   const response = await fetch(`${BASE_URL}/getaccesstoken/`, {
     mode: 'cors',
     method: 'GET',
     credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-    }
+    headers: headers
   })
   if (!response) throw new Error("No access_token found")
   return await response.json()
