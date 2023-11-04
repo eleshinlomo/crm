@@ -36,69 +36,69 @@ const handleOpen = ()=>{
 
 
 
-//   Get CSRF TOKEN
+// //   Get CSRF TOKEN
 
-useEffect(()=>{
+// useEffect(()=>{
 
-  const handleCsrfToken = async ()=>{
+//   const handleCsrfToken = async ()=>{
 
-  try{
+//   try{
   
-  const response: any = await getcsrfToken()
-  if (! response)throw new Error("authChecker error") 
-  setCsrftoken(response)
+//   const response: any = await getcsrfToken()
+//   if (! response)throw new Error("authChecker error") 
+//   setCsrftoken(response)
   
-}
-catch(err){
-console.log(err)
-}
-  }
+// }
+// catch(err){
+// console.log(err)
+// }
+//   }
 
-handleCsrfToken()
-}, [])  
+// handleCsrfToken()
+// }, [])  
 
 
-//   Get ACCESS TOKEN
+// //   Get ACCESS TOKEN
 
-useEffect(()=>{
+// useEffect(()=>{
 
-  const handleGetAccessToken = async ()=>{
+//   const handleGetAccessToken = async ()=>{
 
-  try{
+//   try{
   
-  const response: any = await getAccessToken()
-  if (! response)throw new Error("No Access Token Found") 
-  setAccessToken(response)
+//   const response: any = await getAccessToken()
+//   if (! response)throw new Error("No Access Token Found") 
+//   setAccessToken(response)
   
-}
-catch(err){
-console.log(err)
-}
-  }
+// }
+// catch(err){
+// console.log(err)
+// }
+//   }
 
-handleGetAccessToken()
-}, [])  
-
-
-
-if (accessToken){
-  console.log(accessToken)
-}
+// handleGetAccessToken()
+// }, [])  
 
 
-//   GET USERPROFILE
-useEffect(()=>{
 
-  const handleUserProfile = async ()=>{
-  if (!csrftoken) return
-  const response = await getUserProfile(csrftoken, accessToken)
-  if (!response) throw new Error("No response from server")
-  setUserProfile(response.message)
+// if (accessToken){
+//   console.log(accessToken)
+// }
+
+
+// //   GET USERPROFILE
+// useEffect(()=>{
+
+//   const handleUserProfile = async ()=>{
+//   if (!csrftoken) return
+//   const response = await getUserProfile(csrftoken, accessToken)
+//   if (!response) throw new Error("No response from server")
+//   setUserProfile(response.message)
  
-  }
+//   }
 
-  handleUserProfile()
-    }, [csrftoken, accessToken])
+//   handleUserProfile()
+//     }, [csrftoken, accessToken])
 
   
 

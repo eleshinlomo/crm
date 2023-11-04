@@ -97,6 +97,9 @@ handleGetAccessToken()
 
     catch(err){
         console.log(err)
+        setIsLoggedIn(false)
+    }finally{
+        setIsChecking(false)
     }
 }
 
