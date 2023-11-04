@@ -88,7 +88,7 @@ handleGetAccessToken()
     
     try {
     
-    const response = await getUserProfile()
+    const response = await getUserProfile(accessToken)
     if (!response) throw new Error("No response from server")
     if(response.success)
     setIsLoggedIn(true)
@@ -105,7 +105,7 @@ handleGetAccessToken()
 
 
     handleUserProfile()
-      }, [])
+      }, [accessToken])
 
 
 
