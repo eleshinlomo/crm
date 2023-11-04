@@ -51,7 +51,7 @@ export const getAccessToken = async ()=>{
    // Get User Profile
    export const getUserProfile = async (csrftoken: string, accessToken: string)=>{
       
-      
+      if (!csrftoken && !accessToken) throw new Error("csrf and accessToken must be provided")
       const res = await fetch(`${BASE_URL}/userprofile/`, {
        mode: 'cors',
        method: 'GET',
