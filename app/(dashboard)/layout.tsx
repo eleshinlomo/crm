@@ -39,9 +39,13 @@ const DashboardLayout = ({
 
     try{
     
-    const response: any = await getcsrfToken()
-    if (! response)throw new Error("authChecker error") 
+    const response = await getcsrfToken()
+    if (response.csrf_token){
+        console.log(response)
     setCsrftoken(response.csrf_token)
+    }else{
+        throw new Error("authChecker error") 
+    }
     
   }
   catch(err){
