@@ -61,8 +61,8 @@ handleCsrfToken()
 
     try{
     
-    const response: any = await getAccessToken()
-    if (! response)throw new Error("No Access Token Found") 
+    const response = await getAccessToken()
+    if (!response)throw new Error("No Access Token Found") 
     console.log(response)
     setAccessToken(response.access_token)
     
@@ -86,7 +86,7 @@ handleGetAccessToken()
   useEffect(()=>{
 
     const handleUserProfile = async ()=>{
-    // if (csrftoken && accessToken) 
+    if (csrftoken && accessToken) 
     try {
     const response = await getUserProfile(csrftoken, accessToken)
     if (!response) throw new Error("No response from server")
