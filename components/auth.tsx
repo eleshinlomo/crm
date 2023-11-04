@@ -49,18 +49,21 @@ export const getAccessToken = async ()=>{
 
 
    // Get User Profile
-   export const getUserProfile = async (csrftoken: string, accessToken: string)=>{
+
+   
+   export const getUserProfile = async (csrftoken: string | null, accessToken: string | null)=>{
       
+  const headers = new Headers();
+  headers.append("Content-Type", "application/json");
+  headers.append("X-CSRFToken", `${csrftoken}`);
+  headers.append("Authorization", `Token ${accessToken}`);
+
       if (!csrftoken && !accessToken) throw new Error("csrf and accessToken must be provided")
       const res = await fetch(`${BASE_URL}/userprofile/`, {
        mode: 'cors',
        method: 'GET',
        credentials: 'include',
-       headers: {
-        "Content-Type": 'application/json',
-        "X-CSRFToken": csrftoken,
-        "Authorization": `Token ${accessToken}`
-      }
+       headers: headers
       })
       
           if (!res){
