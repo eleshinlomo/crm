@@ -59,7 +59,7 @@ export const getAccessToken = async ()=>{
        headers: {
         "Content-Type": 'application/json',
         "X-CSRFToken": csrftoken,
-        "Authorization": `Token ${accessToken}`
+        "Authorization": `Bearer ${accessToken}`
       }
       })
       
