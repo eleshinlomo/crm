@@ -10,6 +10,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 // Get CSRF Token
 export const getcsrfToken = async ()=>{
 
+  try {
   const response = await fetch(`${BASE_URL}/getcsrftoken/`, {
     mode: 'cors',
     method: 'GET',
@@ -20,6 +21,13 @@ export const getcsrfToken = async ()=>{
   return await response.json()
     
    }
+
+   catch(error) {
+    console.log(error)
+   }
+
+  }
+  
 
 
    // Get Access Token
@@ -39,9 +47,9 @@ export const getAccessToken = async ()=>{
 
 
    // Get User Profile
-   export const getUserProfile = async (csrftoken: string, accessToken: string)=>{
+   export const getUserProfile = async (csrftoken: any, accessToken: any)=>{
       
-      if (!csrftoken && accessToken) throw new Error("AccessToken and CsrfToken required but not found")
+      
       const res = await fetch(`${BASE_URL}/userprofile/`, {
        mode: 'cors',
        method: 'GET',

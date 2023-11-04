@@ -25,7 +25,7 @@ const DashboardLayout = ({
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isChecking, setIsChecking] = useState(true)
     const [user, setUser] = useState(null)
-    const [csrftoken, setCsrftoken] = useState(null)
+    const [csrftoken, setCsrftoken] = useState<any>()
     const [accessToken, setAccessToken] = useState<any>()
 
 
@@ -63,7 +63,8 @@ handleCsrfToken()
     
     const response: any = await getAccessToken()
     if (! response)throw new Error("No Access Token Found") 
-    setAccessToken(response)
+    console.log(response)
+    setAccessToken(response.message)
     
   }
   catch(err){
@@ -85,7 +86,7 @@ handleGetAccessToken()
   useEffect(()=>{
 
     const handleUserProfile = async ()=>{
-    if (!csrftoken) return
+    
     const response = await getUserProfile(csrftoken, accessToken)
     if (!response) throw new Error("No response from server")
     setIsLoggedIn(true)
