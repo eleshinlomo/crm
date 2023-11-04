@@ -14,6 +14,7 @@ import { Footer } from '@/components/footer';
 
 
 
+const DJANGO_LOGIN_URL = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGIN_URL
 
 const DashboardLayout = ({
     
@@ -23,7 +24,7 @@ const DashboardLayout = ({
 })=>{
 
     const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false)
-    const [isChecking, setIsChecking] = useState(true)
+    const [isChecking, setIsChecking] = useState<Boolean>(true)
     const [user, setUser] = useState(null)
     const [csrftoken, setCsrftoken] = useState<string | null>(null)
     const [accessToken, setAccessToken] = useState<string | null>(null)
@@ -109,7 +110,7 @@ handleGetAccessToken()
 
 
     handleUserProfile()
-      }, [accessToken])
+      }, [accessToken, csrftoken])
 
 
 
@@ -119,7 +120,7 @@ handleGetAccessToken()
  
  
 
-  const DJANGO_LOGIN_URL = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGIN_URL
+  
  
 
     return(
