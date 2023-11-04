@@ -51,12 +51,12 @@ export const getAccessToken = async ()=>{
    // Get User Profile
 
    
-   export const getUserProfile = async ()=>{
+   export const getUserProfile = async (accessToken: string | null)=>{
       
   const headers = new Headers();
   headers.append("Content-Type", "application/json");
   // headers.append("X-CSRFToken", `${csrftoken}`);
-  // headers.append("Authorization", `Token ${accessToken}`);
+  headers.append("Authorization", `Token ${accessToken}`);
 
       
       const res = await fetch(`${BASE_URL}/userprofile/`, {
