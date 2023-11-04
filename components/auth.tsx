@@ -58,7 +58,7 @@ export const getAccessToken = async ()=>{
   headers.append("X-CSRFToken", `${csrftoken}`);
   headers.append("Authorization", `Token ${accessToken}`);
 
-      if (!csrftoken || !accessToken) throw new Error("csrf and accessToken must be provided")
+      
       const res = await fetch(`${BASE_URL}/userprofile/`, {
        mode: 'cors',
        method: 'GET',

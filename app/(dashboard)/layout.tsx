@@ -89,13 +89,17 @@ handleGetAccessToken()
   useEffect(()=>{
 
     const handleUserProfile = async ()=>{
-    if (csrftoken && accessToken) 
+    
     try {
+    if (csrftoken && accessToken !== null) {
     const response = await getUserProfile(csrftoken, accessToken)
     if (!response) throw new Error("No response from server")
     if(response.success === true)
     setIsLoggedIn(true)
     setIsChecking(false)
+    }else{
+        throw new Error("AccessToken or Csrftoken not found")
+    }
     }
 
     catch(err){
