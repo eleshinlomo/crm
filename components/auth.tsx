@@ -37,7 +37,9 @@ export const getAccessToken = async ()=>{
     mode: 'cors',
     method: 'GET',
     credentials: 'include',
-    headers: {'Content-Type': 'application/json'}
+    headers: {
+      'Content-Type': 'application/json',
+    }
   })
   if (!response) throw new Error("No access_token found")
   return await response.json()

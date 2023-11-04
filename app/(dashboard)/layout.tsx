@@ -22,7 +22,7 @@ const DashboardLayout = ({
     children: React.ReactNode;
 })=>{
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false)
     const [isChecking, setIsChecking] = useState(true)
     const [user, setUser] = useState(null)
     const [csrftoken, setCsrftoken] = useState<any>()
@@ -41,7 +41,7 @@ const DashboardLayout = ({
     
     const response: any = await getcsrfToken()
     if (! response)throw new Error("authChecker error") 
-    setCsrftoken(response)
+    setCsrftoken(response.csrf_token)
     
   }
   catch(err){
@@ -64,7 +64,7 @@ handleCsrfToken()
     const response: any = await getAccessToken()
     if (! response)throw new Error("No Access Token Found") 
     console.log(response)
-    setAccessToken(response.message)
+    setAccessToken(response.access_token)
     
   }
   catch(err){
@@ -86,14 +86,15 @@ handleGetAccessToken()
   useEffect(()=>{
 
     const handleUserProfile = async ()=>{
+    // if (csrftoken && accessToken) 
     try {
     const response = await getUserProfile(csrftoken, accessToken)
     if (!response) throw new Error("No response from server")
-    if(response.status === 200)
+    if(response.success === true)
     setIsLoggedIn(true)
     setIsChecking(false)
     }
-    
+
     catch(err){
         console.log(err)
     }
