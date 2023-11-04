@@ -147,13 +147,19 @@ const handleOpen = ()=>{
           </div>
           </div>:
           
-          <div className='bg-black flex justify-between px-4 py-10'>
-           <p className='   text-white pt-2'>
+          <div className='bg-black  px-4 py-10'>
+          <div className='flex justify-center md:justify-between gap-4 py-5'>
+           <p className='   text-white  pt-2'>
             Hi Guest,
             </p>
+            
             <Button asChild>
-              <Link href='/'>Logout</Link>
+              <Link  className=' ' href='/'>Logout</Link>
               </Button>
+          </div>
+          <div className='text-center text-white'>
+            <p>We were not able to log you in properly.</p>
+          </div>
           </div>
           }
          
