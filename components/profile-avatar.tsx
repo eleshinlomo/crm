@@ -17,6 +17,7 @@ const GOOGLE_LOGOUT_URL = process.env.NEXT_PUBLIC_SSO_LOGOUT_URL
 
 
 export const ProfileAvatar = ()=>{
+const [isUserProfile, setIsUserProfile] = useState<Boolean>(false)
 const [userProfile, setUserProfile] = useState< []>([])
 const [isLoggedIn, setIsLoggedIn] = useState(false)
 const [toggleBtn, setToggleBtn] = useState(false)
@@ -94,6 +95,7 @@ const handleOpen = ()=>{
 //   const response = await getUserProfile(csrftoken, accessToken)
 //   if (!response) throw new Error("No response from server")
 //   setUserProfile(response.message)
+//   setIsUserProfile(true)
  
 //   }
 
@@ -123,7 +125,7 @@ const handleOpen = ()=>{
         <SheetContent side='top' className="p-0">
         
         
-          {userProfile ?
+          {isUserProfile ?
           <div className='  bg-black border-r-4 flex flex-col justify-center items-center'>
           
           {userProfile.map((user: any, index)=>

@@ -49,7 +49,7 @@ export const getAccessToken = async ()=>{
 
 
    // Get User Profile
-   export const getUserProfile = async (csrftoken: any, accessToken: any)=>{
+   export const getUserProfile = async (csrftoken: string, accessToken: string)=>{
       
       
       const res = await fetch(`${BASE_URL}/userprofile/`, {
