@@ -90,7 +90,7 @@ handleGetAccessToken()
     
     const response = await getUserProfile()
     if (!response) throw new Error("No response from server")
-    if(response.success === true)
+    if(response.ok)
     setIsLoggedIn(true)
     setIsChecking(false)
     }
