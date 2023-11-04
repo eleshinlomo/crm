@@ -91,8 +91,8 @@ handleGetAccessToken()
     const handleUserProfile = async ()=>{
     
     try {
-    if (csrftoken && accessToken !== null) {
-    const response = await getUserProfile(csrftoken, accessToken)
+    if (csrftoken !== null) {
+    const response = await getUserProfile(csrftoken)
     if (!response) throw new Error("No response from server")
     if(response.success === true)
     setIsLoggedIn(true)
@@ -112,7 +112,7 @@ handleGetAccessToken()
 
 
     handleUserProfile()
-      }, [csrftoken, accessToken])
+      }, [csrftoken])
 
 
 
