@@ -51,11 +51,11 @@ export const getAccessToken = async ()=>{
    // Get User Profile
 
    
-   export const getUserProfile = async (accessToken: string | null)=>{
+   export const getUserProfile = async (accessToken: string | null, csrftoken: string | null)=>{
       
   const headers = new Headers();
   headers.append("Content-Type", "application/json");
-  // headers.append("X-CSRFToken", `${csrftoken}`);
+  headers.append("X-CSRFToken", `${csrftoken}`);
   headers.append("Authorization", `Token ${accessToken}`);
 
       
