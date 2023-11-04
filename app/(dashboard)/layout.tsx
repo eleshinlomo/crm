@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import  Link  from 'next/link';
 import PropTypes from 'prop-types'
 import { getcsrfToken } from '@/components/auth';
+import { getAccessToken } from '@/components/auth';
 import { getUserProfile } from '@/components/auth';
 import Image from 'next/image'
 import { Footer } from '@/components/footer';
@@ -25,6 +26,7 @@ const DashboardLayout = ({
     const [isChecking, setIsChecking] = useState(true)
     const [user, setUser] = useState(null)
     const [csrftoken, setCsrftoken] = useState(null)
+    const [accessToken, setAccessToken] = useState<any>()
 
 
  const checkUser = "Checking if User exist..."
@@ -50,8 +52,32 @@ const DashboardLayout = ({
 handleCsrfToken()
   }, [])  
 
-  if (csrftoken){
-    console.log(csrftoken)
+
+  //   Get ACCESS TOKEN
+
+  useEffect(()=>{
+
+    const handleGetAccessToken = async ()=>{
+
+    try{
+    
+    const response: any = await getAccessToken()
+    if (! response)throw new Error("No Access Token Found") 
+    setAccessToken(response)
+    
+  }
+  catch(err){
+  console.log(err)
+}
+    }
+
+handleGetAccessToken()
+  }, [])  
+
+ 
+
+  if (accessToken){
+    console.log(accessToken)
   }
 
 
@@ -60,14 +86,14 @@ handleCsrfToken()
 
     const handleUserProfile = async ()=>{
     if (!csrftoken) return
-    const response = await getUserProfile(csrftoken)
+    const response = await getUserProfile(csrftoken, accessToken)
     if (!response) throw new Error("No response from server")
     setIsLoggedIn(true)
     setIsChecking(false)
     }
 
     handleUserProfile()
-      }, [csrftoken])
+      }, [csrftoken, accessToken])
 
 
 

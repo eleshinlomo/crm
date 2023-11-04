@@ -7,6 +7,7 @@ import  Link  from "next/link"
 import { SheetContent, Sheet, SheetTrigger } from "./ui/sheet"
 import { getcsrfToken } from './auth'
 import { getUserProfile } from './auth'
+import { getAccessToken } from './auth'
 
 
 
@@ -20,6 +21,7 @@ const [userProfile, setUserProfile] = useState< []>([])
 const [isLoggedIn, setIsLoggedIn] = useState(false)
 const [toggleBtn, setToggleBtn] = useState(false)
 const [csrftoken, setCsrftoken] = useState(null)
+const [accessToken, setAccessToken] = useState<any>()
 
 const handleClose = ()=>{
   setToggleBtn(false)
@@ -55,8 +57,32 @@ console.log(err)
 handleCsrfToken()
 }, [])  
 
-if (csrftoken){
-  console.log(csrftoken)
+
+//   Get ACCESS TOKEN
+
+useEffect(()=>{
+
+  const handleGetAccessToken = async ()=>{
+
+  try{
+  
+  const response: any = await getAccessToken()
+  if (! response)throw new Error("No Access Token Found") 
+  setAccessToken(response)
+  
+}
+catch(err){
+console.log(err)
+}
+  }
+
+handleGetAccessToken()
+}, [])  
+
+
+
+if (accessToken){
+  console.log(accessToken)
 }
 
 
@@ -65,15 +91,15 @@ useEffect(()=>{
 
   const handleUserProfile = async ()=>{
   if (!csrftoken) return
-  const response = await getUserProfile(csrftoken)
+  const response = await getUserProfile(csrftoken, accessToken)
   if (!response) throw new Error("No response from server")
-  console.log(response)
-setUserProfile(response.message)
+  setUserProfile(response.message)
+ 
   }
 
   handleUserProfile()
-    }, [csrftoken])
- 
+    }, [csrftoken, accessToken])
+
   
 
  
