@@ -80,10 +80,6 @@ handleGetAccessToken()
 
  
 
-  if (accessToken){
-    console.log(accessToken)
-  }
-
 
   //   GET USERPROFILE
   useEffect(()=>{
