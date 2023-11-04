@@ -86,12 +86,19 @@ handleGetAccessToken()
   useEffect(()=>{
 
     const handleUserProfile = async ()=>{
-    
+    try {
     const response = await getUserProfile(csrftoken, accessToken)
     if (!response) throw new Error("No response from server")
+    if(response.status === 200)
     setIsLoggedIn(true)
     setIsChecking(false)
     }
+    
+    catch(err){
+        console.log(err)
+    }
+}
+
 
     handleUserProfile()
       }, [csrftoken, accessToken])
