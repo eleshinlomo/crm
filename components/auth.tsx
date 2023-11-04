@@ -31,7 +31,7 @@ export const getcsrfToken = async ()=>{
 
 
    // Get Access Token
-export const getAccessToken = async ()=>{
+export const getAccessToken = async (csrf_token: string | null)=>{
 
   const response = await fetch(`${BASE_URL}/getaccesstoken/`, {
     mode: 'cors',

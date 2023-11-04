@@ -65,14 +65,17 @@ handleCsrfToken()
     const handleGetAccessToken = async ()=>{
 
     try{
-    
-    const response = await getAccessToken()
+    if (csrftoken){
+    const response = await getAccessToken(csrftoken)
     if (response.access_token){
     console.log(response)
     setAccessToken(response.access_token)
     }else{
         throw new Error("No Access Token Found") 
     }
+  }else{
+    throw new Error("No access_token found")
+  }
     
   }
   catch(err){
@@ -81,7 +84,7 @@ handleCsrfToken()
     }
 
 handleGetAccessToken()
-  }, [])  
+  }, [csrftoken])  
 
  
 
