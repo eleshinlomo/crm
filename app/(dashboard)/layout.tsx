@@ -62,9 +62,12 @@ handleCsrfToken()
     try{
     
     const response = await getAccessToken()
-    if (!response)throw new Error("No Access Token Found") 
+    if (response.access_token){
     console.log(response)
     setAccessToken(response.access_token)
+    }else{
+        throw new Error("No Access Token Found") 
+    }
     
   }
   catch(err){
