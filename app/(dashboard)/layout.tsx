@@ -11,10 +11,13 @@ import { getAccessToken } from '@/components/auth';
 import { getUserProfile } from '@/components/auth';
 import Image from 'next/image'
 import { Footer } from '@/components/footer';
+import { dummyLogin } from '@/components/auth';
 
 
 
 const DJANGO_LOGIN_URL = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGIN_URL
+
+
 
 const DashboardLayout = ({
     
@@ -29,91 +32,104 @@ const DashboardLayout = ({
     const [csrftoken, setCsrftoken] = useState<string | null>(null)
     const [accessToken, setAccessToken] = useState<string | null>(null)
 
+   
+    useEffect(()=>{
 
- const checkUser = "Checking if User exist..."
+    const checkDummyGuest = ()=>{
+        dummyLogin.map((dummy)=>{
+            if(dummy.name === "Guest"){
+                setIsLoggedIn(true)
+                setIsChecking(false)
+            }
+        })
+    }
+    checkDummyGuest()
+}, [])
+
+ const checkUser = "By-passing login for now..."
 
 //   Get CSRF TOKEN
 
-  useEffect(()=>{
+//   useEffect(()=>{
 
-    const handleCsrfToken = async ()=>{
+//     const handleCsrfToken = async ()=>{
 
-    try{
+//     try{
     
-    const response = await getcsrfToken()
-    if (response.csrf_token){
-        console.log(response)
-    setCsrftoken(response.csrf_token)
-    }else{
-        throw new Error("authChecker error") 
-    }
+//     const response = await getcsrfToken()
+//     if (response.csrf_token){
+//         console.log(response)
+//     setCsrftoken(response.csrf_token)
+//     }else{
+//         throw new Error("authChecker error") 
+//     }
     
-  }
-  catch(err){
-  console.log(err)
-}
-    }
+//   }
+//   catch(err){
+//   console.log(err)
+// }
+//     }
 
-handleCsrfToken()
-  }, [])  
+// handleCsrfToken()
+//   }, [])  
 
 
-  //   Get ACCESS TOKEN
+//   //   Get ACCESS TOKEN
 
-  useEffect(()=>{
+//   useEffect(()=>{
 
-    const handleGetAccessToken = async ()=>{
+//     const handleGetAccessToken = async ()=>{
 
-    try{
-    if (csrftoken){
-    const response = await getAccessToken(csrftoken)
-    if (response.access_token){
-    console.log(response)
-    setAccessToken(response.access_token)
-    }else{
-        throw new Error("No Access Token Found") 
-    }
-  }else{
-    throw new Error("No access_token found")
-  }
+//     try{
+//     if (csrftoken){
+//     const response = await getAccessToken(csrftoken)
+//     if (response.access_token){
+//     console.log(response)
+//     setAccessToken(response.access_token)
+//     }else{
+//         throw new Error("No Access Token Found") 
+//     }
+//   }else{
+//     throw new Error("No access_token found")
+//   }
     
-  }
-  catch(err){
-  console.log(err)
-}
-    }
+//   }
+//   catch(err){
+//   console.log(err)
+// }
+//     }
 
-handleGetAccessToken()
-  }, [csrftoken])  
+// handleGetAccessToken()
+//   }, [csrftoken])  
 
  
 
 
-  //   GET USERPROFILE
-  useEffect(()=>{
+//   //   GET USERPROFILE
+//   useEffect(()=>{
 
-    const handleUserProfile = async ()=>{
+//     const handleUserProfile = async ()=>{
     
-    try {
+//     try {
     
-    const response = await getUserProfile(accessToken, csrftoken)
-    if (!response) throw new Error("No response from server")
-    if(response.success)
-    setIsLoggedIn(true)
-    setIsChecking(false)
-    }
+//     const response = await getUserProfile(accessToken, csrftoken)
+//     if (!response) throw new Error("No response from server")
+//     if(response.success)
+//     setIsLoggedIn(true)
+//     setIsChecking(false)
+//     }
 
-    catch(err){
-        console.log(err)
-        setIsLoggedIn(false)
-    }finally{
-        setIsChecking(false)
-    }
-}
+//     catch(err){
+//         console.log(err)
+//         setIsLoggedIn(false)
+//     }finally{
+//         setIsChecking(false)
+//     }
+// }
 
 
-    handleUserProfile()
-      }, [accessToken, csrftoken])
+//     handleUserProfile()
+//       }, [accessToken, csrftoken])
 
 
 

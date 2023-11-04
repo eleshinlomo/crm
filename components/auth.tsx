@@ -3,6 +3,17 @@ import { useEffect } from "react"
 // @ts-ignore
 import Cookies from 'js-cookie'
 
+
+// Dummy auth
+
+export const dummyLogin = [
+  {name: "Guest"}
+]
+
+export const dummyLogout = [
+  {name: "Out"}
+]
+
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
 

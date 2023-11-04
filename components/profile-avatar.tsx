@@ -8,6 +8,7 @@ import { SheetContent, Sheet, SheetTrigger } from "./ui/sheet"
 import { getcsrfToken } from './auth'
 import { getUserProfile } from './auth'
 import { getAccessToken } from './auth'
+import { dummyLogout } from './auth'
 
 
 
@@ -125,7 +126,7 @@ const handleOpen = ()=>{
         <SheetContent side='top' className="p-0">
         
         
-          {isUserProfile ?
+          {isLoggedIn ?
           <div className='  bg-black border-r-4 flex flex-col justify-center items-center'>
           
           {userProfile.map((user: any, index)=>
@@ -146,8 +147,13 @@ const handleOpen = ()=>{
           </div>
           </div>:
           
-          <div>
-           <p className=' bg-black flex justify-end text-white px-4 py-8'>I am unable to find out who you are. Guess you are a Guest.</p>
+          <div className='bg-black flex justify-between px-4 py-10'>
+           <p className='   text-white pt-2'>
+            Hi Guest,
+            </p>
+            <Button asChild>
+              <Link href='/'>Logout</Link>
+              </Button>
           </div>
           }
          
