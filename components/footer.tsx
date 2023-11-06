@@ -45,12 +45,10 @@ export const Footer = ()=>{
 
     {/* First Column */}
     <div className=''>
-    <div className='relative h-12 w-full my-2'>
+    <div className='relative h-24 w-full my-2'>
     <Image src={footer.logo} alt='logo' fill />
     </div>
-    <Button className='my-4' asChild>
-    <Link href={footer.github}>View Code on Github</Link>
-    </Button>
+    
     <div className='flex'>
 
     <div className='relative h-24 w-24'>
