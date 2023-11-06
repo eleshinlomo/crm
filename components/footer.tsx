@@ -1,95 +1,104 @@
 import Link from 'next/link'
 import Image from 'next/image'
-// import {
-//     Menubar,
-//     MenubarContent,
-//     MenubarItem,
-//     MenubarMenu,
-//     MenubarSeparator,
-//     MenubarShortcut,
-//     MenubarTrigger,
-//   } from "@/components/ui/menubar"
 import { Button } from './ui/button'
-  
+import { GithubIcon } from 'lucide-react'
 
+
+
+
+  
+const footerItems: any = [
+    
+      {
+        
+        logo:  '/images/logo.png',
+        myafrosurl: 'https://myafros.com',
+        copyright: `
+        ${'Copyright © '} ${new Date().getFullYear()}`,
+        contact: 'Contact us',
+        about: 'About us',
+        projects: 'See more projects',
+        privacy: '/privacy',
+        terms: '/terms',
+        info: 'This project is owned and managed by My Afros',
+        github: 'https://github.com/eleshinlomo/myafrosfrontendnew',
+        others: 'Projects'
+    },
+
+]
 
 
 export const Footer = ()=>{
     return (
         <div>
 
-<div className=' text-white bg-black px-4 py-4  h-auto w-full'>
+<div className=' text-white md:text-left bg-black px-6 py-8  h-auto w-full'>
+  <p className='text-center text-2xl mb-2'>Quick Links</p>
+  
 
-<div className='flex flex-col md:flex-row lg:flex-row  justify-between
-px-2 items-center
- '>
+{ footerItems ?
+<div>
+  {footerItems.map((footer: any, index: any)=>
 
-<div className=''>
-<div className='relative w-24 h-24'>
-        <Link href='/'>
-        <Image src="/images/logo.png" alt="logo"  fill />
-        </Link>
+   <div key={index} className='flex flex-col md:flex-row text-center
+    md:justify-between items-center'>
+
+    {/* First Column */}
+    <div className=''>
+    <div className='relative h-12 w-full my-2'>
+    <Image src={footer.logo} alt='logo' fill />
+    </div>
+    <Button className='my-4' asChild>
+    <Link href={footer.github}>View Code on Github</Link>
+    </Button>
+    <div className='flex'>
+
+    <div className='relative h-24 w-24'>
+      <Image src="/images/visa_png.png" alt="logo" fill />
+      </div>
+      <div className='relative h-24 w-24'>
+      <Image src="/images/mastcard_logo.jpg" alt="logo" fill />
       </div>
 
-      <div>
-       <p className=' py-3'>
-       What are you waiting for? Join the latest social phenomenon.</p>
-       
       </div>
-
-
-      </div>
- 
- {/* 2nd Column */}
-      <div className='flex flex-col'>
-        <p className='text-2xl'>Information</p>
-        <Button variant='link' className='text-blue-500' >
-            Contact me
-        </Button>
-
-        <Button variant='link' className='text-blue-500'>
-            See more Projects
-        </Button>
-
-        <Button variant='link' className='text-blue-500'>
-            About me
-        </Button>
-      </div>
-
-{/* 3rd Column */}
-      <div className='flex flex-col'>
-      <p className='text-2xl'>Quick Links</p>
-        <Button variant='link'  className='text-blue-500'>
-            Service
-        </Button>
-
-        <Button variant='link' className='text-blue-500'>
-            Terms
-        </Button>
-
-        <Button variant='link' className='text-blue-500'>
-            Cookies
-        </Button>
-      </div>
-
+    </div>
     
-      </div>
+    {/* Second Column */}
+    <div className='text-blue-800 flex flex-col h-24'>
+      <p className='text-white'>Information</p>
+    <p>{footer.contact}</p>
+    <p>{footer.about}</p>
+    </div>
 
-      <div className='pl-2 mb-3'>
-        <p>Fixupe is owned and operated by My Afros.
-         </p>
 
-         <p className='py-2'>Copyright 2023. All Rights Reserved.</p>
-         Website designed by <Link href='https://myafros.com' className='text-blue-500'>
-            My Afros</Link>
-      </div>
+    {/* Third Column */}
+    <div className='text-blue-800 flex flex-col h-24'>
+    <p className='text-white'>Terms</p>
+    <Link href={footer.privacy}>Privacy</Link>
+    <Link href={footer.terms}>Terms</Link>
+    </div>
 
-      <div className='flex py-3'>
-      <Image src="/images/visa_png.png" alt="logo" height={50} width={50} />
-      <Image src="/images/mastcard_logo.jpg" alt="logo" height={50} width={50} />
-      </div>
 
+    {/* Fourth Column */}
+    <div className='h-24 mb-4'>
+      <p>{footer.info}</p>
+      <div className='flex flex-col md:text-start text-center'>
+      <div className='flex justify-center md:justify-start items-center  gap-3  '>
+        <p>Designed</p>
+        <a href={footer.myafrosurl}  className='text-blue-800'>My Afros</a>
+        </div>
+      <p>{footer.copyright}</p>
+      
       </div>
+      
+    </div>
+
+    </div>
+  )}
+  </div>:null
+}
+
+</div>
         </div>
     )
 }
