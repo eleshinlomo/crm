@@ -84,7 +84,7 @@ export const Footer = ()=>{
       <p>{footer.info}</p>
       <div className='flex flex-col md:text-start text-center'>
       <div className='flex justify-center md:justify-start items-center  gap-3  '>
-        <p>Designed</p>
+        <p>Designed by</p>
         <a href={footer.myafrosurl}  className='text-blue-800'>My Afros</a>
         </div>
       <p>{footer.copyright}</p>
