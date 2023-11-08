@@ -23,8 +23,6 @@ export const Navbar = () => {
          <ProfileAvatar />
          
          
-         
-         
         </div>
     </div>
   )

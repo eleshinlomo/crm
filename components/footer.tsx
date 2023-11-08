@@ -20,7 +20,7 @@ const footerItems: any = [
         projects: 'See more projects',
         privacy: '/privacy',
         terms: '/terms',
-        info: 'Fixupe is owned and managed by My Afros',
+        info: 'Fixupe project is an initiative of My Afros',
         github: 'https://github.com/eleshinlomo/myafrosfrontendnew',
         others: 'Projects'
     },
