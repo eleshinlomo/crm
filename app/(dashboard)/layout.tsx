@@ -60,7 +60,7 @@ const DashboardLayout = ({
     }
 
     }else{
-        throw new Error("authChecker error") 
+        throw new Error("Unable to fetch csrf token") 
     }
     
   }
