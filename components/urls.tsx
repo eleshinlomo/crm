@@ -1,0 +1,2 @@
+
+export const GOOGLE_LOGOUT_URL = process.env.NEXT_PUBLIC_SSO_LOGOUT_URL

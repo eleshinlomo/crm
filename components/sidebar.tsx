@@ -4,10 +4,11 @@ import Link from "next/link";
 import Image from 'next/image'
 import { Montserrat} from "next/font/google";
 import { cn } from "@/lib/utils";
-import { Code, CodeIcon, EyeIcon, ImageIcon, LayoutDashboard, MenuIcon, MessageSquare, Music2Icon, Settings, VideoIcon } from "lucide-react";
+import { Code, CodeIcon, EyeIcon, ImageIcon, LayoutDashboard, LogOutIcon, MenuIcon, MessageSquare, Music2Icon, Settings, VideoIcon } from "lucide-react";
 import {usePathname} from 'next/navigation'
 import { AvatarImage } from "./ui/avatar";
 import { DIRTY } from "zod";
+import { GOOGLE_LOGOUT_URL } from "./urls";
 
 
 
@@ -78,9 +79,12 @@ const routes = [
             icon: Settings,
             href: "/settings",
             
-            },
+            }
+          
 
 ]
+
+
 const Sidebar = () => {
   const pathname = usePathname()
   return (
@@ -120,7 +124,13 @@ const Sidebar = () => {
          </Link>
          ))}
         </div>
-
+        
+        <a href={GOOGLE_LOGOUT_URL}>
+          <div className="flex flex-1 gap-3 pl-3 mt-3">
+          <LogOutIcon />
+          <p>Logout</p>
+          </div>
+        </a>
         
      </div>
     </div>
