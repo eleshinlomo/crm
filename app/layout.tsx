@@ -7,6 +7,11 @@ import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
+export const meta = { 
+  name: "google-site-verification",
+  content: "w5ae3CSgteS7FOKtCPGydV4sZsJMfkvXJZp4nZ2XGHA"
+}
+
 export const metadata: Metadata = {
   title: 'Fixupe',
   description: 'Create everything with AI',
