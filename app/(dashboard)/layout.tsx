@@ -65,7 +65,7 @@ const loginChecker = async() =>{
 loginChecker()
 },[])
 
- const checkUser = "By-passing login for now..."
+ const checkUser = "Checking authentication status..."
 
 //   Get CSRF TOKEN
 
