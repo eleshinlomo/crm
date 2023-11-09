@@ -17,24 +17,24 @@ export const HomeSidebar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false)
     
 
-  useEffect(()=>{
-    const loginChecker = async() =>{
-        const response: any = await fetch(`${BASE_URL}/authchecker/`, {
-            mode: 'cors',
-            credentials: 'include',
-            headers: {'Content-Type': 'application/json'}
-        })
-        if (!response) throw new Error("No response from server")
-         const data = await response.json()
-        if (data.success === true){
-          console.log(data)
-           setIsLoggedIn(true)
-        }else{
-            setIsLoggedIn(false)
-        }
-    }
-    loginChecker()
-    },[])
+  // useEffect(()=>{
+  //   const loginChecker = async() =>{
+  //       const response: any = await fetch(`${BASE_URL}/authchecker/`, {
+  //           mode: 'cors',
+  //           credentials: 'include',
+  //           headers: {'Content-Type': 'application/json'}
+  //       })
+  //       if (!response) throw new Error("No response from server")
+  //        const data = await response.json()
+  //       if (data.success === true){
+  //         console.log(data)
+  //          setIsLoggedIn(true)
+  //       }else{
+  //           setIsLoggedIn(false)
+  //       }
+  //   }
+  //   loginChecker()
+  //   },[])
 
 
   return (

@@ -14,6 +14,8 @@ import { Footer } from '@/components/footer';
 import { dummyLogin } from '@/components/auth';
 import { BASE_URL } from '@/components/auth';
 import { GOOGLE_LOGIN_URL } from '@/components/urls';
+// @ts-ignore
+import Cookies from 'js-cookie'
 
 
 
@@ -29,63 +31,122 @@ const DashboardLayout = ({
 })=>{
 
     const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false)
+    const [isAuthenticated, setIsAuthenticated] = useState<Boolean>(false)
     const [isChecking, setIsChecking] = useState<Boolean>(false)
-    const [message, setMesssage] = useState<String>("")
+    const [message, setMessage] = useState<String>("")
     const [user, setUser] = useState(null)
+    const [isSessionId, setIsSessionId] = useState(false)
     const [csrftoken, setCsrftoken] = useState<string | null>(null)
     const [accessToken, setAccessToken] = useState<string | null>(null)
 
    
 
+    
 
+  useEffect(()=>{
+
+    const handleCsrfToken = async ()=>{
+
+    try{
+    
+    const response = await getcsrfToken()
+    if (response.csrf_token){
+        console.log({"First CsrfToken":response.csrf_token})
+        setCsrftoken(response.csrf_token)
+        const newcsrf = response.headers.get('X-CSRFToken')
+    if(newcsrf){
+    setCsrftoken(newcsrf)
+    console.log({"newCSRF": csrftoken})
+    }
+
+    }else{
+        throw new Error("authChecker error") 
+    }
+    
+  }
+  catch(err){
+  console.log(err)
+}
+    }
+
+handleCsrfToken()
+  }, [])  
+
+
+
+    // Fetch SessinID from server
     useEffect(()=>{
         
-        const loginChecker = async() =>{
+        const loginChecker = async(csrftoken: any) =>{
+
+            try {
+            if (!csrftoken) return
             const response: any = await fetch(`${BASE_URL}/authchecker/`, {
                 mode: 'cors',
                 credentials: 'include',
-                headers: {'Content-Type': 'application/json'}
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                }
             })
             if (!response) throw new Error("No response from server")
              const data = await response.json()
             if (data.success === true){
+              const saveSessionid = localStorage.setItem('mysessionid', data.sessionid)
               console.log(data)
-               setIsLoggedIn(true)
+              setIsAuthenticated(true)
             }else{
-                setIsLoggedIn(false)
-                setMesssage(data.message)
+                setMessage(data.message)
             }
+        }catch(err: any){
+            setMessage(err.message)
+        }
         }
         
-        loginChecker()
-        },[])
+        loginChecker(csrftoken)
+        },[csrftoken])
+
+        
+
+        // RETREIVE SESSIONID FROM LOCAL STORAGE
+        useEffect(()=>{
+        const getSessionIdFromLS = async ()=>{
+            if (!isAuthenticated) return
+            const sessionid = localStorage.getItem('mysessionid')
+            console.log({"Session found": sessionid})
+            setIsSessionId(true)
+            
+            if (sessionid){
+            const response = await fetch(`${BASE_URL}/getuser/`, {
+                mode: 'cors',
+                method: 'GET',
+                headers: {
+                    "Content-Type": 'application/json',
+                    "Authorization": `Bearer ${sessionid}`
+                },
+                credentials: 'include'
+        })
+          if(!response) throw new Error("Server not releasing user info")
+          const data = await response.json()
+          if(data){
+            setIsLoggedIn(true)
+            console.log(data)
+          }else{
+            setMessage(data.message)
+          }
+          
+        }
+
+        }
+        getSessionIdFromLS()
+      }, [isAuthenticated])
+
+
+      
 
  const checkUser = "Checking authentication status..."
 
-//   Get CSRF TOKEN
 
-//   useEffect(()=>{
-
-//     const handleCsrfToken = async ()=>{
-
-//     try{
-    
-//     const response = await getcsrfToken()
-//     if (response.csrf_token){
-//         console.log(response)
-//     setCsrftoken(response.csrf_token)
-//     }else{
-//         throw new Error("authChecker error") 
-//     }
-    
-//   }
-//   catch(err){
-//   console.log(err)
-// }
-//     }
-
-// handleCsrfToken()
-//   }, [])  
 
 
 //   //   Get ACCESS TOKEN
