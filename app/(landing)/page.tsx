@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { ChatbotTeamPage } from '@/components/chatbotteam'
 import { Footer } from '@/components/footer'
 import Image from 'next/image'
+import { GOOGLE_LOGIN_URL } from '@/components/urls'
 
 const HomePage = () => {
 
@@ -29,7 +30,7 @@ const HomePage = () => {
        </a>
 
 
-       <a href='https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?client_id=564029075525-okibkfj0rch1cql74vh9pnnhcu96sphv.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Faccounts%2Fgoogle%2Flogin%2Fcallback%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20openid&response_type=code&state=WY13eYo0JWpmVBup&access_type=online&service=lso&o2v=2&theme=glif&flowName=GeneralOAuthFlow'>
+       <a href={GOOGLE_LOGIN_URL}>
         
         <div className='flex justify-center items-center bg-black
          text-white shadow-2xl border-blue-600 px-2 rounded-lg  py-2'>

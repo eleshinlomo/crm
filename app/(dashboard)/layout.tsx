@@ -13,6 +13,7 @@ import Image from 'next/image'
 import { Footer } from '@/components/footer';
 import { dummyLogin } from '@/components/auth';
 import { BASE_URL } from '@/components/auth';
+import { GOOGLE_LOGIN_URL } from '@/components/urls';
 
 
 
@@ -199,7 +200,7 @@ loginChecker()
             </Link>
 
         <Button className='flex gap-1' asChild>
-        <Link href={`${DJANGO_LOGIN_URL}`}>
+        <Link href={`${GOOGLE_LOGIN_URL}`}>
         <Image src='/google_logo.png' alt='logo' width='20' height='20' />
         Login
         </Link>
