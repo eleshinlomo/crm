@@ -4,7 +4,7 @@ import { Button } from "./ui/button"
 import MobileSidebar from "./mobile-sidebar"
 import Link from 'next/link'
 import { UserAvatar } from './user-avater'
-import ProfileAvatar  from './profile-avatar'
+// import ProfileAvatar  from './profile-avatar'
 
 
 
@@ -20,7 +20,7 @@ export const Navbar = () => {
         <div className="flex w-full justify-end">
 
               
-         <ProfileAvatar />
+         {/* <ProfileAvatar /> */}
          
          
         </div>
