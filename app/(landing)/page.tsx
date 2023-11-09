@@ -24,7 +24,7 @@ const HomePage = () => {
         })
         if (!response) throw new Error("No response from server")
          const data = await response.json()
-        if (data.firstname){
+        if (data.success === true){
           console.log(data)
            setIsLoggedIn(true)
            setShowButtons(false)

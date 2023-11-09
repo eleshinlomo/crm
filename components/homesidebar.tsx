@@ -26,7 +26,7 @@ export const HomeSidebar = () => {
         })
         if (!response) throw new Error("No response from server")
          const data = await response.json()
-        if (data){
+        if (data.success === true){
           console.log(data)
            setIsLoggedIn(true)
         }else{
