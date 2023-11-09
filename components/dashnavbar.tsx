@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import { LogOutIcon, Menu } from "lucide-react"
 import { Button } from "./ui/button"
-import MobileSidebar from "./mobile-sidebar"
+import MobileSidebar from "./dashmobilesidebar"
 import Link from 'next/link'
 import { UserAvatar } from './user-avater'
 // import ProfileAvatar  from './profile-avatar'

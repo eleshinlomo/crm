@@ -2,7 +2,7 @@
 
 import {useState, useEffect} from 'react'
 import Sidebar from "@/components/sidebar";
-import {Navbar} from "@/components/navbar";
+import {Navbar} from "@/components/dashnavbar";
 import { Button } from '@/components/ui/button';
 import  Link  from 'next/link';
 import PropTypes from 'prop-types'
@@ -29,42 +29,32 @@ const DashboardLayout = ({
 })=>{
 
     const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false)
-    const [isChecking, setIsChecking] = useState<Boolean>(true)
+    const [isChecking, setIsChecking] = useState<Boolean>(false)
     const [user, setUser] = useState(null)
     const [csrftoken, setCsrftoken] = useState<string | null>(null)
     const [accessToken, setAccessToken] = useState<string | null>(null)
 
    
-//     useEffect(()=>{
 
-//     const checkDummyGuest = ()=>{
-//         dummyLogin.map((dummy)=>{
-//             if(dummy.name === "Guest"){
-//                 setIsLoggedIn(true)
-//                 setIsChecking(false)
-//             }
-//         })
-//     }
-//     checkDummyGuest()
-// }, [])
 
-useEffect(()=>{
-const loginChecker = async() =>{
-    const response: any = await fetch(`${BASE_URL}/authchecker/`, {
-        mode: 'cors',
-        credentials: 'include'
-    })
-    if (!response) throw new Error("No response from server")
-     const data = await response.json()
-    if (data.success === true){
-       setIsLoggedIn(true)
-       setIsChecking(false)
-    }else{
-        setIsLoggedIn(false)
-    }
-}
-loginChecker()
-},[])
+    useEffect(()=>{
+        const loginChecker = async() =>{
+            const response: any = await fetch(`${BASE_URL}/authchecker/`, {
+                mode: 'cors',
+                credentials: 'include',
+                headers: {'Content-Type': 'application/json'}
+            })
+            if (!response) throw new Error("No response from server")
+             const data = await response.json()
+            if (data.firstname){
+              console.log(data)
+               setIsLoggedIn(true)
+            }else{
+                setIsLoggedIn(false)
+            }
+        }
+        loginChecker()
+        },[])
 
  const checkUser = "Checking authentication status..."
 
@@ -182,18 +172,18 @@ loginChecker()
         </div>:
 
 
-        <div className='h-full mt-4 flex flex-col justify-center items-center gap-3'>
+        <div className='h-full mt-12 flex flex-col justify-center items-center gap-3'>
             
             {isChecking ?
             <div>
-             <div className='text-center animate-spin'>
-             <Image src='/logo.png' alt='logo' width='50' height='50' />
+             <div className='relative text-center animate-spin'>
+             <Image src='/logo.png' alt='logo' fill />
              </div>
              {checkUser}
             </div>:null
             }
             
-            
+            <div className='flex flex-col gap-5 justify-center items-center'>
             <p className='text leading-8'>You need to be logged in</p>
             <Link href='/'>
             <Button>Back to home</Button>
@@ -202,9 +192,10 @@ loginChecker()
         <Button className='flex gap-1' asChild>
         <Link href={`${GOOGLE_LOGIN_URL}`}>
         <Image src='/google_logo.png' alt='logo' width='20' height='20' />
-        Login
+        Login with Google
         </Link>
         </Button> 
+        </div>
 
             </div>
 

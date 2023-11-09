@@ -12,7 +12,7 @@ export const ChatbotTeamPage = ()=>{
             role: 'General Questions',
             info: "Answers general questions on all topis",
             image: '/images/girl1.png',
-            route: 'https://fixupe.com/general'
+            route: '/general'
         },
 
         {
@@ -20,7 +20,7 @@ export const ChatbotTeamPage = ()=>{
             role: '(Programmer)Writes code...',
             info: "Answers general questions on all topis",
             image: '/images/coder.png',
-            route: 'https://fixupe.com/code'
+            route: '/code'
         },
 
         {
@@ -28,7 +28,7 @@ export const ChatbotTeamPage = ()=>{
             role: 'Image Generator',
             info: "Answers general questions on all topis",
             image: '/images/image_guy.png',
-            route: 'https://fixupe.com/image'
+            route: '/image'
         },
 
         {
@@ -36,7 +36,7 @@ export const ChatbotTeamPage = ()=>{
             role: 'AI Girlfriend',
             info: "You intimate AI excapades",
             image: '/images/girl2.png',
-            route: 'https://fixupe.com/girlfriend'
+            route: '/girlfriend'
         },
         
        
