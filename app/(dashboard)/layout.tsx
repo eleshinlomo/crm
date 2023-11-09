@@ -39,6 +39,7 @@ const DashboardLayout = ({
 
 
     useEffect(()=>{
+        
         const loginChecker = async() =>{
             const response: any = await fetch(`${BASE_URL}/authchecker/`, {
                 mode: 'cors',
@@ -55,6 +56,7 @@ const DashboardLayout = ({
                 setMesssage(data.message)
             }
         }
+        
         loginChecker()
         },[])
 
