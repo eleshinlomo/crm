@@ -30,6 +30,7 @@ const DashboardLayout = ({
 
     const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false)
     const [isChecking, setIsChecking] = useState<Boolean>(false)
+    const [message, setMesssage] = useState<String>("")
     const [user, setUser] = useState(null)
     const [csrftoken, setCsrftoken] = useState<string | null>(null)
     const [accessToken, setAccessToken] = useState<string | null>(null)
@@ -46,11 +47,12 @@ const DashboardLayout = ({
             })
             if (!response) throw new Error("No response from server")
              const data = await response.json()
-            if (data.firstname){
+            if (data.success === true){
               console.log(data)
                setIsLoggedIn(true)
             }else{
                 setIsLoggedIn(false)
+                setMesssage(data.message)
             }
         }
         loginChecker()
@@ -195,6 +197,10 @@ const DashboardLayout = ({
         Login with Google
         </Link>
         </Button> 
+
+        <div>
+         {message}
+        </div>
         </div>
 
             </div>
