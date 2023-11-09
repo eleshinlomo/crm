@@ -53,11 +53,6 @@ const DashboardLayout = ({
     if (response.csrf_token){
         console.log({"First CsrfToken":response.csrf_token})
         setCsrftoken(response.csrf_token)
-        const newcsrf = response.headers.get('X-CSRFToken')
-    if(newcsrf){
-    setCsrftoken(newcsrf)
-    console.log({"newCSRF": csrftoken})
-    }
 
     }else{
         throw new Error("Unable to fetch csrf token") 
