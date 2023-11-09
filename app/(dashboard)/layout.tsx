@@ -12,6 +12,7 @@ import { getUserProfile } from '@/components/auth';
 import Image from 'next/image'
 import { Footer } from '@/components/footer';
 import { dummyLogin } from '@/components/auth';
+import { BASE_URL } from '@/components/auth';
 
 
 
@@ -33,18 +34,36 @@ const DashboardLayout = ({
     const [accessToken, setAccessToken] = useState<string | null>(null)
 
    
-    useEffect(()=>{
+//     useEffect(()=>{
 
-    const checkDummyGuest = ()=>{
-        dummyLogin.map((dummy)=>{
-            if(dummy.name === "Guest"){
-                setIsLoggedIn(true)
-                setIsChecking(false)
-            }
-        })
+//     const checkDummyGuest = ()=>{
+//         dummyLogin.map((dummy)=>{
+//             if(dummy.name === "Guest"){
+//                 setIsLoggedIn(true)
+//                 setIsChecking(false)
+//             }
+//         })
+//     }
+//     checkDummyGuest()
+// }, [])
+
+useEffect(()=>{
+const loginChecker = async() =>{
+    const response: any = await fetch(`${BASE_URL}/authchecker/`, {
+        mode: 'cors',
+        credentials: 'include'
+    })
+    if (!response) throw new Error("No response from server")
+     const data = await response.json()
+    if (data.success === true){
+       setIsLoggedIn(true)
+       setIsChecking(false)
+    }else{
+        setIsLoggedIn(false)
     }
-    checkDummyGuest()
-}, [])
+}
+loginChecker()
+},[])
 
  const checkUser = "By-passing login for now..."
 

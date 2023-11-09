@@ -9,21 +9,26 @@ import { getcsrfToken } from './auth'
 import { getUserProfile } from './auth'
 import { getAccessToken } from './auth'
 import { dummyLogout } from './auth'
+import { BASE_URL } from './auth'
 
 
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+
 const GOOGLE_LOGOUT_URL = process.env.NEXT_PUBLIC_SSO_LOGOUT_URL
 
 
 
-export const ProfileAvatar = ()=>{
+
+
+
+const ProfileAvatar = ()=>{
 const [isUserProfile, setIsUserProfile] = useState<Boolean>(false)
 const [userProfile, setUserProfile] = useState< []>([])
 const [isLoggedIn, setIsLoggedIn] = useState(false)
 const [toggleBtn, setToggleBtn] = useState(false)
 const [csrftoken, setCsrftoken] = useState(null)
 const [accessToken, setAccessToken] = useState<any>()
+
 
 const handleClose = ()=>{
   setToggleBtn(false)
@@ -34,74 +39,90 @@ const handleOpen = ()=>{
 }
 
 
+useEffect(()=>{
+  const loginChecker = async() =>{
+      const response: any = await fetch(`${BASE_URL}/authchecker/`, {
+          mode: 'cors',
+          credentials: 'include'
+      })
+      if (!response) throw new Error("No response from server")
+       const data = await response.json()
+      if (data.success === true){
+         setIsLoggedIn(true)
+      }else{
+          setIsLoggedIn(false)
+      }
+  }
+  loginChecker()
+  },[])
 
 
 
 
-// //   Get CSRF TOKEN
+//   Get CSRF TOKEN
 
-// useEffect(()=>{
+useEffect(()=>{
 
-//   const handleCsrfToken = async ()=>{
+  const handleCsrfToken = async ()=>{
 
-//   try{
+  try{
   
-//   const response: any = await getcsrfToken()
-//   if (! response)throw new Error("authChecker error") 
-//   setCsrftoken(response)
+  const response: any = await getcsrfToken()
+  if (! response)throw new Error("authChecker error") 
+  setCsrftoken(response)
   
-// }
-// catch(err){
-// console.log(err)
-// }
-//   }
+}
+catch(err){
+console.log(err)
+}
+  }
 
-// handleCsrfToken()
-// }, [])  
+handleCsrfToken()
+}, [])  
 
 
 // //   Get ACCESS TOKEN
 
-// useEffect(()=>{
+useEffect(()=>{
 
-//   const handleGetAccessToken = async ()=>{
+  const handleGetAccessToken = async ()=>{
 
-//   try{
+  try{
+  if (csrftoken) return
+  const response: any = await getAccessToken(csrftoken)
+  if (! response)throw new Error("No Access Token Found") 
+  setAccessToken(response)
   
-//   const response: any = await getAccessToken()
-//   if (! response)throw new Error("No Access Token Found") 
-//   setAccessToken(response)
-  
-// }
-// catch(err){
-// console.log(err)
-// }
-//   }
+}
+catch(err){
+console.log(err)
+}
+  }
 
-// handleGetAccessToken()
-// }, [])  
+handleGetAccessToken()
+}, [])  
 
 
 
-// if (accessToken){
-//   console.log(accessToken)
-// }
+if (accessToken){
+  console.log(accessToken)
+}
 
 
-// //   GET USERPROFILE
-// useEffect(()=>{
+//   GET USERPROFILE
+useEffect(()=>{
 
-//   const handleUserProfile = async ()=>{
-//   if (!csrftoken) return
-//   const response = await getUserProfile(csrftoken, accessToken)
-//   if (!response) throw new Error("No response from server")
-//   setUserProfile(response.message)
-//   setIsUserProfile(true)
+  const handleUserProfile = async ()=>{
+  if (!csrftoken) return
+  const response = await getUserProfile(csrftoken, accessToken)
+  if (!response) throw new Error("No response from server")
+  setUserProfile(response.message)
+  setIsUserProfile(true)
  
-//   }
+  }
 
-//   handleUserProfile()
-//     }, [csrftoken, accessToken])
+  handleUserProfile()
+    }, [csrftoken, accessToken])
 
   
 
@@ -169,3 +190,5 @@ const handleOpen = ()=>{
 
     )
 }
+
+export default ProfileAvatar
