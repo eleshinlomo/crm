@@ -9,6 +9,7 @@ import {usePathname} from 'next/navigation'
 import { AvatarImage } from "./ui/avatar";
 import { DIRTY } from "zod";
 import { GOOGLE_LOGOUT_URL } from "./urls";
+import CreditPage from "@/components/creditpage";
 
 
 
@@ -32,18 +33,25 @@ const routes = [
     },
 
     {
+      label: "Code Generation",
+      icon: CodeIcon,
+      href: "/code",
+      color: "text-grey-500"
+      },
+
+    {
+      label: "Image Generation",
+      icon: ImageIcon,
+      href: "/image",
+      color: "text-blue-500"
+      },
+
+    {
       label: "AI Boyfriend",
       icon: MenuIcon,
       href: "/boyfriend",
       color: "text-grey-500"
       },
-
-      {
-        label: "Code Generation",
-        icon: CodeIcon,
-        href: "/code",
-        color: "text-grey-500"
-        },
 
     {
       label: "AI Girlfriend",
@@ -53,12 +61,7 @@ const routes = [
       },
       
 
-  {
-    label: "Image Generation",
-    icon: ImageIcon,
-    href: "/image",
-    color: "text-blue-500"
-    },
+  
 
     {
       label: "Video Generation",
@@ -123,6 +126,10 @@ const Sidebar = () => {
             </div>
          </Link>
          ))}
+
+         <div>
+          <CreditPage />
+         </div>
         </div>
         
         <a href={GOOGLE_LOGOUT_URL}>

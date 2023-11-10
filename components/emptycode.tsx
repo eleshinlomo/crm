@@ -13,7 +13,7 @@ export const EmptyCode = ({
             <Image
             alt= "Code Empty"
             fill
-            src="/chatgpt.gif"
+            src="/images/coder.png"
             />
         </div>
         <p className="text-muted-foreground text-sm text-center">

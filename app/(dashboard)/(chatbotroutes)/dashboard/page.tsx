@@ -11,56 +11,64 @@ import {useRouter} from 'next/navigation'
 
 
 const tools = [
+
   {
     label: "General Conversation",
     icon: MessageSquare,
-    color: "text-pink-500",
-    bgColor: "bg-violet-500/10",
-    href: "/general"
-  },
-
-  {
-    label: "AI Boyfriend",
-    icon: MenuIcon,
-    href: "/boyfriend",
-    color: "text-grey-500"
+    href: "/general",
+    color: "text-pink-500"
     },
 
-  {
-    label: "AI Girlfriend",
-    icon: EyeIcon,
-    href: "/girlfriend",
-    color: "text-grey-500"
-    },
-   
-  {
-    label: "Image Generation",
-    icon: ImageIcon,
-    color: "text-violet-500",
-    bgColor: "bg-violet-500/10",
-    href: "/image"
-  },
-  {
-    label: "Video Generation",
-    icon: VideoIcon,
-    color: "text-blue-500",
-    bgColor: "bg-pink-500/10",
-    href: "/video"
-  },
-  {
-    label: "Music Generation",
-    icon: MusicIcon,
-    color: "text-purple-500",
-    bgColor: "bg-violet-500/10",
-    href: "/music"
-  },
-  
-  {
-    label: "Code Generation",
-    icon: CodeIcon,
-    href: "/code",
-    color: "text-grey-500"
-    },
+    {
+      label: "Code Generation",
+      icon: CodeIcon,
+      href: "/code",
+      color: "text-grey-500"
+      },
+
+    {
+      label: "Image Generation",
+      icon: ImageIcon,
+      href: "/image",
+      color: "text-blue-500"
+      },
+
+    {
+      label: "AI Boyfriend",
+      icon: MenuIcon,
+      href: "/boyfriend",
+      color: "text-grey-500"
+      },
+
+    {
+      label: "AI Girlfriend",
+      icon: EyeIcon,
+      href: "/girlfriend",
+      color: "text-grey-500"
+      },
+      
+    {
+      label: "Video Generation",
+      icon: VideoIcon,
+      href: "/video",
+      color: "text-blue-500"
+      },
+      // {
+      //   label: "Music Generation",
+      //   icon: Music2Icon,
+      //   href: "/music",
+      //   color: "text-purple-500"
+      //   },
+       
+       
+      //     {
+      //       label: "Settings",
+      //       icon: Settings,
+      //       href: "/settings",
+            
+      //       }
+          
+
 ]
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL

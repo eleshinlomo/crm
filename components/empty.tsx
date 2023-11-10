@@ -13,7 +13,7 @@ export const Empty = ({
             <Image
             alt= "Empty"
             fill
-            src="/speech-bubble-5022_512.gif"
+            src="/images/girl1.png"
             />
         </div>
         <p className="text-muted-foreground text-sm text-center">

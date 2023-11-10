@@ -4,7 +4,7 @@ interface EmptyProps {
     label: string
 }
 
-export const EmptyGirlfriend = ({
+export const EmptyImage = ({
     label
 }: EmptyProps) =>{
     return (
@@ -13,7 +13,7 @@ export const EmptyGirlfriend = ({
             <Image
             alt= "Empty"
             fill
-            src="/images/girl2.png"
+            src="/images/image_guy.png"
             />
         </div>
         <p className="text-muted-foreground text-sm text-center">

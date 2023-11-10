@@ -157,7 +157,7 @@ const GirlfriendPage = () => {
             )}
             {messages.length == 0 && !isLoading && (
                 <div>
-                    <EmptyGirlfriend label="No conversation started" />
+                    <EmptyGirlfriend label="No conversation started with Emerald" />
                 </div>
             )}
            <div className='flex flex-col-reverse gap-y-4'>

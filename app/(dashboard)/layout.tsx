@@ -1,7 +1,7 @@
 "use client"
 
 import {useState, useEffect} from 'react'
-import Sidebar from "@/components/sidebar";
+import Sidebar from "@/components/dashsidebar";
 import {Navbar} from "@/components/dashnavbar";
 import { Button } from '@/components/ui/button';
 import  Link  from 'next/link';
@@ -16,6 +16,7 @@ import { BASE_URL } from '@/components/auth';
 import { GOOGLE_LOGIN_URL } from '@/components/urls';
 // @ts-ignore
 import Cookies from 'js-cookie'
+import CreditPage from '@/components/creditpage';
 
 
 
@@ -51,7 +52,7 @@ const DashboardLayout = ({
     
     const response = await getcsrfToken()
     if (response.csrf_token){
-        console.log({"First CsrfToken":response.csrf_token})
+        console.log({"First CsrfToken":response})
         setCsrftoken(response.csrf_token)
 
     }else{
@@ -117,7 +118,7 @@ handleCsrfToken()
                 method: 'GET',
                 headers: {
                     "Content-Type": 'application/json',
-                    "Authorization": `Bearer ${sessionid}`
+                    "Authorization": 'Bearer ' + String(sessionid)
                 },
                 credentials: 'include'
         })
@@ -146,31 +147,31 @@ handleCsrfToken()
 
 //   //   Get ACCESS TOKEN
 
-//   useEffect(()=>{
+  useEffect(()=>{
 
-//     const handleGetAccessToken = async ()=>{
+    const handleGetAccessToken = async ()=>{
 
-//     try{
-//     if (csrftoken){
-//     const response = await getAccessToken(csrftoken)
-//     if (response.access_token){
-//     console.log(response)
-//     setAccessToken(response.access_token)
-//     }else{
-//         throw new Error("No Access Token Found") 
-//     }
-//   }else{
-//     throw new Error("No access_token found")
-//   }
+    try{
+    if (csrftoken){
+    const response = await getAccessToken(csrftoken)
+    if (response.access_token){
+    console.log(response)
+    setAccessToken(response.access_token)
+    }else{
+        throw new Error("No Access Token Found") 
+    }
+  }else{
+    throw new Error("No access_token found")
+  }
     
-//   }
-//   catch(err){
-//   console.log(err)
-// }
-//     }
+  }
+  catch(err){
+  console.log(err)
+}
+    }
 
-// handleGetAccessToken()
-//   }, [csrftoken])  
+handleGetAccessToken()
+  }, [csrftoken])  
 
  
 
@@ -224,7 +225,9 @@ handleCsrfToken()
             
            <main className="md:pl-72">
             <Navbar />
-          
+            <div className='flex flex-col justify-center items-center'>
+             <CreditPage />
+             </div>
             {children}
 
             <Footer />
