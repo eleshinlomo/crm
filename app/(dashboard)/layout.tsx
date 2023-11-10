@@ -20,9 +20,7 @@ import CreditPage from '@/components/creditpage';
 
 
 
-const DJANGO_LOGIN_URL = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGIN_URL
-
-
+const DJANGO_LOGIN_URL = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGIN_UR
 
 const DashboardLayout = ({
     
@@ -39,6 +37,7 @@ const DashboardLayout = ({
     const [isSessionId, setIsSessionId] = useState(false)
     const [csrftoken, setCsrftoken] = useState<string | null>(null)
     const [accessToken, setAccessToken] = useState<string | null>(null)
+
 
    
 
@@ -67,6 +66,8 @@ const DashboardLayout = ({
 
 handleCsrfToken()
   }, [])  
+
+  
 
 
 
@@ -101,6 +102,8 @@ handleCsrfToken()
         
         loginChecker(csrftoken)
         },[csrftoken])
+
+        
 
         
 
@@ -172,6 +175,20 @@ handleCsrfToken()
 
 handleGetAccessToken()
   }, [csrftoken])  
+
+
+  // GET SESSION ID
+  useEffect(()=>{
+    setTimeout(()=>{
+  const getSessionIdFromLocalStore =  ()=>{
+    const sessionid =  Cookies.get('sessionid')
+    console.log({"sessionid":sessionid})
+ 
+  }
+  getSessionIdFromLocalStore()
+}, 5000)
+  
+}, [])
 
  
 
