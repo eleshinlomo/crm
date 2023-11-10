@@ -16,20 +16,21 @@ const tools = [
     label: "General Conversation",
     icon: MessageSquare,
     href: "/general",
-    color: "text-pink-500"
+    bgColor: "text-pink-500"
     },
 
     {
       label: "Code Generation",
       icon: CodeIcon,
       href: "/code",
-      color: "text-grey-500"
+      bgColor: "text-grey-500"
       },
 
     {
       label: "Image Generation",
       icon: ImageIcon,
       href: "/image",
+      bgColor: "text-blue-500",
       color: "text-blue-500"
       },
 
@@ -37,6 +38,7 @@ const tools = [
       label: "AI Boyfriend",
       icon: MenuIcon,
       href: "/boyfriend",
+      bgColor: "text-grey-500",
       color: "text-grey-500"
       },
 
@@ -44,6 +46,7 @@ const tools = [
       label: "AI Girlfriend",
       icon: EyeIcon,
       href: "/girlfriend",
+      bgColor: "text-grey-500",
       color: "text-grey-500"
       },
       
@@ -51,7 +54,8 @@ const tools = [
       label: "Video Generation",
       icon: VideoIcon,
       href: "/video",
-      color: "text-blue-500"
+      bgColor: "text-blue-500",
+      color: "text-grey-500"
       },
       // {
       //   label: "Music Generation",
