@@ -88,7 +88,7 @@ const routes = [
 const Sidebar = () => {
   const pathname = usePathname()
   return (
-    <div className="h-full space-y-4 py-4 flex flex-col overflow-scroll
+    <div className="h-full space-y-4 py-4 flex flex-col 
     bg-black  text-white">
      
      <div className="px-3 py-2 flex-1">
