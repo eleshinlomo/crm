@@ -60,9 +60,6 @@ const routes = [
       color: "text-grey-500"
       },
       
-
-  
-
     {
       label: "Video Generation",
       icon: VideoIcon,
@@ -91,8 +88,8 @@ const routes = [
 const Sidebar = () => {
   const pathname = usePathname()
   return (
-    <div className="space-y-4 py-4 flex flex-col h-full
-    bg-black text-white">
+    <div className="h-full space-y-4 py-4 flex flex-col overflow-scroll
+    bg-black  text-white">
      
      <div className="px-3 py-2 flex-1">
         <Link href="/" className="flex items-center 
@@ -127,17 +124,20 @@ const Sidebar = () => {
          </Link>
          ))}
 
-         <div>
+         {/* <div className="py-2">
           <CreditPage />
-         </div>
-        </div>
-        
-        <a href={GOOGLE_LOGOUT_URL}>
-          <div className="flex flex-1 gap-3 pl-3 mt-3">
+         </div> */}
+
+         <a href={GOOGLE_LOGOUT_URL}>
+          <div className="flex flex-1 gap-3 pl-3 py-2 mt-3">
           <LogOutIcon />
           <p>Logout</p>
           </div>
         </a>
+
+        </div>
+        
+        
         
      </div>
     </div>

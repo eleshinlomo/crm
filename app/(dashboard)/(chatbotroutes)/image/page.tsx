@@ -22,7 +22,7 @@ import Image from 'next/image'
 
 
 
-const GirlfriendPage = () => {
+const ImagePage = () => {
     const [messages, setMessages] = useState<Array<{role: any; content: any}>>([])
     
 
@@ -35,57 +35,54 @@ const GirlfriendPage = () => {
     })
 
     const isLoading = form.formState.isSubmitting
-    const onSubmit = async (values: z.infer<typeof formSchema>)=>{
-        console.log(values)
 
+    
+
+    const onSubmit = async (values: z.infer<typeof formSchema>) => {
+        console.log(values);
+      
         try {
-         
-         const userMessage = {
+          const userMessage = {
             role: "user",
-            content: values.payload
-         }
-
-        
-         const newMessages = [...messages, userMessage]
-         setMessages(newMessages)
-         const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
-         const API_URL = `${BASE_URL}/imagegenerator/`
-         await fetch(API_URL, {
-            mode: 'cors',
-            method: 'POST',
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({payload: values.payload})
-            
-         })
-         .then((res)=>{
-           if (!res) throw new Error("No response from server")
-           return res.json()
-         })
-         .then((data)=>{
-            console.log(data.message)
-
-            if(data) {
-            const botMessage = {
+            content: values.payload,
+          };
+      
+          const newMessages = [...messages, userMessage];
+          setMessages(newMessages);
+      
+          const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+          const API_URL = `${BASE_URL}/fake/`;
+          const res = await fetch(API_URL, {
+            mode: "cors",
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ payload: values.payload }),
+          });
+      
+          if (res.ok) {
+            const responseData = await res.json();
+      
+            if (responseData.message) {
+              const botMessage = {
                 role: "Bot",
-                content: ""
+                content: responseData.message, // Use the image URL directly
+              };
+              newMessages.push(botMessage);
+              setMessages(newMessages);
             }
-
-            
-            botMessage.content = data.message
-            newMessages.push(botMessage)
-        }
-            setMessages(newMessages)
-        
-            form.reset()
-         })
-
-
-        }catch (error: any) {
-            console.log(error)
+          }
+      
+          form.reset();
+        } catch (error) {
+          console.error("Error:", error);
         } finally {
-            router.refresh()
+          router.refresh();
         }
-    }
+      };
+      
+
+
+    
   return (
     <div>
 
@@ -162,12 +159,18 @@ const GirlfriendPage = () => {
                  >
                     {message.role == 'user' ? <UserAvatar /> : <BotAvatar />}
                 
-                    <div>
+                    <div className='flex flex-col justify-center items-center px-2'>
                     {message.content.ok?
-                    <div className='relative w-32 h-32'>
-                    <Image src={message.content} alt='response from server' fill />
-                    </div>:
-                    <p>{message.content}</p>
+                    (
+                        <div>
+                        <a href={message.content.ok} target="_blank" rel="noopener noreferrer">
+                          <div className='relative w-24 h-24'>
+                            <Image src={message.content.ok} alt='your result' fill />
+                          </div>
+                        </a>
+                      </div>
+                      ):
+                    (<p>{message.content}</p>)
                     }
                     </div>
                 </div>
@@ -180,4 +183,4 @@ const GirlfriendPage = () => {
   )
 }
 
-export default GirlfriendPage
+export default ImagePage

@@ -10,9 +10,9 @@ const CreditPage = () => {
         {credit > 0 ?  
         <div><p>Your credit is {credit}</p></div>:
         <div className=''>
-            <p className='text-md'>Your credit is {credit}</p>
+            <p className='text-2xl text-blue font-semibold'>Your credit is {credit}</p>
               
-            <Button className='bg-blue-800'>Top Up Credits to Chat</Button>
+            <Button className='bg-black font-mono '>Top Up Credits to Chat</Button>
             </div>
         } 
         </div>
