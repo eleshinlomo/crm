@@ -9,6 +9,8 @@ import { BASE_URL } from '@/components/auth'
 import { GOOGLE_LOGIN_URL } from '@/components/urls'
 import { loginURL } from '@/components/urls'
 import  HomeNavBar  from '@/components/homenavbar'
+import { Col3Cta } from '@/components/col3scta'
+import { Hero } from '@/components/hero'
 
 const HomePage = () => {
 
@@ -47,11 +49,13 @@ const HomePage = () => {
        <div className='flex flex-col gap-4 justify-center items-center'>
 
         <p className='leading-10 text-3xl font-extrabold'>Welcome to Fixupe</p>
-        <p className='leading-2 px-6 font-extrabold'>
+        <p className='leading-2 px-8 w-sm font-extrabold text-center'>
           AI Tools For Faster Task Completion
           </p>
 
           </div>
+
+      {/* <Hero /> */}
       
       {showButtons ?
       <div className='flex flex-col justify-center items-center gap-5 py-4'>
@@ -77,7 +81,7 @@ const HomePage = () => {
          }
       
      
-
+       <Col3Cta />
       <ChatbotTeamPage />
 
     </div>

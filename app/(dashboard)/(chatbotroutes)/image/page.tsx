@@ -2,9 +2,9 @@
 import {useState, useEffect} from 'react'
 import * as z from 'zod'
 import {Heading} from '@/components/heading'
-import {  MessageSquare, PhoneCallIcon} from 'lucide-react'
+import {  Download, MessageSquare, PhoneCallIcon} from 'lucide-react'
 import {  useForm } from 'react-hook-form'
-import { formSchema } from './constants'
+import { resolutionOptions, amountOptions, formSchema } from './constants'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {Form, FormControl, FormField, FormItem} from '@/components/ui/form'
 import { Input } from "@/components/ui/input"
@@ -16,21 +16,27 @@ import { cn } from '@/lib/utils'
 import { UserAvatar } from '@/components/user-avater'
 import { BotAvatar } from '@/components/BotAvatar'
 import { EmptyImage } from '@/components/emptyimage'
-import {  Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import Image from 'next/image'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@radix-ui/react-select'
+import { Card, CardFooter } from '@/components/ui/card'
+
 
 
 
 
 const ImagePage = () => {
-    const [messages, setMessages] = useState<Array<{role: any; content: any}>>([])
+    
+    
+    const [images, setImages] = useState<string[]>([])
     
 
     const router = useRouter()
     const form = useForm <z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            payload: ""
+            payload: "",
+            amount: "1",
+            resolution: '512x512'
         }
     })
 
@@ -38,42 +44,39 @@ const ImagePage = () => {
 
     
 
-    const onSubmit = async (values: z.infer<typeof formSchema>) => {
-        console.log(values);
+    const onSubmit = async (value: z.infer<typeof formSchema>) => {
+        console.log(value);
       
         try {
-          const userMessage = {
-            role: "user",
-            content: values.payload,
-          };
-      
-          const newMessages = [...messages, userMessage];
-          setMessages(newMessages);
-      
+
+          setImages([])
+        
           const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-          const API_URL = `${BASE_URL}/fake/`;
+          const API_URL = `${BASE_URL}/imagegenerator/`;
           const res = await fetch(API_URL, {
             mode: "cors",
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ payload: values.payload }),
+            body: JSON.stringify({ 
+              payload: value.payload,
+              amount:  value.amount,
+              resolution: value.resolution
+
+            }),
           });
       
           if (res.ok) {
-            const responseData = await res.json();
-      
-            if (responseData.message) {
-              const botMessage = {
-                role: "Bot",
-                content: responseData.message, // Use the image URL directly
-              };
-              newMessages.push(botMessage);
-              setMessages(newMessages);
-            }
-          }
-      
+            const responseData: any = await res.json();
+            const urls = responseData.map((image: {url: string})=> image.url)
+            console.log(urls)
+            setImages(urls)
+            const [firstImage] = responseData; // Assuming the data is an array, take the first image
+            const { prompt, amount = 1, resolution = "512X512" } = firstImage || {};
+
+            
           form.reset();
-        } catch (error) {
+        } 
+      }catch (error) {
           console.error("Error:", error);
         } finally {
           router.refresh();
@@ -99,7 +102,7 @@ const ImagePage = () => {
 
          </div>
 
-         <div className='px-4 lg:px-8'>
+         <div className='px-4 lg:px-8 '>
           <div>
             <Form {...form}>
              <form onSubmit={form.handleSubmit(onSubmit)}
@@ -112,10 +115,10 @@ const ImagePage = () => {
                 name="payload"
                 render={({ field })=>(
                 
-               <FormItem className="col-span-12 lg:col-span-10">
+               <FormItem className="col-span-12 lg:col-span-6">
                <FormControl className='m-0 p-0'>
               <Input className='border-0 outline-none 
-              focus=visible:ring-transparent text-black
+              focus=visible:ring-transparent
               focus-visible:ring-0'
               disabled={isLoading}
               placeholder='Ultra real baby picture'
@@ -125,6 +128,44 @@ const ImagePage = () => {
                </FormItem>
                )}
                />
+
+
+               <FormField
+               control={form.control}
+               name="amount"
+               render={({ field })=> (
+                <FormItem className='col-span-12 lg:col-span-2'>
+                  
+                   <Select
+                   disabled={isLoading} 
+                   onValueChange={field.onChange}
+                   value={field.value}
+                   defaultValue={field.value}
+                   >
+                   <FormControl>
+                    <SelectTrigger>
+                      <SelectValue defaultValue={field.value} />
+                    </SelectTrigger>
+                   </FormControl>
+                   <SelectContent>
+                    {amountOptions.map((options)=>
+                      <SelectItem
+                      key={options.value}
+                      value={options.value}
+                      >
+                        {options.label}
+                      </SelectItem>
+                     
+                    )}
+                   </SelectContent>
+                   </Select>
+                </FormItem>
+               )}
+               />
+
+                
+
+               
                <Button className='col-span-12 lg:col-span-2 w-full' disabled={isLoading}>
                 Generate Image
                </Button>
@@ -137,45 +178,50 @@ const ImagePage = () => {
           {/* Chat Messages */}
           <div className='space-y-4 mt-4'>
             {isLoading && (
-                <div className='p-8 rounded-lg w-full flex items-center
-                justify-center bg-muted'>
+                <div className='p-20'>
                 <Loader />
                 </div>
             )}
-            {messages.length == 0 && !isLoading && (
+            {images.length == 0 && !isLoading && (
                 <div>
-                    <EmptyImage label="No conversation started with Eleshin" />
+                    <EmptyImage label="No images generated" />
                 </div>
             )}
-           <div className='flex flex-col-reverse gap-y-4'>
-            {messages.map((message, index)=>(
-                <div
-                 key={index}
-                 className={cn('p-8 w-full flex items-start gap-x-8 rounded-lg',
-                 message.role == "user" ? "bg-blue border border-blue/10" :
-                 "bg-muted"
-                 )}
-    
-                 >
-                    {message.role == 'user' ? <UserAvatar /> : <BotAvatar />}
-                
-                    <div className='flex flex-col justify-center items-center px-2'>
-                    {message.content.ok?
-                    (
-                        <div>
-                        <a href={message.content.ok} target="_blank" rel="noopener noreferrer">
-                          <div className='relative w-24 h-24'>
-                            <Image src={message.content.ok} alt='your result' fill />
-                          </div>
-                        </a>
-                      </div>
-                      ):
-                    (<p>{message.content}</p>)
-                    }
-                    </div>
+
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
+            xl:grid-cols-4 gap-4 mt-6
+            '>
+              {images.map((src)=>(
+               <Card
+               key={src}
+               className='rounded-lg overflow-hidden'
+               >
+
+                <div className='relative aspect-square'>
+                 <Image
+                 src={src}
+                 alt='Image'
+                 fill
+                  />
                 </div>
-            ))}
-           </div>
+
+                <CardFooter>
+                  
+                  <Button 
+                  onClick={()=>window.open(src)}
+                  variant='secondary' className='w-full'>
+                  
+                   <Download className='h-4 w-4 mr-2' />
+                  </Button>
+                </CardFooter>
+               </Card>
+              ))}
+            
+            </div>
+           
+                
+          
+           
           </div>
 
          </div>

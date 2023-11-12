@@ -1,47 +1,19 @@
-import { BotIcon, ComputerIcon, MailPlusIcon, PiIcon } from "lucide-react"
 import Image from 'next/image'
 
 export const Hero = ()=>{
     return (
         <div>
 
-            
-
-           <div className="text-center lin
-           leading-8 py-8 mt-16 flex flex-col md:justify-end md:items-end">
-           <p className="  text-xl font-bold
-           md:text-4xl w-auto ">
-            Struggling to create a<br /> website? Not with us!
-            </p>
-
-            <p className= 'py-4 md:mr-16  text-xl font-bold'
-           >
-            Create a website in 10 minutes.
-            
-            </p>
-
-            <div className=" flex flex-col justify-center items-center  gap-3 md:mr-10">
-                <div className="flex gap-2">
-                <BotIcon />
-                <p className="text-center ">Used by 140,000 small business owners</p>
-                </div>
-
-                <div className="flex  gap-2">
-                <PiIcon />
-                <p className="text-center">Used by 140,000 small business owners</p>
-                </div>
-
-                <div className="flex  gap-2">
-                <ComputerIcon />
-                <p className="text-center ">
-                    Free support
-                </p>
-                </div>
+            <div className='flex flex-col justify-center items-center text-center py-8 px-4'>
+            <div className='relative w-96 h-72'>
+                <Image src='/images/girl10.png' alt='hero image' fill />
             </div>
-           </div>
-              
-             
-
+            <p className='px-12 w-1/2 font-thin'>Welcome to Fixupe. My name is Jennifer and myself 
+                and the rest of the team will be happy to assist you on this site. 
+                The Fred the chatbot will handle everything you need 
+                to know navigating this site. Even if we do not have what you want, 
+                Fred will sure refer you to the right resource anywhere on the internet</p>
+            </div>
         </div>
     )
 }

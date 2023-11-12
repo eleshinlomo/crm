@@ -40,13 +40,14 @@ export const Footer = ()=>{
 <div>
   {footerItems.map((footer: any, index: any)=>
 
-   <div key={index} className='flex flex-col md:flex-row text-center
+   <div key={index} className='flex flex-col md:flex-row md:text-start text-center
     md:justify-between items-center'>
 
     {/* First Column */}
     <div className=''>
-    <div className='relative h-24 w-full my-2'>
-    <Image src={footer.logo} alt='logo' fill />
+    <div className=''>
+      <p className='ml-4 font-extrabold'>Fixupe</p>
+    {/* <Image src={footer.logo} alt='logo' fill /> */}
     </div>
     
     <div className='flex'>
