@@ -19,7 +19,9 @@ import Cookies from 'js-cookie'
 import CreditPage from '@/components/creditpage';
 
 
-
+interface ToolsProps{
+  Tools:[]
+}
 const DJANGO_LOGIN_URL = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGIN_UR
 
 const DashboardLayout = ({

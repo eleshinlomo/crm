@@ -6,11 +6,9 @@ import { BASE_URL } from './auth'
 import { GOOGLE_LOGIN_URL } from './urls'
 import { GOOGLE_LOGOUT_URL } from './urls'
 
-interface homeSidebarProps{
-  src: string
-}
 
-const href = {}
+
+
 
 export const HomeSidebar = () => {
 
