@@ -69,9 +69,9 @@ export const ChatbotTeamPage = ()=>{
             <p className='text-l text-black'>Name: {chatbot.chatbotname}</p>
             <p className='text-l text-black'>Role: {chatbot.role}</p>
             {/* <p className='text-l text-black'>Project Info: {team.info}</p>  */}
-            <Button className=' text-lg w-full h-full'>
+            {/* <Button className=' text-lg w-full h-full'>
                 <Link href={chatbot.route}>{chatbot.button}</Link>
-            </Button>
+            </Button> */}
 
 
 
