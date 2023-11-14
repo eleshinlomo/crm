@@ -79,7 +79,7 @@ const HomePage = () => {
         
         <div className='flex justify-center items-center bg-black
          text-white shadow-2xl border-blue-600 px-2 rounded-lg  py-2'>
-        <p>Login with</p> 
+        <p>Register with</p> 
         <div className='relative ml-2 w-4 h-4'>
           <Image src='/google_logo.png' alt='google logo' fill />
         </div>
