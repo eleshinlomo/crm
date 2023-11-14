@@ -40,7 +40,7 @@ export const Col3Bottom = ()=>{
                 <p className="text-2xl font-extrabold text-black py-4 "> 
                 Increase revenue by 150%
                 </p>
-                <p className="text-black py-4 px-4">We provide a state-of-of-art leverage for 
+                <p className="text-black py-4 px-4">We provide a state-of-the-art leverage for 
                 businesses and start-ups to scale fast</p>
                 <Button className="bg-black"   asChild>
                 <Link href='' className="text text-blue-600 text-2xl py-4 ">
