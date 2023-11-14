@@ -9,9 +9,10 @@ import { BASE_URL } from '@/components/auth'
 import { GOOGLE_LOGIN_URL } from '@/components/urls'
 import { loginURL } from '@/components/urls'
 import  HomeNavBar  from '@/components/homenavbar'
-import { Col3Cta } from '@/components/col3scta'
+import { Col3Top } from '@/components/col3top'
 import { Hero } from '@/components/hero'
 import  Typewriter  from '@/components/typewriter'
+import { Col3Bottom } from '@/components/cols3bottom'
 
 const HomePage = () => {
   const [customText, setCustomText] = useState<Array<string>>([])
@@ -89,8 +90,9 @@ const HomePage = () => {
          }
       
      
-       <Col3Cta />
+       <Col3Top />
       <ChatbotTeamPage />
+      <Col3Bottom />
 
     </div>
     <Footer />

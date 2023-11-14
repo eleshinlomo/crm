@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Button } from "./ui/button"
 
-export const Col3Cta = ()=>{
+export const Col3Top = ()=>{
     return (
         <div>
             <div className="text-center flex justify-around items-center mx-5

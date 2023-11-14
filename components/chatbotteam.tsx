@@ -12,7 +12,8 @@ export const ChatbotTeamPage = ()=>{
             role: 'General Questions',
             info: "Answers general questions on all topis",
             image: '/images/girl1.png',
-            route: '/general'
+            route: '/general',
+            button: 'Chat'
         },
 
         {
@@ -20,7 +21,8 @@ export const ChatbotTeamPage = ()=>{
             role: '(Programmer)Writes code...',
             info: "Answers general questions on all topis",
             image: '/images/coder.png',
-            route: '/code'
+            route: '/code',
+            button: 'Generate'
         },
 
         {
@@ -28,7 +30,8 @@ export const ChatbotTeamPage = ()=>{
             role: 'Image Generator',
             info: "Answers general questions on all topis",
             image: '/images/image_guy.png',
-            route: '/image'
+            route: '/image',
+            button: 'Generate'
         },
 
         {
@@ -36,7 +39,8 @@ export const ChatbotTeamPage = ()=>{
             role: 'AI Girlfriend',
             info: "You intimate AI excapades",
             image: '/images/girl2.png',
-            route: '/girlfriend'
+            route: '/girlfriend',
+            button: 'Chat'
         },
         
        
@@ -65,8 +69,8 @@ export const ChatbotTeamPage = ()=>{
             <p className='text-l text-black'>Name: {chatbot.chatbotname}</p>
             <p className='text-l text-black'>Role: {chatbot.role}</p>
             {/* <p className='text-l text-black'>Project Info: {team.info}</p>  */}
-            <Button>
-                <Link href={chatbot.route}>CHAT</Link>
+            <Button className=' text-lg w-full h-full'>
+                <Link href={chatbot.route}>{chatbot.button}</Link>
             </Button>
 
 
