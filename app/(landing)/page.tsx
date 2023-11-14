@@ -11,11 +11,20 @@ import { loginURL } from '@/components/urls'
 import  HomeNavBar  from '@/components/homenavbar'
 import { Col3Cta } from '@/components/col3scta'
 import { Hero } from '@/components/hero'
+import  Typewriter  from '@/components/typewriter'
 
 const HomePage = () => {
-
+  const [customText, setCustomText] = useState<Array<string>>([])
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
   const [showButtons, setShowButtons] = useState<boolean>(true)
+
+  useEffect(()=>{
+    setCustomText([
+         "Welcome to Fixupe",
+         "Top AI Tools",
+         "Complete task faster"
+    ])
+  },[])
 
   // useEffect(()=>{
   //   const loginChecker = async() =>{
@@ -48,10 +57,9 @@ const HomePage = () => {
     
        <div className='flex flex-col gap-4 justify-center items-center'>
 
-        <p className='leading-10 text-3xl font-extrabold'>Welcome to Fixupe</p>
-        <p className='leading-2 px-8 w-sm font-extrabold text-center'>
-          AI Tools For Faster Task Completion
-          </p>
+       
+          
+        <Typewriter customText={customText} />
 
           </div>
 
