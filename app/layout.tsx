@@ -13,7 +13,7 @@ export const meta = {
 }
 
 export const metadata: Metadata = {
-  title: 'Fixupe',
+  title: 'Home | Fixupe',
   description: 'Fixupe is a platform that provides AI Tools for task completion',
 }
 

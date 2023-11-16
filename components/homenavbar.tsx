@@ -38,9 +38,9 @@ const HomeNavBar = ()=>{
       
 
       <div className='hidden md:flex gap-4 md: mt-3'>
-        <p className=' md:flex  md:text-md '>Complete those task faster with AI </p>
+        <p className=' md:flex  md:text-md '>Complete task faster with AI </p>
         <Button className=' bg-black  py-4 text-sm justify-self-end px-2 ' asChild>
-          <Link href='/dashboard'>
+          <Link href='/'>
           Sign In
           </Link>
         </Button>

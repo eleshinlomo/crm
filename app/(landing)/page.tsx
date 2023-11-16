@@ -68,11 +68,11 @@ const HomePage = () => {
       
       {showButtons ?
       <div className='flex flex-col justify-center items-center gap-5 py-4'>
-       <a href={loginURL}>
+       {/* <a href={loginURL}>
         <div className='px-12 py-2 bg-black text-white shadow-2xl border-blue-600 rounded-lg'>
         <button>Login</button>
         </div>
-       </a>
+       </a> */}
 
 
        <a href={GOOGLE_LOGIN_URL}>
