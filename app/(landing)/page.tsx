@@ -68,14 +68,15 @@ const HomePage = () => {
       
       {showButtons ?
       <div className='flex flex-col justify-center items-center gap-5 py-4'>
-       {/* <a href={loginURL}>
+     <a href={loginURL}>
         <div className='px-12 py-2 bg-black text-white shadow-2xl border-blue-600 rounded-lg'>
-        <button>Login</button>
+        <button>Get Started</button>
         </div>
-       </a> */}
+       </a> 
 
+       
 
-       <a href={GOOGLE_LOGIN_URL}>
+       {/* <a href={GOOGLE_LOGIN_URL}>
         
         <div className='flex justify-center items-center bg-black
          text-white shadow-2xl border-blue-600 px-2 rounded-lg  py-2'>
@@ -85,7 +86,8 @@ const HomePage = () => {
         </div>
         <p>oogle</p>
         </div>
-        </a>
+        </a> */}
+
         </div>:null
          }
       

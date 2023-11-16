@@ -31,7 +31,7 @@ const DashboardLayout = ({
     children: React.ReactNode;
 })=>{
 
-    const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false)
+    const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(true)
     const [isAuthenticated, setIsAuthenticated] = useState<Boolean>(false)
     const [isChecking, setIsChecking] = useState<Boolean>(false)
     const [message, setMessage] = useState<String>("")
@@ -179,24 +179,24 @@ handleGetAccessToken()
   //   },[isAuthenticated])
 
 
-  // GET SESSION ID
-  useEffect(()=>{
-   const getSessionId = async ()=> {
-    const response = await fetch(`${BASE_URL}/sessionidretriever/`, {
-         method: 'GET',
-         mode: 'cors',
-         headers: {
-          'Content-Type': 'application/json'
-         }
-    })
-    if (!response) throw new Error("Sessionid not found from server")
-    const data = await response.json()
-     if (data){
-      console.log(data)
-     }
-   }
-  getSessionId()
-}, [])
+//   // GET SESSION ID
+//   useEffect(()=>{
+//    const getSessionId = async ()=> {
+//     const response = await fetch(`${BASE_URL}/sessionidretriever/`, {
+//          method: 'GET',
+//          mode: 'cors',
+//          headers: {
+//           'Content-Type': 'application/json'
+//          }
+//     })
+//     if (!response) throw new Error("Sessionid not found from server")
+//     const data = await response.json()
+//      if (data){
+//       console.log(data)
+//      }
+//    }
+//   getSessionId()
+// }, [])
 
  
 
