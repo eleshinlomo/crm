@@ -70,10 +70,12 @@ handleCsrfToken()
 
 
 useEffect(()=>{
-  const getCookies = ()=> {
-  const cookie = Cookies.get('sessionfolio')
+  const getCookies = async ()=> {
+  const cookie = await Cookies.get('sessionfolio')
   if(cookie){
-    console.log({"Folio Cooki": cookie})
+    console.log({"sessionfolio": cookie})
+  }else{
+    return "Unable to find cookie"
   }
   }
   getCookies()
