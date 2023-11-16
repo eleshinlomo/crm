@@ -44,7 +44,7 @@ export const getcsrfToken = async ()=>{
 
 
    // Get Access Token
-export const getAccessToken = async ()=>{
+export const getTokens = async ()=>{
 
   const headers = new Headers();
   headers.append("Content-Type", "application/json");

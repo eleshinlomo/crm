@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import  Link  from 'next/link';
 import PropTypes from 'prop-types'
 import { getcsrfToken } from '@/components/auth';
-import { getAccessToken } from '@/components/auth';
+import { getTokens } from '@/components/auth';
 import { getUserProfile } from '@/components/auth';
 import Image from 'next/image'
 import { Footer } from '@/components/footer';
@@ -41,10 +41,7 @@ const DashboardLayout = ({
     const [accessToken, setAccessToken] = useState<string | null>(null)
 
 
-   
-
-    
-
+  
   useEffect(()=>{
 
     const handleCsrfToken = async ()=>{
@@ -72,7 +69,15 @@ handleCsrfToken()
   
 
 
-
+useEffect(()=>{
+  const getCookies = ()=> {
+  const cookie = Cookies.get('sessionfolio')
+  if(cookie){
+    console.log({"Folio Cooki": cookie})
+  }
+  }
+  getCookies()
+},[])
     
 
         
@@ -127,11 +132,11 @@ handleCsrfToken()
     const handleGetAccessToken = async ()=>{
 
     try{
-    const response = await getAccessToken()
-    if (response.access_token){
+    const response = await getTokens()
+    if (response.tokens){
     console.log(response)
-    const accesstoken = response.access_token
-    localStorage.setItem('accessToken', accesstoken)
+    // const accesstoken = response.access_token
+    // localStorage.setItem('accessToken', accesstoken)
     setIsAuthenticated(true)
     }else{
         throw new Error("No Access Token Found") 
@@ -147,45 +152,51 @@ handleGetAccessToken()
 
 
 
-  // Login Checker
-  useEffect(()=>{
+  // // Login Checker
+  // useEffect(()=>{
         
-    const loginChecker = async(isAuthenticated: any) =>{
+  //   const loginChecker = async(isAuthenticated: any) =>{
 
-        try {
-        if (!isAuthenticated) return
-        setIsChecking(true)
-        const accessToken =  localStorage.getItem('accessToken')
-        if (accessToken){
-          setIsLoggedIn(true)
-          setIsChecking(false)
-          console.log({accessTokenFoundYeah: accessToken})
-        }else{
-          setIsLoggedIn(false)
-        }
+  //       try {
+  //       if (!isAuthenticated) return
+  //       setIsChecking(true)
+  //       const accessToken =  localStorage.getItem('accessToken')
+  //       if (accessToken){
+  //         setIsLoggedIn(true)
+  //         setIsChecking(false)
+  //         console.log({accessTokenFoundYeah: accessToken})
+  //       }else{
+  //         setIsLoggedIn(false)
+  //       }
       
-    }catch(err: any){
-        setMessage(err.message)
-    }finally{
-      setIsChecking(false)
-    }
-    }
+  //   }catch(err: any){
+  //       setMessage(err.message)
+  //   }finally{
+  //     setIsChecking(false)
+  //   }
+  //   }
     
-    loginChecker(isAuthenticated)
-    },[isAuthenticated])
+  //   loginChecker(isAuthenticated)
+  //   },[isAuthenticated])
 
 
   // GET SESSION ID
   useEffect(()=>{
-    setTimeout(()=>{
-  const getSessionIdFromLocalStore =  ()=>{
-    const sessionid =  Cookies.get('sessionid')
-    console.log({"sessionid":sessionid})
- 
-  }
-  getSessionIdFromLocalStore()
-}, 5000)
-  
+   const getSessionId = async ()=> {
+    const response = await fetch(`${BASE_URL}/sessionidretriever/`, {
+         method: 'GET',
+         mode: 'cors',
+         headers: {
+          'Content-Type': 'application/json'
+         }
+    })
+    if (!response) throw new Error("Sessionid not found from server")
+    const data = await response.json()
+     if (data){
+      console.log(data)
+     }
+   }
+  getSessionId()
 }, [])
 
  
