@@ -4,6 +4,8 @@ import { useEffect } from "react"
 import Cookies from 'js-cookie'
 
 
+
+
 // Dummy auth
 
 export const dummyLogin = [
@@ -42,13 +44,10 @@ export const getcsrfToken = async ()=>{
 
 
    // Get Access Token
-export const getAccessToken = async (csrftoken: string | null)=>{
+export const getAccessToken = async ()=>{
 
   const headers = new Headers();
   headers.append("Content-Type", "application/json");
-  headers.append("X-CSRFToken", `${csrftoken}`);
-  
-
   const response = await fetch(`${BASE_URL}/getaccesstoken/`, {
     mode: 'cors',
     method: 'GET',
@@ -86,6 +85,8 @@ export const getAccessToken = async (csrftoken: string | null)=>{
           return await res.json()
       
     }
+
+
    
    
 

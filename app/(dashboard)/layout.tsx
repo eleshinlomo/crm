@@ -73,74 +73,44 @@ handleCsrfToken()
 
 
 
-    // Fetch SessinID from server
-    useEffect(()=>{
-        
-        const loginChecker = async(csrftoken: any) =>{
-
-            try {
-            if (!csrftoken) return
-            const response: any = await fetch(`${BASE_URL}/authchecker/`, {
-                mode: 'cors',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': csrftoken
-                }
-            })
-            if (!response) throw new Error("No response from server")
-             const data = await response.json()
-            if (data.success === true){
-              const saveSessionid = localStorage.setItem('mysessionid', data.sessionid)
-              console.log(data)
-              setIsAuthenticated(true)
-            }else{
-                setMessage(data.message)
-            }
-        }catch(err: any){
-            setMessage(err.message)
-        }
-        }
-        
-        loginChecker(csrftoken)
-        },[csrftoken])
+    
 
         
 
         
 
-        // RETREIVE SESSIONID FROM LOCAL STORAGE
-        useEffect(()=>{
-        const getSessionIdFromLS = async ()=>{
-            if (!isAuthenticated) return
-            const sessionid = localStorage.getItem('mysessionid')
-            console.log({"Session found": sessionid})
-            setIsSessionId(true)
+      //   // RETREIVE SESSIONID FROM LOCAL STORAGE
+      //   useEffect(()=>{
+      //   const getSessionIdFromLS = async ()=>{
+      //       if (!isAuthenticated) return
+      //       const sessionid = localStorage.getItem('mysessionid')
+      //       console.log({"Session found": sessionid})
+      //       setIsSessionId(true)
             
-            if (sessionid){
-            const response = await fetch(`${BASE_URL}/getuser/`, {
-                mode: 'cors',
-                method: 'GET',
-                headers: {
-                    "Content-Type": 'application/json',
-                    "Authorization": 'Bearer ' + String(sessionid)
-                },
-                credentials: 'include'
-        })
-          if(!response) throw new Error("Server not releasing user info")
-          const data = await response.json()
-          if(data){
-            setIsLoggedIn(true)
-            console.log(data)
-          }else{
-            setMessage(data.message)
-          }
+      //       if (sessionid){
+      //       const response = await fetch(`${BASE_URL}/getuser/`, {
+      //           mode: 'cors',
+      //           method: 'GET',
+      //           headers: {
+      //               "Content-Type": 'application/json',
+      //               "Authorization": 'Bearer ' + String(sessionid)
+      //           },
+      //           credentials: 'include'
+      //   })
+      //     if(!response) throw new Error("Server not releasing user info")
+      //     const data = await response.json()
+      //     if(data){
+      //       setIsLoggedIn(true)
+      //       console.log(data)
+      //     }else{
+      //       setMessage(data.message)
+      //     }
           
-        }
+      //   }
 
-        }
-        getSessionIdFromLS()
-      }, [isAuthenticated])
+      //   }
+      //   getSessionIdFromLS()
+      // }, [isAuthenticated])
 
 
       
@@ -157,18 +127,15 @@ handleCsrfToken()
     const handleGetAccessToken = async ()=>{
 
     try{
-    if (csrftoken){
-    const response = await getAccessToken(csrftoken)
+    const response = await getAccessToken()
     if (response.access_token){
     console.log(response)
-    setAccessToken(response.access_token)
+    const accesstoken = response.access_token
+    localStorage.setItem('accessToken', accesstoken)
+    setIsAuthenticated(true)
     }else{
         throw new Error("No Access Token Found") 
     }
-  }else{
-    throw new Error("No access_token found")
-  }
-    
   }
   catch(err){
   console.log(err)
@@ -176,7 +143,36 @@ handleCsrfToken()
     }
 
 handleGetAccessToken()
-  }, [csrftoken])  
+  }, [])  
+
+
+
+  // Login Checker
+  useEffect(()=>{
+        
+    const loginChecker = async(isAuthenticated: any) =>{
+
+        try {
+        if (!isAuthenticated) return
+        setIsChecking(true)
+        const accessToken =  localStorage.getItem('accessToken')
+        if (accessToken){
+          setIsLoggedIn(true)
+          setIsChecking(false)
+          console.log({accessTokenFoundYeah: accessToken})
+        }else{
+          setIsLoggedIn(false)
+        }
+      
+    }catch(err: any){
+        setMessage(err.message)
+    }finally{
+      setIsChecking(false)
+    }
+    }
+    
+    loginChecker(isAuthenticated)
+    },[isAuthenticated])
 
 
   // GET SESSION ID
@@ -234,6 +230,7 @@ handleGetAccessToken()
 
     return(
          <div>
+
             { isLoggedIn ?
         <div className="h-full relative  ">
             <div className="hidden h-full md:flex   md:w-72 md:flex-col
