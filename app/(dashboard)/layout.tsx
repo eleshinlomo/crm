@@ -255,8 +255,6 @@ handleGetAccessToken()
              <CreditPage />
              </div>
             {children}
-
-            <Footer />
            </main>
         </div>:
 
