@@ -1,5 +1,6 @@
 import DashboardLayout from "@/app/(dashboard)/layout";
-import { AreaChartIcon, BotIcon, CodeIcon, EyeIcon, 
+import { AreaChartIcon, BookIcon, BotIcon, CodeIcon, EyeIcon, 
+    FileIcon, 
     ImageIcon, LayoutDashboard, 
     MenuIcon, 
     MessageSquare, 
@@ -45,6 +46,27 @@ export const WritingTools = [
             
   
   ]
+
+
+  export const DocumentTools = [
+  
+    {
+      label: "PDF Voice Reader",
+      icon: BookIcon,
+      href: "/pdftovoice",
+      color: "text-blue-500",
+      bgColor: "text-red-500"
+      },
+
+      {
+          label: "CSV File Analyser",
+          icon: FileIcon,
+          href: "/csvanalyser",
+          color: "text-blue-500",
+          bgColor: "text-blue-500"
+          },
+
+]
 
 
   export const MediaTools = [

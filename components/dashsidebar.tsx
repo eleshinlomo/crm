@@ -17,6 +17,7 @@ import { Button } from "./ui/button";
 // AI Tools
 import { WritingTools} from '@/components/tools'
 import { ConversationTools} from '@/components/tools'
+import { DocumentTools} from '@/components/tools'
 import { MediaTools} from '@/components/tools'
 import WaitlistPage from './waitlistpage';
 
@@ -209,6 +210,44 @@ const DashSidebar = () => {
          </div>:null
          }
         {/* //  End of Writing tools */}
+         </div>
+
+
+         {/* Start of Document tools */}
+        <div>
+         <Button className="w-full"
+         onClick={isOpenWriting ? closeWriting : openWriting}
+         >
+          <div className="flex flex-1 gap-3  justify-center items-center w-full">
+            <p className="text-md">{isOpenWriting ? 'Close Document': 'Document'}</p>
+            <div className="">
+            {isOpenWriting ? <ArrowDown className="" />: <ArrowBigRight />}
+            </div>
+          </div>
+         </Button>
+         {/* If Open */}
+         {isOpenWriting ?
+         <div>
+         {DocumentTools.map((tool:any, index:any)=>(
+         <Link
+          href = {tool.href}
+          key={index}
+          className={cn(`text-sm group flex p-3 w-full justify-start
+          font-medium cursor-pointer hover:text-white hover:bg-white/10
+          rounded-lg transition
+          `, 
+          pathname === tool.href ? "text-white bg-white/10": "text-zinc-400" 
+          )}
+          >
+            <div className="flex items-center mt-2 flex-1">
+             <tool.icon className={cn("h-5 w-5 mr-3", tool.color)} />
+             {tool.label}
+            </div>
+         </Link>
+         ))}
+         </div>:null
+         }
+        {/* //  End of Document tools */}
          </div>
 
 
