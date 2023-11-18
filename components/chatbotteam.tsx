@@ -18,7 +18,7 @@ export const ChatbotTeamPage = ()=>{
 
         {
             chatbotname: "Enoch",
-            role: '(Programmer)Writes code...',
+            role: 'Code Writer',
             info: "Answers general questions on all topis",
             image: '/images/coder.png',
             route: '/code',
@@ -36,10 +36,10 @@ export const ChatbotTeamPage = ()=>{
 
         {
             chatbotname: "Emerald",
-            role: 'AI Girlfriend',
+            role: 'AI Writer',
             info: "You intimate AI excapades",
             image: '/images/girl2.png',
-            route: '/girlfriend',
+            route: '/aiwriter',
             button: 'Chat'
         },
         
