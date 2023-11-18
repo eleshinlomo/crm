@@ -109,6 +109,36 @@ const handlekwChoices = ()=>{
   
 }
 
+
+const handleEmailWaitlist = async (e:any)=>{
+  try{
+  e.preventDefault()
+  const payload = {
+    email
+  }
+   console.log(BASE_URL)
+  const response: any = await fetch(`${BASE_URL}/waitlist/`, {
+    method: 'POST',
+    mode: 'cors',
+    body: JSON.stringify(payload),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  if(!response.ok) throw new Error("Problem with waitlist server")
+  const data = await response.json()
+  if (!data){
+    setMessage('No response from server')
+  }else{
+    setMessage('Your email has been received')
+  }
+
+}
+catch(err: any){
+   setMessage(`"Error": ${err.message}`)
+}
+}
+
 const handleWaitlist = ()=>{
   return (
     <div className='py-4'>
@@ -119,7 +149,8 @@ const handleWaitlist = ()=>{
       <form className='px-6' onSubmit={handleEmailWaitlist}>
         <input 
         className='border border-black px-1'
-        value={email.toLowerCase()}
+        value={email}
+        name='email'
         placeholder='Enter your email'
         onChange={(e)=>setEmail(e.target.value)}
         type='email'
@@ -130,33 +161,7 @@ const handleWaitlist = ()=>{
   )
 }
 
-const handleEmailWaitlist = async (e:any)=>{
-  try{
-  e.preventDefault()
-  const payload = {
-    email
-  }
- 
-  const response: any = await fetch(BASE_URL, {
-    method: 'POST',
-    mode: 'cors',
-    body: JSON.stringify(payload),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  const data = await response.json()
-  if (!data){
-    setMessage('No response from server')
-  }else{
-    setMessage('Your email has been received')
-  }
 
-}
-catch(err: any){
-   setMessage(err.message)
-}
-}
 
 
 const ArticlePage = ()=>{
