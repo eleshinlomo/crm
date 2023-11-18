@@ -13,6 +13,7 @@ import { Col3Top } from '@/components/col3top'
 import { Hero } from '@/components/hero'
 import  Typewriter  from '@/components/typewriter'
 import { Col3Bottom } from '@/components/cols3bottom'
+import { SocialCTA } from '@/components/socialcta'
 
 const HomePage = () => {
   const [customText, setCustomText] = useState<Array<string>>([])
@@ -52,7 +53,7 @@ const HomePage = () => {
 
     <div>
 
-    <div className=' py-4 px-4'>
+    <div className=' py-4 px-4 text-center'>
 
       <HomeNavBar />
     
@@ -69,9 +70,9 @@ const HomePage = () => {
       {showButtons ?
       <div className='flex flex-col justify-center items-center gap-5 py-4'>
      <a href='/dashboard'>
-        <div className='px-12 py-2 bg-black text-white shadow-2xl border-blue-600 rounded-lg'>
-        <button>Get Started</button>
-        </div>
+      
+        <Button>Get Started</Button>
+        
        </a> 
 
        
@@ -91,8 +92,9 @@ const HomePage = () => {
         </div>:null
          }
       
-     
+      <SocialCTA />
        <Col3Top />
+       
       <ChatbotTeamPage />
       <Col3Bottom />
 

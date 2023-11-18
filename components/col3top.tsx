@@ -54,8 +54,13 @@ export const Col3Top = ()=>{
                  </p>
                 
                 </div>
-
             </div>
+
+            <div className="">
+                <Link href='/'>
+                <Button className="my-6 ">Get Started</Button>
+                </Link>
+                </div>
         </div>
     )
 }
