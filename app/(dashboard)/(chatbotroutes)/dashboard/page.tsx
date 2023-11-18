@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button'
 import { WritingTools } from '@/components/tools'
 import { ConversationTools } from '@/components/tools'
 import { MediaTools } from '@/components/tools'
+import WaitlistPage from '@/components/waitlistpage'
 
 
 
@@ -37,6 +38,10 @@ const DashboardPage = ()=>{
     
     <div>
       <div className='mb-10'>
+
+        <div>
+          <WaitlistPage />
+        </div>
        <div className='mb-8 space-y-4'>
         <h2 className='text-2xl md:text-4xl font-bold text-center'>
           Do everything with AI

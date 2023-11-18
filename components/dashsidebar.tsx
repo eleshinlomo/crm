@@ -18,6 +18,7 @@ import { Button } from "./ui/button";
 import { WritingTools} from '@/components/tools'
 import { ConversationTools} from '@/components/tools'
 import { MediaTools} from '@/components/tools'
+import WaitlistPage from './waitlistpage';
 
 
 
@@ -275,6 +276,7 @@ const DashSidebar = () => {
         </div>
         
      </div>
+      
 
      </div>
     </div>

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import Link from 'next/link'
 import { BookIcon, BotIcon, FacebookIcon, LinkedinIcon, TwitterIcon } from 'lucide-react'
 import { BASE_URL } from '@/components/urls'
+import WaitlistPage from '@/components/waitlistpage'
 
 
 const ImagePage = () => {
@@ -110,56 +111,7 @@ const handlekwChoices = ()=>{
 }
 
 
-const handleEmailWaitlist = async (e:any)=>{
-  try{
-  e.preventDefault()
-  const payload = {
-    email
-  }
-   console.log(BASE_URL)
-  const response: any = await fetch(`${BASE_URL}/waitlist/`, {
-    method: 'POST',
-    mode: 'cors',
-    body: JSON.stringify(payload),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  if(!response.ok) throw new Error("Problem with waitlist server")
-  const data = await response.json()
-  if (!data){
-    setMessage('No response from server')
-  }else{
-    setMessage('Your email has been received')
-  }
 
-}
-catch(err: any){
-   setMessage(`"Error": ${err.message}`)
-}
-}
-
-const handleWaitlist = ()=>{
-  return (
-    <div className='py-4'>
-
-<p className='px-6 text-muted-foreground py-2 '>Please join waitlist so we can inform 
-          you when this service becomes available.</p>
-          <p>{message}</p>
-      <form className='px-6' onSubmit={handleEmailWaitlist}>
-        <input 
-        className='border border-black px-1'
-        value={email}
-        name='email'
-        placeholder='Enter your email'
-        onChange={(e)=>setEmail(e.target.value)}
-        type='email'
-         required /><br/>
-         <Button type='submit' className='mt-2'>Submit</Button>
-      </form>
-    </div>
-  )
-}
 
 
 
@@ -182,7 +134,7 @@ const handleArticleSocialPosting = ()=>{
     return (
       <div className='flex flex-col justify-center items-center'>
       
-        {handleWaitlist()}
+        <WaitlistPage />
         
       </div>
     )
@@ -359,7 +311,7 @@ const handleArticleSocialPosting = ()=>{
              
              {isArticleWaitlist ?
              <div>
-             {handleWaitlist()}
+             <WaitlistPage />
              </div>:null
              }
              

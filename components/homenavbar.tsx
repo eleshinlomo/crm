@@ -23,7 +23,7 @@ const HomeNavBar = ()=>{
 <div className='md:hidden'>
 <Sheet>
 <SheetTrigger>
-<Button size='icon'  className='w-12 h-10'  asChild>
+<Button size='icon'  className='w-10 h-8'  asChild>
   <Menu />
 </Button>
 </SheetTrigger>

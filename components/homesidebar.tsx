@@ -5,6 +5,7 @@ import  Image  from 'next/image'
 import { BASE_URL } from './auth'
 import { GOOGLE_LOGIN_URL } from './urls'
 import { GOOGLE_LOGOUT_URL } from './urls'
+import WaitlistPage from './waitlistpage'
 
 
 
@@ -52,6 +53,10 @@ export const HomeSidebar = () => {
         <Link href={GOOGLE_LOGIN_URL}>Sign In</Link>
       </Button>
          }
+
+         <div>
+          <WaitlistPage />
+         </div>
       </div>
     </div>
   )
