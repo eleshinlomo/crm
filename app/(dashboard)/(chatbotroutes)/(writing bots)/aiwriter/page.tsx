@@ -1,5 +1,6 @@
 "use client"
 import {useState, useEffect} from 'react'
+import {useRouter} from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import Link from 'next/link'
 import { BookIcon, BotIcon, FacebookIcon, LinkedinIcon, TwitterIcon } from 'lucide-react'
@@ -23,10 +24,14 @@ const ImagePage = () => {
   const [isAIGenerated, setIsAIGenerated] = useState<boolean>(false)
   const [topics, setTopics] = useState<Array<string | any>>([])
   const [email, setEmail] = useState<string>('')
+  const [article, setArticle] = useState<string>('')
+  const [isArticle, setIsArticle] = useState<boolean>(false)
+  const [isArticleWaitlist, setIsArticleWaitlist] = useState<boolean>(true)
   
   // const [text, setText] = useState<string>('')
 
   let text = ''
+  const router: any = useRouter()
   const handleIndustry = (selectedIndustry: string)=>{
     setIndustry(selectedIndustry)
     setIsIndustry(true)
@@ -82,7 +87,8 @@ const handleTopic = ()=>{
   
 }
 
-const handleProceed = ()=>{
+const handleProceed = (e: any)=>{
+  e.preventDefault()
   setIsTopic(false)
   setIsTopics(false)
   setIsKW(true)
@@ -116,7 +122,7 @@ const handleWaitlist = ()=>{
         value={email.toLowerCase()}
         placeholder='Enter your email'
         onChange={(e)=>setEmail(e.target.value)}
-        type='text'
+        type='email'
          required /><br/>
          <Button type='submit' className='mt-2'>Submit</Button>
       </form>
@@ -152,12 +158,27 @@ catch(err: any){
 }
 }
 
-const handleArticlePosting = ()=>{
+
+const ArticlePage = ()=>{
+  return (
+    <div>
+      { isArticle ?
+      <div>
+        <p>{article}</p>
+      </div>: <div><p className='text-blue-600'>No Article to display</p></div>
+     } 
+    </div>
+  )
+}
+
+const handleArticleSocialPosting = ()=>{
   setMessage(()=>{
+    setIsArticleWaitlist(false)
     return (
       <div className='flex flex-col justify-center items-center'>
-        <p>No Article was generated</p>
+      
         {handleWaitlist()}
+        
       </div>
     )
   })
@@ -257,13 +278,14 @@ const handleArticlePosting = ()=>{
               
               <Button className='my-2'>WRITE MY OWN TITLE</Button>
 
-            <form >
+            <form onSubmit={handleProceed}>
               <input
               value={topic} 
+              type='text'
               onChange={(e)=>setTopic(e.target.value)}
               className='bg-white text-black p-2 border border-gray-800 rounded'
                 required/><br/>
-              <Button onClick={handleProceed} className='my-2'>
+              <Button type='submit' className='my-2'>
               Submit</Button>
             </form>
             </div>:null
@@ -326,16 +348,22 @@ const handleArticlePosting = ()=>{
 
           {isGenerate ?
           <div>
+
+              <ArticlePage />
             <p>AI API has not been connected. Still in BETA stage.</p>
              
+             {isArticleWaitlist ?
+             <div>
              {handleWaitlist()}
+             </div>:null
+             }
              
             
-              <p className='font-extrabold py-4'>Now post your new Article</p>
+              <p className='font-extrabold py-6'>Post your Article on Social Platforms</p>
               <p className='px-8'>{message}</p>
               <div className='py-4 flex flex-col md:flex-row justify-center items-center gap-3'>
               <Button className='w-52'
-              onClick={handleArticlePosting}
+              onClick={handleArticleSocialPosting}
               >
                 <div className='flex gap-3'>
                 <LinkedinIcon />
@@ -344,7 +372,7 @@ const handleArticlePosting = ()=>{
               </Button>
 
               <Button className='w-52'
-              onClick={handleArticlePosting}
+              onClick={handleArticleSocialPosting}
               >
                 <div className='flex gap-3'>
                 <FacebookIcon />
@@ -353,7 +381,7 @@ const handleArticlePosting = ()=>{
               </Button>
 
               <Button className='w-52'
-              onClick={handleArticlePosting}
+              onClick={handleArticleSocialPosting}
               >
                 <div className='flex gap-3'>
                 <TwitterIcon />
@@ -362,10 +390,16 @@ const handleArticlePosting = ()=>{
               </Button>
 
             </div>
-            
-            <Link href='/dashboard'>
-            <Button>BACK TO DASHBOARD</Button>
+
+            <div className='flex  justify-center items-center gap-3'>
+            <Link href='/'>
+            <Button className='w-24'>HOME</Button>
             </Link>
+
+            <Link href='/dashboard'>
+            <Button className='w-32'>DASHBOARD</Button>
+            </Link>
+            </div>
           </div>:null
 
           }

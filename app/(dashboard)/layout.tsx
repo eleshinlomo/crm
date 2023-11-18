@@ -243,7 +243,7 @@ handleGetAccessToken()
 
             { isLoggedIn ?
         <div className="h-full relative  ">
-            <div className="hidden h-full md:flex   md:w-72 md:flex-col
+            <div className="hidden h-full md:flex w-72 md:flex-col flex-1
              md:fixed md:inset-y-0 z-[80] bg-black">
 
                 <Sidebar />
