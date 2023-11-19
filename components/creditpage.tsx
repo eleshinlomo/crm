@@ -13,7 +13,7 @@ const CreditPage = () => {
             <p className='text-xl text-blue font-semibold'>Your credit is {credit}</p>
               
             <Button variant='outline' className='bg-black text-white rounded-full '>
-              Top Up Credits to use AI</Button>
+              Start Free Trial</Button>
             </div>
         } 
         </div>

@@ -192,6 +192,10 @@ const DashboardPage = ()=>{
 
        </div>
 
+       <div className='relative w-full h-56'>
+        <Image src='/images/dark-3061610_1920.jpg' alt='random image' fill />
+       </div>
+
     </div>
  
       
