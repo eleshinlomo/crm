@@ -11,6 +11,29 @@ import { AreaChartIcon, BookIcon, BotIcon, CodeIcon, EyeIcon,
 
 
 export const Tools: [] | any = [
+
+  {
+    id:'conversation',
+    category: 'Conversation Tools',
+    tools: [
+        {
+        
+        label: "General Conversation",
+        icon: MessageSquare,
+        href: "/general",
+        color: "text-pink-500",
+        bgColor: "text-grey-500"
+        },
+        { 
+          
+          label: "Code Generation",
+          icon: CodeIcon,
+          href: "/code",
+          color: "text-grey-500",
+          bgColor: "text-grey-500"
+        }
+    ]},
+    
     { 
       
       id:'writing',
@@ -90,27 +113,7 @@ export const Tools: [] | any = [
                         }
                       ]},
 
-                      {
-                      id:'conversation',
-                      category: 'Conversation Tools',
-                      tools: [
-                          {
-                          
-                          label: "General Conversation",
-                          icon: MessageSquare,
-                          href: "/general",
-                          color: "text-pink-500",
-                          bgColor: "text-grey-500"
-                          },
-                          { 
-                            
-                            label: "Code Generation",
-                            icon: CodeIcon,
-                            href: "/code",
-                            color: "text-grey-500",
-                            bgColor: "text-grey-500"
-                          }
-                      ]}
+                     
           
                       ]
 
