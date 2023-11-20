@@ -23,8 +23,10 @@ const HomePage = () => {
   useEffect(()=>{
     setCustomText([
          "Welcome to Fixupe",
+         "Write 200 Articles in 30mins",
          "Top AI Tools",
-         "Complete task faster"
+         "Complete task faster",
+         "Post on Wordpress in 2mins"
     ])
   },[])
 
