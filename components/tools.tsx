@@ -10,8 +10,114 @@ import { AreaChartIcon, BookIcon, BotIcon, CodeIcon, EyeIcon,
 } from "lucide-react";
 
 
+export const Tools: [] | any = [
+    { 
+      
+      id:'writing',
+      category: 'Writing Tools',
+      tools: [
+      
+      {
+     
+      label: "AI Writer",
+      icon: AreaChartIcon,
+      href: "/aiwriter",
+      color: "text-pink-500",
+      bgColor: "text-grey-500"
+      },
+      {   
+          
+          label: "AI Transcriber",
+          icon: BotIcon,
+          href: "/aitranscriber",
+          color: "text-pink-500",
+          bgColor: "text-grey-500"
+          }
+        ]},
+
+          {
+            id:'document',
+            category: 'Document Tools',
+            tools: [
+          { 
+            
+            label: "PDF Voice Reader",
+            icon: BookIcon,
+            href: "/pdftovoice",
+            color: "text-blue-500",
+            bgColor: "text-red-500"
+            },
+      
+            {   
+                
+                label: "CSV File Analyser",
+                icon: FileIcon,
+                href: "/csvanalyser",
+                color: "text-blue-500",
+                bgColor: "text-blue-500"
+                }
+              ]},
+
+                {
+                id:'media',
+                category: 'Media Tools',
+                tools: [
+                  
+                  {
+                  
+                  label: "Image Generation",
+                  icon: ImageIcon,
+                  href: "/image",
+                  color: "text-blue-500",
+                  bgColor: "text-grey-500"
+                  },
+          
+                  {   
+                      
+                      label: "Video Generation",
+                      icon: VideoIcon,
+                      href: "/video",
+                      color: "text-blue-500",
+                      bgColor: "text-grey-500"
+                      },
+          
+                      {
+                        label: "Music Generation",
+                        icon: Music2Icon,
+                        href: "/music",
+                        color: "text-purple-500",
+                        bgColor: "text-grey-500"
+                        }
+                      ]},
+
+                      {
+                      id:'conversation',
+                      category: 'Conversation Tools',
+                      tools: [
+                          {
+                          
+                          label: "General Conversation",
+                          icon: MessageSquare,
+                          href: "/general",
+                          color: "text-pink-500",
+                          bgColor: "text-grey-500"
+                          },
+                          { 
+                            
+                            label: "Code Generation",
+                            icon: CodeIcon,
+                            href: "/code",
+                            color: "text-grey-500",
+                            bgColor: "text-grey-500"
+                          }
+                      ]}
+          
+                      ]
+
+
 export const DashboardSideItem = 
-    {
+    {   
+        
         label: "Dashboard",
         href: "/dashboard",
         color: "text-grey-500",
@@ -25,96 +131,37 @@ export const DashboardSideItem =
         href: "/settings",
         
         }
+        
+     
 
-export const WritingTools = [
-    
    
-      {
-        label: "AI Writer",
-        icon: AreaChartIcon,
-        href: "/aiwriter",
-        color: "text-pink-500",
-        bgColor: "text-grey-500"
-        },
-        {
-            label: "AI Transcriber",
-            icon: BotIcon,
-            href: "/aitranscriber",
-            color: "text-pink-500",
-            bgColor: "text-grey-500"
-            },
-            
+
   
-  ]
-
-
-  export const DocumentTools = [
+// export const DocumentTools = [
   
-    {
-      label: "PDF Voice Reader",
-      icon: BookIcon,
-      href: "/pdftovoice",
-      color: "text-blue-500",
-      bgColor: "text-red-500"
-      },
-
-      {
-          label: "CSV File Analyser",
-          icon: FileIcon,
-          href: "/csvanalyser",
-          color: "text-blue-500",
-          bgColor: "text-blue-500"
-          },
-
-]
-
-
-  export const MediaTools = [
+//   {heading: 'Document Tools'},
   
-      {
-        label: "Image Generation",
-        icon: ImageIcon,
-        href: "/image",
-        color: "text-blue-500",
-        bgColor: "text-grey-500"
-        },
+    
+//         ]
 
-        {
-            label: "Video Generation",
-            icon: VideoIcon,
-            href: "/video",
-            color: "text-blue-500",
-            bgColor: "text-grey-500"
-            },
 
-            {
-              label: "Music Generation",
-              icon: Music2Icon,
-              href: "/music",
-              color: "text-purple-500",
-              bgColor: "text-grey-500"
-              },
+
+
+//   export const MediaTools: [
+
+//     {heading: 'Media Tools'},
+  
+      
          
   
-  ]
+//   ]
 
 
-  export const ConversationTools  = [
+//   export const ConversationTools  = [
     
-    {
-      label: "General Conversation",
-      icon: MessageSquare,
-      href: "/general",
-      color: "text-pink-500",
-      bgColor: "text-grey-500"
-      },
-      {
-        label: "Code Generation",
-        icon: CodeIcon,
-        href: "/code",
-        color: "text-grey-500",
-        bgColor: "text-grey-500"
-        },
+//     {heading: 'Conversation Tools'},
+
+    
   
       // {
       //   label: "AI Boyfriend",
@@ -133,5 +180,5 @@ export const WritingTools = [
       //   },
              
   
-  ]
+
 

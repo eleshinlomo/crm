@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from 'next/image'
 import { Montserrat} from "next/font/google";
 import { cn } from "@/lib/utils";
-import { ArrowBigRight, ArrowDown, Code, CodeIcon, EyeIcon,
+import { ArrowBigDown, ArrowBigRight, ArrowDown, Code, CodeIcon, EyeIcon,
    ImageIcon, LayoutDashboard, LogOutIcon, MenuIcon, 
    MessageSquare, Music2Icon, Settings, VideoIcon } from "lucide-react";
 import {usePathname, useRouter} from 'next/navigation'
@@ -15,10 +15,10 @@ import CreditPage from "@/components/creditpage";
 import { DashboardSideItem } from "@/components/tools";
 import { Button } from "./ui/button";
 // AI Tools
-import { WritingTools} from '@/components/tools'
-import { ConversationTools} from '@/components/tools'
-import { DocumentTools} from '@/components/tools'
-import { MediaTools} from '@/components/tools'
+import { Tools} from '@/components/tools'
+// import { ConversationTools} from '@/components/tools'
+// import { DocumentTools} from '@/components/tools'
+// import { MediaTools} from '@/components/tools'
 import WaitlistPage from './waitlistpage';
 
 
@@ -28,6 +28,10 @@ const montserrat = Montserrat({
     subsets:["latin"]
 })
 
+interface toolisOpenProps{
+  [key: string] : boolean;
+}
+
 
 
 const DashSidebar = () => {
@@ -36,9 +40,18 @@ const DashSidebar = () => {
   const [isOpenWriting, setIsOpenWriting] = useState<boolean>(false)
   const [isOpenMedia, setIsOpenMedia] = useState<boolean>(false)
   const [isOpenDashboard, setIsOpenDashboard] = useState<boolean>(false)
+  const [toolIsOpen, setToolIsOpen] = useState<boolean>(false)
+  const [toolItemIsOpen, setToolItemIsOpen] = useState(false)
   const [isOpenSettings, setIsOpenSettings] = useState<boolean>(false)
 
+
+  
+  const handleToolsOpen = ((close: boolean, open: boolean)=>{
+       open ? setToolIsOpen(true) : setToolIsOpen(false)
+  })
+
   const router = useRouter()
+
 
   const closeDashboard = ()=>{
     setIsOpenDashboard(false)
@@ -104,6 +117,7 @@ const DashSidebar = () => {
   }
 
   const pathname = usePathname()
+
   return (
     <div>
      
@@ -128,31 +142,40 @@ const DashSidebar = () => {
         <Button className="w-full"
         onClick={isOpenDashboard ? closeDashboard: openDashboard}
         >
-          <div className="flex flex-1 gap-7 justify-center items-center">
+          <div className="flex flex-1 gap-7 justify-between items-start">
           <p className="text-md">
           {isOpenDashboard ? 'Viewing Dashboard': 'Dashboard'}
           </p>
             {isOpenDashboard ? <ArrowDown className="" />: <ArrowBigRight />}
             </div>
           </Button>
-          
 
-        {/* Start of Conversation tools */}
-        <div>
-         <Button className="w-full"
-         onClick={isOpenConversation ? closeConversation : openConversation}
-         >
-          <div className="flex flex-1 gap-3  justify-center items-center w-full">
-            <p className="text-md">{isOpenConversation ? 'Close Conversation': 'Conversation'}</p>
-            <div className="">
-            {isOpenConversation ? <ArrowDown className="" />: <ArrowBigRight />}
-            </div>
-          </div>
-         </Button>
-         {/* If Open */}
-         {isOpenConversation ?
+          {/* Start of Tools */}
          <div>
-         {ConversationTools.map((tool:any, index:any)=>(
+         {Tools.map((category:any, index:any)=>(
+          <div key={index}>
+            <div className=''>
+
+              
+              <Button
+              className='w-full my-1'
+              onClick= {()=> toolIsOpen ? setToolIsOpen(false): setToolIsOpen(true)}
+              
+              >
+              <div className='flex flex-1 justify-between items-start'>
+              {category.category}
+             
+              {toolIsOpen ? <ArrowBigDown /> : <ArrowBigRight />}
+              </div>
+              </Button>
+              
+              
+            </div>
+            
+            {toolIsOpen ?
+            <div>
+            {category.tools.map((tool: any, index: any)=>
+        
          <Link
           href = {tool.href}
           key={index}
@@ -168,132 +191,26 @@ const DashSidebar = () => {
              {tool.label}
             </div>
          </Link>
+             )}
+             </div>:null
+             }
+             {/* End of tools */}
+         </div>
          ))}
-         </div>:null
-         }
+          {/* End of Tools */}
+         
+         </div>
         {/* //  End of Conversation tools */}
          </div>
 
         
-        {/* Start of Writing tools */}
-        <div>
-         <Button className="w-full"
-         onClick={isOpenWriting ? closeWriting : openWriting}
-         >
-          <div className="flex flex-1 gap-3  justify-center items-center w-full">
-            <p className="text-md">{isOpenWriting ? 'Close Writing': 'Writing Tools'}</p>
-            <div className="">
-            {isOpenWriting ? <ArrowDown className="" />: <ArrowBigRight />}
-            </div>
-          </div>
-         </Button>
-         {/* If Open */}
-         {isOpenWriting ?
-         <div>
-         {WritingTools.map((tool:any, index:any)=>(
-         <Link
-          href = {tool.href}
-          key={index}
-          className={cn(`text-sm group flex p-3 w-full justify-start
-          font-medium cursor-pointer hover:text-white hover:bg-white/10
-          rounded-lg transition
-          `, 
-          pathname === tool.href ? "text-white bg-white/10": "text-zinc-400" 
-          )}
-          >
-            <div className="flex items-center mt-2 flex-1">
-             <tool.icon className={cn("h-5 w-5 mr-3", tool.color)} />
-             {tool.label}
-            </div>
-         </Link>
-         ))}
-         </div>:null
-         }
-        {/* //  End of Writing tools */}
-         </div>
-
-
-         {/* Start of Document tools */}
-        <div>
-         <Button className="w-full"
-         onClick={isOpenWriting ? closeWriting : openWriting}
-         >
-          <div className="flex flex-1 gap-3  justify-center items-center w-full">
-            <p className="text-md">{isOpenWriting ? 'Close Document': 'Document'}</p>
-            <div className="">
-            {isOpenWriting ? <ArrowDown className="" />: <ArrowBigRight />}
-            </div>
-          </div>
-         </Button>
-         {/* If Open */}
-         {isOpenWriting ?
-         <div>
-         {DocumentTools.map((tool:any, index:any)=>(
-         <Link
-          href = {tool.href}
-          key={index}
-          className={cn(`text-sm group flex p-3 w-full justify-start
-          font-medium cursor-pointer hover:text-white hover:bg-white/10
-          rounded-lg transition
-          `, 
-          pathname === tool.href ? "text-white bg-white/10": "text-zinc-400" 
-          )}
-          >
-            <div className="flex items-center mt-2 flex-1">
-             <tool.icon className={cn("h-5 w-5 mr-3", tool.color)} />
-             {tool.label}
-            </div>
-         </Link>
-         ))}
-         </div>:null
-         }
-        {/* //  End of Document tools */}
-         </div>
-
-
-        {/* Start of Media tools */}
-        <div>
-         <Button className="w-full"
-         onClick={isOpenMedia ? closeMedia : openMedia}
-         >
-          <div className="flex flex-1 gap-3  justify-center items-center w-full">
-            <p className="text-md">{isOpenMedia ? 'Close Media': 'Media Tools'}</p>
-            <div className="">
-            {isOpenMedia ? <ArrowDown className="" />: <ArrowBigRight />}
-            </div>
-          </div>
-         </Button>
-         {/* If Open */}
-         {isOpenMedia ?
-         <div>
-         {MediaTools.map((tool:any, index:any)=>(
-         <Link
-          href = {tool.href}
-          key={index}
-          className={cn(`text-sm group flex p-3 w-full justify-start
-          font-medium cursor-pointer hover:text-white hover:bg-white/10
-          rounded-lg transition
-          `, 
-          pathname === tool.href ? "text-white bg-white/10": "text-zinc-400" 
-          )}
-          >
-            <div className="flex items-center flex-1">
-             <tool.icon className={cn("h-5 w-5 mr-3", tool.color)} />
-             {tool.label}
-            </div>
-         </Link>
-         ))}
-         </div>:null
-         }
-        {/* //  End of Media tools */}
-         </div>
 
         
          {/* Settings */}
         <Button className="w-full"
         onClick={isOpenSettings ? closeSettings: openSettings}
         >
-          <div className="flex flex-1 gap-7 justify-center items-center">
+          <div className="flex flex-1 gap-7 justify-between items-start">
           <p className="text-md">
           {isOpenSettings ? 'Viewing Settings': 'Settings'}
           </p>
@@ -318,7 +235,6 @@ const DashSidebar = () => {
       
 
      </div>
-    </div>
   )
 }
 

@@ -6,12 +6,13 @@ import { Card } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import {useRouter} from 'next/navigation'
 import { Button } from '@/components/ui/button'
-// AI Tools
-import { WritingTools } from '@/components/tools'
-import { ConversationTools } from '@/components/tools'
-import { MediaTools } from '@/components/tools'
 import WaitlistPage from '@/components/waitlistpage'
-import { DocumentTools } from '@/components/tools'
+// AI Tools
+import { Tools } from '@/components/tools'
+// import { ConversationTools } from '@/components/tools'
+// import { MediaTools } from '@/components/tools'
+
+// import { DocumentTools } from '@/components/tools'
 
 
 
@@ -20,7 +21,6 @@ import { DocumentTools } from '@/components/tools'
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
   
-
 
 
 
@@ -54,13 +54,17 @@ const DashboardPage = ()=>{
        </div>
 
        
-      {/* Start of Conversation Tools */}
+      {/* Start of Tools */}
       <div>
-        <p className='text-center px-4 py-4 font-extrabold'>CONVERSATION TOOLS</p>
+        
        <div className='px-4 md:px-32 space-y-4'>
        {
-        ConversationTools.map((tool, index)=>
-           
+        Tools.map((tool: any, index: any)=>
+        
+        <div key={index}>
+
+       <p className='text-center text-xl px-4 py-4 font-extrabold'>{tool.category}</p>
+        {tool.tools.map((tool: any, index: any)=>
           <Card 
           onClick={()=>router.push(tool.href)}
           key={index}
@@ -80,113 +84,22 @@ const DashboardPage = ()=>{
             </div>
             {<ArrowRight className='w-5 h-5' />}
           </Card>
-        )
+        )}
+        {/* End of tools Mapping */}
+        
+        </div>
+  )
        }
+       {/* End of Tools Mapping */}
        </div>
        </div>
-       {/* End of Conversation tools */}
+       
        
        
        
        
        {/* Start of Writing Tools */}
-       <div>
-        <p className='text-center px-4 py-4 font-extrabold'>WRITING TOOLS</p>
-       <div className='px-4 md:px-32 space-y-4'>
-       {
-        WritingTools.map((tool, index)=>
-           
-          <Card 
-          onClick={()=>router.push(tool.href)}
-          key={index}
-          className='p-4 border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer'
-          >
-
-            <div className='flex items-center gap-x-4'>
-
-             <div className={cn(`w-p-2 w-fit rounded-md`, tool.bgColor)}>
-              <tool.icon className={cn('w-8 h-8', tool.color)} />
-             </div>
-
-             <div className='font-semibold'>
-              {tool.label}
-             </div>
-
-            </div>
-            {<ArrowRight className='w-5 h-5' />}
-          </Card>
-        )
-       }
-       </div>
-       </div>
-       {/* End of Writing tools */}
-
-
-       
-       {/* Start of Document Tools */}
-       <div>
-        <p className='text-center px-4 py-4 font-extrabold'>DOCUMENT TOOLS</p>
-       <div className='px-4 md:px-32 space-y-4'>
-       {
-        DocumentTools.map((tool, index)=>
-           
-          <Card 
-          onClick={()=>router.push(tool.href)}
-          key={index}
-          className='p-4 border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer'
-          >
-
-            <div className='flex items-center gap-x-4'>
-
-             <div className={cn(`w-p-2 w-fit rounded-md`, tool.bgColor)}>
-              <tool.icon className={cn('w-8 h-8', tool.color)} />
-             </div>
-
-             <div className='font-semibold'>
-              {tool.label}
-             </div>
-
-            </div>
-            {<ArrowRight className='w-5 h-5' />}
-          </Card>
-        )
-       }
-       </div>
-       </div>
-       {/* End of Document tools */}
-
-
-        {/* Start of Media Tools */}
-        <div>
-        <p className='text-center px-4 py-4 font-extrabold'>MEDIA TOOLS</p>
-       <div className='px-4 md:px-32 space-y-4'>
-       {
-        MediaTools.map((tool, index)=>
-           
-          <Card 
-          onClick={()=>router.push(tool.href)}
-          key={index}
-          className='p-4 border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer'
-          >
-
-            <div className='flex items-center gap-x-4'>
-
-             <div className={cn(`w-p-2 w-fit rounded-md`, tool.bgColor)}>
-              <tool.icon className={cn('w-8 h-8', tool.color)} />
-             </div>
-
-             <div className='font-semibold'>
-              {tool.label}
-             </div>
-
-            </div>
-            {<ArrowRight className='w-5 h-5' />}
-          </Card>
-        )
-       }
-       </div>
-       </div>
-       {/* End of Media tools */}
+      
 
 
 

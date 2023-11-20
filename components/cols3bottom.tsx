@@ -4,8 +4,8 @@ import { Button } from "./ui/button"
 export const Col3Bottom = ()=>{
     return (
         <div>
-            <div className="text-center flex justify-around items-center flex-col md:flex-row lg:flex:row gap-5
-             bg-white py-8 px-2">
+            <div className="text-center  grid grid-flow-row md:grid-cols-3 gap-5
+             bg-white py-8 px-5">
                
                {/* Col One */}
                 <div>
