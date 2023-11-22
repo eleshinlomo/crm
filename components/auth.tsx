@@ -66,17 +66,16 @@ export const getTokens = async ()=>{
    
    export const getUserProfile = async (accessToken: string | null, csrftoken: string | null)=>{
       
-  const headers = new Headers();
-  headers.append("Content-Type", "application/json");
-  headers.append("X-CSRFToken", `${csrftoken}`);
-  headers.append("Authorization", `Token ${accessToken}`);
 
-      
       const res = await fetch(`${BASE_URL}/userprofile/`, {
        mode: 'cors',
        method: 'GET',
        credentials: 'include',
-       headers: headers
+       headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": `${csrftoken}`,
+        "Authorization": `Bearer ${accessToken}`
+       }
       })
       
           if (!res){

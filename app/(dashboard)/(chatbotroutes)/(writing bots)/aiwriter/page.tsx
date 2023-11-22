@@ -18,12 +18,13 @@ const ImagePage = () => {
   const [topic, setTopic] = useState<string>('')
   const [isTopic, setIsTopic] = useState<boolean>(false)
   const [isTopics, setIsTopics] = useState<boolean>(false)
+  const [topics, setTopics] = useState<Array<any>>([])
   const [message, setMessage] = useState<React.ReactNode | any>()
   const [isKW, setIsKW] = useState<boolean>(false)
   const [isGeneratedKW, setIsGeneratedKW] = useState<boolean>(false)
   const [isGenerate, setIsGenerate] = useState<boolean>(false)
   const [isAIGenerated, setIsAIGenerated] = useState<boolean>(false)
-  const [topics, setTopics] = useState<Array<string | any>>([])
+  
   const [email, setEmail] = useState<string>('')
   const [article, setArticle] = useState<string>('')
   const [isArticle, setIsArticle] = useState<boolean>(false)
@@ -66,20 +67,49 @@ const ImagePage = () => {
        
   }
 
-  const handleTopics = ()=>{
-    const generateTopics = [
-     {'topic':'TestTitle1'},
-     {'topic':'Testtitle2'},
-     {'topic':'Testtitle4'},
-     {'topic':'Testtitle5'}
 
-   ]
-    setTopics(generateTopics)
+  const generateTitles = async ()=>{
+    const payload = {
+       industry
+    }
+   const response =  await fetch(`${BASE_URL}/generatetitles/`, {
+    mode: 'cors',
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+   })
+
+   if(!response)throw new Error("No response from server")
+   const generatedTitles = await response.json()
+  if(generatedTitles){
+    console.log(generatedTitles.message)
+    setTopics(generatedTitles.message)
     setIsTopics(true)
     setIsTopic(false)
     setIsAIGenerated(true)
     setIsIndustry(false)
-}
+    
+    }
+  }
+
+//   const handleTitles = ()=>{
+
+    
+//     const generateTopics = [
+//      {'topic':'TestTitle1'},
+//      {'topic':'Testtitle2'},
+//      {'topic':'Testtitle4'},
+//      {'topic':'Testtitle5'}
+
+//    ]
+//     setTopics(generateTopics)
+//     setIsTopics(true)
+//     setIsTopic(false)
+//     setIsAIGenerated(true)
+//     setIsIndustry(false)
+// }
 
 const handleTopic = ()=>{
   setIsTopic(true)
@@ -189,7 +219,7 @@ const handleArticleSocialPosting = ()=>{
           <div className='py-8'>
             {isTopics ?
             <div>
-            <Button onClick={handleTopics}>
+            <Button onClick={generateTitles}>
               GENERATE TITLE WITH AI</Button>
           
             
@@ -205,15 +235,17 @@ const handleArticleSocialPosting = ()=>{
               </div>
 
               <p className='font-extrabold'>Your AI generated Titles:</p>
-               {topics.map((kw,index)=>
-            <div key={index} className='py-2 flex justify-center items-center gap-3'>
+               {topics ?
+               
+               topics.map((title,index)=>
+            <div key={index} className='py-2 flex flex-col justify-center items-center gap-3'>
               
-              <p className=''>Title: {kw.topic}</p>
+              <p className='py-2'>Title: {title}</p>
               <Button onClick={()=>{
-                setTopic(kw.topic)
+                setTopic(title)
                 }}>USE TITLE</Button>
             </div>
-            )}
+            ): null}
 
               <div className='grid grid-flow-row md:grid-cols-3 gap-2'>
               <Button onClick={handleProceed}>Proceed</Button>

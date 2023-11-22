@@ -8,8 +8,8 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'AI Writer',
-  description: 'AI Writing page Page',
+  title: 'General Conversation',
+  description: 'General Conversation with AI',
 }
 
 
