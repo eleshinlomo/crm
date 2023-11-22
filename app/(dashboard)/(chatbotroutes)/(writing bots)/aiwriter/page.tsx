@@ -341,9 +341,9 @@ const handleArticleSocialPosting = ()=>{
               <div>
             <p>Your generated keywords for title:</p>
             <p className='font-extrabold'>{topic}</p>
+            <Button className='animate-pulse'>TEST DATA</Button>
             {keywords.map((kw,index)=>
             <div key={index} className=''>
-              
               <p className =''>Keyword: {kw.topic}</p>
             </div>
             )}
@@ -364,6 +364,7 @@ const handleArticleSocialPosting = ()=>{
                 <div>
                 <p>and ensuring use of the following 
                   <span className='font-extrabold px-2'>keywords:</span></p>
+                  <Button className='animate-pulse'>TEST DATA</Button>
                 {allKeywords ?
                 <div>
                   {allKeywords.map((keyword, index)=>
@@ -383,7 +384,7 @@ const handleArticleSocialPosting = ()=>{
           <div>
 
               <ArticlePage />
-            <p>AI API has not been connected. Still in BETA stage.</p>
+            <p>Article Writing API has not been connected. Still in BETA stage.</p>
              
              {isArticleWaitlist ?
              <div>
