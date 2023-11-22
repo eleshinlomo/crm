@@ -12,6 +12,31 @@ import { AreaChartIcon, BookIcon, BotIcon, CodeIcon, EyeIcon,
 
 export const Tools: [] | any = [
 
+
+  { 
+      
+    id:'writing',
+    category: 'Writing Tools',
+    tools: [
+    
+    {
+   
+    label: "AI Writer",
+    icon: AreaChartIcon,
+    href: "/aiwriter",
+    color: "text-pink-500",
+    bgColor: "text-grey-500"
+    },
+    {   
+        
+        label: "AI Transcriber",
+        icon: BotIcon,
+        href: "/aitranscriber",
+        color: "text-pink-500",
+        bgColor: "text-grey-500"
+        }
+      ]},
+
   {
     id:'conversation',
     category: 'Conversation Tools',
@@ -33,30 +58,8 @@ export const Tools: [] | any = [
           bgColor: "text-grey-500"
         }
     ]},
+
     
-    { 
-      
-      id:'writing',
-      category: 'Writing Tools',
-      tools: [
-      
-      {
-     
-      label: "AI Writer",
-      icon: AreaChartIcon,
-      href: "/aiwriter",
-      color: "text-pink-500",
-      bgColor: "text-grey-500"
-      },
-      {   
-          
-          label: "AI Transcriber",
-          icon: BotIcon,
-          href: "/aitranscriber",
-          color: "text-pink-500",
-          bgColor: "text-grey-500"
-          }
-        ]},
 
           {
             id:'document',

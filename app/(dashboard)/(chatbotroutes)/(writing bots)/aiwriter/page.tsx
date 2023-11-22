@@ -3,9 +3,10 @@ import {useState, useEffect} from 'react'
 import {useRouter} from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import Link from 'next/link'
-import { BookIcon, BotIcon, FacebookIcon, LinkedinIcon, TwitterIcon } from 'lucide-react'
+import { BookIcon, BotIcon, FacebookIcon, LinkedinIcon,  TwitterIcon } from 'lucide-react'
 import { BASE_URL } from '@/components/urls'
 import WaitlistPage from '@/components/waitlistpage'
+import { Loader } from '@/components/loader'
 
 
 const ImagePage = () => {
@@ -23,7 +24,9 @@ const ImagePage = () => {
   const [isKW, setIsKW] = useState<boolean>(false)
   const [isGeneratedKW, setIsGeneratedKW] = useState<boolean>(false)
   const [isGenerate, setIsGenerate] = useState<boolean>(false)
+  const [isGeneratedTitles, setIsGeneratedTitles] = useState<boolean>(true)
   const [isAIGenerated, setIsAIGenerated] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   
   const [email, setEmail] = useState<string>('')
   const [article, setArticle] = useState<string>('')
@@ -50,6 +53,8 @@ const ImagePage = () => {
     setIsIndustry(false)
   }
 
+  
+
   const handleKeywords = ()=>{
        const generatedkw = [
         {'word':'test1'},
@@ -69,6 +74,7 @@ const ImagePage = () => {
 
 
   const generateTitles = async ()=>{
+    setIsLoading(true)
     const payload = {
        industry
     }
@@ -87,10 +93,11 @@ const ImagePage = () => {
     console.log(generatedTitles.message)
     setTopics(generatedTitles.message)
     setIsTopics(true)
+    setIsGeneratedTitles(true)
     setIsTopic(false)
     setIsAIGenerated(true)
     setIsIndustry(false)
-    
+    setIsLoading(false)
     }
   }
 
@@ -215,7 +222,11 @@ const handleArticleSocialPosting = ()=>{
           </div>:null
           }
           
-          
+          {/* Loader */}
+          {isLoading ?
+          <Loader />:null
+           }
+
           <div className='py-8'>
             {isTopics ?
             <div>
@@ -231,30 +242,54 @@ const handleArticleSocialPosting = ()=>{
               <p>Your chosen Title: </p>
               <BookIcon />
               </div>
-              <p className='font-extrabold'>{topic ? topic: 'None'}</p>
+              {topic ? <p className='font-extrabold'>{topic}</p> : 
+              <p>
+              You have not chosen any <span className='font-extrabold'>Title</span>
+              </p>
+               } 
               </div>
+
+
+              {isGeneratedTitles ?
+              <div>
 
               <p className='font-extrabold'>Your AI generated Titles:</p>
                {isTopics ?
                
                topics.map((title,index)=>
+               
             <div key={index} className='py-2 flex flex-col justify-center items-center gap-3'>
+              
+              
               
               <p className='py-2'>Title: {title.response}</p>
               <Button onClick={()=>{
                 setTopic(title.response)
+                setIsGeneratedTitles(false)
+                
                 }}>USE TITLE</Button>
-            </div>
+                
+                </div>
+                
+               
+            
+               
             ): null}
+            </div>:null}
+            
+            
 
               <div className='grid grid-flow-row md:grid-cols-3 gap-2'>
               <Button onClick={handleProceed}>Proceed</Button>
               <Button onClick={generateTitles}>Regenerate Titles</Button>
-              <Button onClick={handleTopic}>Write My Own Title</Button>
+              <Button onClick={handleTopic}>Modify Title</Button>
               </div>
+              
                
             </div>:null
              } 
+             
+
              {/* EndofIsAIGenerated */}
 
             
@@ -293,7 +328,11 @@ const handleArticleSocialPosting = ()=>{
             <p className='font-extrabold'>{topic}</p>?
             <div className='flex gap-3'>
             <Button onClick={handleKeywords}>Yes</Button>
-            <Button>No</Button>
+            <Button onClick={()=>{
+              setKwChoices(false)
+              setIsGeneratedKW(false)
+            }
+            }>No</Button>
             </div> 
           </div>:null
             }
@@ -320,6 +359,9 @@ const handleArticleSocialPosting = ()=>{
                 Industry with the Title:</p>
               <p><span className='font-extrabold px-2'>{topic}
                 </span></p>
+
+                { isGeneratedKW ?
+                <div>
                 <p>and ensuring use of the following 
                   <span className='font-extrabold px-2'>keywords:</span></p>
                 {allKeywords ?
@@ -330,7 +372,9 @@ const handleArticleSocialPosting = ()=>{
                   </div>
                 )}
                 </div>:<div><p>None</p></div>
-                }              
+                }
+                </div>:null
+              }              
                 <Button onClick={handleGenerate}>WRITE ARTICLE</Button>
             </div>
           </div>:null}
