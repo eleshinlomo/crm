@@ -235,21 +235,21 @@ const handleArticleSocialPosting = ()=>{
               </div>
 
               <p className='font-extrabold'>Your AI generated Titles:</p>
-               {topics ?
+               {isTopics ?
                
                topics.map((title,index)=>
             <div key={index} className='py-2 flex flex-col justify-center items-center gap-3'>
               
-              <p className='py-2'>Title: {title}</p>
+              <p className='py-2'>Title: {title.response}</p>
               <Button onClick={()=>{
-                setTopic(title)
+                setTopic(title.response)
                 }}>USE TITLE</Button>
             </div>
             ): null}
 
               <div className='grid grid-flow-row md:grid-cols-3 gap-2'>
               <Button onClick={handleProceed}>Proceed</Button>
-              <Button>Regenerate Titles</Button>
+              <Button onClick={generateTitles}>Regenerate Titles</Button>
               <Button onClick={handleTopic}>Write My Own Title</Button>
               </div>
                
@@ -305,7 +305,7 @@ const handleArticleSocialPosting = ()=>{
             {keywords.map((kw,index)=>
             <div key={index} className=''>
               
-              <p className =''>Keyword: {kw.word}</p>
+              <p className =''>Keyword: {kw.topic}</p>
             </div>
             )}
             </div>:null
