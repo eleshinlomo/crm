@@ -1,5 +1,5 @@
 "use client"
-import {useState, useEffect} from 'react'
+import {useState, useEffect,useRef} from 'react'
 import {useRouter} from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import Link from 'next/link'
@@ -9,7 +9,16 @@ import WaitlistPage from '@/components/waitlistpage'
 import { Loader } from '@/components/loader'
 
 
-const ImagePage = () => {
+export let tokens = []
+let realToken: string = ''
+
+if (tokens.length > 0){
+  tokens.map((token: any)=>{
+   realToken = token.tokens
+  })
+}
+
+const AIWriterPage = () => {
   const [industry, setIndustry] = useState<string>('')
   const [isIndustry, setIsIndustry] = useState<boolean>(false)
   const [industryChoices, setIndustryChoices] = useState<boolean>(true)
@@ -32,10 +41,27 @@ const ImagePage = () => {
   const [article, setArticle] = useState<string>('')
   const [isArticle, setIsArticle] = useState<boolean>(false)
   const [isArticleWaitlist, setIsArticleWaitlist] = useState<boolean>(true)
+  const [tokens, setTokens] = useState<Array<string>>([])
   
   // const [text, setText] = useState<string>('')
+ 
+
+ 
 
   let text = ''
+  
+  
+//   useEffect(()=>{const getTokenForOpenAI = ()=>{
+//     if(!tokens) return
+//     const tokenValue = tokens.map((token: any)=>{
+//       const tokenUsed = token.tokens
+//       return tokenUsed
+//     })
+//     return tokenValue
+//   }
+//   getTokenForOpenAI()
+// },[tokens])
+
   const router: any = useRouter()
   const handleIndustry = (selectedIndustry: string)=>{
     setIndustry(selectedIndustry)
@@ -73,7 +99,18 @@ const ImagePage = () => {
   }
 
 
+  // Get Token Value 
+  
+  // let tokenUsedRef: any = useRef(null)
+  // useEffect(()=>{
+  //   if (tokens) {
+  //   tokenUsedRef.current = tokens
+  //   }
+  // }, [tokens])
+
+
   const generateTitles = async ()=>{
+    try{
     setIsLoading(true)
     const payload = {
        industry
@@ -89,8 +126,13 @@ const ImagePage = () => {
 
    if(!response)throw new Error("No response from server")
    const generatedTitles = await response.json()
-  if(generatedTitles){
-    console.log(generatedTitles.message)
+  if(generatedTitles.message){
+    
+    console.log(tokens)
+    console.log(generatedTitles)
+    
+    const newtokens = generatedTitles.message
+    
     setTopics(generatedTitles.message)
     setIsTopics(true)
     setIsGeneratedTitles(true)
@@ -99,6 +141,10 @@ const ImagePage = () => {
     setIsIndustry(false)
     setIsLoading(false)
     }
+  }
+  catch(error: any){
+   error.response.message
+  }
   }
 
 //   const handleTitles = ()=>{
@@ -254,17 +300,17 @@ const handleArticleSocialPosting = ()=>{
               <div>
 
               <p className='font-extrabold'>Your AI generated Titles:</p>
+              
                {isTopics ?
                
                topics.map((title,index)=>
                
-            <div key={index} className='py-2 flex flex-col justify-center items-center gap-3'>
-              
-              
-              
-              <p className='py-2'>Title: {title.response}</p>
+            <div key={index} className='py-2 flex flex-col justify-center 
+            items-center gap-3'>
+              <p className='font-bold'>{title.tokens}</p>
+              <p className='py-2'>{title.response.replace(/[^A-Za-z\s:]/g,'')}</p>
               <Button onClick={()=>{
-                setTopic(title.response)
+                setTopic(title.response.replace(/[^A-Za-z\s:]/g,''))
                 setIsGeneratedTitles(false)
                 
                 }}>USE TITLE</Button>
@@ -443,4 +489,4 @@ const handleArticleSocialPosting = ()=>{
     )
   }
   
-  export default ImagePage
+  export default AIWriterPage
