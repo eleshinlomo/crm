@@ -9,14 +9,7 @@ import WaitlistPage from '@/components/waitlistpage'
 import { Loader } from '@/components/loader'
 
 
-export let tokens = []
-let realToken: string = ''
 
-if (tokens.length > 0){
-  tokens.map((token: any)=>{
-   realToken = token.tokens
-  })
-}
 
 const AIWriterPage = () => {
   const [industry, setIndustry] = useState<string>('')
@@ -41,7 +34,7 @@ const AIWriterPage = () => {
   const [article, setArticle] = useState<string>('')
   const [isArticle, setIsArticle] = useState<boolean>(false)
   const [isArticleWaitlist, setIsArticleWaitlist] = useState<boolean>(true)
-  const [tokens, setTokens] = useState<Array<string>>([])
+  
   
   // const [text, setText] = useState<string>('')
  
@@ -128,10 +121,9 @@ const AIWriterPage = () => {
    const generatedTitles = await response.json()
   if(generatedTitles.message){
     
-    console.log(tokens)
+    
     console.log(generatedTitles)
     
-    const newtokens = generatedTitles.message
     
     setTopics(generatedTitles.message)
     setIsTopics(true)
