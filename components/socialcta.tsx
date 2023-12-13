@@ -18,7 +18,8 @@ export const SocialCTA = ()=>{
                     <InstagramIcon />
                 </div>
 
-                <p className="text-lg text-center  mt-10 shadow-sm
+                <p className="text-lg flex flex-wrap
+                 text-center  mt-10 shadow-sm
                   w-96 py-2 px-6 ">
                     It takes 2 minutes to write an article on Fixupe. 
                     There is no reason you should not be posting at 

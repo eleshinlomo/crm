@@ -10,7 +10,8 @@ const HomeNavBar = ()=>{
     return(
        <div>
         
-        <div className='    flex justify-between mb-5'>
+        <div className='   text-black  px-2
+        flex flex-1 justify-between  mb-5'>
 
       
 <div className='relative w-32 h-16 hidden md:flex'>
@@ -38,8 +39,8 @@ const HomeNavBar = ()=>{
       
 
       <div className='hidden md:flex gap-4 md: mt-3'>
-        <p className=' md:flex  md:text-md '>Complete task faster with AI </p>
-        <Button className=' bg-black  py-4 text-sm justify-self-end px-2 ' asChild>
+        <p className=' md:flex  md:text-md mt-3'>Complete task faster with AI </p>
+        <Button value='outline' className='   py-4 text-sm justify-self-end px-2 ' asChild>
           <Link href='/'>
           Sign In
           </Link>

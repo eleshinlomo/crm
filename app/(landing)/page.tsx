@@ -10,25 +10,18 @@ import { GOOGLE_LOGIN_URL } from '@/components/urls'
 import { loginURL } from '@/components/urls'
 import  HomeNavBar  from '@/components/homenavbar'
 import { Col3Top } from '@/components/col3top'
-import { Hero } from '@/components/hero'
+import  Hero  from '@/components/hero'
 import  Typewriter  from '@/components/typewriter'
 import { Col3Bottom } from '@/components/cols3bottom'
 import { SocialCTA } from '@/components/socialcta'
+
 
 const HomePage = () => {
   const [customText, setCustomText] = useState<Array<string>>([])
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
   const [showButtons, setShowButtons] = useState<boolean>(true)
 
-  useEffect(()=>{
-    setCustomText([
-         "Welcome to Fixupe",
-         "Write 200 Articles in 30mins",
-         "Top AI Tools",
-         "Complete task faster",
-         "Post on Wordpress in 2mins"
-    ])
-  },[])
+ 
 
   // useEffect(()=>{
   //   const loginChecker = async() =>{
@@ -55,19 +48,19 @@ const HomePage = () => {
 
     <div>
 
-    <div className=' py-4 px-4 text-center'>
+    <div className=' py-4 px-2  w-full h-full overflow-hidden'>
 
       <HomeNavBar />
     
        <div className='flex flex-col gap-4 justify-center items-center'>
 
        
-          
-        <Typewriter customText={customText} />
+        
+        {/* <Typewriter customText={customText} /> */}
 
           </div>
 
-      {/* <Hero /> */}
+      <Hero />
       
       {showButtons ?
       <div className='flex flex-col justify-center items-center gap-5 py-4'>

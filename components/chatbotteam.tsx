@@ -50,7 +50,8 @@ export const ChatbotTeamPage = ()=>{
 
 
 <div className='py-4 text-center '>
-    <p className='leading-8 py-2 text-2xl font-extrabold'>MEET OUR AI TEAM</p>
+    <p className='leading-8 py-2 text-2xl font-extrabold'>
+        MEET OUR AI TEAM</p>
    
     
 </div>
@@ -62,7 +63,8 @@ export const ChatbotTeamPage = ()=>{
             Chatbots.map((chatbot, index)=>
 
             <div key={index} className=''>
-         <div className='h-72 w-72 md:w-72 lg:w-72 rounded-lg shadow-2xl  relative'>
+         <div className='h-72 w-72 md:w-72 lg:w-72 rounded-lg shadow-2xl 
+          relative'>
             <Image src={chatbot.image} alt='member profile' fill  />  
             </div>
             <div className='flex flex-col justify-center items-center gap-2'>

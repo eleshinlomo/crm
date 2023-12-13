@@ -17,7 +17,7 @@ const Typewriter: React.FC<TypewriterProps> = ({customText}) => {
     <div>
       <div className='text-white font-extrabold text-center text-xl md:text-3xl  
       py-6 px-2'>
-        <span className='text-blue-600'>{text}</span>
+        <span className=''>{text}</span>
         <Cursor cursorColor='blue' />
       </div>
     </div>
