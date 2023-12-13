@@ -46,7 +46,7 @@ const Hero = ()=>{
 </div>
 
 
-<p className="flex-wrap text-start px-2  md:pr-16 ">
+<p className="flex flex-wrap text-start px-2  md:pr-16 ">
 Fixupe aims to 
  simplify and enhance daily tasks through the power of 
  artificial intelligence. SmartAssistant is not just a 
@@ -54,6 +54,16 @@ Fixupe aims to
  to streamline your workflow, 
 provide insightful information, and make your life easier.
 </p>
+
+<div className='flex flex-col justify-center 
+      items-center gap-5 py-4'>
+     <a href='/dashboard'>
+      
+        <Button>Get Started</Button>
+        
+       </a> 
+
+      </div>
 
 </div>
  

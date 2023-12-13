@@ -62,30 +62,10 @@ const HomePage = () => {
 
       <Hero />
       
-      {showButtons ?
-      <div className='flex flex-col justify-center items-center gap-5 py-4'>
-     <a href='/dashboard'>
+
       
-        <Button>Get Started</Button>
-        
-       </a> 
-
-       
-
-       {/* <a href={GOOGLE_LOGIN_URL}>
-        
-        <div className='flex justify-center items-center bg-black
-         text-white shadow-2xl border-blue-600 px-2 rounded-lg  py-2'>
-        <p>Register with</p> 
-        <div className='relative ml-2 w-4 h-4'>
-          <Image src='/google_logo.png' alt='google logo' fill />
-        </div>
-        <p>oogle</p>
-        </div>
-        </a> */}
-
-        </div>:null
-         }
+      
+         
       
       <SocialCTA />
        <Col3Top />
