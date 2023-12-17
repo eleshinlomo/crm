@@ -11,7 +11,19 @@ import { AreaChartIcon, BookIcon, BotIcon, CodeIcon, EyeIcon,
 
 
 export const Tools: [] | any = [
-
+  
+  { 
+    id: 'dash',
+    category: 'Dashboard',
+    href: "/dashboard",
+    tools: [{   
+      label: "Viewing Dashboard",
+      icon: AreaChartIcon,
+      href: "/dashboard",
+      color: "text-pink-500",
+      bgColor: "text-grey-500"
+    }]
+  },
 
   { 
       
@@ -115,6 +127,19 @@ export const Tools: [] | any = [
                         bgColor: "text-grey-500"
                         }
                       ]},
+
+                      { 
+                        id: 'dash',
+                        category: 'Settings',
+                        href: "/settings",
+                        tools: [{   
+                          label: "Viewing Dashboard",
+                          icon: AreaChartIcon,
+                          href: "/settings",
+                          color: "text-pink-500",
+                          bgColor: "text-grey-500"
+                        }]
+                      },
 
                      
           

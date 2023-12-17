@@ -62,11 +62,6 @@ const HomePage = () => {
 
       <Hero />
       
-
-      
-      
-         
-      
       <SocialCTA />
        <Col3Top />
        

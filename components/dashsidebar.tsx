@@ -31,211 +31,96 @@ const montserrat = Montserrat({
 interface toolisOpenProps{
   [key: string] : boolean;
 }
-
-
-
-const DashSidebar = () => {
   
-  const [isOpenConversation, setIsOpenConversation] = useState<boolean>(false)
-  const [isOpenWriting, setIsOpenWriting] = useState<boolean>(false)
-  const [isOpenMedia, setIsOpenMedia] = useState<boolean>(false)
-  const [isOpenDashboard, setIsOpenDashboard] = useState<boolean>(false)
-  const [toolIsOpen, setToolIsOpen] = useState<boolean>(false)
-  const [toolItemIsOpen, setToolItemIsOpen] = useState(false)
-  const [isOpenSettings, setIsOpenSettings] = useState<boolean>(false)
-
-
+  const DashSidebar = () => {
+    const [isOpenConversation, setIsOpenConversation] = useState<boolean>(false);
+    const [isOpenWriting, setIsOpenWriting] = useState<boolean>(false);
+    const [isOpenMedia, setIsOpenMedia] = useState<boolean>(false);
+    const [isOpenDashboard, setIsOpenDashboard] = useState<boolean>(false);
+    const [toolIsOpen, setToolIsOpen] = useState<boolean>(false);
+    const [toolItemIsOpen, setToolItemIsOpen] = useState(false);
+    const [isOpenSettings, setIsOpenSettings] = useState<boolean>(false);
+    const [selectedItem, setSelectedItem] = useState<null | any>(null);
   
-  const handleToolsOpen = ((close: boolean, open: boolean)=>{
-       open ? setToolIsOpen(true) : setToolIsOpen(false)
-  })
-
-  const router = useRouter()
-
-
-  const closeDashboard = ()=>{
-    setIsOpenDashboard(false)
-  }
-
-  const openDashboard = ()=>{
-    
-    setIsOpenDashboard(true)
-    setIsOpenSettings(false)
-    router.push('/dashboard')
-    setIsOpenConversation(false)
-    setIsOpenWriting(false)
-    setIsOpenMedia(false)
-  }
-
-  const closeSettings = ()=>{
-    setIsOpenSettings(false)
-  }
-
-  const openSettings = ()=>{
-    setIsOpenSettings(true)
-    setIsOpenDashboard(false)
-    router.push('/settings')
-    setIsOpenConversation(false)
-    setIsOpenWriting(false)
-    setIsOpenMedia(false)
-  }
-
-  const closeConversation = ()=>{
-    setIsOpenConversation(false)
-  }
-
-  const openConversation = ()=>{
-    setIsOpenConversation(true)
-    setIsOpenSettings(false)
-    setIsOpenWriting(false)
-    setIsOpenMedia(false)
-    setIsOpenDashboard(false)
-  }
-
-  const closeWriting = ()=>{
-    setIsOpenWriting(false)
-  }
-
-  const openWriting = ()=>{
-    setIsOpenWriting(true)
-    setIsOpenSettings(false)
-    setIsOpenMedia(false)
-    setIsOpenConversation(false)
-    setIsOpenDashboard(false)
-  }
-
-  const closeMedia = ()=>{
-    setIsOpenMedia(false)
-  }
-
-  const openMedia = ()=>{
-    setIsOpenMedia(true)
-    setIsOpenSettings(false)
-    setIsOpenWriting(false)
-    setIsOpenConversation(false)
-    setIsOpenDashboard(false)
-  }
-
-  const pathname = usePathname()
-
-  return (
-    <div>
-     
-     <div className='h-full w-full flex  flex-col space-y-4 text-white'>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-     <div className=" py-2 flex-1">
-        <Link href="/" className="flex items-center 
-        pl-3 mb-14">
-        <div className="relative w-8 h-8 mr-4">
-         <Image
-         fill
-         alt="logo"
-         src="/logo.png"
-          />
-        </div>
-
-          <h1 className={cn("text-2xl font-bold", montserrat.className)}>Fixupe</h1>
-        </Link>
-
-        <div className="space-y-1 w-full">
-          
-        {/* Dashboard */}
-        <Button className="w-full"
-        onClick={isOpenDashboard ? closeDashboard: openDashboard}
-        >
-          <div className="flex flex-1 gap-7 justify-between items-start">
-          <p className="text-md">
-          {isOpenDashboard ? 'Viewing Dashboard': 'Dashboard'}
-          </p>
-            {isOpenDashboard ? <ArrowDown className="" />: <ArrowBigRight />}
-            </div>
-          </Button>
-
-          {/* Start of Tools */}
-         <div>
-         {Tools.map((category:any, index:any)=>(
-          <div key={index}>
-            <div className=''>
-
-              
-              <Button
-              className='w-full my-1'
-              onClick= {()=> toolIsOpen ? setToolIsOpen(false): setToolIsOpen(true)}
-              
-              >
-              <div className='flex flex-1 justify-between items-start'>
-              {category.category}
-             
-              {toolIsOpen ? <ArrowBigDown /> : <ArrowBigRight />}
+    const handleSideBarClick = (category: any) => {
+      setSelectedItem(category);
+    };
+  
+    const router = useRouter();
+    const pathname = usePathname();
+  
+    return (
+      <div>
+        <div className='h-full w-full flex flex-col space-y-4 text-white'>
+          <div className=" py-2 flex-1">
+            <Link href="/" className="flex items-center pl-3 mb-14">
+              <div className="relative w-8 h-8 mr-4">
+                <Image fill alt="logo" src="/logo.png" />
               </div>
-              </Button>
-              
-              
+              <h1 className={cn("text-2xl font-bold", montserrat.className)}>
+                Fixupe
+              </h1>
+            </Link>
+  
+            <div className="space-y-1 w-full">
+              {/* Start of Tools */}
+              <div>
+                {Tools.map((category: any, index: any) => (
+                  <div key={index}>
+                    <div className=''>
+                      {category.category === 'Dashboard' || 
+                      category.category === 'Settings'  ?
+                      <Button
+                      onClick= {()=>router.push(category.href)}
+                      className='w-full my-1'
+                      >
+                       <div className='flex flex-1 justify-between items-start'>
+                          {category.category}
+                          {<ArrowBigRight />}
+                        </div>
+                      </Button>:
+                      <Button
+                        className='w-full my-1'
+                        onClick={()=>handleSideBarClick(category)}
+                      >
+                        <div className='flex flex-1 justify-between items-start'>
+                          {category.category}
+                          {<ArrowBigRight />}
+                        </div>
+                      </Button>}
+                    </div>
+  
+                    <div>
+                      {selectedItem === category ?
+                        selectedItem.tools.map((category: any, index: any) => (
+                          <Link
+                            href={category.href}
+                            key={index}
+                            className={cn(`text-sm group flex p-3 w-full justify-start
+                            font-medium cursor-pointer hover:text-white hover:bg-white/10
+                            rounded-lg transition
+                            `,
+                              pathname === category.href ? "text-white bg-white/10" : "text-zinc-400"
+                            )}
+                          >
+                            <div className="flex items-center flex-1">
+                              <category.icon className={cn("h-5 w-5 mr-3", category.color)} />
+                              {category.label}
+                            </div>
+                          </Link>
+                        )) : null
+                      }
+                    </div>
+                  </div>
+                ))}
+                {/* End of Tools */}
+              </div>
             </div>
-            
-            {toolIsOpen ?
-            <div>
-            {category.tools.map((tool: any, index: any)=>
-        
-         <Link
-          href = {tool.href}
-          key={index}
-          className={cn(`text-sm group flex p-3 w-full justify-start
-          font-medium cursor-pointer hover:text-white hover:bg-white/10
-          rounded-lg transition
-          `, 
-          pathname === tool.href ? "text-white bg-white/10": "text-zinc-400" 
-          )}
-          >
-            <div className="flex items-center flex-1">
-             <tool.icon className={cn("h-5 w-5 mr-3", tool.color)} />
-             {tool.label}
-            </div>
-         </Link>
-             )}
-             </div>:null
-             }
-             {/* End of tools */}
-         </div>
-         ))}
-          {/* End of Tools */}
-         
-         </div>
-        {/* //  End of Conversation tools */}
-         </div>
-
-        
-
-        
-         {/* Settings */}
-        <Button className="w-full"
-        onClick={isOpenSettings ? closeSettings: openSettings}
-        >
-          <div className="flex flex-1 gap-7 justify-between items-start">
-          <p className="text-md">
-          {isOpenSettings ? 'Viewing Settings': 'Settings'}
-          </p>
-            {isOpenSettings ? <ArrowDown className="" />: <ArrowBigRight />}
-            </div>
-          </Button>
-
-         {/* <div className="py-2">
-          <CreditPage />
-         </div> */}
-
-         <a href={GOOGLE_LOGOUT_URL}>
-          <div className="flex flex-1 gap-3 pl-3 py-4">
-          <LogOutIcon />
-          <p>Logout</p>
           </div>
-        </a>
-
         </div>
-        
-     </div>
-      
-
-     </div>
-  )
-}
-
-export default DashSidebar
+      </div>
+    );
+  };
+  
+  export default DashSidebar;
+  

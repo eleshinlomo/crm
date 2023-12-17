@@ -26,17 +26,17 @@ const Hero = ()=>{
 
 
 
-<div className="h-full w0-full flex flex-col justify-between   
+<div className=" h-auto w-full flex flex-1 flex-col   
             bg-black text-white rounded-3xl ">
 
 
 
-<div className="h-auto md:h-96 w-full  grid grid-flow-row md:grid-cols-2 
-   mx-0 ">
+<div className="  h-96 md:flex  flex-1 w-full
+   ">
 
 
 
-<div className="px-3 pb-2 h-auto">
+<div className="px-3 pb-2 h-1/2 md:h-full w-full md:w-1/2">
 
 <div className="">
 <Typewriter customText={customText} />
@@ -55,7 +55,7 @@ Fixupe aims to
 provide insightful information, and make your life easier.
 </p>
 
-<div className='flex flex-col justify-center 
+<div className='flex flex-col
       items-center gap-5 py-4'>
      <a href='/dashboard'>
       
@@ -68,14 +68,9 @@ provide insightful information, and make your life easier.
 </div>
  
 {/* Images */}
-<div className="h-44 grid md:grid-rows-2 md:grid-cols-2 ">
+<div className="h-1/2 md:h-full w-full md:w-1/2">
 
-
-<div className="relative  w-auto h-72 md:h-96">
-<Image src='/images/girl1.png' alt='woman' fill />
-</div>
-
-<div className="relative  w-auto h-72 md:h-96">
+<div className="relative  w-full h-96">
 <Image src='/images/coder.png' alt='woman' fill />
 </div>
 </div>
