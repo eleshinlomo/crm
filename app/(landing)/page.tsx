@@ -48,19 +48,12 @@ const HomePage = () => {
 
     <div>
 
-    <div className=' py-4 px-2  w-full h-full overflow-hidden'>
-
+    <div className='  px-2  w-full h-full overflow-hidden'>
+     <div className='bg-black'>
       <HomeNavBar />
-    
-       <div className='flex flex-col gap-4 justify-center items-center'>
-
-       
-        
-        {/* <Typewriter customText={customText} /> */}
-
-          </div>
 
       <Hero />
+      </div>
       
       <SocialCTA />
        <Col3Top />

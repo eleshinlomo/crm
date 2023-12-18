@@ -10,7 +10,7 @@ const HomeNavBar = ()=>{
     return(
        <div>
         
-        <div className='   text-black  px-2
+        <div className='   text-white bg-black  px-2
         flex flex-1 justify-between  mb-5'>
 
       
@@ -24,7 +24,7 @@ const HomeNavBar = ()=>{
 <div className='md:hidden'>
 <Sheet>
 <SheetTrigger>
-<Button size='icon'  className='w-10 h-8'  asChild>
+<Button size='icon'  className='mt-3 w-10 h-8'  asChild>
   <Menu />
 </Button>
 </SheetTrigger>

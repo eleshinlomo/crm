@@ -26,8 +26,8 @@ const Hero = ()=>{
 
 
 
-<div className=" h-auto w-full flex flex-1 flex-col   
-            bg-black text-white rounded-3xl ">
+<div className=" h-auto w-full flex flex-1 flex-col   bg-white
+             rounded-3xl ">
 
 
 
@@ -36,7 +36,7 @@ const Hero = ()=>{
 
 
 
-<div className="px-3 pb-2 h-1/2 md:h-full w-full md:w-1/2">
+<div className="px-4 pb-2 h-1/2 md:h-full w-full md:w-1/2">
 
 <div className="">
 <Typewriter customText={customText} />
@@ -46,7 +46,7 @@ const Hero = ()=>{
 </div>
 
 
-<p className="flex flex-wrap text-start px-2  md:pr-16 ">
+<p className="flex flex-wrap text-start   md:pr-16 ">
 Fixupe aims to 
  simplify and enhance daily tasks through the power of 
  artificial intelligence. SmartAssistant is not just a 
@@ -71,7 +71,7 @@ provide insightful information, and make your life easier.
 <div className="h-1/2 md:h-full w-full md:w-1/2">
 
 <div className="relative  w-full h-96">
-<Image src='/images/coder.png' alt='woman' fill />
+<Image src='/images/man-1835.gif' alt='woman' fill />
 </div>
 </div>
            
