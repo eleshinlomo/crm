@@ -25,10 +25,75 @@ export const Tools: [] | any = [
     }]
   },
 
+  {
+    id:'conversation',
+    category: 'Conversation Tools',
+    tools: [
+        {
+        
+        label: "General Conversation",
+        icon: MessageSquare,
+        href: "/general",
+        color: "text-pink-500",
+        bgColor: "text-grey-500"
+        },
+        
+        { 
+          
+          label: "Code Generation",
+          icon: CodeIcon,
+          href: "/code",
+          color: "text-grey-500",
+          bgColor: "text-grey-500"
+        }
+    ]},
+
+    {
+      id:'media',
+      category: 'Media Tools',
+      tools: [
+        
+        {
+        
+          label: "Voice Recorder",
+          icon: ImageIcon,
+          href: "/voicerecorder",
+          color: "text-blue-500",
+          bgColor: "text-grey-500"
+          },
+        {
+        
+        label: "Image Generation",
+        icon: ImageIcon,
+        href: "/image",
+        color: "text-blue-500",
+        bgColor: "text-grey-500"
+        },
+
+        {   
+            
+            label: "Video Generation",
+            icon: VideoIcon,
+            href: "/video",
+            color: "text-blue-500",
+            bgColor: "text-grey-500"
+            },
+
+            {
+              label: "Music Generation",
+              icon: Music2Icon,
+              href: "/music",
+              color: "text-purple-500",
+              bgColor: "text-grey-500"
+              }
+            ]},
+
+
   { 
       
     id:'writing',
     category: 'Writing Tools',
+    href: "",
     tools: [
     
     {
@@ -49,30 +114,7 @@ export const Tools: [] | any = [
         }
       ]},
 
-  {
-    id:'conversation',
-    category: 'Conversation Tools',
-    tools: [
-        {
-        
-        label: "General Conversation",
-        icon: MessageSquare,
-        href: "/general",
-        color: "text-pink-500",
-        bgColor: "text-grey-500"
-        },
-        { 
-          
-          label: "Code Generation",
-          icon: CodeIcon,
-          href: "/code",
-          color: "text-grey-500",
-          bgColor: "text-grey-500"
-        }
-    ]},
-
-    
-
+ 
           {
             id:'document',
             category: 'Document Tools',
@@ -96,72 +138,24 @@ export const Tools: [] | any = [
                 }
               ]},
 
-                {
-                id:'media',
-                category: 'Media Tools',
-                tools: [
-                  
-                  {
-                  
-                  label: "Image Generation",
-                  icon: ImageIcon,
-                  href: "/image",
-                  color: "text-blue-500",
+              { 
+                id: 'Settings',
+                category: 'Settings',
+                href: "/settings",
+                tools: [{   
+                  label: "Viewing Dashboard",
+                  icon: AreaChartIcon,
+                  href: "/settings",
+                  color: "text-pink-500",
                   bgColor: "text-grey-500"
-                  },
-          
-                  {   
-                      
-                      label: "Video Generation",
-                      icon: VideoIcon,
-                      href: "/video",
-                      color: "text-blue-500",
-                      bgColor: "text-grey-500"
-                      },
-          
-                      {
-                        label: "Music Generation",
-                        icon: Music2Icon,
-                        href: "/music",
-                        color: "text-purple-500",
-                        bgColor: "text-grey-500"
-                        }
-                      ]},
-
-                      { 
-                        id: 'dash',
-                        category: 'Settings',
-                        href: "/settings",
-                        tools: [{   
-                          label: "Viewing Dashboard",
-                          icon: AreaChartIcon,
-                          href: "/settings",
-                          color: "text-pink-500",
-                          bgColor: "text-grey-500"
-                        }]
-                      },
+                }]
+              },
 
                      
           
                       ]
 
 
-export const DashboardSideItem = 
-    {   
-        
-        label: "Dashboard",
-        href: "/dashboard",
-        color: "text-grey-500",
-        bgColor: "text-grey-500"
-        }
-
-    export const SettingsTool = {
-        
-        label: "Settings",
-        icon: Settings,
-        href: "/settings",
-        
-        }
         
      
 

@@ -242,24 +242,31 @@ handleGetAccessToken()
          <div>
 
             { isLoggedIn ?
-        <div className="h-full relative  ">
+        <div className="relative flex flex-1 gap-2 w-full overflow-hidden">
+
             <div className="hidden h-full md:flex w-72 md:flex-col flex-1
              md:fixed md:inset-y-0 z-[80] bg-black">
 
                 <Sidebar />
             </div>
             
-           <main className="md:pl-72">
+           <main className=" w-full md:ml-72 h-full ">
             <Navbar />
-            <div className='flex flex-col justify-center items-center'>
+            <div className='flex flex-col flex-1 justify-center 
+            items-center bg-black text-white z-[80]
+             '>
              <CreditPage />
              </div>
+
+             <div className='py-8'>
             {children}
+            </div>
            </main>
         </div>:
 
 
-        <div className='h-full mt-12 flex flex-col justify-center items-center gap-3'>
+        <div className='h-full mt-12 flex flex-col justify-center 
+        items-center gap-3'>
             
             {isChecking ?
             <div>

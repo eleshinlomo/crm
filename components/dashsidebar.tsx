@@ -51,7 +51,7 @@ interface toolisOpenProps{
   
     return (
       <div>
-        <div className='h-full w-full flex flex-col space-y-4 text-white'>
+        <div className='w-full flex flex-col space-y-4 text-white'>
           <div className=" py-2 flex-1">
             <Link href="/" className="flex items-center pl-3 mb-14">
               <div className="relative w-8 h-8 mr-4">
@@ -62,9 +62,9 @@ interface toolisOpenProps{
               </h1>
             </Link>
   
-            <div className="space-y-1 w-full">
+            <div className="space-y-1 w-full pt-16">
               {/* Start of Tools */}
-              <div>
+              <div className=''>
                 {Tools.map((category: any, index: any) => (
                   <div key={index}>
                     <div className=''>
@@ -74,9 +74,9 @@ interface toolisOpenProps{
                       onClick= {()=>router.push(category.href)}
                       className='w-full my-1'
                       >
-                       <div className='flex flex-1 justify-between items-start'>
-                          {category.category}
-                          {<ArrowBigRight />}
+                       <div className='flex flex-1 justify-between items-start text-sm'>
+                          <p>{category.category}</p>
+                          {pathname === category.href ? <ArrowBigRight /> : <ArrowBigDown />}
                         </div>
                       </Button>:
                       <Button
@@ -84,8 +84,8 @@ interface toolisOpenProps{
                         onClick={()=>handleSideBarClick(category)}
                       >
                         <div className='flex flex-1 justify-between items-start'>
-                          {category.category}
-                          {<ArrowBigRight />}
+                          <p>{category.category}</p>
+                          {pathname === category.id ? <ArrowBigRight /> : <ArrowBigDown />}
                         </div>
                       </Button>}
                     </div>

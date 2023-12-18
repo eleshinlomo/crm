@@ -15,7 +15,7 @@ export const Navbar = () => {
 
   
   return (
-    <div className="flex items-center p-4">
+    <div className="flex items-center p-4 bg-black text-white">
         <MobileSidebar />
 
         <div className="flex w-full justify-end pr-2">
