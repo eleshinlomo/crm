@@ -12,7 +12,6 @@ import { AvatarImage } from "./ui/avatar";
 import { DIRTY } from "zod";
 import { GOOGLE_LOGOUT_URL } from "./urls";
 import CreditPage from "@/components/creditpage";
-import { DashboardSideItem } from "@/components/tools";
 import { Button } from "./ui/button";
 // AI Tools
 import { Tools} from '@/components/tools'
