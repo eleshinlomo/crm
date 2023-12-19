@@ -3,6 +3,7 @@ import { useState } from "react";
 import Title from "@/components/(audiotospeech)/Title";
 import {RecordMessage} from "@/components/(audiotospeech)/RecordMessage";
 import Link from 'next/link'
+import { json } from "stream/consumers";
 
 const Controller = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -24,8 +25,8 @@ const Controller = () => {
   
     try {
       // Play audio immediately
-      const userAudio = new Audio(mediaBlobUrl)
-      userAudio.play()
+      // const userAudio = new Audio(mediaBlobUrl)
+      // userAudio.play()
   
       // Fetch the content from the URL and convert it to a Blob
       const response = await fetch(mediaBlobUrl);
@@ -41,8 +42,10 @@ const Controller = () => {
         mode: 'cors',
         body: formData,
       });
-  
+      console.log(blobResponse)
       const chatbotData = await blobResponse.blob();
+     
+      console.log({"user text": chatbotData})
       
       if(!blobResponse.ok){throw new Error("Unable to get Blob response")}
       console.log(chatbotData);
@@ -74,7 +77,8 @@ const Controller = () => {
         <div className="font-extrabold text-center border  flex 
         justify-center items-center 
          border-black px-3 mx-3 mb-3">
-                    <p>Bola is the AI Sales Rep for Fixupe. Currently, 
+                    <p>Now you can do everything you would do with chatGPT 
+                      using voice chat.
                         Voice conversation and Transcript with Bola are not saved</p>
                 </div>
       {/* Title */}
@@ -93,9 +97,20 @@ const Controller = () => {
                   (audio.sender == "bola" && "flex items-end")
                 }
               >
-                
+                {
+                  audio.sender === "bola" ? 
+                  <div>
+                    <p className="py-2 text-muted-foreground">
+                  Download audio response</p>
+                    </div>: 
+                    <div>
+                      <p className="py-2 text-muted-foreground">
+                  Download audio prompt</p>
+                      </div>
+                }
                 {/* Sender */}
                 <div className=" ">
+                  
                   <p
                     className={
                       audio.sender == "bola"
@@ -132,7 +147,8 @@ const Controller = () => {
         </div>
 
         {/* Recorder */}
-        <div className="fixed bottom-0 w-full py-6 border-t text-center bg-gradient-to-r from-black to-blue-500">
+        <div className="fixed bottom-0 w-full py-6 border-t text-center 
+        bg-gradient-to-r from-black to-blue-500">
           <div className="flex justify-center items-center w-full">
             <div>
               

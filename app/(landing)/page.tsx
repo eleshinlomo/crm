@@ -48,8 +48,8 @@ const HomePage = () => {
 
     <div>
 
-    <div className='  px-2  w-full h-full overflow-hidden'>
-     <div className='bg-black'>
+    <div className='    w-full h-full overflow-hidden'>
+     <div className='bg-black px-2 flex flex-col justify-center'>
       <HomeNavBar />
 
       <Hero />

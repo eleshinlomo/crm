@@ -10,11 +10,11 @@ const HomeNavBar = ()=>{
     return(
        <div>
         
-        <div className='   text-white bg-black  px-2
+        <div className='   text-white bg-black  
         flex flex-1 justify-between  mb-5'>
 
       
-<div className='relative w-32 h-16 hidden md:flex'>
+<div className='relative w-24 h-16 hidden md:flex'>
         <Link href='/'>
         <Image src="/images/logo.png" alt="logo" fill />
         </Link>

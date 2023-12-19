@@ -39,7 +39,7 @@ function Title({ setMessages }: Props) {
         </div>
 
         <Button variant='outline'  className="text-black w-1/2 py-2">
-          Conversation Transcript</Button>
+          Text Transcript</Button>
       <button
         onClick={resetConversation}
         className={

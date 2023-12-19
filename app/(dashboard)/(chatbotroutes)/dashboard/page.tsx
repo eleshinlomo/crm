@@ -70,14 +70,15 @@ const DashboardPage = () => {
                   >
                     
                     <div className="flex items-center gap-x-4">
-                      <div className={cn(`w-p-2 w-fit rounded-md`, tool.bgColor)}>
+                      <div className={cn(`w-p-2 w-fit rounded-md`, 
+                      tool.bgColor)}>
                         <tool.icon className={cn('w-8 h-8', tool.color)} />
                       </div>
                       <div className="font-semibold">{tool.label}</div>
                     </div>
                     <Link href={tool.href}>
                     <Button size='icon'>
-                    <ArrowRight className="w-5 h-5" />
+                    <ArrowRight className="" />
                     </Button>
                     </Link>
                     

@@ -7,18 +7,20 @@ type Props = {
 
 export const RecordMessage = ({ handleStop }: Props) => {
   return (
-     <div className="w-full flex flex-col justify-center items-center">
+     <div className="w-full flex flex-col justify-center items-center ">
     <ReactMediaRecorder
       audio
       onStop={handleStop}
       render={({ status, startRecording, stopRecording, mediaBlobUrl }) => (
         <div className="">
-          <p className=" text-white font-light">{status}</p>
+          
             
             
           
             
-<div className="flex flex-1 justify-center items-center">
+<div className="flex flex-col   justify-center items-center md:mr-72">
+<p className=" text-white font-light">{status}</p>
+<div className="flex   justify-center items-center">
 <button className="bg-blue-900 text-white p-4 rounded-full" 
 onClick={startRecording}>Start</button>
 <RecordIcon
@@ -30,6 +32,7 @@ onClick={startRecording}>Start</button>
             />
 <button className="bg-blue-900 text-white p-4 rounded-full" 
 onClick={stopRecording}>Stop</button>
+</div>
 
 </div>
 

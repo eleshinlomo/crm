@@ -26,7 +26,7 @@ const Hero = ()=>{
 
 
 
-<div className=" h-auto w-full flex flex-1 flex-col   bg-white
+<div className=" h-auto w-full flex flex-1 flex-col   bg-black text-muted-foreground
              rounded-3xl ">
 
 
@@ -56,7 +56,7 @@ provide insightful information, and make your life easier.
 </p>
 
 <div className='flex flex-col
-      items-center gap-5 py-4'>
+      items-start gap-5 py-4'>
      <a href='/dashboard'>
       
         <Button>Get Started</Button>
@@ -68,10 +68,10 @@ provide insightful information, and make your life easier.
 </div>
  
 {/* Images */}
-<div className="h-1/2 md:h-full w-full md:w-1/2">
+<div className="h-1/2 md:h-full w-full md:w-1/2 ">
 
 <div className="relative  w-full h-96">
-<Image src='/images/man-1835.gif' alt='woman' fill />
+<Image src='/images/abstract-69124_1280.jpg' alt='woman' fill />
 </div>
 </div>
            
