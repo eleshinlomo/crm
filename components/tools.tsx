@@ -61,15 +61,6 @@ export const Tools: [] | any = [
           color: "text-blue-500",
           bgColor: "text-grey-500"
           },
-
-          {
-        
-            label: "Voice Chatbot",
-            icon: ImageIcon,
-            href: "/audiotospeech",
-            color: "text-blue-500",
-            bgColor: "text-grey-500"
-            },
         {
         
         label: "Image Generation",

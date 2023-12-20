@@ -6,18 +6,18 @@ const GeneralPage = () => {
   return (
     <div>
         <div className='h-screen  flex flex-1 justify-center  
-        gap-3 px-4  
+        gap-3 px-4  pt-32
         bg-gradient-to-r from-blue-700 via-blue-200 to-neutral-400'>
-        <Button className='w-1/2'>
+        <Button className=''>
         <Link href='/textchat'>
-            TextChat
+            TextChatbot
             </Link>
             </Button>
         
 
-            <Button className='w-1/2'>
+            <Button className=''>
         <Link href='/audiochat'>
-            VoiceChat
+            VoiceChatbot
             </Link>
             </Button>
         </div>

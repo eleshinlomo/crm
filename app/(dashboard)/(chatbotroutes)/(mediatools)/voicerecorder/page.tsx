@@ -28,8 +28,8 @@ const Controller = () => {
       // Play audio immediately
       // const userAudio = new Audio(mediaBlobUrl)
       // userAudio.play()
-      const audio = new Audio(mediaBlobUrl)
-      audio.play()
+      // const audio = new Audio(mediaBlobUrl)
+      // audio.play()
   
       // Fetch the content from the URL and convert it to a Blob
       const response = await fetch(mediaBlobUrl);
