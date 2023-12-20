@@ -8,7 +8,7 @@ const ImagePage = () => {
   const [isLoading, setIsloading] = useState(false)
 
   const loading = "Transcribing..."
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+  const BASE_URL = process.env.NEXT_PUBLIC_FAST_API_BASE_URL;
 
     const handleTranscription = async (e: any)=>{
       e.preventDefault()

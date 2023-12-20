@@ -36,7 +36,7 @@ const Controller = () => {
       const formData = new FormData();
       formData.append("file", blob, "myFile.wav");
   
-      const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+      const BASE_URL = process.env.NEXT_PUBLIC_FAST_API_BASE_URL;
       const blobResponse = await fetch(`${BASE_URL}/post-audio`, {
         method: 'POST',
         mode: 'cors',
