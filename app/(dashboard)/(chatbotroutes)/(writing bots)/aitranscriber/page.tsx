@@ -14,7 +14,7 @@ const ImagePage = () => {
       e.preventDefault()
       setIsloading(true)
       const formData = new FormData()
-      formData.append('file', fileInput)
+      formData.append('audiofile', fileInput, 'audiofile.wav')
       try{
       const response = await fetch(`${BASE_URL}/transcriber`, {
         mode: 'cors',
@@ -39,14 +39,14 @@ const ImagePage = () => {
        text-black text-2xl gap-4 px-8 py-8">
           
 
-          <p className='py-8 font-extrabold'>Only WAV files currently supported</p>
+          <p className='py-8 font-extrabold'>Most Audio Files Are Accepted</p>
           
           
           <form onSubmit={handleTranscription} className='flex flex-col 
           justify-center items-center text-center'>
             
         <input 
-          name='file'
+          name='audiofile'
           type='file'
           accept='audio/*'
           onChange={(e)=>setFileInput(e.target.files?.[0] || null)}
