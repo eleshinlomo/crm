@@ -1,6 +1,7 @@
 "use client"
 import {useState, useEffect} from 'react'
 import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
 const ImagePage = () => {
   const [fileInput, setFileInput] = useState<null | any>(null)
@@ -56,18 +57,18 @@ const ImagePage = () => {
           required
           />
 
-          <button type='submit' 
-          className='bg-blue-500 text-white p-2 rounded-2xl'>
+          <Button type='submit' 
+          className=' text-white p-2 rounded-2xl'>
           
-          Transcribe</button>
+          Transcribe</Button>
           </form>
            
            <div>
             <p className='py-4'>Don&apos;t have an Audio file?</p>
           <Link href='/voicerecorder'>
-            <button className='bg-blue-500 text-white p-2 rounded-2xl'>
+            <Button className=' text-white p-2 rounded-2xl'>
             Record Wav Audio
-          </button>
+          </Button>
           </Link>
           </div>
          
