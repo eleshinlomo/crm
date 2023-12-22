@@ -39,7 +39,9 @@ const ImagePage = () => {
        text-black text-2xl gap-4 px-8 py-8">
           
 
-          <p className='py-8 font-extrabold'>Most Audio Files Are Accepted</p>
+          <p className='py-8 font-extrabold text-sm'>File uploads are currently limited to 
+          25 MB and the following input file types are supported: 
+          mp3, mp4, mpeg, mpga, m4a, wav, and webm.</p>
           
           
           <form onSubmit={handleTranscription} className='flex flex-col 
