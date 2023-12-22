@@ -33,7 +33,7 @@ export const Services = ()=>{
                 Transcribing
                 </p>
                 <p className=" py-4 px-4 flex flex-wrap">Our advance AI tool will transcribe your project at incredible 
-                speed with high voice to text accuracy. Get started now</p>
+                speed with high voice to text accuracy. Get started right now.</p>
                 <Button>
                     <Link href='/aitranscriber'>Try Now</Link>
                  </Button>
