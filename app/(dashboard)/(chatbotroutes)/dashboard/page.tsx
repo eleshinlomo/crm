@@ -6,9 +6,9 @@ import { Card } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import { Tools } from '@/components/tools';
-import WaitlistPage from '@/components/waitlistpage';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link'
+import Waitlist from '@/components/waitlistpage';
 
 const DashboardPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,7 +27,7 @@ const DashboardPage = () => {
     <div>
       <div className="mb-10">
         <div>
-          <WaitlistPage />
+          <Waitlist />
         </div>
         <div className="mb-8 space-y-4">
           <h2 className="text-2xl md:text-4xl font-bold text-center">Do everything with AI</h2>
