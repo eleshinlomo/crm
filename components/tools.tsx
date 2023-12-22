@@ -63,7 +63,7 @@ export const Tools: [] | any = [
           },
         {
         
-        label: "Image Generation",
+        label: "Image Generator",
         icon: ImageIcon,
         href: "/image",
         color: "text-blue-500",
@@ -72,7 +72,7 @@ export const Tools: [] | any = [
 
         {   
             
-            label: "Video Generation",
+            label: "Video Generator",
             icon: VideoIcon,
             href: "/video",
             color: "text-blue-500",
@@ -80,7 +80,7 @@ export const Tools: [] | any = [
             },
 
             {
-              label: "Music Generation",
+              label: "Music Generator",
               icon: Music2Icon,
               href: "/music",
               color: "text-purple-500",
@@ -119,6 +119,22 @@ export const Tools: [] | any = [
             id:'document',
             category: 'Document Tools',
             tools: [
+              {   
+                
+                label: "PDFtoWORD",
+                icon: FileIcon,
+                href: "/pdftoword",
+                color: "text-blue-500",
+                bgColor: "text-blue-500"
+                },
+                {   
+                
+                  label: "WORDtoPDF",
+                  icon: FileIcon,
+                  href: "/wordtopdf",
+                  color: "text-blue-500",
+                  bgColor: "text-blue-500"
+                  },
           { 
             
             label: "PDF Voice Reader",

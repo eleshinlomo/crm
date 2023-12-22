@@ -53,7 +53,7 @@ const Hero = ()=>{
 <p className="flex-wrap text-start  pr-8 ">
 
 In a world driven by technology, the demand for cutting-edge 
-solutions has never been more critical, Fixupe is your gateway to a 
+solutions has never been more critical. Fixupe is your gateway to a 
 future where Artificial Intelligence (AI) 
 transcends boundaries, reshaping industries, 
 and propelling businesses to unprecedented heights..</p>
