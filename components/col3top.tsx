@@ -8,7 +8,7 @@ export const Col3Top = ()=>{
             bg-white 
              text-black font-mono rounded-2xl md:rounded-full
              gap-5
-             py-8 px-2 place-items-center text-sm">
+             py-8 px-6 place-items-center text-sm">
                
                {/* Col One */}
                 <div>

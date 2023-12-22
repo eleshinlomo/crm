@@ -26,12 +26,13 @@ const Hero = ()=>{
 
 
 
-<div className=" h-auto w-full flex flex-1 flex-col   bg-black text-muted-foreground
+<div className=" h-auto w-full flex flex-1 flex-col  
+ bg-black text-muted-foreground px-2
              rounded-3xl ">
 
 
 
-<div className="  h-96 md:flex  flex-1 w-full
+<div className="  h-96 md:flex  flex-1 w-full justify-center items-center
    ">
 
 
@@ -68,7 +69,7 @@ provide insightful information, and make your life easier.
 </div>
  
 {/* Images */}
-<div className="h-1/2 md:h-full w-full md:w-1/2 ">
+<div className="h-1/2 md:h-full w-full  ">
 
 <div className="relative  w-full h-96">
 <Image src='/images/abstract-69124_1280.jpg' alt='woman' fill />
