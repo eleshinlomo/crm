@@ -31,7 +31,7 @@ const HomeNavBar = ()=>{
 </Button>
 </SheetTrigger>
 
-<SheetContent side='left' className='bg-black flex flex-col'>
+<SheetContent side='left' className='bg-black '>
   <HomeSidebar />
 </SheetContent>
 </Sheet>

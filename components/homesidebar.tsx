@@ -5,7 +5,8 @@ import  Image  from 'next/image'
 import { BASE_URL } from './auth'
 import { GOOGLE_LOGIN_URL } from './urls'
 import { GOOGLE_LOGOUT_URL } from './urls'
-import WaitlistPage from './waitlistpage'
+import Waitlist from './waitlistpage'
+
 
 
 
@@ -38,7 +39,7 @@ export const HomeSidebar = () => {
 
   return (
     <div>
-      <div className='flex flex-col gap-6 py-8'>
+      <div className=''>
         <div className='relative w-32 h-24'>
           <Image src='/images/logo.png' alt='logo' fill />
         </div>
@@ -55,7 +56,7 @@ export const HomeSidebar = () => {
          }
 
          <div>
-          <WaitlistPage />
+          <Waitlist />
          </div>
       </div>
     </div>

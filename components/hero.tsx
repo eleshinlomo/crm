@@ -6,6 +6,7 @@ import { Button } from "./ui/button"
 import {useEffect, useState} from 'react'
 import  Typewriter  from "@/components/typewriter"
 import Link from 'next/link'
+import WaitlistPage from "@/app/(dashboard)/waitlistpage/page"
 
 const Hero = ()=>{
 
@@ -63,9 +64,7 @@ and propelling businesses to unprecedented heights..</p>
 <Button variant='outline' size='sm'
 className=" text-black animate-pulse " 
   ><Link href='/dashboard'>DEMO HERE RIGHT AWAY</Link></Button>
-<Button variant='outline' size='sm' className="  text-black  ">
-    SEE MORE
-</Button>
+<WaitlistPage />
 </div> 
 </div>
  

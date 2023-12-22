@@ -3,7 +3,7 @@ import { BASE_URL } from './urls'
 import { Button } from './ui/button'
 
 
-const WaitlistPage = ()=>{
+const Waitlist = ()=>{
 
     const [email, setEmail] = useState<string>('')
     const [message, setMessage] = useState<string>('')
@@ -44,8 +44,9 @@ const HandleEmailWaitlist = async (e:any)=>{
     <div>
       <div className='py-4 flex flex-col justify-center items-center text-center'>
   
-  <p className='px-6 text-muted-foreground py-2 '>Please join waitlist so we can inform 
-            you when this service becomes available.</p>
+  <p className='px-6 text-muted-foreground py-2 '>Please join waitlist so 
+  we can inform 
+  you when we fully launch.</p>
             <p className='text-blue-500 ml-6 '>{message}</p>
         <form className='px-6' onSubmit={HandleEmailWaitlist}>
           <input 
@@ -65,4 +66,4 @@ const HandleEmailWaitlist = async (e:any)=>{
 
 }
 
-  export default WaitlistPage
+  export default Waitlist
