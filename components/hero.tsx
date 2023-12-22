@@ -1,9 +1,11 @@
 "use client"
 import { BotIcon, BriefcaseIcon, ComputerIcon, MailPlusIcon, PiIcon } from "lucide-react"
 import Image from 'next/image'
+import { CtaBlockPage } from "./ctablock"
 import { Button } from "./ui/button"
 import {useEffect, useState} from 'react'
 import  Typewriter  from "@/components/typewriter"
+import Link from 'next/link'
 
 const Hero = ()=>{
 
@@ -12,11 +14,9 @@ const Hero = ()=>{
   useEffect(()=>{
     setCustomText(
       [
-        "Welcome to Fixupe",
-        "Write 200 Articles in 30mins",
-        "Top AI Tools",
-        "Complete task faster",
-        "Post on Wordpress in 2mins"
+        "Advance AI Models",
+        "Innovative ML Approach",
+        "Cutting Edge Technologies"
       ]
     )
   }, [])
@@ -26,55 +26,49 @@ const Hero = ()=>{
 
 
 
-<div className=" h-auto w-full flex flex-1 flex-col  
- bg-black text-muted-foreground px-2
-             rounded-3xl ">
+<div className="h-auto   
+            bg-black text-white ">
 
 
 
-<div className="  h-96 md:flex  flex-1 w-full justify-center items-center
-   ">
 
+{/* Left Side */}
+<div className="md:h-96 w-full md:flex justify-center items-center   ">
 
+<div className="relative  w-full h-72 md:h-96">
+<Image src='/images/tree-1781554.svg' alt='hero pics' fill />
+</div>
 
-<div className="px-4 pb-2 h-1/2 md:h-full w-full md:w-1/2">
+<div className="px-3 pb-2">
 
-<div className="">
+<div className="border-b border-white  my-3">
+<h1 className="py-4 font-arial font-extrabold text-2xl ">{"Welcome to the Future of Innovation!"}</h1>
+</div>
+
+<div>
+<div>
 <Typewriter customText={customText} />
 </div>
-<div className=" ">
-<h1 className="py-4 font-arial font-extrabold ">ABOUT FIXUPE</h1>
+<p className="flex-wrap text-start  pr-8 ">
+
+In a world driven by technology, the demand for cutting-edge 
+solutions has never been more critical, Fixupe is your gateway to a 
+future where Artificial Intelligence (AI) 
+transcends boundaries, reshaping industries, 
+and propelling businesses to unprecedented heights..</p>
 </div>
 
 
-<p className="flex flex-wrap text-start   md:pr-16 ">
-Fixupe aims to 
- simplify and enhance daily tasks through the power of 
- artificial intelligence. SmartAssistant is not just a 
- voice-activated helper; it&apos;s a comprehensive tool designed 
- to streamline your workflow, 
-provide insightful information, and make your life easier.
-</p>
-
-<div className='flex flex-col
-      items-start gap-5 py-4'>
-     <a href='/dashboard'>
-      
-        <Button>Get Started</Button>
-        
-       </a> 
-
-      </div>
-
+<div className="flex flex-col md:flex-row pt-8 gap-3 ">
+<Button variant='outline' size='sm'
+className=" text-black animate-pulse " 
+  ><Link href='/dashboard'>DEMO HERE RIGHT AWAY</Link></Button>
+<Button variant='outline' size='sm' className="  text-black  ">
+    SEE MORE
+</Button>
+</div> 
 </div>
  
-{/* Images */}
-<div className="h-1/2 md:h-full w-full  ">
-
-<div className="relative  w-full h-96">
-<Image src='/images/abstract-69124_1280.jpg' alt='woman' fill />
-</div>
-</div>
            
 
 

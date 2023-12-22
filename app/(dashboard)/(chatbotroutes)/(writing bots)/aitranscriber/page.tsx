@@ -61,11 +61,15 @@ const ImagePage = () => {
           
           Transcribe</button>
           </form>
-
-          <Link href='/voicerecorder'><button className='bg-blue-500 text-white p-2 rounded-2xl'>
+           
+           <div>
+            <p className='py-4'>Don&apos;t have an Audio file?</p>
+          <Link href='/voicerecorder'>
+            <button className='bg-blue-500 text-white p-2 rounded-2xl'>
             Record Wav Audio
           </button>
           </Link>
+          </div>
          
          {/* Loading */}
           <div>

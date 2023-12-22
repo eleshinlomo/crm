@@ -9,11 +9,12 @@ import { BASE_URL } from '@/components/auth'
 import { GOOGLE_LOGIN_URL } from '@/components/urls'
 import { loginURL } from '@/components/urls'
 import  HomeNavBar  from '@/components/homenavbar'
-import { Col3Top } from '@/components/col3top'
+import { Services } from '@/components/services'
 import  Hero  from '@/components/hero'
 import  Typewriter  from '@/components/typewriter'
 import { Col3Bottom } from '@/components/cols3bottom'
 import { SocialCTA } from '@/components/socialcta'
+import Ctawithrightpic from '@/components/ctawithrightpic'
 
 
 const HomePage = () => {
@@ -47,19 +48,21 @@ const HomePage = () => {
   return (
 
     <div>
+    
+    <HomeNavBar />
 
-    <div className='    w-full  h-full overflow-hidden flex flex-col justify-center items-center'>
+    <div className='    w-full  h-full overflow-hidden flex flex-col '>
      <div className='bg-black '>
-      <HomeNavBar />
-
+      
       <Hero />
       </div>
       
       <SocialCTA />
-       <Col3Top />
+       <Services />
        
       <ChatbotTeamPage />
       <Col3Bottom />
+      <Ctawithrightpic />
 
     </div>
     <Footer />

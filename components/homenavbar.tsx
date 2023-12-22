@@ -11,12 +11,14 @@ const HomeNavBar = ()=>{
        <div>
         
         <div className='   text-white bg-black  
-        flex flex-1 justify-between  mb-5'>
+        md:flex flex-1 justify-around md:px-44 '>
 
       
-<div className='relative w-24 h-16 hidden md:flex'>
+<div className=' hidden md:flex  w-full flex-1'>
         <Link href='/'>
+          <div className='relative w-16 h-16'>
         <Image src="/images/logo.png" alt="logo" fill />
+        </div>
         </Link>
       </div>
 
@@ -24,7 +26,7 @@ const HomeNavBar = ()=>{
 <div className='md:hidden'>
 <Sheet>
 <SheetTrigger>
-<Button size='icon'  className='mt-3 w-10 h-8'  asChild>
+<Button size='icon'  className='mt-3 w-10 h-10 ml-2'  asChild>
   <Menu />
 </Button>
 </SheetTrigger>

@@ -4,6 +4,7 @@ import Title from "@/components/(voicerecorder)/Title";
 import {RecordMessage} from "@/components/(voicerecorder)/RecordMessage";
 import Link from 'next/link'
 import { SmileIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Controller = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -73,11 +74,16 @@ const Controller = () => {
 
     {messages.length > 0 ?
      <div className="flex text-center font-light italic py-2 mb-6
-     animate-pulse justify-center items-center">
+      justify-center items-center">
        
        <div>
+        <div className="animate-pulse">
         <p>Your recorded voice is ready.</p>
         <p>You can download after playing it.</p>
+        </div>
+        <Button>
+          <Link href='/aitranscriber'>Transcribe</Link>
+        </Button>
         </div>
        <SmileIcon />
        
