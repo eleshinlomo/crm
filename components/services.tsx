@@ -17,7 +17,7 @@ export const Services = ()=>{
                 Voice Recorder 
                 </p>
                 <p className=" py-4 px-4 flex flex-wrap">
-                 No need for note taking notes. Our Voice Recorder 
+                 No need for note taking. Our Voice Recorder 
                  will record your meetings and transcribe so you 
                  can share with your team.
                  </p>
