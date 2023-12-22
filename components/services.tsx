@@ -46,7 +46,7 @@ export const Services = ()=>{
                 </p>
                 <p className=" py-4 px-4 flex flex-wrap">Leverage on powerful AI Tools to write faster
                 and more efficiently. Fixupe got all the AI tools 
-                you need to step up your game.
+                you need to step up your game. 
                 </p>
                 <Button>
                     <Link href='/aiwriter'>Try Now</Link>
@@ -63,7 +63,7 @@ export const Services = ()=>{
                 </p>
                 <p className=" py-4 px-4 flex flex-wrap">
                 Stop using stock photos. Many businesses are doing the same. Dare to be different and leverage 
-                on our Image AI Tools.</p>
+                on our Image AI Tools. See it yourself.</p>
                 <Button>
                     <Link href='/'>Try Now</Link>
                  </Button>
