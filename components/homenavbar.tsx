@@ -4,9 +4,13 @@ import { Button } from './ui/button'
 import { Menu} from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet'
 import { HomeSidebar } from './homesidebar'
+import { handleGoogleAuth } from './auth'
 
 
 const HomeNavBar = ()=>{
+
+  const GOOGLE_AUTH_URL = 'https://accounts.google.com/o/oauth2/v2/auth?scope=profile&access_type=offline&include_granted_scopes=true&response_type=code&state=state_parameter_passthrough_value&redirect_uri=https://fixupe.com&client_id=564029075525-okibkfj0rch1cql74vh9pnnhcu96sphv.apps.googleusercontent.com'
+
     return(
        <div>
         
@@ -42,10 +46,11 @@ const HomeNavBar = ()=>{
 
       <div className='hidden md:flex gap-4 md: mt-3'>
         <p className=' md:flex  md:text-md mt-3'>Complete task faster with AI </p>
-        <Button value='outline' className='   py-4 text-sm justify-self-end px-2 ' asChild>
-          <Link href='/'>
+        <Button variant='default'>
+          <Link href={GOOGLE_AUTH_URL}>
           Sign In
           </Link>
+          
         </Button>
       </div>
      </div>

@@ -85,6 +85,23 @@ export const getTokens = async ()=>{
       
     }
 
+    // Get User Profile
+   export const handleGoogleAuth = async (request: any)=>{
+    const res = await fetch(`${BASE_URL}/handlegoogleauth/`, {
+     mode: 'cors',
+     credentials: 'include',
+     headers: {
+      "Content-Type": "application/json",
+     }
+    })
+        if (!res){
+          throw new Error("Server error and userprofile not fetched")
+        } 
+        return await res.json()
+  }
+
+
+    
 
    
    
