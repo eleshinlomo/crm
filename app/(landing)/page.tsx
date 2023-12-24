@@ -15,6 +15,7 @@ import  Typewriter  from '@/components/typewriter'
 import { Col3Bottom } from '@/components/cols3bottom'
 import { SocialCTA } from '@/components/socialcta'
 import Ctawithrightpic from '@/components/ctawithrightpic'
+import {useRouter} from 'next/navigation'
 
 
 const HomePage = () => {
@@ -23,26 +24,16 @@ const HomePage = () => {
   const [showButtons, setShowButtons] = useState<boolean>(true)
 
  
+  const router = useRouter()
+  const code = router.query
 
-  // useEffect(()=>{
-  //   const loginChecker = async() =>{
-  //       const response: any = await fetch(`${BASE_URL}/authchecker/`, {
-  //           mode: 'cors',
-  //           credentials: 'include',
-  //           headers: {'Content-Type': 'application/json'}
-  //       })
-  //       if (!response) throw new Error("No response from server")
-  //        const data = await response.json()
-  //       if (data.success === true){
-  //         console.log(data)
-  //          setIsLoggedIn(true)
-  //          setShowButtons(false)
-  //       }else{
-  //           setIsLoggedIn(false)
-  //       }
-  //   }
-  //   loginChecker()
-  //   },[])
+  useEffect(()=>{
+    if(code){
+    console.log(code)
+    }else{
+      console.log("No code param found")
+    }
+    },[])
 
   
   return (
@@ -62,7 +53,8 @@ const HomePage = () => {
        
       <ChatbotTeamPage />
       <Col3Bottom />
-      <Ctawithrightpic />
+      
+      
 
     </div>
     <Footer />
