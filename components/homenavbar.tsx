@@ -46,9 +46,12 @@ const HomeNavBar = ()=>{
 
       <div className='hidden md:flex gap-4 md: mt-3'>
         <p className=' md:flex  md:text-md mt-3'>Complete task faster with AI </p>
-        <Button variant='default'>
-          <Link href={GOOGLE_AUTH_URL}>
-          Sign In
+        <Button variant='default'
+        className='bg-white text-blue-700'
+        >
+          
+          <Link href='http://localhost:8000/accounts/login/'>
+          Sign in with Google
           </Link>
           
         </Button>
