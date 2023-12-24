@@ -9,7 +9,7 @@ import { handleGoogleAuth } from './auth'
 
 const HomeNavBar = ()=>{
 
-  const GOOGLE_AUTH_URL = 'https://accounts.google.com/o/oauth2/v2/auth?scope=profile&access_type=offline&include_granted_scopes=true&response_type=code&state=state_parameter_passthrough_value&redirect_uri=https://fixupe.com&client_id=564029075525-okibkfj0rch1cql74vh9pnnhcu96sphv.apps.googleusercontent.com'
+  const GOOGLE_AUTH_URL = process.env.NEXT_PUBLIC_GOOGLE_LOGIN_URL
 
     return(
        <div>
@@ -47,12 +47,12 @@ const HomeNavBar = ()=>{
       <div className='hidden md:flex gap-4 md: mt-3'>
         <p className=' md:flex  md:text-md mt-3'>Complete task faster with AI </p>
         <Button variant='default'
-        className='bg-white text-blue-700'
+        className='bg-white text-blue-900'
         >
           
-          <Link href='http://localhost:8000/accounts/login/'>
-          Sign in with Google
-          </Link>
+          <a href={GOOGLE_AUTH_URL}>
+          Sign in 
+          </a>
           
         </Button>
       </div>
