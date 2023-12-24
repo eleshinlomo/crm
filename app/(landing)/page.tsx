@@ -15,7 +15,7 @@ import  Typewriter  from '@/components/typewriter'
 import { Col3Bottom } from '@/components/cols3bottom'
 import { SocialCTA } from '@/components/socialcta'
 import Ctawithrightpic from '@/components/ctawithrightpic'
-import {useRouter} from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 
 
 const HomePage = () => {
@@ -24,8 +24,8 @@ const HomePage = () => {
   const [showButtons, setShowButtons] = useState<boolean>(true)
 
  
-  const router = useRouter()
-  const code = router.query
+  const params: any = useSearchParams()
+  const code = params.get("code")
 
   useEffect(()=>{
     if(code){
