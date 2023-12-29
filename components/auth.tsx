@@ -46,20 +46,41 @@ export const getcsrfToken = async ()=>{
 
 
    // Get Access Token
-export const getTokens = async ()=>{
-
-  const headers = new Headers();
-  headers.append("Content-Type", "application/json");
-  const response = await fetch(`${BASE_URL}/getaccesstoken/`, {
+export const getAccessToken = async (code: string)=>{
+  const response: any = await fetch(`${BASE_URL}/getaccesstoken/`, {
     mode: 'cors',
-    method: 'GET',
+    method: 'POST',
     credentials: 'include',
-    headers: headers
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${code}`
+    }
   })
-  if (!response) throw new Error("No access_token found")
-  return await response.json()
+  const data = await response.json()
+  return data
     
    }
+
+// Login
+   export const userLogin = ()=>{
+    const getAccessToken = localStorage.getItem('access_token')
+    if(getAccessToken !== null){
+    console.log({"user authorized": getAccessToken})
+    return getAccessToken
+  }else{
+    return "You need to be logged in"
+  }
+  }
+
+  // Logout
+  export const userLogout = ()=>{
+    localStorage.removeItem('access_token')
+    const getAccessToken = localStorage.getItem('access_token')
+    if(getAccessToken === null){
+    console.log("You have successfully been logged out")
+    window.location.href='/'
+    }
+  }
 
 
 

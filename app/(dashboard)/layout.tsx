@@ -7,23 +7,27 @@ import { Button } from '@/components/ui/button';
 import  Link  from 'next/link';
 import PropTypes from 'prop-types'
 import { getcsrfToken } from '@/components/auth';
-import { getTokens } from '@/components/auth';
 import { getUserProfile } from '@/components/auth';
 import Image from 'next/image'
 import { Footer } from '@/components/footer';
 import { dummyLogin } from '@/components/auth';
 import { BASE_URL } from '@/components/auth';
-import { GOOGLE_LOGIN_URL } from '@/components/urls';
 // @ts-ignore
 import Cookies from 'js-cookie'
 import CreditPage from '@/components/creditpage';
 import { useSearchParams } from 'next/navigation';
 
+// Auth Functions
+import { userLogin } from '@/components/auth';
+
 
 interface ToolsProps{
   Tools:[]
 }
+
+// URLs
 const DJANGO_LOGIN_URL = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGIN_UR
+const GOOGLE_LOGIN_URL = process.env.NEXT_PUBLIC_GOOGLE_LOGIN_URL
 
 const DashboardLayout = ({
     
@@ -32,33 +36,25 @@ const DashboardLayout = ({
     children: React.ReactNode;
 })=>{
 
-    const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(true)
+    const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false)
     const [isAuthenticated, setIsAuthenticated] = useState<Boolean>(false)
     const [isChecking, setIsChecking] = useState<Boolean>(false)
     const [message, setMessage] = useState<String>("")
     const [user, setUser] = useState(null)
     const [isSessionId, setIsSessionId] = useState(false)
     const [csrftoken, setCsrftoken] = useState<string | null>(null)
-    const [accessToken, setAccessToken] = useState<string | null>(null)
+    const [error, setError] = useState<string | any>("")
 
 
-    const params: any = useSearchParams()
-    const code = params.get("code")
-  
-    useEffect(()=>{
-      if(code){
-      console.log({"Code found": code})
-      }else{
-        console.log("No code param found")
-      }
-      },[code])
- 
+    
 
  
 
     return(
          <div>
-
+             <div className='text-center font-extrabold'>
+              <p>{error}</p>
+             </div>
             { isLoggedIn ?
         <div className="relative flex flex-1 gap-2 w-full overflow-hidden">
 

@@ -1,15 +1,40 @@
+"use client"
+
+import {useState, useEffect} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from './ui/button'
 import { Menu} from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet'
 import { HomeSidebar } from './homesidebar'
-import { handleGoogleAuth } from './auth'
+
+
+// Auth Functions
+import { userLogin } from './auth'
+import { userLogout } from './auth'
+
+
 
 
 const HomeNavBar = ()=>{
 
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false) 
+
   const GOOGLE_AUTH_URL = process.env.NEXT_PUBLIC_GOOGLE_LOGIN_URL
+
+   // Login 
+   const handleLogin = async ()=>{
+    const accessToken: any = userLogin()
+    if(accessToken.ok){
+      console.log({"access_code found": accessToken})
+      setIsLoggedIn(true)
+    }else{
+      setIsLoggedIn(false)
+    }
+  }
+      useEffect(()=>{
+        handleLogin()
+      },[])
 
     return(
        <div>
@@ -46,15 +71,20 @@ const HomeNavBar = ()=>{
 
       <div className='hidden md:flex gap-4 md: mt-3'>
         <p className=' md:flex  md:text-md mt-3'>Complete task faster with AI </p>
-        <Button variant='default'
-        className='bg-white text-blue-900'
-        >
-          
+        
+          {isLoggedIn?
+          <Button onClick={userLogout}>
+          Sign out 
+          </Button>:
+
+          <Button asChild>
           <a href={GOOGLE_AUTH_URL}>
-          Sign in 
+          Sign in
           </a>
+          </Button>
+        }
           
-        </Button>
+        
       </div>
      </div>
 

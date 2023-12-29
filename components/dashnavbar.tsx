@@ -1,3 +1,4 @@
+"use client"
 import {useState, useEffect} from 'react'
 import { LogOutIcon, Menu } from "lucide-react"
 import { Button } from "./ui/button"
@@ -7,10 +8,16 @@ import { UserAvatar } from './user-avater'
 // import ProfileAvatar  from './profile-avatar'
 import { GOOGLE_LOGOUT_URL } from './urls'
 
+// Auth Functions
+import { userLogin } from './auth'
+
 
 
 
 export const Navbar = () => {
+
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+
 
 
   
@@ -20,9 +27,11 @@ export const Navbar = () => {
 
         <div className="flex w-full justify-end pr-2">
         
-        <a href={GOOGLE_LOGOUT_URL}>
-        <LogOutIcon />
-        </a>
+        
+        <Button>
+          Sign out
+        </Button>
+        
 
          {/* <ProfileAvatar /> */}
          
