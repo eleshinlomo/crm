@@ -17,6 +17,7 @@ import { GOOGLE_LOGIN_URL } from '@/components/urls';
 // @ts-ignore
 import Cookies from 'js-cookie'
 import CreditPage from '@/components/creditpage';
+import { useSearchParams } from 'next/navigation';
 
 
 interface ToolsProps{
@@ -41,201 +42,18 @@ const DashboardLayout = ({
     const [accessToken, setAccessToken] = useState<string | null>(null)
 
 
+    const params: any = useSearchParams()
+    const code = params.get("code")
   
-  useEffect(()=>{
-
-    const handleCsrfToken = async ()=>{
-
-    try{
-    
-    const response = await getcsrfToken()
-    if (response.csrf_token){
-        console.log({"First CsrfToken":response})
-        setCsrftoken(response.csrf_token)
-
-    }else{
-        throw new Error("Unable to fetch csrf token") 
-    }
-    
-  }
-  catch(err){
-  console.log(err)
-}
-    }
-
-handleCsrfToken()
-  }, [])  
-
-  
-
-
-// useEffect(()=>{
-//   const getCookies = async ()=> {
-//   const cookie = await Cookies.get('sessionfolio')
-//   if(!cookie) throw new Error('Cookie not found')
-//     console.log({"sessionfolio": cookie})
-//   }
-//   getCookies()
-// },[])
-    
-
-        
-
-        
-
-      //   // RETREIVE SESSIONID FROM LOCAL STORAGE
-      //   useEffect(()=>{
-      //   const getSessionIdFromLS = async ()=>{
-      //       if (!isAuthenticated) return
-      //       const sessionid = localStorage.getItem('mysessionid')
-      //       console.log({"Session found": sessionid})
-      //       setIsSessionId(true)
-            
-      //       if (sessionid){
-      //       const response = await fetch(`${BASE_URL}/getuser/`, {
-      //           mode: 'cors',
-      //           method: 'GET',
-      //           headers: {
-      //               "Content-Type": 'application/json',
-      //               "Authorization": 'Bearer ' + String(sessionid)
-      //           },
-      //           credentials: 'include'
-      //   })
-      //     if(!response) throw new Error("Server not releasing user info")
-      //     const data = await response.json()
-      //     if(data){
-      //       setIsLoggedIn(true)
-      //       console.log(data)
-      //     }else{
-      //       setMessage(data.message)
-      //     }
-          
-      //   }
-
-      //   }
-      //   getSessionIdFromLS()
-      // }, [isAuthenticated])
-
-
-      
-
- const checkUser = "Checking authentication status..."
-
-
-
-
-//   //   Get ACCESS TOKEN
-
-  useEffect(()=>{
-
-    const handleGetAccessToken = async ()=>{
-
-    try{
-    const response = await getTokens()
-    if (response.tokens){
-    console.log(response)
-    // const accesstoken = response.access_token
-    // localStorage.setItem('accessToken', accesstoken)
-    setIsAuthenticated(true)
-    }else{
-        throw new Error("No Access Token Found") 
-    }
-  }
-  catch(err){
-  console.log(err)
-}
-    }
-
-handleGetAccessToken()
-  }, [])  
-
-
-
-  // // Login Checker
-  // useEffect(()=>{
-        
-  //   const loginChecker = async(isAuthenticated: any) =>{
-
-  //       try {
-  //       if (!isAuthenticated) return
-  //       setIsChecking(true)
-  //       const accessToken =  localStorage.getItem('accessToken')
-  //       if (accessToken){
-  //         setIsLoggedIn(true)
-  //         setIsChecking(false)
-  //         console.log({accessTokenFoundYeah: accessToken})
-  //       }else{
-  //         setIsLoggedIn(false)
-  //       }
-      
-  //   }catch(err: any){
-  //       setMessage(err.message)
-  //   }finally{
-  //     setIsChecking(false)
-  //   }
-  //   }
-    
-  //   loginChecker(isAuthenticated)
-  //   },[isAuthenticated])
-
-
-//   // GET SESSION ID
-//   useEffect(()=>{
-//    const getSessionId = async ()=> {
-//     const response = await fetch(`${BASE_URL}/sessionidretriever/`, {
-//          method: 'GET',
-//          mode: 'cors',
-//          headers: {
-//           'Content-Type': 'application/json'
-//          }
-//     })
-//     if (!response) throw new Error("Sessionid not found from server")
-//     const data = await response.json()
-//      if (data){
-//       console.log(data)
-//      }
-//    }
-//   getSessionId()
-// }, [])
-
+    useEffect(()=>{
+      if(code){
+      console.log({"Code found": code})
+      }else{
+        console.log("No code param found")
+      }
+      },[code])
  
 
-
-//   //   GET USERPROFILE
-//   useEffect(()=>{
-
-//     const handleUserProfile = async ()=>{
-    
-//     try {
-    
-//     const response = await getUserProfile(accessToken, csrftoken)
-//     if (!response) throw new Error("No response from server")
-//     if(response.success)
-//     setIsLoggedIn(true)
-//     setIsChecking(false)
-//     }
-
-//     catch(err){
-//         console.log(err)
-//         setIsLoggedIn(false)
-//     }finally{
-//         setIsChecking(false)
-//     }
-// }
-
-
-//     handleUserProfile()
-//       }, [accessToken, csrftoken])
-
-
-
-
-  
-
- 
- 
-
-  
  
 
     return(
@@ -273,7 +91,7 @@ handleGetAccessToken()
              <div className='relative text-center animate-spin'>
              <Image src='/logo.png' alt='logo' fill />
              </div>
-             {checkUser}
+             
             </div>:null
             }
             

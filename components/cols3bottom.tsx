@@ -6,7 +6,7 @@ export const Col3Bottom = ()=>{
         <div>
             <div className="text-center grid grid-row-flow md:grid-cols-3
             bg-black
-             text-white font-mono rounded-2xl 
+             text-white font-mono 
              gap-5
              py-8 px-6 place-items-center text-sm ">
                

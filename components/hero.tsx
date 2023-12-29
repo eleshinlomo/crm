@@ -50,7 +50,7 @@ const Hero = ()=>{
 <div>
 <Typewriter customText={customText} />
 </div>
-<p className="flex-wrap text-start  pr-8 ">
+<p className="flex-wrap text-start  md:pr-8 ">
 
 In a world driven by technology, the demand for cutting-edge 
 solutions has never been more critical. Fixupe is your gateway to a 

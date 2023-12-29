@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import { useEffect } from 'react'
 
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const meta = { 
@@ -19,11 +20,15 @@ export const metadata: Metadata = {
 
 const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: {
   children: React.ReactNode
-}) {
+})=> {
+
+ 
+
+
   return (
     
     <html lang="en">
@@ -34,3 +39,5 @@ export default function RootLayout({
     
   )
 }
+
+export default RootLayout

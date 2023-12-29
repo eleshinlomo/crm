@@ -19,7 +19,7 @@ export const RecordMessage = ({ handleStop }: Props) => {
           
             
 <div className="flex flex-1 justify-center items-center">
-<button className="bg-black text-white p-4 rounded-full" 
+<button className="bg-black text-white p-4  rounded-full" 
 onClick={startRecording}>Record</button>
 <RecordIcon
               classText={
