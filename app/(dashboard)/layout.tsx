@@ -66,7 +66,7 @@ const DashboardLayout = ({
            <main className=" w-full md:ml-72 h-full ">
             <Navbar />
             <div className='flex flex-col flex-1 justify-center 
-            items-center bg-black text-white z-[80]
+            items-center  
              '>
              <CreditPage />
              </div>

@@ -75,11 +75,11 @@ const HomeNavBar = ()=>{
         <p className=' md:flex  md:text-md mt-3'>Complete task faster with AI </p>
         
           {isLoggedIn?
-          <Button onClick={userLogout}>
+          <Button onClick={userLogout} className='bg-blue-500 hover:bg-blue-500'>
           Sign out 
           </Button>:
 
-          <Button asChild>
+          <Button className='bg-blue-500 hover:bg-blue-500' asChild>
           <a href={GOOGLE_AUTH_URL}>
           Sign in
           </a>

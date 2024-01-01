@@ -22,13 +22,13 @@ export const Navbar = () => {
 
   
   return (
-    <div className="flex items-center p-4 bg-black text-white">
+    <div className="flex items-center p-4 ">
         <MobileSidebar />
 
         <div className="flex w-full justify-end pr-2">
         
         
-        <Button>
+        <Button size='sm'>
           Sign out
         </Button>
         

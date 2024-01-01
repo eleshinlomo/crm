@@ -10,7 +10,8 @@ const CreditPage = () => {
         {credit > 0 ?  
         <div><p>Your credit is {credit}</p></div>:
         <div className=''>
-            <p className='text-xl text-blue font-semibold'>Your credit is {credit}</p>
+            <p className='text-xl text-blue font-semibold'>
+              Your credit is {credit}</p>
               
             <Button variant='outline' className='bg-black text-white rounded-full '>
               Demo and Beta Mode</Button>
