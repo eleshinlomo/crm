@@ -10,7 +10,7 @@ const WaitlistPage = () => {
     <Sheet>
         <SheetTrigger asChild>
             <Button className='w-full md:w-1/2'>
-                Join Wailist
+                JOIN WAITLIST
             </Button>
         </SheetTrigger>
 

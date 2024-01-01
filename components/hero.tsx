@@ -28,7 +28,7 @@ const Hero = ()=>{
 
 
 <div className="h-auto   
-            bg-black text-white ">
+             ">
 
 
 
@@ -37,13 +37,14 @@ const Hero = ()=>{
 <div className="md:h-96 w-full md:flex justify-center items-center   ">
 
 <div className="relative  w-full h-72 md:h-96">
-<Image src='/images/tree-1781554.svg' alt='hero pics' fill />
+<Image src='/images/ai_girl2.png' alt='hero pics' fill />
 </div>
 
 <div className="px-3 pb-2">
 
-<div className="border-b border-white  my-3">
-<h1 className="py-4 font-arial font-extrabold text-2xl ">{"Welcome to the Future of Innovation!"}</h1>
+<div className="  my-3">
+<h1 className="py-4 font-arial font-extrabold text-2xl ">
+  {"Welcome to the Future of Innovation!"}</h1>
 </div>
 
 <div>
@@ -60,11 +61,14 @@ and propelling businesses to unprecedented heights..</p>
 </div>
 
 
-<div className="flex flex-col md:flex-row pt-8 gap-3 ">
-<Button variant='outline' size='sm'
-className=" text-black animate-pulse " 
-  ><Link href='/dashboard'>DEMO HERE RIGHT AWAY</Link></Button>
+<div className="grid grid-cols-2 gap-2 ">
+<Button  
+className="bg-blue-700 text-white " 
+  >
+<Link href='/dashboard'>GET STARTED</Link></Button>
+<div className="">
 <WaitlistPage />
+</div>
 </div> 
 </div>
  

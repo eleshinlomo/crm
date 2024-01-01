@@ -39,17 +39,12 @@ const HomePage = () => {
     const handleGetAccessToken = async (code: string)=>{
       if(code !== null){
       const response: any = await getAccessToken(code)
-      
-      if(!response) setError("Endpoint call successful but No response code recieved from the server")
-      console.log(response)
-      const {access_token} = response.message
-      if(access_token){
-      localStorage.setItem('access_token', access_token)
-      return access_token
+      if(response.ok){
+        const {access_token} = response.message
+        console.log(access_token)
       }else{
-        return console.log("No accessToken was set in Local Storage")
+        console.log("No access_token found")
       }
-  
     }else{
         console.log("Code needed for Google Auth is null")
       }
@@ -71,7 +66,7 @@ const HomePage = () => {
     <HomeNavBar />
 
     <div className='    w-full  h-full overflow-hidden flex flex-col '>
-     <div className='bg-black '>
+     <div className=''>
 
      {/* Error Message */}
      <div className='text-center text-white font-extrabold'>

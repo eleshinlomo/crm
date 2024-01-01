@@ -8,15 +8,6 @@ import {useState, useEffect} from 'react'
 
 
 
-// Dummy auth
-
-export const dummyLogin = [
-  {name: "Guest"}
-]
-
-export const dummyLogout = [
-  {name: "Out"}
-]
 
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
@@ -46,20 +37,25 @@ export const getcsrfToken = async ()=>{
 
 
    // Get Access Token
-export const getAccessToken = async (code: string)=>{
+export const getAccessToken = async (code: any)=>{
+  console.log({"Code found! Now sending for verification": code})
   const response: any = await fetch(`${BASE_URL}/getaccesstoken/`, {
     mode: 'cors',
     method: 'POST',
     credentials: 'include',
     headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${code}`
+      "Content-Type": 'application/json',
+      "Authorization": `Basic ${code}`
     }
   })
   const data = await response.json()
-  return data
+
+  if(!data) console.log("Endpoint call successful but No response code recieved from the server")
+      console.log(data)
+      return data
+}
     
-   }
+   
 
 // Login
    export const userLogin = ()=>{

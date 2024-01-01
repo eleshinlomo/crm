@@ -10,7 +10,6 @@ import { getcsrfToken } from '@/components/auth';
 import { getUserProfile } from '@/components/auth';
 import Image from 'next/image'
 import { Footer } from '@/components/footer';
-import { dummyLogin } from '@/components/auth';
 import { BASE_URL } from '@/components/auth';
 // @ts-ignore
 import Cookies from 'js-cookie'
@@ -36,7 +35,7 @@ const DashboardLayout = ({
     children: React.ReactNode;
 })=>{
 
-    const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false)
+    const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(true)
     const [isAuthenticated, setIsAuthenticated] = useState<Boolean>(false)
     const [isChecking, setIsChecking] = useState<Boolean>(false)
     const [message, setMessage] = useState<String>("")
