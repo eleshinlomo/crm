@@ -27,7 +27,7 @@ const Hero = ()=>{
 
 
 
-<div className="h-auto   
+<div className="h-auto   bg-black text-white
              ">
 
 
@@ -36,7 +36,7 @@ const Hero = ()=>{
 {/* Left Side */}
 <div className="md:h-96 w-full md:flex justify-center items-center   ">
 
-<div className="relative  w-full h-72 md:h-96">
+<div className="relative  w-full h-72 md:h-96 ">
 <Image src='/images/ai_girl2.png' alt='hero pics' fill />
 </div>
 

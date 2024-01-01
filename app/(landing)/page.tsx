@@ -75,11 +75,11 @@ const HomePage = () => {
       
       <Hero />
       </div>
+
+      <ChatbotTeamPage />
       
       <SocialCTA />
        <Services />
-       
-      <ChatbotTeamPage />
       <Col3Bottom />
       
       

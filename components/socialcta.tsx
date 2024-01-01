@@ -12,10 +12,16 @@ export const SocialCTA = ()=>{
                     Post on top Social platforms in 1 minute</p>
 
                 <div className="flex gap-10 mt-4">
-                    <FacebookIcon />
+                    <div className="text-blue-800">
+                        <FacebookIcon />
+                    </div>
                     <TwitchIcon />
+                    <div className="text-blue-500">
                     <LinkedinIcon />
+                    </div>
+                    <div className="text-pink-800">
                     <InstagramIcon />
+                    </div>
                 </div>
 
                 <p className="text-lg flex flex-wrap

@@ -46,7 +46,7 @@ export const ChatbotTeamPage = ()=>{
        
     ]
     return (
-        <div>
+        <div className='bg-black text-white'>
 
 
 <div className='py-4 text-center '>
@@ -56,26 +56,29 @@ export const ChatbotTeamPage = ()=>{
     
 </div>
 
-<div className='flex flex-col md:flex-row lg:flex-row
-         py-2 px-5 gap-2 justify-center items-center bg-white'>
+<div className='flex flex-col
+         py-2 px-5 gap-2 justify-center items-center'>
+
+<div className=' 
+            grid grid-flow-row md:grid-cols-4 gap-3 w-full '>
             
           {
             Chatbots.map((chatbot, index)=>
 
             <div key={index} className=''>
-         <div className='h-72 w-72 md:w-72 lg:w-72 rounded-lg shadow-2xl 
+         <div className='h-72 w-full 
           relative'>
             <Image src={chatbot.image} alt='member profile' fill  />  
             </div>
-            <div className='flex flex-col justify-center items-center gap-2'>
-            <p className='text-l text-black'>Name: {chatbot.chatbotname}</p>
-            <p className='text-l text-black'>Role: {chatbot.role}</p>
+            <div className=' w-full flex flex-col justify-center items-center gap-2'>
+            <p className='text-l '>Name: {chatbot.chatbotname}</p>
+            <p className='text-l '>Role: {chatbot.role}</p>
             {/* <p className='text-l text-black'>Project Info: {team.info}</p>  */}
             {/* <Button className=' text-lg w-full h-full'>
                 <Link href={chatbot.route}>{chatbot.button}</Link>
             </Button> */}
 
-
+       
 
             </div>
 
@@ -85,6 +88,8 @@ export const ChatbotTeamPage = ()=>{
     
             )
          } 
+         </div>
+       {/* End of grid */}
 
          
           
