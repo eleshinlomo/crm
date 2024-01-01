@@ -42,9 +42,10 @@ const HandleEmailWaitlist = async (e:any)=>{
     return (
 
     <div>
-      <div className='py-4 flex flex-col justify-center items-center text-center'>
+      <div className='py-4 flex flex-col justify-center 
+      items-center text-center text-black font-extrabold'>
   
-  <p className='px-6 text-muted-foreground py-2 '>Please join waitlist so 
+  <p className='px-6  py-2 '>Please join waitlist so 
   we can inform 
   you when we fully launch.</p>
             <p className='text-blue-500 ml-6 '>{message}</p>

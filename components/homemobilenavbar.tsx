@@ -9,10 +9,13 @@ import Waitlist from './waitlistpage'
 
 
 
+// URLs
+const GOOGLE_AUTH_URL = process.env.NEXT_PUBLIC_GOOGLE_LOGIN_URL
+const SSO_LOGIN: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGIN_URL
+const SSO_LOGOUT: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGOUT_URL
 
 
-
-export const HomeSidebar = () => {
+export const HomeMobileNavBar = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false)
     
@@ -39,19 +42,19 @@ export const HomeSidebar = () => {
 
   return (
     <div>
-      <div className=''>
-        <div className='relative w-32 h-24'>
-          <Image src='/images/logo.png' alt='logo' fill />
+      <div className='grid grid-flow-row mx-0 px-2 gap-3'>
+        <div className='relative w-24 h-12'>
+          <Image src='/logos/fixupe_logo.png' alt='logo' fill />
         </div>
-        <Button className='bg-black/30 hover:bg-white hover:text-black' asChild>
+        <Button className='' asChild>
           <Link href='/dashboard'>Dashboard</Link>
         </Button>
         { isLoggedIn ?
-        <Button className='bg-black/30 py' asChild>
-          <Link href={GOOGLE_LOGOUT_URL}>Sign Out</Link>
+        <Button className='' asChild>
+          <Link href={SSO_LOGOUT}>Sign Out</Link>
         </Button>:
-        <Button className='bg-black/30 py' asChild>
-        <Link href={GOOGLE_LOGIN_URL}>Sign In</Link>
+        <Button className='' asChild>
+        <Link href={SSO_LOGIN}>Sign In</Link>
       </Button>
          }
 

@@ -2,22 +2,26 @@
 
 import {useState, useEffect} from 'react'
 import Sidebar from "@/components/dashsidebar";
-import {Navbar} from "@/components/dashnavbar";
+import {DashNavbar} from "@/components/dashnavbar";
 import { Button } from '@/components/ui/button';
 import  Link  from 'next/link';
 import PropTypes from 'prop-types'
 import { getcsrfToken } from '@/components/auth';
-import { getUserProfile } from '@/components/auth';
 import Image from 'next/image'
 import { Footer } from '@/components/footer';
 import { BASE_URL } from '@/components/auth';
 // @ts-ignore
 import Cookies from 'js-cookie'
 import CreditPage from '@/components/creditpage';
-import { useSearchParams } from 'next/navigation';
+
+// Hooks
+import { useSearchParams, useRouter } from 'next/navigation';
+
+
 
 // Auth Functions
 import { userLogin } from '@/components/auth';
+import { loginChecker } from '@/components/auth';
 
 
 interface ToolsProps{
@@ -25,8 +29,9 @@ interface ToolsProps{
 }
 
 // URLs
-const DJANGO_LOGIN_URL = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGIN_UR
-const GOOGLE_LOGIN_URL = process.env.NEXT_PUBLIC_GOOGLE_LOGIN_URL
+const GOOGLE_AUTH_URL = process.env.NEXT_PUBLIC_GOOGLE_LOGIN_URL
+const SSO_LOGIN: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGIN_URL
+const SSO_LOGOUT: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGOUT_URL
 
 const DashboardLayout = ({
     
@@ -35,7 +40,7 @@ const DashboardLayout = ({
     children: React.ReactNode;
 })=>{
 
-    const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(true)
+    const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false)
     const [isAuthenticated, setIsAuthenticated] = useState<Boolean>(false)
     const [isChecking, setIsChecking] = useState<Boolean>(false)
     const [message, setMessage] = useState<String>("")
@@ -43,11 +48,38 @@ const DashboardLayout = ({
     const [isSessionId, setIsSessionId] = useState(false)
     const [csrftoken, setCsrftoken] = useState<string | null>(null)
     const [error, setError] = useState<string | any>("")
+    const [username, setUsername] = useState<string | null>(null)
 
+    const router = useRouter()
 
-    
+    const handleLoginChecker = async ()=>{
+        const username = localStorage.getItem('username')
+        if(username !== null){
+        console.log(username)
+        setUsername(username)
+         setIsLoggedIn(true)
+       }else{
+        setIsLoggedIn(false)
+        const userResponse = await loginChecker()
+        if(userResponse){
+        console.log(userResponse)
+        const {username} = userResponse.message
+        
+        if(username){
+        localStorage.setItem('username', username)
+        const getUsername = localStorage.getItem('username')
+        if(getUsername){
+        setUser(userResponse.message)
+        setIsLoggedIn(true)
+        }
+        
+       }
+    }}
+}
 
- 
+ useEffect(()=>{
+    handleLoginChecker()
+ }, [])
 
     return(
          <div>
@@ -64,7 +96,7 @@ const DashboardLayout = ({
             </div>
             
            <main className=" w-full md:ml-72 h-full ">
-            <Navbar />
+            <DashNavbar user={user} />
             <div className='flex flex-col flex-1 justify-center 
             items-center  
              '>
@@ -97,9 +129,8 @@ const DashboardLayout = ({
             </Link>
 
         <Button className='flex gap-1' asChild>
-        <Link href={`${GOOGLE_LOGIN_URL}`}>
-        <Image src='/google_logo.png' alt='logo' width='20' height='20' />
-        Login with Google
+        <Link href={`${SSO_LOGIN}`}>
+        Login 
         </Link>
         </Button> 
 

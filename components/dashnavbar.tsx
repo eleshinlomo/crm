@@ -10,11 +10,16 @@ import { GOOGLE_LOGOUT_URL } from './urls'
 
 // Auth Functions
 import { userLogin } from './auth'
+import { userLogout } from './auth'
 
 
+ // URLs
+ const GOOGLE_AUTH_URL = process.env.NEXT_PUBLIC_GOOGLE_LOGIN_URL
+ const SSO_LOGIN: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGIN_URL
+ const SSO_LOGOUT: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGOUT_URL
 
 
-export const Navbar = () => {
+export const DashNavbar = (user: any) => {
 
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
 
@@ -26,10 +31,15 @@ export const Navbar = () => {
         <MobileSidebar />
 
         <div className="flex w-full justify-end pr-2">
+{/*         
+        {user ?
+        <div>
+         <p>{user.username}</p>
+        </div>:null
+        } */}
         
-        
-        <Button size='sm'>
-          Sign out
+        <Button size='sm' onClick={userLogout}>
+          Sign Out
         </Button>
         
 

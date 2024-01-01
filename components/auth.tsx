@@ -8,8 +8,11 @@ import {useState, useEffect} from 'react'
 
 
 
-
+// URLs
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+ const GOOGLE_AUTH_URL = process.env.NEXT_PUBLIC_GOOGLE_LOGIN_URL
+ const SSO_LOGIN: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGIN_URL
+ const SSO_LOGOUT: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGOUT_URL
 
 
 
@@ -70,43 +73,15 @@ export const getAccessToken = async (code: any)=>{
 
   // Logout
   export const userLogout = ()=>{
-    localStorage.removeItem('access_token')
-    const getAccessToken = localStorage.getItem('access_token')
-    if(getAccessToken === null){
-    console.log("You have successfully been logged out")
-    window.location.href='/'
+    localStorage.removeItem('username')
+    window.location.href=`${SSO_LOGOUT}`
     }
-  }
+  
 
 
-
-   // Get User Profile
-
-   
-   export const getUserProfile = async (accessToken: string | null, csrftoken: string | null)=>{
-      
-
-      const res = await fetch(`${BASE_URL}/userprofile/`, {
-       mode: 'cors',
-       method: 'GET',
-       credentials: 'include',
-       headers: {
-        "Content-Type": "application/json",
-        "X-CSRFToken": `${csrftoken}`,
-        "Authorization": `Bearer ${accessToken}`
-       }
-      })
-      
-          if (!res){
-            throw new Error("Server error and userprofile not fetched")
-          } 
-          return await res.json()
-      
-    }
-
-    // Get User Profile
-   export const handleGoogleAuth = async (request: any)=>{
-    const res = await fetch(`${BASE_URL}/handlegoogleauth/`, {
+    // Login Checker
+   export const loginChecker = async ()=>{
+    const res = await fetch(`${BASE_URL}/loginchecker/`, {
      mode: 'cors',
      credentials: 'include',
      headers: {
@@ -114,9 +89,18 @@ export const getAccessToken = async (code: any)=>{
      }
     })
         if (!res){
-          throw new Error("Server error and userprofile not fetched")
+          throw new Error("userprofile not fetched")
         } 
-        return await res.json()
+        const user = await res.json()
+        if(user){
+        console.log(user)
+        return user
+        }else{
+          console.log("No user found")
+          return
+        }
+      
+        
   }
   
 
