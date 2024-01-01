@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import  Link  from 'next/link'
 import { Button } from "./ui/button"
 import  Image  from 'next/image'
-import { BASE_URL } from './auth'
 import { GOOGLE_LOGIN_URL } from './urls'
 import { GOOGLE_LOGOUT_URL } from './urls'
 import Waitlist from './waitlistpage'
@@ -10,9 +9,8 @@ import Waitlist from './waitlistpage'
 
 
 // URLs
-const GOOGLE_AUTH_URL = process.env.NEXT_PUBLIC_GOOGLE_LOGIN_URL
-const SSO_LOGIN: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGIN_URL
-const SSO_LOGOUT: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGOUT_URL
+ // URLs
+ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
 
 export const HomeMobileNavBar = () => {
@@ -42,7 +40,7 @@ export const HomeMobileNavBar = () => {
 
   return (
     <div>
-      <div className='grid grid-flow-row mx-0 px-2 gap-3'>
+      <div className='flex flex-col flex-1 gap-4'>
         <div className='relative w-24 h-12'>
           <Image src='/logos/fixupe_logo.png' alt='logo' fill />
         </div>
@@ -51,10 +49,10 @@ export const HomeMobileNavBar = () => {
         </Button>
         { isLoggedIn ?
         <Button className='' asChild>
-          <Link href={SSO_LOGOUT}>Sign Out</Link>
+          <Link href={`${BASE_URL}/accounts/logout/`}>Sign Out</Link>
         </Button>:
         <Button className='' asChild>
-        <Link href={SSO_LOGIN}>Sign In</Link>
+        <Link href={`${BASE_URL}/accounts/login/`}>Sign In</Link>
       </Button>
          }
 

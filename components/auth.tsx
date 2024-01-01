@@ -10,9 +10,7 @@ import {useState, useEffect} from 'react'
 
 // URLs
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
- const GOOGLE_AUTH_URL = process.env.NEXT_PUBLIC_GOOGLE_LOGIN_URL
- const SSO_LOGIN: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGIN_URL
- const SSO_LOGOUT: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGOUT_URL
+ 
 
 
 
@@ -74,7 +72,7 @@ export const getAccessToken = async (code: any)=>{
   // Logout
   export const userLogout = ()=>{
     localStorage.removeItem('username')
-    window.location.href=`${SSO_LOGOUT}`
+    window.location.href=`${BASE_URL}/accounts/logout/`
     }
   
 

@@ -13,10 +13,7 @@ import { userLogin } from './auth'
 import { userLogout } from './auth'
 
 
- // URLs
- const GOOGLE_AUTH_URL = process.env.NEXT_PUBLIC_GOOGLE_LOGIN_URL
- const SSO_LOGIN: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGIN_URL
- const SSO_LOGOUT: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGOUT_URL
+
 
 
 export const DashNavbar = (user: any) => {

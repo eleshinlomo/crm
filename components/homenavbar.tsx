@@ -21,9 +21,8 @@ const HomeNavBar = ()=>{
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false) 
 
   // URLs
-  const GOOGLE_AUTH_URL = process.env.NEXT_PUBLIC_GOOGLE_LOGIN_URL
-  const SSO_LOGIN: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGIN_URL
-  const SSO_LOGOUT: any = process.env.NEXT_PUBLIC_SSO_LOGOUT_URL
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+ 
 
    // Login 
    const handleLogin = async ()=>{
@@ -66,7 +65,7 @@ const HomeNavBar = ()=>{
 </SheetTrigger>
 
 <SheetContent side='right' className='
-bg-transparent text-white '>
+bg-black text-white '>
   <div>
   <HomeMobileNavBar />
   </div>
@@ -82,11 +81,11 @@ bg-transparent text-white '>
         
           {isLoggedIn?
           <Button  className='bg-blue-500 hover:bg-blue-500'>
-          <Link href={SSO_LOGOUT}>Sign out</Link>
+          <Link href={`${BASE_URL}/accounts/logout/`}>Sign out</Link>
           </Button>:
 
-          <Button>
-            <Link href={SSO_LOGIN}>
+          <Button  className='bg-blue-500 hover:bg-blue-500'>
+            <Link href={`${BASE_URL}/accounts/login/`}>
             Sign
             </Link>
           </Button>
