@@ -9,7 +9,6 @@ import PropTypes from 'prop-types'
 import { getcsrfToken } from '@/components/auth';
 import Image from 'next/image'
 import { Footer } from '@/components/footer';
-import { BASE_URL } from '@/components/auth';
 // @ts-ignore
 import Cookies from 'js-cookie'
 import CreditPage from '@/components/creditpage';
@@ -17,7 +16,8 @@ import CreditPage from '@/components/creditpage';
 // Hooks
 import { useSearchParams, useRouter } from 'next/navigation';
 
-
+// URLs
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
 // Auth Functions
 import { userLogin } from '@/components/auth';
@@ -28,10 +28,7 @@ interface ToolsProps{
   Tools:[]
 }
 
-// URLs
-const GOOGLE_AUTH_URL = process.env.NEXT_PUBLIC_GOOGLE_LOGIN_URL
-const SSO_LOGIN: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGIN_URL
-const SSO_LOGOUT: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGOUT_URL
+
 
 const DashboardLayout = ({
     
@@ -129,7 +126,7 @@ const DashboardLayout = ({
             </Link>
 
         <Button className='flex gap-1' asChild>
-        <Link href={`${SSO_LOGIN}`}>
+        <Link href={`${BASE_URL}/accounts/login/`}>
         Login 
         </Link>
         </Button> 
