@@ -61,7 +61,7 @@ and propelling businesses to unprecedented heights..</p>
 </div>
 
 
-<div className="grid grid-cols-2 gap-2 ">
+<div className="grid grid-flow-row mt-5  md:grid-cols-2 gap-2 ">
 <Button  
 className="bg-blue-700 text-white " 
   >
