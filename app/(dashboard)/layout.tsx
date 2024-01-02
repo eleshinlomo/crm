@@ -50,28 +50,24 @@ const DashboardLayout = ({
     const router = useRouter()
 
     const handleLoginChecker = async ()=>{
-        const username = localStorage.getItem('username')
-        if(username !== null){
-        console.log(username)
-        setUsername(username)
+        const getUsername = localStorage.getItem('username')
+        if(getUsername !== null){
+        console.log(getUsername)
+        setUsername(getUsername)
          setIsLoggedIn(true)
        }else{
         setIsLoggedIn(false)
         const userResponse = await loginChecker()
         if(userResponse){
         console.log(userResponse)
-        const {username} = userResponse.message
-        
-        if(username){
-        localStorage.setItem('username', username)
-        const getUsername = localStorage.getItem('username')
-        if(getUsername){
-        setUser(userResponse.message)
+        const getUsernameAgain = localStorage.getItem('username')
+        if(getUsernameAgain !== null){
+        setUsername(getUsernameAgain)
         setIsLoggedIn(true)
+        }else{
+            console.log("I tried second time but still unable to log you in")
         }
-        
-       }
-    }}
+        }}
 }
 
  useEffect(()=>{

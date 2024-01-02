@@ -92,6 +92,10 @@ export const getAccessToken = async (code: any)=>{
         const user = await res.json()
         if(user){
         console.log(user)
+        const {username} = user.message
+        if(username){
+          localStorage.setItem('username', username)
+        }
         return user
         }else{
           console.log("No user found")
