@@ -47,6 +47,7 @@ const DashboardLayout = ({
     const [csrftoken, setCsrftoken] = useState<string | null>(null)
     const [error, setError] = useState<string | any>("")
     const [username, setUsername] = useState<string | null>(null)
+    const [anonymousUser, setAnonymousUser] = useState<string | null>(null)
     const [isCheckingloginStatus, setIsCheckingLoginStatus] = useState<boolean>(false)
    
 
@@ -62,10 +63,12 @@ const DashboardLayout = ({
         setUsername(getUsername)
          setIsLoggedIn(true)
          setIsCheckingLoginStatus(false)
+
        }else{
         setIsLoggedIn(false)
         setIsCheckingLoginStatus(true)
         const userResponse = await loginChecker()
+
         if(userResponse){
         console.log(userResponse)
         const getUsernameAgain = localStorage.getItem('username')
@@ -73,9 +76,15 @@ const DashboardLayout = ({
         setUsername(getUsernameAgain)
         setIsLoggedIn(true)
         
-        }else{  
+        }else{
+            const {nouser} = userResponse.message
+            console.log(`This is a ghost user: ${nouser}`)
+            if(nouser){
+            setIsLoggedIn(true)
             setIsCheckingLoginStatus(false)
-            setMessage("Sorry, I am unable to log you in")
+            setAnonymousUser(nouser)
+            setMessage("You are ghost User")
+            }
         }
         }}
 }
@@ -100,9 +109,20 @@ const DashboardLayout = ({
             
            <main className=" w-full md:ml-72 h-full ">
             <DashNavbar user={user} />
-            <div className='flex flex-col flex-1 justify-center 
-            items-center  
-             '>
+            <div className='text-center flex flex-col flex-1 justify-center 
+            items-center px-4 
+             '> {username ?
+                <p className='font-extrabold'>
+                    {`Hi, ${username.toUpperCase()}`}</p>:null
+             }
+
+            {anonymousUser ?
+                <p className='font-extrabold'>
+                    {`Hi, ${anonymousUser.toUpperCase()}`}
+                    <p className=' text-muted-foreground'>
+                        You are currently viewing this web as a Ghost User</p>
+                    </p>:null
+             }
              <CreditPage />
              </div>
 

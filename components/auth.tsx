@@ -12,7 +12,9 @@ import {useState, useEffect} from 'react'
 export const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
  
-
+//Hooks
+import { setUsername } from './hooks'
+import { setAnonymousUser } from './hooks'
 
 
 // Get CSRF Token
@@ -36,6 +38,7 @@ export const getcsrfToken = async ()=>{
 
   }
   
+
 
 
    // Get Access Token
@@ -97,9 +100,15 @@ export const getAccessToken = async (code: any)=>{
 
         if(username){
           console.log(`${username} has logged in`)
+          setUsername(username)
           localStorage.setItem('username', username)
+          
         }else{
-          console.log("No username was found")
+          const {nouser} = user.message
+          if(nouser){
+          console.log(nouser)
+          setAnonymousUser(nouser)
+          }
         }
 
         return user
