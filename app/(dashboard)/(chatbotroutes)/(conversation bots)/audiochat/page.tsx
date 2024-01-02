@@ -148,7 +148,7 @@ const Controller = () => {
 
         {/* Recorder */}
         <div className="fixed bottom-0 w-full py-6 border-t text-center 
-        bg-gradient-to-r from-black to-blue-500">
+        bg-gradient-to-r from-black to-black/50">
           <div className="flex justify-center items-center w-full">
             <div>
               

@@ -36,16 +36,9 @@ export const Tools: [] | any = [
         href: "/general",
         color: "text-pink-500",
         bgColor: "text-grey-500"
-        },
-        
-        { 
-          
-          label: "Code Generation",
-          icon: CodeIcon,
-          href: "/code",
-          color: "text-grey-500",
-          bgColor: "text-grey-500"
         }
+        
+        
     ]},
 
     {
@@ -98,7 +91,7 @@ export const Tools: [] | any = [
     
     {
    
-    label: "AI Writer",
+    label: "Blog Writer",
     icon: AreaChartIcon,
     href: "/aiwriter",
     color: "text-pink-500",
@@ -111,6 +104,14 @@ export const Tools: [] | any = [
         href: "/aitranscriber",
         color: "text-pink-500",
         bgColor: "text-grey-500"
+        },
+        { 
+          
+          label: "Code Generation",
+          icon: CodeIcon,
+          href: "/code",
+          color: "text-grey-500",
+          bgColor: "text-grey-500"
         }
       ]},
 

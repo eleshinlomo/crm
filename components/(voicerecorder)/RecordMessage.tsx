@@ -1,5 +1,6 @@
 import { ReactMediaRecorder } from "react-media-recorder";
 import RecordIcon from "./RecordIcon";
+import { Button } from "../ui/button";
 
 type Props = {
   handleStop: any;
@@ -18,9 +19,9 @@ export const RecordMessage = ({ handleStop }: Props) => {
             
           
             
-<div className="flex flex-1 justify-center items-center">
-<button className="bg-black text-white p-4  rounded-full" 
-onClick={startRecording}>Record</button>
+<div className="flex">
+<Button className="bg-black text-white " 
+onClick={startRecording}>Record</Button>
 <RecordIcon
               classText={
                 status == "recording"
@@ -28,8 +29,9 @@ onClick={startRecording}>Record</button>
                   : "text-sky-500"
               }
             />
-<button className="bg-black text-white p-4 rounded-full" 
-onClick={stopRecording}>Stop</button>
+            
+<Button className="bg-black text-white" 
+onClick={stopRecording}>Stop</Button>
 
 </div>
 
