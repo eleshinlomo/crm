@@ -46,8 +46,11 @@ const DashboardLayout = ({
     const [csrftoken, setCsrftoken] = useState<string | null>(null)
     const [error, setError] = useState<string | any>("")
     const [username, setUsername] = useState<string | null>(null)
+   
 
     const router = useRouter()
+
+  
 
     const handleLoginChecker = async ()=>{
         const getUsername = localStorage.getItem('username')
@@ -64,8 +67,8 @@ const DashboardLayout = ({
         if(getUsernameAgain !== null){
         setUsername(getUsernameAgain)
         setIsLoggedIn(true)
-        }else{
-            console.log("I tried second time but still unable to log you in")
+        }else{  
+            setMessage("I tried second time but still unable to log you in")
         }
         }}
 }
@@ -122,12 +125,12 @@ const DashboardLayout = ({
             </Link>
 
         <Button className='flex gap-1' asChild>
-        <Link href={`${BASE_URL}/accounts/login/`}>
+        <a href={`${BASE_URL}/accounts/login/`}>
         Login 
-        </Link>
+        </a>
         </Button> 
 
-        <div>
+        <div className='px-4 text-blue-700 text-center'>
          {message}
         </div>
         </div>
