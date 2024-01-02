@@ -30,7 +30,7 @@ export const Services = ()=>{
                 {/* Col Two */}
                 <div>
                 <p className="text-2xl font-extrabold py-4 "> 
-                Transcribing
+                Transcriber
                 </p>
                 <p className=" py-4 px-4 flex flex-wrap">Our advance AI tool will transcribe your project at incredible 
                 speed with high voice to text accuracy. Get started right now.</p>
@@ -42,7 +42,7 @@ export const Services = ()=>{
                {/* Col Three */}
                 <div>
                 <p className="text-2xl font-extrabold py-4 "> 
-                Writing
+                Blog Writer
                 </p>
                 <p className=" py-4 px-4 flex flex-wrap">Leverage on powerful AI Tools to write faster
                 and more efficiently. Fixupe got all the AI tools 
