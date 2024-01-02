@@ -131,10 +131,10 @@ const DashboardLayout = ({
             <Button>Back to home</Button>
             </Link>
 
-        <Button className='flex gap-1' asChild>
-        <a href={`${ALLAUTH_BASE_URL}/accounts/login/`}>
+        <Button className='flex gap-1'
+         onClick= {()=>window.location.href=`${ALLAUTH_BASE_URL}/accounts/login/`}>
         Login 
-        </a>
+        
         </Button> 
 
         <div className='px-4 text-blue-700 font-extrabold text-center'>
