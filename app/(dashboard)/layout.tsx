@@ -125,7 +125,7 @@ const DashboardLayout = ({
             </Link>
 
         <Button className='flex gap-1' asChild>
-        <a href={`${BASE_URL}/accounts/login/`}>
+        <a href={`${BASE_URL}/accounts/login/`} target='_blank' rel='noopener noreferrer'>
         Login 
         </a>
         </Button> 
