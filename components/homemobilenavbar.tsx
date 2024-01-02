@@ -10,7 +10,7 @@ import Waitlist from './waitlistpage'
 
 // URLs
  // URLs
- const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+ const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 
 
 export const HomeMobileNavBar = () => {
@@ -49,10 +49,10 @@ export const HomeMobileNavBar = () => {
         </Button>
         { isLoggedIn ?
         <Button className='' asChild>
-          <Link href={`${BASE_URL}/accounts/logout/`}>Sign Out</Link>
+          <Link href={`${ALLAUTH_BASE_URL}/accounts/logout/`}>Sign Out</Link>
         </Button>:
         <Button className='' asChild>
-        <Link href={`${BASE_URL}/accounts/login/`}>Sign In</Link>
+        <Link href={`${ALLAUTH_BASE_URL}/accounts/login/`}>Sign In</Link>
       </Button>
          }
 

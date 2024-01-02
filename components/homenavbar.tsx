@@ -21,7 +21,7 @@ const HomeNavBar = ()=>{
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false) 
 
   // URLs
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+  const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
  
 
    // Login 
@@ -81,11 +81,11 @@ bg-black text-white '>
         
           {isLoggedIn?
           <Button  className='bg-blue-500 hover:bg-blue-500'>
-          <Link href={`${BASE_URL}/accounts/logout/`}>Sign out</Link>
+          <Link href={`${ALLAUTH_BASE_URL}/accounts/logout/`}>Sign out</Link>
           </Button>:
 
           <Button  className='bg-blue-500 hover:bg-blue-500'>
-            <Link href={`${BASE_URL}/accounts/login/`}>
+            <Link href={`${ALLAUTH_BASE_URL}/accounts/login/`}>
             Sign
             </Link>
           </Button>

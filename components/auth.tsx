@@ -9,6 +9,7 @@ import {useState, useEffect} from 'react'
 
 
 // URLs
+export const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
  
 
@@ -18,7 +19,7 @@ export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 export const getcsrfToken = async ()=>{
 
   try {
-  const response = await fetch(`${BASE_URL}/getcsrftoken/`, {
+  const response = await fetch(`${ALLAUTH_BASE_URL}}/getcsrftoken/`, {
     mode: 'cors',
     method: 'GET',
     credentials: 'include',
@@ -40,7 +41,7 @@ export const getcsrfToken = async ()=>{
    // Get Access Token
 export const getAccessToken = async (code: any)=>{
   console.log({"Code found! Now sending for verification": code})
-  const response: any = await fetch(`${BASE_URL}/getaccesstoken/`, {
+  const response: any = await fetch(`${ALLAUTH_BASE_URL}/getaccesstoken/`, {
     mode: 'cors',
     method: 'POST',
     credentials: 'include',
@@ -72,7 +73,7 @@ export const getAccessToken = async (code: any)=>{
   // Logout
   export const userLogout = ()=>{
     localStorage.removeItem('username')
-    window.location.href=`${BASE_URL}/accounts/logout/`
+    window.location.href=`${ALLAUTH_BASE_URL}/accounts/logout/`
     }
   
 

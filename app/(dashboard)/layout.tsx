@@ -17,7 +17,7 @@ import CreditPage from '@/components/creditpage';
 import { useSearchParams, useRouter } from 'next/navigation';
 
 // URLs
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 
 // Auth Functions
 import { userLogin } from '@/components/auth';
@@ -28,7 +28,8 @@ interface ToolsProps{
   Tools:[]
 }
 
-
+// Login Status
+const loginStatus ="Checking login status. Please wait..."
 
 const DashboardLayout = ({
     
@@ -46,6 +47,7 @@ const DashboardLayout = ({
     const [csrftoken, setCsrftoken] = useState<string | null>(null)
     const [error, setError] = useState<string | any>("")
     const [username, setUsername] = useState<string | null>(null)
+    const [isCheckingloginStatus, setIsCheckingLoginStatus] = useState<boolean>(false)
    
 
     const router = useRouter()
@@ -53,13 +55,16 @@ const DashboardLayout = ({
   
 
     const handleLoginChecker = async ()=>{
+        setIsCheckingLoginStatus(true)
         const getUsername = localStorage.getItem('username')
         if(getUsername !== null){
         console.log(getUsername)
         setUsername(getUsername)
          setIsLoggedIn(true)
+         setIsCheckingLoginStatus(false)
        }else{
         setIsLoggedIn(false)
+        setIsCheckingLoginStatus(true)
         const userResponse = await loginChecker()
         if(userResponse){
         console.log(userResponse)
@@ -67,8 +72,10 @@ const DashboardLayout = ({
         if(getUsernameAgain !== null){
         setUsername(getUsernameAgain)
         setIsLoggedIn(true)
+        
         }else{  
-            setMessage("I tried second time but still unable to log you in")
+            setIsCheckingLoginStatus(false)
+            setMessage("Sorry, I am unable to log you in")
         }
         }}
 }
@@ -125,12 +132,17 @@ const DashboardLayout = ({
             </Link>
 
         <Button className='flex gap-1' asChild>
-        <a href={`${BASE_URL}/accounts/login/`}>
+        <a href={`${ALLAUTH_BASE_URL}/accounts/login/`}>
         Login 
         </a>
         </Button> 
 
-        <div className='px-4 text-blue-700 text-center'>
+        <div className='px-4 text-blue-700 font-extrabold text-center'>
+         {isCheckingloginStatus?
+         <div>
+         <p className=' animate-pulse'>{loginStatus}</p>
+         </div>:null
+         }
          {message}
         </div>
         </div>
