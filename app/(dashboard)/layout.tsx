@@ -80,7 +80,7 @@ const DashboardLayout = ({
             const {nouser} = userResponse.message
             console.log(`This is a ghost user: ${nouser}`)
             if(nouser){
-            setIsLoggedIn(false)
+            setIsLoggedIn(true)
             setIsCheckingLoginStatus(false)
             setAnonymousUser(nouser)
             setMessage("I am unable to log you in")
