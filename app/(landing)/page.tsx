@@ -36,23 +36,23 @@ const HomePage = () => {
     const code = params.get("code")
   
 
-    // const handleGetAccessToken = async (code: string)=>{
-    //   if(code !== null){
-    //   const response: any = await getAccessToken(code)
-    //   if(response.ok){
-    //     const {access_token} = response.message
-    //     console.log(access_token)
-    //   }else{
-    //     console.log("No access_token found")
-    //   }
-    // }else{
-    //     console.log("Code needed for Google Auth is null")
-    //   }
-    // }
+    const handleGetAccessToken = async (code: string)=>{
+      if(code !== null){
+      const response: any = await getAccessToken(code)
+      if(response.ok){
+        const {access_token} = response.message
+        console.log(access_token)
+      }else{
+        console.log("No access_token found")
+      }
+    }else{
+        console.log("Code needed for Google Auth is null")
+      }
+    }
 
-    // useEffect(()=>{
-    //   handleGetAccessToken(code)
-    // }, [code])
+    useEffect(()=>{
+      handleGetAccessToken(code)
+    }, [code])
 
     
 

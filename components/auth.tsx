@@ -42,13 +42,13 @@ export const getcsrfToken = async ()=>{
    // Get Access Token
 export const getAccessToken = async (code: any)=>{
   console.log({"Code found! Now sending for verification": code})
-  const response: any = await fetch(`${ALLAUTH_BASE_URL}/getaccesstoken/`, {
+  const response: any = await fetch(`${BASE_URL}/getaccesstoken/`, {
     mode: 'cors',
     method: 'POST',
     credentials: 'include',
     headers: {
       "Content-Type": 'application/json',
-      "Authorization": `Basic ${code}`
+      "Authorization": `Bearer ${code}`
     }
   })
   const data = await response.json()
