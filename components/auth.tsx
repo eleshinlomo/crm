@@ -6,8 +6,6 @@ import {useRouter} from 'next/router'
 import {useState, useEffect} from 'react'
 
 
-
-
 // URLs
 export const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
@@ -100,14 +98,12 @@ export const getAccessToken = async (code: any)=>{
 
         if(username){
           console.log(`${username} has logged in`)
-          setUsername(username)
           localStorage.setItem('username', username)
-          
+
         }else{
           const {nouser} = user.message
           if(nouser){
           console.log(nouser)
-          setAnonymousUser(nouser)
           }
         }
 
