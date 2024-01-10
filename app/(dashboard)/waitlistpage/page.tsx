@@ -14,7 +14,7 @@ const WaitlistPage = () => {
             </Button>
         </SheetTrigger>
 
-        <SheetContent className='bg-black'>
+        <SheetContent side='right' className='bg-black'>
          <div>
             <Waitlist />
          </div>

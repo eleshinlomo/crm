@@ -13,30 +13,38 @@ import { LoginPage } from './loginpage'
  // URLs
  const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 
+//  Auth Functions
+import { loginChecker } from './auth'
+import WaitlistPage from '@/app/(dashboard)/waitlistpage/page'
+import { userLogout } from './auth'
+
 
 export const HomeMobileNavBar = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false)
+  const [username, setUsername] = useState<string | null>(null)
     
 
-  // useEffect(()=>{
-  //   const loginChecker = async() =>{
-  //       const response: any = await fetch(`${BASE_URL}/authchecker/`, {
-  //           mode: 'cors',
-  //           credentials: 'include',
-  //           headers: {'Content-Type': 'application/json'}
-  //       })
-  //       if (!response) throw new Error("No response from server")
-  //        const data = await response.json()
-  //       if (data.success === true){
-  //         console.log(data)
-  //          setIsLoggedIn(true)
-  //       }else{
-  //           setIsLoggedIn(false)
-  //       }
-  //   }
-  //   loginChecker()
-  //   },[])
+ // Login Checker Handler
+ const handleLoginChecker = ()=>{
+  const user: any = loginChecker()
+  if(user !== null && user !== 'undefined' && user !== undefined ){
+      console.log(user)
+      const {username, userid} = user
+      if(username !== undefined && username !== 'undefined' && username !== null){
+      setUsername(username)
+      setIsLoggedIn(true)
+  }else{
+      return null
+  }
+  }else{
+      setIsLoggedIn(false)
+  }
+}
+
+useEffect(()=>{
+ handleLoginChecker()
+}, [])
 
 
   return (
@@ -47,9 +55,9 @@ export const HomeMobileNavBar = () => {
         </div>
         
         { isLoggedIn ?
-        <div>
-        <Button className='' asChild>
-          <Link href={`${ALLAUTH_BASE_URL}/accounts/logout/`}>Sign Out</Link>
+        <div className='flex flex-col gap-3 mt-10'>
+       <Button size='sm' onClick={userLogout}>
+          Sign Out
         </Button>
 
         <Button className='' asChild>
@@ -63,7 +71,8 @@ export const HomeMobileNavBar = () => {
         </div>
         :
         <div className=' flex flex-col flex-1 gap-3 mt-5'>
-        <Button className='bg-blue-500 hover:bg-blue-500 w-full'><Link href='signuppage'>Sign up</Link></Button>
+        <Button className='bg-blue-500 hover:bg-blue-500 w-full'>
+          <Link href='signuppage'>Sign up</Link></Button>
 
         <Button className='bg-blue-500 hover:bg-blue-500'>
             <Link href='/signinpage'>Sign In</Link>

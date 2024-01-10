@@ -20,6 +20,7 @@ import { useRouter } from 'next/navigation'
 
 // Auth Functions
 import { getAccessToken } from '@/components/auth'
+import { loginChecker } from '@/components/auth'
 
 
 
@@ -28,12 +29,16 @@ const HomePage = () => {
   const [customText, setCustomText] = useState<Array<string>>([])
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
   const [showButtons, setShowButtons] = useState<boolean>(true)
+  const [username, setUsername] = useState<string | null>(null)
   // const [accessToken, setAccessToken] = useState<string | null>(null)
   const [error, setError] = useState<string | any>("")
 
   const router = useRouter()
   const params: any = useSearchParams()
     const code = params.get("code")
+
+
+    
   
 
     const handleGetAccessToken = async (code: string)=>{
@@ -63,7 +68,7 @@ const HomePage = () => {
 
     <div>
     
-    <HomeNavBar />
+    <HomeNavBar  />
 
     <div className='    w-full  h-full overflow-hidden flex flex-col '>
      <div className=''>
