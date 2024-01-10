@@ -123,7 +123,7 @@ return error.error
     
 }
 
-
+export let verifiedUser = null
 
 
   // Logout

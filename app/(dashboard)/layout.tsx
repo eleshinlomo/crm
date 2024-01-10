@@ -23,6 +23,7 @@ const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 import { loginChecker } from '@/components/auth';
 
 
+
 interface ToolsProps{
   Tools:[]
 }
@@ -41,7 +42,7 @@ const DashboardLayout = ({
     const [isAuthenticated, setIsAuthenticated] = useState<Boolean>(false)
     const [isChecking, setIsChecking] = useState<boolean>(false)
     const [message, setMessage] = useState<String>("")
-    const [user, setUser] = useState(null)
+    const [currentUser, setCurrentUser] = useState(null)
     const [isSessionId, setIsSessionId] = useState(false)
     const [csrftoken, setCsrftoken] = useState<string | null>(null)
     const [error, setError] = useState<string | any>("")
@@ -51,17 +52,22 @@ const DashboardLayout = ({
    
 
     const router = useRouter()
-
-  
+   
 
     const handleLoginChecker = ()=>{
         setIsChecking(true)
         const user: any = loginChecker()
         if(user !== null && user !== 'undefined' && user !== undefined ){
             console.log(user)
+            const {username, userid} = user
+            if(username !== undefined && username !== 'undefined' && username !== null){
             setIsChecking(false)
-            setUsername(user.username)
+            setUsername(username)
+            setCurrentUser(user)
             setIsLoggedIn(true)
+        }else{
+            setMessage("Valid Username not found please re-login")
+        }
         }else{
             setIsLoggedIn(false)
             setIsChecking(false)
@@ -89,7 +95,7 @@ const DashboardLayout = ({
             </div>
             
            <main className=" w-full md:ml-72 h-full ">
-            <DashNavbar user={user} />
+            <DashNavbar user={currentUser} />
             <div className='text-center flex flex-col flex-1 justify-center 
             items-center px-4 
              '> {username ?
