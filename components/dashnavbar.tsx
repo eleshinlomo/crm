@@ -9,7 +9,7 @@ import { UserAvatar } from './user-avater'
 import { GOOGLE_LOGOUT_URL } from './urls'
 
 // Auth Functions
-import { userLogin } from './auth'
+
 import { userLogout } from './auth'
 
 

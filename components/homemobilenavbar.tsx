@@ -5,6 +5,7 @@ import  Image  from 'next/image'
 import { GOOGLE_LOGIN_URL } from './urls'
 import { GOOGLE_LOGOUT_URL } from './urls'
 import Waitlist from './waitlistpage'
+import { LoginPage } from './loginpage'
 
 
 
@@ -44,16 +45,31 @@ export const HomeMobileNavBar = () => {
         <div className='relative w-24 h-12'>
           <Image src='/logos/fixupe_logo.png' alt='logo' fill />
         </div>
+        
+        { isLoggedIn ?
+        <div>
+        <Button className='' asChild>
+          <Link href={`${ALLAUTH_BASE_URL}/accounts/logout/`}>Sign Out</Link>
+        </Button>
+
         <Button className='' asChild>
           <Link href='/dashboard'>Dashboard</Link>
         </Button>
-        { isLoggedIn ?
-        <Button className='' asChild>
-          <Link href={`${ALLAUTH_BASE_URL}/accounts/logout/`}>Sign Out</Link>
-        </Button>:
-        <Button className='' asChild>
-        <Link href={`${ALLAUTH_BASE_URL}/accounts/login/`}>Sign In</Link>
-      </Button>
+
+        <div>
+          <Waitlist />
+         </div>
+
+        </div>
+        :
+        <div className=' flex flex-col flex-1 gap-3 mt-5'>
+        <Button className='bg-blue-500 hover:bg-blue-500 w-full'><Link href='signuppage'>Sign up</Link></Button>
+
+        <Button className='bg-blue-500 hover:bg-blue-500'>
+            <Link href='/signinpage'>Sign In</Link>
+        </Button>
+
+        </div>
          }
 
          <div>

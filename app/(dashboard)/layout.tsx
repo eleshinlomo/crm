@@ -20,7 +20,6 @@ import { useSearchParams, useRouter } from 'next/navigation';
 const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 
 // Auth Functions
-import { userLogin } from '@/components/auth';
 import { loginChecker } from '@/components/auth';
 
 
@@ -29,7 +28,7 @@ interface ToolsProps{
 }
 
 // Login Status
-const loginStatus ="Checking login status. Please wait..."
+const checking ="Checking login status. Please wait..."
 
 const DashboardLayout = ({
     
@@ -38,9 +37,9 @@ const DashboardLayout = ({
     children: React.ReactNode;
 })=>{
 
-    const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false)
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
     const [isAuthenticated, setIsAuthenticated] = useState<Boolean>(false)
-    const [isChecking, setIsChecking] = useState<Boolean>(false)
+    const [isChecking, setIsChecking] = useState<boolean>(false)
     const [message, setMessage] = useState<String>("")
     const [user, setUser] = useState(null)
     const [isSessionId, setIsSessionId] = useState(false)
@@ -48,7 +47,7 @@ const DashboardLayout = ({
     const [error, setError] = useState<string | any>("")
     const [username, setUsername] = useState<string | null>(null)
     const [anonymousUser, setAnonymousUser] = useState<string | null>(null)
-    const [isCheckingloginStatus, setIsCheckingLoginStatus] = useState<boolean>(false)
+    
    
 
     const router = useRouter()
@@ -56,37 +55,29 @@ const DashboardLayout = ({
   
 
     const handleLoginChecker = async ()=>{
-        setIsCheckingLoginStatus(true)
-        const getUsername = localStorage.getItem('username')
-        if(getUsername !== null){
-        console.log(getUsername)
-        setUsername(getUsername)
-         setIsLoggedIn(true)
-         setIsCheckingLoginStatus(false)
+        setIsChecking(true)
+        const user: any = await loginChecker()
 
-       }else{
+        if(user === 'undefined' || user === null){
         setIsLoggedIn(false)
-        setIsCheckingLoginStatus(true)
-        const userResponse = await loginChecker()
-
-        if(userResponse){
-        console.log(userResponse)
-        const getUsernameAgain = localStorage.getItem('username')
-        if(getUsernameAgain !== null){
-        setUsername(getUsernameAgain)
-        setIsLoggedIn(true)
         
-        }else{
-            const {nouser} = userResponse.message
-            console.log(`This is a ghost user: ${nouser}`)
-            if(nouser){
-            setIsLoggedIn(true)
-            setIsCheckingLoginStatus(false)
-            setAnonymousUser(nouser)
-            setMessage("I am unable to log you in")
-            }
-        }
-        }}
+        
+    }else{
+        console.log(user)
+        const {username} = user
+        
+        if(username === 'undefined' || username === null){
+            setIsLoggedIn(false)
+            setIsChecking(false)
+        
+    }else{
+        console.log(username)
+        setUsername(username)
+        setIsLoggedIn(true)
+        setIsChecking(false)
+    }
+}
+
 }
 
  useEffect(()=>{
@@ -151,16 +142,16 @@ const DashboardLayout = ({
             <Button>Back to home</Button>
             </Link>
 
-        <Button className='flex gap-1'
-         onClick= {()=>window.location.href=`${ALLAUTH_BASE_URL}/accounts/login/`}>
-        Login 
+        <Button className='flex gap-1'>
+         
+        <Link href='/signinpage'>Login</Link>
         
         </Button> 
 
         <div className='px-4 text-blue-700 font-extrabold text-center'>
-         {isCheckingloginStatus?
+         {isChecking?
          <div>
-         <p className=' animate-pulse'>{loginStatus}</p>
+         <p className=' animate-pulse'>{checking}</p>
          </div>:null
          }
          {message}

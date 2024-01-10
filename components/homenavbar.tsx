@@ -7,10 +7,10 @@ import { Button } from './ui/button'
 import { Menu} from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet'
 import { HomeMobileNavBar } from './homemobilenavbar'
+import { LoginPage } from '@/components/loginpage'
 
 
 // Auth Functions
-import { userLogin } from './auth'
 import { userLogout } from './auth'
 
 
@@ -24,19 +24,7 @@ const HomeNavBar = ()=>{
   const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
  
 
-   // Login 
-   const handleLogin = async ()=>{
-    const accessToken: any = userLogin()
-    if(accessToken.ok){
-      console.log({"access_code found": accessToken})
-      setIsLoggedIn(true)
-    }else{
-      setIsLoggedIn(false)
-    }
-  }
-      useEffect(()=>{
-        handleLogin()
-      },[])
+ 
 
     return(
        <div>
@@ -84,11 +72,15 @@ bg-black text-white '>
           <Link href={`${ALLAUTH_BASE_URL}/accounts/logout/`}>Sign out</Link>
           </Button>:
 
-          <Button  className='bg-blue-500 hover:bg-blue-500'>
-            <Link href={`${ALLAUTH_BASE_URL}/accounts/login/`}>
-            Sign
-            </Link>
+          <Button className='bg-blue-500 hover:bg-blue-500'>
+            <Link href='/signinpage'>Sign In</Link>
           </Button>
+
+          // <Button  className='bg-blue-500 hover:bg-blue-500'>
+          //   <Link href={`${ALLAUTH_BASE_URL}/accounts/login/`}>
+          //   Sign
+          //   </Link>
+          // </Button>
 
           // <Button className='bg-blue-500 hover:bg-blue-500' asChild>
           // <a href={GOOGLE_AUTH_URL}>

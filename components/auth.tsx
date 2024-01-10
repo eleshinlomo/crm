@@ -60,61 +60,78 @@ export const getAccessToken = async (code: any)=>{
     
    
 
-// Login
-   export const userLogin = ()=>{
-    const getAccessToken = localStorage.getItem('access_token')
-    if(getAccessToken !== null){
-    console.log({"user authorized": getAccessToken})
-    return getAccessToken
+// // Login
+//    export const userLogin = ()=>{
+//     const getAccessToken = localStorage.getItem('access_token')
+//     if(getAccessToken !== null){
+//     console.log({"user authorized": getAccessToken})
+//     return getAccessToken
+//   }else{
+//     return "You need to be logged in"
+//   }
+//   }
+
+
+// Email Login
+export const emailLogin = async (data: any)=>{
+try{
+  const processPayload = await fetch(`${BASE_URL}/loginuser/`, {
+      mode: 'cors',
+      method: 'POST',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(data)
+  })
+
+  const response: any = await processPayload.json()
+  if(!response) {
+   return "Server error! No response from server"
   }else{
-    return "You need to be logged in"
+  if(response.ok){
+  return response
+  }else{
+    response.error
   }
+}
+  
+}
+catch(error: any){
+console.log(error.error)
+return error.error
+}
+
+}
+
+
+ // Login Checker
+ export const loginChecker = async ()=>{
+  const getUserName = localStorage.getItem('username')
+  const getUserId = localStorage.getItem('userid')
+  
+  if(getUserName && getUserId){
+
+    const user = {
+      "username": getUserName,
+      "userid": getUserId
+    }
+    return user
+  }else{
+    const errorMessage = "No User found"
+    console.log(errorMessage)
+    return errorMessage
   }
+    
+}
 
   // Logout
   export const userLogout = ()=>{
     localStorage.removeItem('username')
-    window.location.href=`${ALLAUTH_BASE_URL}/accounts/logout/`
+    localStorage.removeItem('userid')
+    window.location.href=`/`
     }
   
 
 
-    // Login Checker
-   export const loginChecker = async ()=>{
-    const res = await fetch(`${BASE_URL}/loginchecker/`, {
-     mode: 'cors',
-     credentials: 'include',
-     headers: {
-      "Content-Type": "application/json",
-     }
-    })
-        if (!res){
-          throw new Error("userprofile not fetched")
-        } 
-        const user = await res.json()
-        if(user){
-        console.log(user)
-        const {username} = user.message
-
-        if(username){
-          console.log(`${username} has logged in`)
-          localStorage.setItem('username', username)
-
-        }else{
-          const {nouser} = user.message
-          if(nouser){
-          console.log(nouser)
-          }
-        }
-
-        return user
-        }else{
-          console.log("No user found")
-          return
-        }
-      
-        
-  }
+   
   
 
  
