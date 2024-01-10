@@ -29,8 +29,11 @@ export const SignInForm = ()=>{
 
 const [message, setMessage] = useState<string | any>('Sign in with Email')
 const [isRegistered, setIsRegistered] = useState<boolean>(false)
+const [isSiginingIn, setIsSigningIn] = useState(false)
 
 const router = useRouter()
+
+const signingIn = "Signing in..."
 
 const FormSchema = z.object({
 
@@ -57,19 +60,21 @@ const FormSchema = z.object({
   })
 
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
-    
+    setIsSigningIn(true)
     const response: any = await emailLogin(data)
-    if(response.ok){
+    if(response.message.ok){
       console.log(response)
-      const {userid, username, firstname, lastname} = response.message
+      const {userid, username, firstname, lastname} = response.message.data
       console.log({"userid": userid, "username": username, "firstname": firstname, "lastname": lastname})
       // Save User Info
       const saveUsername = localStorage.setItem('username', username)
       const saveUserId = localStorage.setItem("userid", userid)
+      setIsSigningIn(false)
       router.push('/dashboard')
     }else{
-      console.log(response)
-      setMessage(response)
+      console.log(response.message)
+      setMessage(response.message)
+      setIsSigningIn(false)
     }
     
   }
@@ -78,6 +83,12 @@ const FormSchema = z.object({
 
     <div className='overflow-hidden flex flex-col justify-center items-center'>
      
+     {isSiginingIn?
+     <div>
+      {signingIn}
+      </div>:null
+      
+     }
      
      <div className='text-center font-extrabold py-8 px-24'>
         {message}
@@ -128,7 +139,13 @@ const FormSchema = z.object({
           )}
         />
 
-        <Button type="submit" className="">Sign In</Button>
+       <div className="flex gap-2 py-8">
+                <p className="mt-1 ">Forgot Password?</p>
+                <Button type='submit'>
+                    Sign In
+                    </Button>
+              </div>
+          
       </form>
     </Form>
     

@@ -45,7 +45,7 @@ const SignInPage = ()=>{
         
          
          {/* Goggle Button */}
-         <Button  className='border border-blue-500
+         {/* <Button  className='border border-blue-500
           bg-white text-black hover:bg-white'>
          <Link href={`${ALLAUTH_BASE_URL}/accounts/login/`} 
          className="flex flex-1 justify-between">
@@ -54,11 +54,11 @@ const SignInPage = ()=>{
           </div>
          Sign in with Google
           </Link>
-        </Button>
+        </Button> */}
 
         {/* Linkedin Button */}
 
-        <Button  className='border border-blue-500
+        {/* <Button  className='border border-blue-500
           bg-white text-black hover:bg-white '>
          <Link href={`${ALLAUTH_BASE_URL}/accounts/login/`} 
          className="flex flex-1 justify-between">
@@ -67,7 +67,7 @@ const SignInPage = ()=>{
           </div>
          Sign in with Linkedin
           </Link>
-        </Button>
+        </Button> */}
       
         {/* Email */}
         <SignInForm />

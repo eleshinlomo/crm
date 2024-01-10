@@ -54,31 +54,21 @@ const DashboardLayout = ({
 
   
 
-    const handleLoginChecker = async ()=>{
+    const handleLoginChecker = ()=>{
         setIsChecking(true)
-        const user: any = await loginChecker()
-
-        if(user === 'undefined' || user === null){
-        setIsLoggedIn(false)
-        
-        
-    }else{
-        console.log(user)
-        const {username} = user
-        
-        if(username === 'undefined' || username === null){
+        const user: any = loginChecker()
+        if(user !== null && user !== 'undefined' && user !== undefined ){
+            console.log(user)
+            setIsChecking(false)
+            setUsername(user.username)
+            setIsLoggedIn(true)
+        }else{
             setIsLoggedIn(false)
             setIsChecking(false)
-        
-    }else{
-        console.log(username)
-        setUsername(username)
-        setIsLoggedIn(true)
-        setIsChecking(false)
-    }
+        }
 }
 
-}
+
 
  useEffect(()=>{
     handleLoginChecker()

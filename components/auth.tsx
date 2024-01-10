@@ -86,10 +86,10 @@ try{
   if(!response) {
    return "Server error! No response from server"
   }else{
-  if(response.ok){
+  if(response){
   return response
   }else{
-    response.error
+    return response
   }
 }
   
@@ -103,7 +103,7 @@ return error.error
 
 
  // Login Checker
- export const loginChecker = async ()=>{
+ export const loginChecker =  ()=>{
   const getUserName = localStorage.getItem('username')
   const getUserId = localStorage.getItem('userid')
   
@@ -113,14 +113,18 @@ return error.error
       "username": getUserName,
       "userid": getUserId
     }
+    
     return user
   }else{
     const errorMessage = "No User found"
     console.log(errorMessage)
-    return errorMessage
+    return null
   }
     
 }
+
+
+
 
   // Logout
   export const userLogout = ()=>{
