@@ -107,25 +107,30 @@ catch(error: any){
 
         <p className='font-extrabold text-2xl'>All Team Members</p>
 
-        <p className='font-semibold'>
-          You currently have {subUsers? subUsers.length: null} team members</p>
+        
         
         <div className=''>
 
         {subUsers ?
-        
-        subUsers.map((teammember: any, index: any)=>
+        <div>
+        <p className='font-semibold'>
+        You currently have {subUsers? subUsers.length: null} team members</p>
+        {subUsers.map((teammember: any, index: any)=>
         <div key={index} className='flex flex-1 flex-wrap py-4 gap-3 px-2 border border-blue-500'>
           <p>Username: {teammember.username}</p>
           <p>Username: {teammember.email}</p>
           <p>Firstname: {teammember.firstname?teammember.firstname: "Not provided"}</p>
           <p>Added on: {teammember.createdAt}</p>
         </div>
-        ):
+        
+        
+        )}
+        </div>:
         <div>
           <p>You have not added any team member</p>
         </div>
          
+    
         }
 
 
