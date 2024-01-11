@@ -26,6 +26,29 @@ export const Tools: [] | any = [
   },
 
   {
+    id:'team',
+    category: 'Team Members',
+    tools: [
+        {
+        
+        label: "Add A Team Member",
+        icon: MessageSquare,
+        href: "/addteammember",
+        color: "text-pink-500",
+        bgColor: "text-grey-500"
+        },
+        {
+        
+          label: "All Team Members",
+          icon: MessageSquare,
+          href: "/allteammembers",
+          color: "text-pink-500",
+          bgColor: "text-grey-500"
+          }
+          
+    ]},
+
+  {
     id:'conversation',
     category: 'Conversation Tools',
     tools: [
