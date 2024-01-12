@@ -60,6 +60,7 @@ const FormSchema = z.object({
   })
 
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+    try{
     setIsSigningIn(true)
     const response: any = await emailLogin(data)
     if(response.message.ok){
@@ -76,6 +77,13 @@ const FormSchema = z.object({
       setMessage(response.message)
       setIsSigningIn(false)
     }
+  }
+  catch(err: any){
+    console.log(err.message)
+    setMessage("Server error. Make sure you are connected to the internet")
+  }finally{
+    setIsSigningIn(false)
+  }
     
   }
 

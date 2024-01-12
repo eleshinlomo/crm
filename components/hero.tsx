@@ -14,8 +14,14 @@ const Hero = ()=>{
 
   useEffect(()=>{
     setCustomText(
-      [
+      [ 
+        "Focus on your business and not the stress",
+        "Modernize Your Business Process",
+        "Experience Rapid Scaling",
+        "Run Your Business on Fixupe",
+        "Advance Business Tools",
         "Advance AI Models",
+        "Make Impact With Just Clicks",
         "Innovative ML Approach",
         "Cutting Edge Technologies"
       ]
@@ -44,7 +50,7 @@ const Hero = ()=>{
 
 <div className="  my-3">
 <h1 className="py-4 font-arial font-extrabold text-2xl ">
-  {"Welcome to the Future of Innovation!"}</h1>
+  {"Every Business Tools On One Platform!"}</h1>
 </div>
 
 <div>
@@ -55,9 +61,9 @@ const Hero = ()=>{
 
 In a world driven by technology, the demand for cutting-edge 
 solutions has never been more critical. Fixupe is your gateway to a 
-future where Artificial Intelligence (AI) 
-transcends boundaries, reshaping industries, 
-and propelling businesses to unprecedented heights..</p>
+future where modern technology tools 
+transcend boundaries, reshaping industries, 
+and propelling businesses to unprecedented heights...</p>
 </div>
 
 

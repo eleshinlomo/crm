@@ -84,6 +84,7 @@ const FormSchema = z.object({
 
 catch(error: any){
   console.log(error.message)
+  setMessage("Server error! Make sure you are connected to the internet")
 }
 
   }

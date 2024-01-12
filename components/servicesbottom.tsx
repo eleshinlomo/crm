@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Button } from "./ui/button"
 
-export const Services = ()=>{
+export const ServicesBottom = ()=>{
     return (
         <div>
             <div className="text-center grid grid-row-flow md:grid-cols-4 
@@ -45,7 +45,7 @@ export const Services = ()=>{
                 Blog Writer
                 </p>
                 <p className=" py-4 px-4 flex flex-wrap">Leverage on powerful AI Tools to write faster
-                and more efficiently. Fixupe got all the AI tools 
+                and more efficiently. Fixupe has all the AI tools 
                 you need to step up your game. 
                 </p>
                 <Button className="bg-green-700">

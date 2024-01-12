@@ -9,7 +9,7 @@ import { BASE_URL } from '@/components/auth'
 import { GOOGLE_LOGIN_URL } from '@/components/urls'
 import { loginURL } from '@/components/urls'
 import  HomeNavBar  from '@/components/homenavbar'
-import { Services } from '@/components/services'
+import { ServicesBottom } from '@/components/servicesbottom'
 import  Hero  from '@/components/hero'
 import  Typewriter  from '@/components/typewriter'
 import { Col3Bottom } from '@/components/cols3bottom'
@@ -21,6 +21,8 @@ import { useRouter } from 'next/navigation'
 // Auth Functions
 import { getAccessToken } from '@/components/auth'
 import { loginChecker } from '@/components/auth'
+import { ServicesTop } from '@/components/servicestop'
+import { ServicesMiddle } from '@/components/servicesmiddle'
 
 
 
@@ -80,11 +82,11 @@ const HomePage = () => {
       
       <Hero />
       </div>
-
+      <ServicesTop />
       <ChatbotTeamPage />
-      
+      <ServicesMiddle />
       <SocialCTA />
-       <Services />
+       <ServicesBottom />
       <Col3Bottom />
       
       
