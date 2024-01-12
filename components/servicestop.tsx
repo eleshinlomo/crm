@@ -1,3 +1,4 @@
+
 import Link from "next/link"
 import { Button } from "./ui/button"
 
@@ -14,12 +15,12 @@ export const ServicesTop = ()=>{
                     {/* ColOne */}
                     <div>
                 <p className="text-2xl font-extrabold py-4 "> 
-                YOUTUBE VIDEO TO TEXT
+                CUSTOMIZED CHATBOT
                 </p>
                 <p className=" py-4 px-4 flex flex-wrap">
-                 Get full transcripts of any youtube video 
-                 for your presentation or training use-case. 
-                 Super quick and easy.
+                 Build your own chatbot in 5mins.
+                 Have your employees and customers 
+                 explore your company&apos;s knowledgebase with ease.
                  </p>
                  <Button className="bg-blue-700">
                     <Link href='/audiochat'>Try Now</Link>
@@ -30,12 +31,12 @@ export const ServicesTop = ()=>{
                 {/* Col Two */}
                 <div>
                 <p className="text-2xl font-extrabold py-4 "> 
-                PDF TO WORD
+                DATASET GENERATOR
                 </p>
                 <p className=" py-4 px-4 flex flex-wrap">
-                This is essential for any business. Convert 
-                your profiles, invoices, and lot more into WORD or 
-                PDF in 1 minute.</p>
+                You can build efficient dataset 
+                using our pltform or run campaigns on Fixupe to get 
+                real data from people.</p>
                 <Button className="bg-yellow-800">
                     <Link href='/aitranscriber'>Try Now</Link>
                  </Button>
@@ -44,11 +45,11 @@ export const ServicesTop = ()=>{
                {/* Col Three */}
                 <div>
                 <p className="text-2xl font-extrabold py-4 "> 
-                WORD TO PDF
+                CUSTOMIZED SLM
                 </p>
-                <p className=" py-4 px-4 flex flex-wrap">
-                This is essential for any business. Leverage on 
-                Fixupe Tools to scale up your services and deliver much faster.
+                <p className=" py-4 px-4 flex flex-wrap">Small Language Models are
+                 top notch, inexpensive, faster, and get the job done. 
+                 Get your SLM ruuning on Fixupe. 
                 </p>
                 <Button className="bg-green-700">
                     <Link href='/aiwriter'>Try Now</Link>
@@ -56,16 +57,14 @@ export const ServicesTop = ()=>{
                 
                 </div>
 
-                 
-
                  {/* Col3 */}
                 <div>
                 <p className="text-2xl font-extrabold py-4 "> 
-                SCREEN RECORDER
+                VIRTUAL ASSISTANT
                 </p>
                 <p className=" py-4 px-4 flex flex-wrap">
-                Fixupe Screen Recorder ensures concise and super 
-                clear screen share during business communication.</p>
+                Get a Virtual Assistant that runs your business 24/7 even 
+                when you sleep or go on vacation.</p>
                 <Button className="bg-red-700">
                     <Link href='/'>Try Now</Link>
                  </Button>
