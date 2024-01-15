@@ -70,7 +70,7 @@ const HomeNavBar = ()=>{
 <SheetTrigger>
   <div className='flex gap-2'>
   {username?
-        <p className='mt-2 font-extrabold'>Hi {username}</p>:<p className='mt-2 font-extrabold'>Hi {'Guest'}</p>
+        <p className='mt-2 font-extrabold'>Hi {username[0].toUpperCase() + username.slice(1)}</p>:<p className='mt-2 font-extrabold'>Hi {'Guest'}</p>
         }
 <Button size='icon'  className='mt-2 w-10 h-8 bg-white text-black '  asChild>
   <Menu  />
@@ -93,7 +93,7 @@ bg-black text-white '>
       <div className='hidden md:flex gap-4 md: mt-3'>
       
          {username?
-        <p className='mt-2 font-extrabold'>Hi {username},</p>:
+        <p className='mt-2 font-extrabold '>Hi {username[0].toUpperCase() + username.slice(1)},</p>:
         <p className='mt-2 font-extrabold'>Hi {'Guest'},</p>
         }
         <p className=' md:flex  md:text-md mt-2'>

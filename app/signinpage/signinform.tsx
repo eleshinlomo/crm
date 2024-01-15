@@ -72,15 +72,15 @@ const FormSchema = z.object({
       const saveUserId = localStorage.setItem("userid", userid)
       setIsSigningIn(false)
       router.push('/dashboard')
-    }else{
-      console.log(response.message)
-      setMessage(response.message)
-      setIsSigningIn(false)
-    }
+    
+  }else{
+    console.log(response.message.error)
+    setMessage(response.message.error)
   }
+}
   catch(err: any){
-    console.log(err.message)
-    setMessage("Server error. Make sure you are connected to the internet")
+    console.log(err.message.error)
+
   }finally{
     setIsSigningIn(false)
   }

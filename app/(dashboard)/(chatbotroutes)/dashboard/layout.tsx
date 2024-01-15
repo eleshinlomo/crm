@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Dashboard',
-  description: 'Fixupe is a platform that provides AI Tools for task completion',
+  description: 'Fixupe is a platform that provides Business Tools for a quick task completion',
 }
 
 
@@ -22,8 +22,8 @@ export default function RootLayout({
     
     <div>
       
-      <main className=' ">
-'>
+      <main className=' '>
+
         {children}
         </main>
     

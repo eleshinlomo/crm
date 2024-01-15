@@ -14,7 +14,7 @@ const CreditPage = () => {
               Your credit is {credit}</p>
               
             <Button variant='outline' className='bg-black text-white rounded-full '>
-              Demo and Beta Mode</Button>
+              Plan: FREE</Button>
             </div>
         } 
         </div>

@@ -84,19 +84,15 @@ try{
 
   const response: any = await processPayload.json()
   if(!response) {
-   return "Server error! No response from server"
+   return "Server error no reponse from server"
   }else{
-  if(response){
   return response
-  }else{
-    return response
-  }
 }
   
 }
 catch(error: any){
-console.log(error.error)
-return error.error
+console.log(error.message.error)
+
 }
 
 }

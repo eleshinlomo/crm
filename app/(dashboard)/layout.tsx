@@ -53,6 +53,7 @@ const DashboardLayout = ({
 
     const router = useRouter()
    
+    let capitalisedUsername: string = ''
 
     const handleLoginChecker = ()=>{
         setIsChecking(true)
@@ -62,7 +63,7 @@ const DashboardLayout = ({
             const {username, userid} = user
             if(username !== undefined && username !== 'undefined' && username !== null){
             setIsChecking(false)
-            setUsername(username)
+            setUsername(username[0].toUpperCase() + username.slice(1))
             setCurrentUser(user)
             setIsLoggedIn(true)
         }else{
@@ -100,7 +101,7 @@ const DashboardLayout = ({
             items-center px-4 
              '> {username ?
                 <p className='font-extrabold'>
-                    {`Hi, ${username.toUpperCase()}`}</p>:null
+                    {`Hi, ${username}`}</p>:null
              }
 
             {anonymousUser ?
@@ -152,7 +153,14 @@ const DashboardLayout = ({
          }
          {message}
         </div>
+        {/* End of is checking and message */}
+
+        <div className='relative w-72 h-72'>
+         <Image src='/images/girl1.png' alt='ai girl pics' fill />
+         </div>
+
         </div>
+        {/* End of Not logged In */}
 
             </div>
 
