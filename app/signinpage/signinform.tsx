@@ -98,7 +98,7 @@ const FormSchema = z.object({
       
      }
      
-     <div className='text-center font-extrabold py-8 px-24'>
+     <div className='text-center font-extrabold  px-24'>
         {message}
     </div>
 
@@ -117,7 +117,7 @@ const FormSchema = z.object({
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="Username" {...field} />
+                <Input placeholder="Username" {...field} type='text' className='text-black' />
               </FormControl>
               
               <FormDescription>
@@ -136,7 +136,7 @@ const FormSchema = z.object({
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input placeholder="Password" {...field} type='password' />
+                <Input placeholder="Password" {...field} type='password' className='text-black' />
               </FormControl>
               
               <FormDescription>
@@ -149,7 +149,7 @@ const FormSchema = z.object({
 
        <div className="flex gap-2 py-8">
                 <p className="mt-1 ">Forgot Password?</p>
-                <Button type='submit'>
+                <Button type='submit' className='bg-blue-700 hover:bg-blue-700'>
                     Sign In
                     </Button>
               </div>

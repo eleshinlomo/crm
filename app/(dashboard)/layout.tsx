@@ -87,7 +87,7 @@ const DashboardLayout = ({
  }, [])
 
     return(
-         <div>
+         <div className=''>
 
              <div className='text-center font-extrabold'>
               <p>{error? error: null}</p>
@@ -132,8 +132,8 @@ const DashboardLayout = ({
         // Not logged In
 
 
-        <div className='h-full mt-12 flex flex-col justify-center 
-        items-center gap-3'>
+        <div className='h-full pt-12 flex flex-col justify-center 
+        items-center gap-3  bg-blue-200 text-black font-extrabold'>
             
             {isChecking ?
             <div>
@@ -144,17 +144,18 @@ const DashboardLayout = ({
             </div>:null
             }
             
-            <div className='flex flex-col gap-5 justify-center items-center'>
-            <p className='text leading-8'>You need to be logged in</p>
-            <Link href='/'>
-            <Button>Back to home</Button>
-            </Link>
+            <div className='flex flex-col gap-5 justify-center items-center '>
+            <p className='text-2xl'>Please Sign in</p>
+
+            <div className='flex gap-5'>
+        <Button className='flex gap-1'>
+         <Link href='/signinpage'>Login</Link>
+         </Button> 
 
         <Button className='flex gap-1'>
-         
-        <Link href='/signinpage'>Login</Link>
-        
+        <Link href='/'>Home</Link>
         </Button> 
+        </div>
 
         <div className='px-4 text-blue-700 font-extrabold text-center'>
          {isChecking?
@@ -166,7 +167,7 @@ const DashboardLayout = ({
         </div>
         {/* End of is checking and message */}
 
-        <div className='relative w-72 h-72'>
+        <div className='relative w-72 h-72 md:w-96 md:h-96 mb-4'>
          <Image src='/images/girl1.png' alt='ai girl pics' fill />
          </div>
 

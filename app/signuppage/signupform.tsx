@@ -160,7 +160,7 @@ catch(error: any){
           )}
         />
 
-        <Button type="submit" className="">Sign Up</Button>
+        <Button type="submit" className='bg-blue-700 hover:bg-blue-700'>Sign Up</Button>
       </form>
     </Form>
     

@@ -22,7 +22,7 @@ const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 
 const SignUpPage = ()=>{
   return (
-   <div className="flex flex-col justify-center items-center gap-3 py-12">
+   <div className="flex flex-col justify-center items-center gap-3 pt-12 text-black bg-blue-200">
          
           <div className="text-center font-extrabold">
               <div className="">
@@ -35,7 +35,7 @@ const SignUpPage = ()=>{
               
               <div className="flex gap-2 py-8">
                 <p className="mt-1 ">Already Registered?</p>
-                <Button size='sm'>
+                <Button size='sm' className='bg-blue-700 hover:bg-blue-700'>
                   <Link href='/signinpage'>Sign In</Link>
                   </Button>
               </div>
@@ -69,6 +69,10 @@ const SignUpPage = ()=>{
       
         {/* Email */}
         <SignUpForm />
+
+        <div className="relative h-72 w-72">
+        <Image src='/images/girl10.png' alt='' fill />
+        </div>
         
       </div>
   )
