@@ -5,7 +5,6 @@ import  Image  from 'next/image'
 import { GOOGLE_LOGIN_URL } from './urls'
 import { GOOGLE_LOGOUT_URL } from './urls'
 import Waitlist from './waitlistpage'
-import { LoginPage } from './loginpage'
 
 
 
