@@ -1,13 +1,20 @@
 import { useState } from "react";
 import axios from "axios";
 import { Button } from "../ui/button";
+import { usePathname } from "next/navigation";
+import Link from 'next/link'
 
 type Props = {
   setMessages: any;
 };
 
+
+
 function Title({ setMessages }: Props) {
   const [isResetting, setIsResetting] = useState(false);
+
+  // Hooks
+  const path = usePathname()
 
   // Reset conversation
   const resetConversation = async () => {
@@ -32,14 +39,17 @@ function Title({ setMessages }: Props) {
   };
 
   return (
-    <div className="flex justify-between items-center  
-    p-4 bg-gray-900 text-white font-bold shadow mx-4 ">
+    <div className="flex justify-between items-center text-sm
+    p-4 bg-gray-900 text-white font-extrabold shadow mx-4 mb-5 ">
       <div className="italic">
-        <p>Bola</p>
+        <p>CHAT</p>
         </div>
-
-        <Button variant='outline'  className="text-black w-1/2 py-2">
-          Text Transcript</Button>
+       {path === '/voicechat' ?
+        <Button variant='default'   className="text-white bg-gray-700 text-sm  py-4 rounded-2xl">
+          <Link href='/textchat'>SWITCH TO TEXT CHAT</Link></Button>:
+        <Button variant='default'  className="text-white bg-gray-700 text-sm rounded-2xl  py-4">
+         <Link href='/voicechat'>SWITCH TO VOICE CHAT</Link></Button>
+       }
       <button
         onClick={resetConversation}
         className={

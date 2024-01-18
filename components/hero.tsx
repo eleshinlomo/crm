@@ -15,7 +15,7 @@ const Hero = ()=>{
   useEffect(()=>{
     setCustomText(
       [ 
-        "Focus on your business and not the stress",
+        
         "Modernize Your Business Process",
         "Experience Rapid Scaling",
         "Run Your Business on Fixupe",
@@ -49,7 +49,7 @@ const Hero = ()=>{
 <div className="px-3 pb-2">
 
 <div className="  my-3">
-<h1 className="py-4 font-arial font-extrabold text-2xl ">
+<h1 className="py-4 text-blue-500 font-arial font-extrabold text-2xl ">
   {"Every Business Tools On One Platform!"}</h1>
 </div>
 

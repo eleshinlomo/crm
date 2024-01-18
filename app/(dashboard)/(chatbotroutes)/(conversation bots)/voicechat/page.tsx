@@ -73,14 +73,7 @@ const Controller = () => {
   return (
     <div className="w-full overflow-y-hidden">
 
-        {/* Disclaimer */}
-        <div className="font-extrabold text-center border  flex 
-        justify-center items-center 
-         border-black px-3 mx-3 mb-3">
-                    <p>Now you can do everything you would do with chatGPT 
-                      using voice chat.
-                        Voice conversation and Transcript with Bola are not saved</p>
-                </div>
+        
       {/* Title */}
       <Title setMessages={setMessages} />
 

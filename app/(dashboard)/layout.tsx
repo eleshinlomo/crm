@@ -12,9 +12,10 @@ import { Footer } from '@/components/footer';
 // @ts-ignore
 import Cookies from 'js-cookie'
 import CreditPage from '@/components/creditpage';
+import { useSearchParams, useRouter , usePathname} from 'next/navigation';
 
-// Hooks
-import { useSearchParams, useRouter } from 'next/navigation';
+
+
 
 // URLs
 const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
@@ -32,7 +33,8 @@ interface ToolsProps{
 const checking ="Checking login status. Please wait..."
 
 const DashboardLayout = ({
-    
+
+
     children
 }: {
     children: React.ReactNode;
@@ -48,12 +50,15 @@ const DashboardLayout = ({
     const [error, setError] = useState<string | any>("")
     const [username, setUsername] = useState<string | null>(null)
     const [anonymousUser, setAnonymousUser] = useState<string | null>(null)
+
+    // Hooks
+    const path = usePathname()
+    
     
    
 
     const router = useRouter()
    
-    let capitalisedUsername: string = ''
 
     const handleLoginChecker = ()=>{
         setIsChecking(true)
@@ -83,9 +88,11 @@ const DashboardLayout = ({
 
     return(
          <div>
+
              <div className='text-center font-extrabold'>
-              <p>{error}</p>
+              <p>{error? error: null}</p>
              </div>
+
             { isLoggedIn ?
         <div className="relative flex flex-1 gap-2 w-full overflow-hidden">
 
@@ -118,7 +125,11 @@ const DashboardLayout = ({
             {children}
             </div>
            </main>
+
+           
         </div>:
+
+        // Not logged In
 
 
         <div className='h-full mt-12 flex flex-col justify-center 
@@ -151,7 +162,7 @@ const DashboardLayout = ({
          <p className=' animate-pulse'>{checking}</p>
          </div>:null
          }
-         {message}
+         {message ? message: null}
         </div>
         {/* End of is checking and message */}
 
@@ -165,6 +176,13 @@ const DashboardLayout = ({
             </div>
 
          }
+
+
+         {/* Footer */}
+         {path === '/voicechat'? null :
+         <Footer />
+         }
+
         </div>
     )
 }

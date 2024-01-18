@@ -19,7 +19,7 @@ const GeneralPage = () => {
         
 
             <Button className=''>
-        <Link href='/audiochat'>
+        <Link href='/voicechat'>
             VoiceChatbot
             </Link>
             </Button>

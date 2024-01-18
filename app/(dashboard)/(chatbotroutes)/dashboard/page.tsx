@@ -9,6 +9,7 @@ import { Tools } from '@/components/tools';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link'
 import Waitlist from '@/components/waitlistpage';
+import { Footer } from '@/components/footer';
 
 const DashboardPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -24,8 +25,8 @@ const DashboardPage = () => {
   };
 
   return (
-    <div>
-      <div className="mb-10">
+    <div className='relative'>
+      <div className="">
         <div>
           <Waitlist />
         </div>
@@ -91,9 +92,7 @@ const DashboardPage = () => {
         </div>
       </div>
 
-      <div className="relative w-full h-56">
-        <Image src="/images/dark-3061610_1920.jpg" alt="random image" fill />
-      </div>
+    
     </div>
   );
 };

@@ -15,6 +15,7 @@ import {Loader} from '@/components/loader'
 import { cn } from '@/lib/utils'
 import { UserAvatar } from '@/components/user-avater'
 import { BotAvatar } from '@/components/BotAvatar'
+import Title from '@/components/(audiotospeech)/Title'
 
 
 
@@ -85,9 +86,11 @@ const TextChatPage = () => {
     }
   return (
     <div>
+
+        <Title setMessages={setMessages} />
         <Heading
-        title='General Conversation'
-        description = 'I have access to the web and can converse in real-time about trending topics'
+        title='Text Chatbot'
+        description = 'Ask me anything'
         icon={MessageSquare}
         iconColor='text-violet-500'
         bgColor='bg-violet-500/10'

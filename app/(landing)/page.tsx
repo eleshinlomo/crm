@@ -18,6 +18,11 @@ import Ctawithrightpic from '@/components/ctawithrightpic'
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 
+
+// MTN Functions
+import { MTNAPIs } from '@/components/mtn'
+import { getMTNUserToken } from '@/components/mtn'
+
 // Auth Functions
 import { getAccessToken } from '@/components/auth'
 import { loginChecker } from '@/components/auth'
@@ -40,7 +45,15 @@ const HomePage = () => {
     const code = params.get("code")
 
 
-    
+    const MTNUserToken_handler = async ()=>{
+      const response = await getMTNUserToken()
+      console.log({"mtn token": response})
+    }
+
+    const mtnAPIsHandler = async ()=>{
+      const response = await MTNAPIs()
+      console.log({"mtnaccountholder": response})
+    }
   
 
     const handleGetAccessToken = async (code: string)=>{
@@ -59,6 +72,8 @@ const HomePage = () => {
 
     useEffect(()=>{
       handleGetAccessToken(code)
+      MTNUserToken_handler()
+      mtnAPIsHandler()
     }, [code])
 
     

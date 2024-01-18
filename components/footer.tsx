@@ -32,7 +32,7 @@ export const Footer = ()=>{
     return (
         <div>
 
-<div className=' text-white md:text-left bg-black px-6 py-8  h-auto w-full'>
+<div className='bottom-0 text-white md:text-left bg-black px-6 py-8  w-full'>
   <p className='text-center text-2xl mb-2'>Quick Links</p>
   
 
@@ -40,7 +40,7 @@ export const Footer = ()=>{
 <div>
   {footerItems.map((footer: any, index: any)=>
 
-   <div key={index} className='flex flex-col md:flex-row md:text-start text-center
+   <div key={index} className=' flex flex-col md:flex-row md:text-start text-center  
     md:justify-between items-center'>
 
     {/* First Column */}
@@ -63,7 +63,7 @@ export const Footer = ()=>{
     </div>
     
     {/* Second Column */}
-    <div className='text-blue-800 flex flex-col h-24'>
+    <div className='text-blue-800 flex flex-col'>
       <p className='text-white'>Information</p>
     <p>{footer.contact}</p>
     <p>{footer.about}</p>
@@ -71,7 +71,7 @@ export const Footer = ()=>{
 
 
     {/* Third Column */}
-    <div className='text-blue-800 flex flex-col h-24'>
+    <div className='text-blue-800 flex flex-col'>
     <p className='text-white'>Terms</p>
     <Link href={footer.privacy}>Privacy</Link>
     <Link href={footer.terms}>Terms</Link>
@@ -79,7 +79,7 @@ export const Footer = ()=>{
 
 
     {/* Fourth Column */}
-    <div className='h-24 mb-4'>
+    <div className=''>
       <p>{footer.info}</p>
       <div className='flex flex-col md:text-start text-center'>
       <div className='flex justify-center md:justify-start items-center  gap-3  '>
