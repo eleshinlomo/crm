@@ -17,9 +17,8 @@ export const ServicesBottom = ()=>{
                 Voice Chat
                 </p>
                 <p className=" py-4 px-4 flex flex-wrap">
-                 No need for note taking. Our Voice Recorder 
-                 will record your meetings and transcribe so you 
-                 can share with your team.
+                 Save the day and browse through the internet, emails or 
+                 your entire documents by just talking to your device.
                  </p>
                  <Button className="bg-blue-700">
                     <Link href='/audiochat'>Try Now</Link>
@@ -32,8 +31,10 @@ export const ServicesBottom = ()=>{
                 <p className="text-2xl font-extrabold py-4 "> 
                 Transcriber
                 </p>
-                <p className=" py-4 px-4 flex flex-wrap">Our advance AI tool will transcribe your project at incredible 
-                speed with high voice to text accuracy. Get started right now.</p>
+                <p className=" py-4 px-4 flex flex-wrap">Our advance transcriber will 
+                save you a ton of time at meetings and conferences. Record, convert to 
+                text, and share with your team in 1 minute.
+                </p>
                 <Button className="bg-yellow-800">
                     <Link href='/aitranscriber'>Try Now</Link>
                  </Button>

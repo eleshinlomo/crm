@@ -14,12 +14,11 @@ export const ServicesMiddle = ()=>{
                     {/* ColOne */}
                     <div>
                 <p className="text-2xl font-extrabold py-4 "> 
-                YOUTUBE VIDEO TO TEXT
+                COLD CALL
                 </p>
                 <p className=" py-4 px-4 flex flex-wrap">
-                 Get full transcripts of any youtube video 
-                 for your presentation or training use-case. 
-                 Super quick and easy.
+                 Turn your computer to a cold call machine 
+                 and get multiple leads integrated with active CRM.
                  </p>
                  <Button className="bg-blue-700">
                     <Link href='/audiochat'>Try Now</Link>

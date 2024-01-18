@@ -16,12 +16,12 @@ const Hero = ()=>{
     setCustomText(
       [ 
         
-        "Modernize Your Business Process",
-        "Experience Rapid Scaling",
-        "Run Your Business on Fixupe",
+        "Advance CRM for businesses",
+        "Business Development Tools",
+        "Follow up with clients",
         "Advance Business Tools",
         "Advance AI Models",
-        "Make Impact With Just Clicks",
+        "Web and Mobile CRM",
         "Innovative ML Approach",
         "Cutting Edge Technologies"
       ]

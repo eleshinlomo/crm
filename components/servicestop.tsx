@@ -17,17 +17,16 @@ export const ServicesTop = ()=>{
                     <div>
                 <div className="flex flex-col justify-center items-center text-2xl">
                 <p className=" font-extrabold py-4 "> 
-                CUSTOMIZED CHATBOT
+                ADVANCE CRM
                 </p>
                 <BotIcon className="w-12 h-12 text-blue-700" />
                 </div>
                 <p className=" py-4 px-4 flex flex-wrap">
-                 Build your own chatbot in 5mins.
-                 Have your employees and customers 
-                 explore your company&apos;s knowledgebase with ease.
+                 Leverage on our state-of-the-art CRM to keep track of your clients,
+                 contract, invoices, team, and follow-up.
                  </p>
                  <Button className="bg-blue-700">
-                    <Link href='/voicechat'>Try Now</Link>
+                    <Link href='/crm'>Try Now</Link>
                  </Button>
                 
                 </div>
@@ -36,16 +35,15 @@ export const ServicesTop = ()=>{
                 <div>
                 <div className="flex flex-col justify-center items-center text-2xl">
                 <p className="text-2xl font-extrabold py-4 "> 
-                DATASET GENERATOR
+                MAILSHOT
                 </p>
                 <DatabaseIcon className="w-12 h-12 text-yellow-700" />
                 </div>
                 <p className=" py-4 px-4 flex flex-wrap">
-                You can build efficient dataset 
-                using our pltform or run campaigns on Fixupe to get 
-                real data from people.</p>
+               Send one single mail to clients and scale 
+               your business development faster with impressive delivery rate. </p>
                 <Button className="bg-yellow-700">
-                    <Link href='/aitranscriber'>Try Now</Link>
+                    <Link href='/crm'>Try Now</Link>
                  </Button>
                 </div>
                
