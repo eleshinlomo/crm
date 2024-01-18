@@ -25,6 +25,52 @@ export const Tools: [] | any = [
     }]
   },
 
+  { 
+    id: 'CRM',
+    category: 'CRM',
+    href: "/crm",
+    tools: [{   
+      label: "View CRM",
+      icon: AreaChartIcon,
+      href: "/crm",
+      color: "text-pink-500",
+      bgColor: "text-grey-500"
+    }]
+  },
+
+  {
+    id:'business devs',
+    category: 'Business Development',
+    tools: [
+        {
+        
+        label: "Send Mailshot",
+        icon: MessageSquare,
+        href: "/general",
+        color: "text-pink-500",
+        bgColor: "text-grey-500"
+        },
+        {
+        
+          label: "Send Mass Text Messages",
+          icon: MessageSquare,
+          href: "/general",
+          color: "text-pink-500",
+          bgColor: "text-grey-500"
+          },
+          {
+        
+            label: "Cold Call",
+            icon: MessageSquare,
+            href: "/general",
+            color: "text-pink-500",
+            bgColor: "text-grey-500"
+            }
+        
+        
+    ]},
+
+
   // {
   //   id:'team',
   //   category: 'Team Members',
@@ -64,6 +110,7 @@ export const Tools: [] | any = [
         
     ]},
 
+    
     {
       id:'media',
       category: 'Media Tools',

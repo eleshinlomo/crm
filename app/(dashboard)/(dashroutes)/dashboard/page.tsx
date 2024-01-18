@@ -44,6 +44,7 @@ const DashboardPage = () => {
             {Tools.map((tool: any, index: any) => (
               <div key={index}>
                 
+                {/* Dashboard, CRM and Settings are directly forwarded to href */}
                   {tool.category === 'Dashboard' ? null :
 
                   <div className='flex flex-1 justify-between'>
