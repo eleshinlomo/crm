@@ -27,7 +27,7 @@ export const ServicesTop = ()=>{
                  explore your company&apos;s knowledgebase with ease.
                  </p>
                  <Button className="bg-blue-700">
-                    <Link href='/audiochat'>Try Now</Link>
+                    <Link href='/voicechat'>Try Now</Link>
                  </Button>
                 
                 </div>
