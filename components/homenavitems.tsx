@@ -3,36 +3,49 @@ import { Button } from './ui/button'
 
 export const HomeNavItems = ()=>{
     return (
-        <div>
+        <div className=''>
 
-<Button className='w-32'>
-                        <Link href='/dashboard'
+  <div>
+    <ul className=''>
+<Button className='w-full'>
+<Link href='/dashboard'
+className=''>
+    Dashboard</Link>
+</Button>
+
+                        <Button className='w-full'>
+                        <Link href='/pdftoword'
                       className=''
-                      >Dashboard</Link>
+                      >PDFtoWord</Link>
                       </Button>
 
-                      <Button className='w-32'>
+                  
+                      <Button className='w-full'>
                         <Link href='/voicerecorder'
                       className=''
                       >Voice Recorder</Link>
                       </Button>
 
-                      <Button className='w-32'>
-                        <Link href='/crm'
-                      className=''
-                      >CRM</Link>
+                      <Link href='/crm'>
+                      <Button className='w-full'>
+                       CRM
                       </Button>
+                      </Link>
 
-                      <Button className='w-32'>
+                      <Button className='w-full'>
                         <Link href='/voicechat'
                       className=''
                       >Voice Search</Link>
                       </Button>
-                      <Button className='w-32'>
+
+                      <Button className='w-full'>
                         <Link href='/textchat'
-                      className='w-32'
+                      className=''
                       >Text Search</Link>
                       </Button>
+                      </ul>
+
+                      </div>
         </div>
     )
 }

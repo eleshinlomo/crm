@@ -36,7 +36,7 @@ export const ServicesMiddle = ()=>{
                 your profiles, invoices, and lot more into WORD or 
                 PDF in 1 minute.</p>
                 <Button className="bg-yellow-800">
-                    <Link href='/aitranscriber'>Try Now</Link>
+                    <Link href='/documentdash'>Try Now</Link>
                  </Button>
                 </div>
                
@@ -50,7 +50,7 @@ export const ServicesMiddle = ()=>{
                 Fixupe Tools to scale up your services and deliver much faster.
                 </p>
                 <Button className="bg-green-700">
-                    <Link href='/aiwriter'>Try Now</Link>
+                    <Link href='/documentdash'>Try Now</Link>
                  </Button>
                 
                 </div>

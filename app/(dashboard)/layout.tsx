@@ -1,5 +1,4 @@
 "use client"
-
 import {useState, useEffect} from 'react'
 import Sidebar from "@/components/dashsidebar";
 import {DashNavbar} from "@/components/dashnavbar";
@@ -13,7 +12,7 @@ import { Footer } from '@/components/footer';
 import Cookies from 'js-cookie'
 import CreditPage from '@/components/creditpage';
 import { useSearchParams, useRouter , usePathname} from 'next/navigation';
-
+import type { Metadata } from 'next'
 
 
 

@@ -131,10 +131,10 @@ bg-black text-white '>
           <NavigationMenuTrigger>Services</NavigationMenuTrigger>
           <NavigationMenuContent className="text-white bg-black">
             
-                <NavigationMenuLink asChild>
+                
                  
-                    <div className='grid grid-flow-row gap-1'
-                    >
+                    <div className=''>
+                    
                       <HomeNavItems />
                       
                       {/* {Tools ? Tools.map((index: any, category: any)=>(
@@ -149,9 +149,6 @@ bg-black text-white '>
                        </div>)):null
                         } */}
                       </div>
-
-                  
-                </NavigationMenuLink>
              
           </NavigationMenuContent>
         </NavigationMenuItem>

@@ -84,8 +84,8 @@ try{
 
   const response: any = await processPayload.json()
   if(!response) {
-    console.log(response.message.error)
-   return null
+    throw new Error("No response from server")
+   
   }else{
   return response
 }
@@ -93,6 +93,7 @@ try{
 }
 catch(error: any){
 console.log(error.message.error)
+return null
 
 }
 
