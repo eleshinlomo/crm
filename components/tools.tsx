@@ -11,6 +11,19 @@ import { AreaChartIcon, BookIcon, BotIcon, CodeIcon, EyeIcon,
 
 
 export const Tools: [] | any = [
+
+  { 
+    id: 'home',
+    category: 'Home',
+    href: "/",
+    tools: [{   
+      label: "Viewing Home",
+      icon: AreaChartIcon,
+      href: "/",
+      color: "text-pink-500",
+      bgColor: "text-grey-500"
+    }]
+  },
   
   { 
     id: 'dash',
@@ -169,7 +182,7 @@ export const Tools: [] | any = [
     },
     {   
         
-        label: "AI Transcriber",
+        label: "Transcriber",
         icon: BotIcon,
         href: "/aitranscriber",
         color: "text-pink-500",

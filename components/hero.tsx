@@ -43,14 +43,14 @@ const Hero = ()=>{
 <div className="md:h-96 w-full md:flex justify-center items-center   ">
 
 <div className="relative  w-full h-72 md:h-96  px-2 ">
-<Image src='/images/ai_girl2.png' alt='hero pics' fill />
+<Image src='/bg/background-6824.gif' alt='hero pics' fill />
 </div>
 
 <div className="px-3 pb-2">
 
 <div className="  my-3">
-<h1 className="py-4 text-blue-500 font-arial font-extrabold text-2xl ">
-  {"Every Business Tools On One Platform!"}</h1>
+<h1 className="py-4  font-arial font-extrabold text-2xl ">
+  {"All Business Tools On One Platform!"}</h1>
 </div>
 
 <div>

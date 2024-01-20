@@ -84,7 +84,8 @@ try{
 
   const response: any = await processPayload.json()
   if(!response) {
-   return "Server error no reponse from server"
+    console.log(response.message.error)
+   return null
   }else{
   return response
 }
@@ -100,14 +101,21 @@ console.log(error.message.error)
 
  // Login Checker
  export const loginChecker =  ()=>{
+  
   const getUserName = localStorage.getItem('username')
   const getUserId = localStorage.getItem('userid')
+  const getSessionId = localStorage.getItem('sessionid')
+  const getCompany = localStorage.getItem('company')
+  const getCredits = localStorage.getItem('credits')
   
-  if(getUserName && getUserId){
+  if(getUserName && getUserId && getSessionId && getCompany && getCredits){
 
     const user = {
       "username": getUserName,
-      "userid": getUserId
+      "userid": getUserId,
+      "sessionid": getSessionId,
+      "company": getCompany,
+      "credits": getCredits
     }
     
     return user
@@ -119,13 +127,15 @@ console.log(error.message.error)
     
 }
 
-export let verifiedUser = null
 
 
   // Logout
   export const userLogout = ()=>{
     localStorage.removeItem('username')
     localStorage.removeItem('userid')
+    localStorage.removeItem('sessionid')
+    localStorage.removeItem('credits')
+    localStorage.removeItem('company')
     window.location.href=`/`
     }
   

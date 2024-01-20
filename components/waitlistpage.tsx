@@ -51,7 +51,7 @@ const HandleEmailWaitlist = async (e:any)=>{
             <p className='text-blue-500 ml-6 '>{message}</p>
         <form className='px-6' onSubmit={HandleEmailWaitlist}>
           <input 
-          className='border border-black px-1'
+          className='border border-black px-1 text-center'
           value={email}
           name='email'
           placeholder='Enter your email'

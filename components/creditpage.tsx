@@ -1,51 +1,64 @@
 "use client"
 import { Button } from '@/components/ui/button'
 import React, { useState, useEffect } from 'react'
+import { cn } from '@/lib/utils'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
+
+
 const CreditPage = () => {
 
-  const [credit, setCredit] = useState<number>(0)
+  const [credit, setCredit] = useState<null | any>(null)
 
+  
   const getCredit = async ()=>{
-    const response = await fetch(`${BASE_URL}/getcredit/`, {
+
+    const sessionid = localStorage.getItem('sessionid')
+  
+    if(!sessionid) return
+    console.log(sessionid)
+    const response: any = await fetch(`${BASE_URL}/getcredit/`, {
       method: 'GET',
       mode: 'cors',
+      credentials: 'include',
       headers: {
-        "Content-Type": 'application/json'
+        'Content-Type': 'application/json',
+        'sessionid': sessionid,
+  
       }
     })
     if(!response){
-      throw new Error("Server error: No response recieved")
+      throw new Error("No response from server")
     }else{
-      const data = await response.json()
-      if(data.ok){
-        console.log(data.message.data)
+      const dataResponse = await response.json()
+      if(dataResponse.message.ok){
+        console.log(dataResponse.message.data)
+        setCredit(dataResponse.message.data)
+    
       }else{
-      console.log(data.message.error)
+      console.log(dataResponse.message.error)
       }
     }
   }
 
+  useEffect(()=>{
+    getCredit()
+  }, [])
 
-
-    useEffect(()=>{
-      getCredit()
-    }, [])
-
-
+  
   return (
     <div>
         <div className='py-4'>
-        {credit > 0 ?  
-        <div><p>Your credit is {credit}</p></div>:
+        {credit >= 0?  
+        <div className='font-extrabold'><p>Your credit is {credit}</p></div>:null
+        }
         <div className=''>
-              <p className='font-extrabold'>PLAN: FREE</p>
+              <p className='font-extrabold'>PLAN: {'FREE'}</p>
             <Button variant='default' className='bg-black hover:bg-black text-white rounded-full '>
               UPGRADE TO PREMIUM</Button>
             </div>
-        } 
+        
         </div>
     </div>
   )

@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/button'
 import  { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { ChatbotTeamPage } from '@/components/chatbotteam'
+import { TeamPage } from '@/components/team'
 import { Footer } from '@/components/footer'
 import Image from 'next/image'
 import { BASE_URL } from '@/components/auth'
@@ -97,11 +97,20 @@ const HomePage = () => {
       
       <Hero />
       </div>
+      
       <ServicesTop />
-      <ChatbotTeamPage />
       <ServicesMiddle />
-      <SocialCTA />
-       <ServicesBottom />
+      <div className="relative h-72 w-full">
+          <Image src='/bg/background-6824.gif' alt='biz dev image' fill />
+        </div>
+        <ServicesBottom />
+       
+       <div className="relative h-72 w-full">
+          <Image src='/bg/background-6824.gif' alt='biz dev image' fill />
+        </div>
+        
+       <TeamPage />
+       <SocialCTA />
       <Col3Bottom />
       
       

@@ -30,6 +30,10 @@ const [isRegistered, setIsRegistered] = useState<boolean>(false)
 const router = useRouter()
 
 const FormSchema = z.object({
+  company: z.string().min(2, {
+    message: "Company name must be at least 2 characters.",
+  }),
+
     email: z.string().min(2, {
       message: "Email must be at least 2 characters.",
     }),
@@ -50,6 +54,7 @@ const FormSchema = z.object({
     const form = useForm<z.infer<typeof FormSchema>>({
       resolver: zodResolver(FormSchema),
       defaultValues: {
+        company: "",
         email: "",
         password: "",
         username: ""
@@ -102,6 +107,25 @@ catch(error: any){
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} 
       className=" flex flex-col justify-center items-center px-16">
+
+        {/* Company */}
+        <FormField
+          control={form.control}
+          name="company"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Company</FormLabel>
+              <FormControl>
+                <Input placeholder="Company name" {...field} />
+              </FormControl>
+              
+              <FormDescription>
+                
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         {/* Email */}
         <FormField

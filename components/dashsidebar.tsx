@@ -68,7 +68,10 @@ interface toolisOpenProps{
                   <div key={index}>
                     <div className=''>
                       {category.category === 'Dashboard' || 
-                      category.category === 'Settings' || category.category === 'CRM'  ?
+                      category.category === 'Settings' || 
+                      category.category === 'CRM' ||
+                      category.category === 'Home' 
+                        ?
                       <Button
                       onClick= {()=>router.push(category.href)}
                       className='w-full my-1'

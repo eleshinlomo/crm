@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link'
 import Waitlist from '@/components/waitlistpage';
 import { Footer } from '@/components/footer';
+import CreditPage from '@/components/creditpage';
 
 const DashboardPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,13 +28,17 @@ const DashboardPage = () => {
   return (
     <div className='relative'>
       <div className="">
-        <div>
+
+        <div className='text-center flex flex-col justify-center items-center'>
           <Waitlist />
+        
         </div>
-        <div className="mb-8 space-y-4">
-          <h2 className="text-2xl md:text-4xl font-bold text-center">Do everything with AI</h2>
+
+        <div className="mb-8 px-4">
+          <h2 className="text-2xl md:text-4xl font-bold text-center">
+            Complete Task Faster</h2>
           <p className=" font-light text-sm md:text-lg text-center">
-            Complete your task with AI - Ultra fast AI Solution
+            Complete your task Faster - Fixupe Ultra fast Solution
           </p>
         </div>
 
@@ -45,7 +50,8 @@ const DashboardPage = () => {
               <div key={index}>
                 
                 {/* Dashboard, CRM and Settings are directly forwarded to href */}
-                  {tool.category === 'Dashboard' ? null :
+                  {tool.category === 'Dashboard' || 
+                  tool.category === 'Home'? null:
 
                   <div className='flex flex-1 justify-between'>
                     <p className="text-center text-md px-4 py-4 

@@ -17,6 +17,9 @@ import { useSearchParams, useRouter , usePathname} from 'next/navigation';
 
 
 
+
+
+
 // URLs
 const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 
@@ -50,6 +53,7 @@ const DashboardLayout = ({
     const [error, setError] = useState<string | any>("")
     const [username, setUsername] = useState<string | null>(null)
     const [anonymousUser, setAnonymousUser] = useState<string | null>(null)
+    const [credit, setCredit] = useState<null | any>(null)
 
     // Hooks
     const path = usePathname()
@@ -58,15 +62,19 @@ const DashboardLayout = ({
    
 
     const router = useRouter()
+     
    
-
+   
+    //  Login Checker Handler
     const handleLoginChecker = ()=>{
         setIsChecking(true)
         const user: any = loginChecker()
         if(user !== null && user !== 'undefined' && user !== undefined ){
             console.log(user)
-            const {username, userid} = user
-            if(username !== undefined && username !== 'undefined' && username !== null){
+            const {username, userid, company, sessionid, credits} = user
+            // Username
+            if(username !== undefined && username !== 'undefined' 
+            && username !== null){
             setIsChecking(false)
             setUsername(username[0].toUpperCase() + username.slice(1))
             setCurrentUser(user)
@@ -118,7 +126,7 @@ const DashboardLayout = ({
                         You are currently viewing this web as a Ghost User</p>
                     </p>:null
              }
-             <CreditPage />
+             <CreditPage  />
              </div>
 
              <div className='py-8'>

@@ -7,12 +7,27 @@ import { Button } from './ui/button'
 import { Menu} from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet'
 import { HomeMobileNavBar } from './homemobilenavbar'
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu"
+
+
+// Tools
+
+import { Tools } from './tools'
 
 
 
 // Auth Functions
 import { userLogout } from './auth'
 import { loginChecker } from './auth'
+import { HomeNavItems } from './homenavitems'
 
 
 
@@ -53,7 +68,8 @@ const HomeNavBar = ()=>{
         <div className='   text-white bg-black  
         md:flex flex-1 justify-between  px-2 shadow-2xl '>
 
-      
+
+{/* Col 1 */}
 {/* Mobile & Logo MD */}
 
 <div className='flex'>
@@ -65,6 +81,7 @@ const HomeNavBar = ()=>{
         </Link>
       </div>
 
+{/* Col2 */}
 <div className='md:hidden'>
 <Sheet>
 <SheetTrigger>
@@ -72,7 +89,7 @@ const HomeNavBar = ()=>{
   {username?
         <p className='mt-2 font-extrabold'>Hi {username[0].toUpperCase() + username.slice(1)}</p>:<p className='mt-2 font-extrabold'>Hi {'Guest'}</p>
         }
-<Button size='icon'  className='mt-2 w-10 h-8 bg-white text-black '  asChild>
+<Button size='icon'  className='mt-2 w-10 h-8 bg-white hover:bg-white text-black '  asChild>
   <Menu  />
 </Button>
 </div>
@@ -89,43 +106,89 @@ bg-black text-white '>
 
 </div>
 
-       
-      <div className='hidden md:flex gap-4 md: mt-3'>
-      
-         {username?
-        <p className='mt-2 font-extrabold '>Hi {username[0].toUpperCase() + username.slice(1)},</p>:
-        <p className='mt-2 font-extrabold'>Hi {'Guest'},</p>
+
+
+{/* Col3 */}
+<div className="hidden md:flex text-black mt-2 gap-3">
+
+<div className='text-white'>
+{username?
+        <p className='mt-2 font-extrabold '>Hi {username[0].toUpperCase() + username.slice(1)}</p>:
+        <p className='mt-2 font-extrabold'>Hi {'Guest'}</p>
         }
-        <p className=' md:flex  md:text-md mt-2'>
-          
-        Complete task faster with AI </p>
-        
+</div>
+
+    <NavigationMenu className='text-black grid grid-flow-col'>
+      <NavigationMenuList>
+      <NavigationMenuItem className=''>
+          <Link href="/" legacyBehavior passHref >
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Home
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Services</NavigationMenuTrigger>
+          <NavigationMenuContent className="text-white bg-black">
+            
+                <NavigationMenuLink asChild>
+                 
+                    <div className='grid grid-flow-row gap-1'
+                    >
+                      <HomeNavItems />
+                      
+                      {/* {Tools ? Tools.map((index: any, category: any)=>(
+                      <div key={index} className='text-white'>
+
+                      {category.tools ? category.tools.map((tool: any, toolindex: any)=>(
+                      <div key={toolindex} className=" ">
+                      <p className=''>{tool.label}</p>
+                      <p>{tool.category}</p>
+                      </div>)):null
+                       }                 
+                       </div>)):null
+                        } */}
+                      </div>
+
+                  
+                </NavigationMenuLink>
+             
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Contact</NavigationMenuTrigger>
+          <NavigationMenuContent className="bg-black text-white">
+            <div className='px-2'>
+              <p>Please Mail: mgrsconcept@gmail.com</p>
+              </div>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+              
           {isLoggedIn?
           <Button size='sm' onClick={userLogout}
           className='bg-blue-500'
           >
           Sign Out
         </Button>:
+         
 
           <Button className='bg-blue-500 hover:bg-blue-500'>
             <Link href='/signinpage'>Sign In</Link>
           </Button>
+             }
+          
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
+    </div>
 
-          // <Button  className='bg-blue-500 hover:bg-blue-500'>
-          //   <Link href={`${ALLAUTH_BASE_URL}/accounts/login/`}>
-          //   Sign
-          //   </Link>
-          // </Button>
 
-          // <Button className='bg-blue-500 hover:bg-blue-500' asChild>
-          // <a href={GOOGLE_AUTH_URL}>
-          // Sign in
-          // </a>
-          // </Button>
-        }
+
+        
           
         
-      </div>
+      
      </div>
 
      </div>

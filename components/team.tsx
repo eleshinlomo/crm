@@ -3,13 +3,13 @@ import { Button } from './ui/button'
 import Link from 'next/link'
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet'
 
-export const ChatbotTeamPage = ()=>{
+export const TeamPage = ()=>{
 
     const Chatbots = [
 
         {
             chatbotname: "Teema",
-            role: 'General Questions',
+            role: 'Public Relations',
             info: "Answers general questions on all topis",
             image: '/images/girl1.png',
             route: '/general',
@@ -18,7 +18,7 @@ export const ChatbotTeamPage = ()=>{
 
         {
             chatbotname: "Enoch",
-            role: 'Code Writer',
+            role: 'Technical Writer',
             info: "Answers general questions on all topis",
             image: '/images/coder.png',
             route: '/code',
@@ -27,7 +27,7 @@ export const ChatbotTeamPage = ()=>{
 
         {
             chatbotname: "Eleshin",
-            role: 'Image Generator',
+            role: 'Machine Learning Analyst',
             info: "Answers general questions on all topis",
             image: '/images/image_guy.png',
             route: '/image',
@@ -36,7 +36,7 @@ export const ChatbotTeamPage = ()=>{
 
         {
             chatbotname: "Emerald",
-            role: 'AI Writer',
+            role: 'Data Manager',
             info: "You intimate AI excapades",
             image: '/images/girl2.png',
             route: '/aiwriter',

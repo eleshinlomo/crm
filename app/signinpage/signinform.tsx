@@ -65,10 +65,20 @@ const FormSchema = z.object({
     const response: any = await emailLogin(data)
     if(response.message.ok){
       console.log(response)
-      const {userid, username, firstname, lastname} = response.message.data
-      console.log({"userid": userid, "username": username, "firstname": firstname, "lastname": lastname})
+      const {
+        userid, 
+        username, 
+        firstname, 
+        lastname, 
+        sessionid,
+        credits,
+        company} = response.message.data
+      
       // Save User Info
       const saveUsername = localStorage.setItem('username', username)
+      const saveSessionId = localStorage.setItem('sessionid', sessionid)
+      const saveCredits = localStorage.setItem('credits', credits)
+      const saveCompany = localStorage.setItem('company', company)
       const saveUserId = localStorage.setItem("userid", userid)
       setIsSigningIn(false)
       router.push('/dashboard')
