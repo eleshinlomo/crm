@@ -14,9 +14,9 @@ className=''>
 </Button>
 
                         <Button className='w-full'>
-                        <Link href='/pdftoword'
+                        <Link href='/aitranscriber'
                       className=''
-                      >PDFtoWord</Link>
+                      >Transcriber</Link>
                       </Button>
 
                   
@@ -26,12 +26,7 @@ className=''>
                       >Voice Recorder</Link>
                       </Button>
 
-                      <Link href='/crm'>
-                      <Button className='w-full'>
-                       CRM
-                      </Button>
-                      </Link>
-
+                    
                       <Button className='w-full'>
                         <Link href='/voicechat'
                       className=''
