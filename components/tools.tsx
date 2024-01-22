@@ -38,74 +38,74 @@ export const Tools: [] | any = [
     }]
   },
 
-  { 
-    id: 'CRM',
-    category: 'CRM',
-    href: "/crm",
-    tools: [{   
-      label: "View CRM",
-      icon: AreaChartIcon,
-      href: "/crm",
-      color: "text-pink-500",
-      bgColor: "text-grey-500"
-    }]
-  },
-
-  {
-    id:'business devs',
-    category: 'Business Development',
-    tools: [
-        {
-        
-        label: "Send Mailshot",
-        icon: MessageSquare,
-        href: "/general",
-        color: "text-pink-500",
-        bgColor: "text-grey-500"
-        },
-        {
-        
-          label: "Send Mass Text Messages",
-          icon: MessageSquare,
-          href: "/general",
-          color: "text-pink-500",
-          bgColor: "text-grey-500"
-          },
-          {
-        
-            label: "Cold Call",
-            icon: MessageSquare,
-            href: "/general",
-            color: "text-pink-500",
-            bgColor: "text-grey-500"
-            }
-        
-        
-    ]},
-
+  // Idea Validation Tool
 
   // {
-  //   id:'team',
-  //   category: 'Team Members',
+  //   id:'idea',
+  //   category: 'Validate Idea',
   //   tools: [
   //       {
         
-  //       label: "Add A Team Member",
+  //       label: null,
   //       icon: MessageSquare,
-  //       href: "/addteammember",
+  //       href: `/validateidea/${null}`,
+  //       color: "text-pink-500",
+  //       bgColor: "text-grey-500"
+  //       },
+          
+  //   ]},
+
+  // CRM Tool
+
+  // { 
+  //   id: 'CRM',
+  //   category: 'CRM',
+  //   href: "/crm",
+  //   tools: [{   
+  //     label: "View CRM",
+  //     icon: AreaChartIcon,
+  //     href: "/crm",
+  //     color: "text-pink-500",
+  //     bgColor: "text-grey-500"
+  //   }]
+  // },
+
+  // Business Dev Tool
+
+  // {
+  //   id:'business devs',
+  //   category: 'Business Development',
+  //   tools: [
+  //       {
+        
+  //       label: "Send Mailshot",
+  //       icon: MessageSquare,
+  //       href: "/general",
   //       color: "text-pink-500",
   //       bgColor: "text-grey-500"
   //       },
   //       {
         
-  //         label: "All Team Members",
+  //         label: "Send Mass Text Messages",
   //         icon: MessageSquare,
-  //         href: "/allteammembers",
+  //         href: "/general",
   //         color: "text-pink-500",
   //         bgColor: "text-grey-500"
-  //         }
-          
+  //         },
+  //         {
+        
+  //           label: "Cold Call",
+  //           icon: MessageSquare,
+  //           href: "/general",
+  //           color: "text-pink-500",
+  //           bgColor: "text-grey-500"
+  //           }
+        
+        
   //   ]},
+
+
+ 
 
   {
     id:'conversation',
@@ -137,31 +137,31 @@ export const Tools: [] | any = [
           color: "text-blue-500",
           bgColor: "text-grey-500"
           },
-        {
+        // {
         
-        label: "Image Generator",
-        icon: ImageIcon,
-        href: "/image",
-        color: "text-blue-500",
-        bgColor: "text-grey-500"
-        },
+        // label: "Image Generator",
+        // icon: ImageIcon,
+        // href: "/image",
+        // color: "text-blue-500",
+        // bgColor: "text-grey-500"
+        // },
 
-        {   
+        // {   
             
-            label: "Video Generator",
-            icon: VideoIcon,
-            href: "/video",
-            color: "text-blue-500",
-            bgColor: "text-grey-500"
-            },
+        //     label: "Video Generator",
+        //     icon: VideoIcon,
+        //     href: "/video",
+        //     color: "text-blue-500",
+        //     bgColor: "text-grey-500"
+        //     },
 
-            {
-              label: "Music Generator",
-              icon: Music2Icon,
-              href: "/music",
-              color: "text-purple-500",
-              bgColor: "text-grey-500"
-              }
+        //     {
+        //       label: "Music Generator",
+        //       icon: Music2Icon,
+        //       href: "/music",
+        //       color: "text-purple-500",
+        //       bgColor: "text-grey-500"
+        //       }
             ]},
 
 
@@ -172,14 +172,14 @@ export const Tools: [] | any = [
     href: "",
     tools: [
     
-    {
+    // {
    
-    label: "Blog Writer",
-    icon: AreaChartIcon,
-    href: "/aiwriter",
-    color: "text-pink-500",
-    bgColor: "text-grey-500"
-    },
+    // label: "Blog Writer",
+    // icon: AreaChartIcon,
+    // href: "/aiwriter",
+    // color: "text-pink-500",
+    // bgColor: "text-grey-500"
+    // },
     {   
         
         label: "Transcriber",
@@ -188,55 +188,56 @@ export const Tools: [] | any = [
         color: "text-pink-500",
         bgColor: "text-grey-500"
         },
-        { 
+        // { 
           
-          label: "Code Generation",
-          icon: CodeIcon,
-          href: "/code",
-          color: "text-grey-500",
-          bgColor: "text-grey-500"
-        }
+        //   label: "Code Generation",
+        //   icon: CodeIcon,
+        //   href: "/code",
+        //   color: "text-grey-500",
+        //   bgColor: "text-grey-500"
+        // }
       ]},
 
- 
-          {
-            id:'document',
-            category: 'Document Tools',
-            tools: [
-              {   
+    //  Document Tools
+
+          // {
+          //   id:'document',
+          //   category: 'Document Tools',
+          //   tools: [
+          //     {   
                 
-                label: "PDFtoWORD",
-                icon: FileIcon,
-                href: "/pdftoword",
-                color: "text-blue-500",
-                bgColor: "text-blue-500"
-                },
-                {   
+          //       label: "PDFtoWORD",
+          //       icon: FileIcon,
+          //       href: "/pdftoword",
+          //       color: "text-blue-500",
+          //       bgColor: "text-blue-500"
+          //       },
+          //       {   
                 
-                  label: "WORDtoPDF",
-                  icon: FileIcon,
-                  href: "/wordtopdf",
-                  color: "text-blue-500",
-                  bgColor: "text-blue-500"
-                  },
-          { 
+          //         label: "WORDtoPDF",
+          //         icon: FileIcon,
+          //         href: "/wordtopdf",
+          //         color: "text-blue-500",
+          //         bgColor: "text-blue-500"
+          //         },
+          // { 
             
-            label: "PDF Voice Reader",
-            icon: BookIcon,
-            href: "/pdftovoice",
-            color: "text-blue-500",
-            bgColor: "text-red-500"
-            },
+          //   label: "PDF Voice Reader",
+          //   icon: BookIcon,
+          //   href: "/pdftovoice",
+          //   color: "text-blue-500",
+          //   bgColor: "text-red-500"
+          //   },
       
-            {   
+          //   {   
                 
-                label: "CSV File Analyser",
-                icon: FileIcon,
-                href: "/csvanalyser",
-                color: "text-blue-500",
-                bgColor: "text-blue-500"
-                }
-              ]},
+          //       label: "CSV File Analyser",
+          //       icon: FileIcon,
+          //       href: "/csvanalyser",
+          //       color: "text-blue-500",
+          //       bgColor: "text-blue-500"
+          //       }
+          //     ]},
 
               { 
                 id: 'Settings',

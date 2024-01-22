@@ -17,6 +17,7 @@ const CreditPage = () => {
     const sessionid = localStorage.getItem('sessionid')
   
     if(!sessionid) return
+    try{
     console.log(sessionid)
     const response: any = await fetch(`${BASE_URL}/getcredit/`, {
       method: 'GET',
@@ -40,6 +41,10 @@ const CreditPage = () => {
       console.log(dataResponse.message.error)
       }
     }
+  }
+  catch(err: any){
+    console.log(err)
+  }
   }
 
   useEffect(()=>{

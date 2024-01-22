@@ -50,8 +50,11 @@ const DashboardPage = () => {
               <div key={index}>
                 
                 {/* Dashboard, CRM and Settings are directly forwarded to href */}
-                  {tool.category === 'Dashboard' || 
-                  tool.category === 'Home'? null:
+                  { 
+                  
+                  tool.category === 'Dashboard' || 
+                  tool.category === 'Home'? null 
+                 :
 
                   <div className='flex flex-1 justify-between'>
                     <p className="text-center text-md px-4 py-4 
@@ -62,7 +65,8 @@ const DashboardPage = () => {
                   >
                     <EyeIcon />
                   </Button>
-
+                  
+                
                   
                   </div>
                 }
@@ -72,19 +76,24 @@ const DashboardPage = () => {
                   
                   <Card
                     key={index}
-                    className='p-4 border-black/5 flex items-center
+                    className='p-4 border-black/50 flex items-center
                      justify-between hover:shadow-md transition 
                      cursor-pointer '
                   >
                     
-                    <div className="flex items-center gap-x-4">
+                    
+                    <div className="flex justify-between items-center gap-x-4">
                       <div className={cn(`w-p-2 w-fit rounded-md`, 
                       tool.bgColor)}>
                         <tool.icon className={cn('w-8 h-8', tool.color)} />
                       </div>
-                      <div className="font-semibold">{tool.label}</div>
+                      <div className="font-semibold">{tool.label === null ? 
+                      <div>
+                        <Button><Link href='/ideapage'>Create Idea</Link></Button>
+                        <p>Validate your idea by real people before investing time and resources</p>
+                      </div>: tool.label}</div>
                     </div>
-                    <Link href={tool.href}>
+                    <Link href={tool.label === null ? <span>{tool.href}</span> : tool.href}>
                     <Button size='icon'>
                     <ArrowRight className="" />
                     </Button>

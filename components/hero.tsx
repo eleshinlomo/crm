@@ -69,9 +69,9 @@ and propelling businesses to unprecedented heights...</p>
 
 <div className="grid grid-flow-row mt-5  md:grid-cols-2 gap-2 ">
 <Button  
-className="bg-blue-700 text-white " 
+className="bg-blue-700 hover:bg-blue-700 text-white " 
   >
-<Link href='/dashboard'>GET STARTED</Link></Button>
+<Link href='/dashboard'>DASHBOARD</Link></Button>
 <div className="">
 <WaitlistPage />
 </div>

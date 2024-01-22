@@ -77,9 +77,6 @@ const HomePage = () => {
     }, [code])
 
     
-
-
-    
   
   return (
 
@@ -98,11 +95,11 @@ const HomePage = () => {
       <Hero />
       </div>
       
-      <ServicesTop />
-      <ServicesMiddle />
-      <div className="relative h-72 w-full">
+      {/* <ServicesTop /> */}
+      {/* <ServicesMiddle /> */}
+      {/* <div className="relative h-72 w-full">
           <Image src='/bg/background-6824.gif' alt='biz dev image' fill />
-        </div>
+        </div> */}
         <ServicesBottom />
        
        <div className="relative h-72 w-full">

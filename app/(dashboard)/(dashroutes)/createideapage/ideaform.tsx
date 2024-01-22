@@ -27,11 +27,11 @@ import { emailLogin } from '@/components/auth'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
-export const SignInForm = ()=>{
+export const IdeaForm = ()=>{
 
-const [message, setMessage] = useState<string | any>('Sign in with Email')
+const [message, setMessage] = useState<string | any>('')
 const [isRegistered, setIsRegistered] = useState<boolean>(false)
-const [isSiginingIn, setIsSigningIn] = useState(false)
+const [isCreating, setIsCreating] = useState(false)
 
 const router = useRouter()
 
@@ -40,13 +40,10 @@ const signingIn = (<div className='relative w-24 h-24'>
 
 const FormSchema = z.object({
 
-    password: z.string().min(6, {
-      message: " Password must be at least 6 characters.",
+    idea: z.string().min(0, {
+      message: " Idea name must be at least 1 characters.",
     }),
 
-    username: z.string().min(2, {
-      message: " Username must be at least 2 characters.",
-    }),
     
   
   })
@@ -56,16 +53,20 @@ const FormSchema = z.object({
     const form = useForm<z.infer<typeof FormSchema>>({
       resolver: zodResolver(FormSchema),
       defaultValues: {
-        password: "",
-        username: ""
+        idea: "",
+        
       },
 
   })
 
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
     try{
-    setIsSigningIn(true)
-    const response: any = await emailLogin(data)
+    setIsCreating(true)
+    const response: any = await fetch(`${BASE_URL}/idea/`, {
+      method: 'GET',
+      mode: 'cors',
+
+    })
     if(response.message.ok){
       console.log(response)
       const {
@@ -83,7 +84,7 @@ const FormSchema = z.object({
       const saveCredits = localStorage.setItem('credits', credits)
       const saveCompany = localStorage.setItem('company', company)
       const saveUserId = localStorage.setItem("userid", userid)
-      setIsSigningIn(false)
+      setIsCreating(false)
       router.push('/dashboard')
     
   }else{
@@ -92,11 +93,11 @@ const FormSchema = z.object({
   }
 }
   catch(err: any){
-    console.log(err)
-    setMessage("No response! Unable to fetch from server. Check internet connection")
+    console.log(err.message.error)
+    setMessage(err.error)
 
   }finally{
-    setIsSigningIn(false)
+    setIsCreating(false)
   }
     
   }
@@ -105,7 +106,7 @@ const FormSchema = z.object({
 
     <div className='overflow-hidden flex flex-col justify-center items-center'>
      
-     {isSiginingIn?
+     {isCreating?
      <div>
       {signingIn}
       </div>:null
@@ -114,24 +115,26 @@ const FormSchema = z.object({
      
      <div className='text-center font-extrabold  px-24'>
         {message}
-    </div>
 
+        <p className='text-blue-800'>Keep your idea name short as this will be added to your Idea Validation url.</p>
+    </div>
+     
 
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} 
-      className=" flex flex-col justify-center items-center px-16">
+      className=" text-center flex flex-col justify-center items-center px-16">
 
         
 
-        {/* Username */}
+        {/* Idea */}
         <FormField
           control={form.control}
-          name="username"
+          name="idea"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel className='font-extrabold'>IDEA NAME</FormLabel>
               <FormControl>
-                <Input placeholder="Username" {...field} type='text' className='text-black' />
+                <Input placeholder="Idea Name" {...field} type='text' className='text-black text-center' required />
               </FormControl>
               
               <FormDescription>
@@ -142,29 +145,10 @@ const FormSchema = z.object({
           )}
         />
 
-{/* Password */}
-<FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input placeholder="Password" {...field} type='password' className='text-black' />
-              </FormControl>
-              
-              <FormDescription>
-                Case sensitive.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
        <div className="flex gap-2 py-8">
-                <p className="mt-1 ">Forgot Password?</p>
+                
                 <Button type='submit' className='bg-blue-700 hover:bg-blue-700'>
-                    Sign In
+                    Create Idea Page
                     </Button>
               </div>
           

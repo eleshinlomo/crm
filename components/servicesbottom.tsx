@@ -3,45 +3,80 @@ import { Button } from "./ui/button"
 
 export const ServicesBottom = ()=>{
     return (
-        <div>
-            <div className="text-center grid grid-row-flow md:grid-cols-4 
-            bg-black
+        <div className="flex flex-col justify-center items-center">
+
+            <div className=" grid  grid-flow-row md:grid-cols-2 
+            bg-black 
              text-white font-mono 
              gap-5
-             py-8 px-6 place-items-center text-sm">
+             py-8 px-4 md:px-44  text-sm mx-0">
 
+              
 
                     {/* ColOne */}
-                    <div>
-                <p className="text-2xl font-extrabold py-4 "> 
-                Voice Chat
+                    <div className="text-center flex flex-col justify-center items-center">
+                <p className="text-2xl font-extrabold py-4 text-blue-500 "> 
+                Text Search
                 </p>
-                <p className=" py-4 px-4 flex flex-wrap">
+                <p className=" py-4 flex flex-wrap">
                  Save the day and browse through the internet, emails or 
-                 your entire documents by just talking to your device.
+                 your entire documents by chat.
                  </p>
-                 <Button className="bg-blue-700">
-                    <Link href='/audiochat'>Try Now</Link>
+                 <Button className="bg-blue-500">
+                    <Link href='/textchat'>Try Now</Link>
                  </Button>
                 
                 </div>
 
-                {/* Col Two */}
-                <div>
-                <p className="text-2xl font-extrabold py-4 "> 
+                    {/* ColTwo */}
+                <div className="text-center flex flex-col justify-center items-center">
+                <p className="text-2xl font-extrabold py-4 text-red-500 "> 
+                Voice Search
+                </p>
+                <p className=" py-4  flex flex-wrap">
+                 Save the day and browse through the internet, emails or 
+                 your entire documents by just talking to your device.
+                 </p>
+                 <Button className="bg-red-500">
+                    <Link href='/voicechat'>Try Now</Link>
+                 </Button>
+                
+                </div>
+
+                {/* Col Three */}
+                <div className="text-center flex flex-col justify-center items-center">
+                <p className="text-2xl font-extrabold py-4 text-green-500 "> 
                 Transcriber
                 </p>
-                <p className=" py-4 px-4 flex flex-wrap">Our advance transcriber will 
+                <p className=" py-4 flex flex-wrap">Our advance transcriber will 
                 save you a ton of time at meetings and conferences. Record, convert to 
                 text, and share with your team in 1 minute.
                 </p>
-                <Button className="bg-yellow-800">
+                <Button className="bg-green-500">
                     <Link href='/aitranscriber'>Try Now</Link>
                  </Button>
                 </div>
+
+
+                {/* Col Three */}
+                <div className="text-center flex flex-col justify-center items-center">
+                <p className="text-2xl font-extrabold py-4 "> 
+                Voice Recorder
+                </p>
+                <p className=" py-4 px-4 flex flex-wrap">
+                Capture your meetings, events on the go with crytal 
+                clear Voice Recorder. You can Record and convert to 
+                text in 1 minute.
+                </p>
+                <Button className="bg-gray-500">
+                    <Link href='/voicerecorder'>Try Now</Link>
+                 </Button>
+                </div>
                
-               {/* Col Three */}
-                <div>
+               {/* Col Four */}
+
+
+                {/* <div>
                 <p className="text-2xl font-extrabold py-4 "> 
                 Blog Writer
                 </p>
@@ -58,7 +93,8 @@ export const ServicesBottom = ()=>{
                  
 
                  {/* Col3 */}
-                <div>
+
+                {/* <div>
                 <p className="text-2xl font-extrabold py-4 "> 
                 Images
                 </p>
@@ -68,7 +104,7 @@ export const ServicesBottom = ()=>{
                 <Button className="bg-red-700">
                     <Link href='/'>Try Now</Link>
                  </Button>
-                </div>
+                </div>  */}
 
             
 

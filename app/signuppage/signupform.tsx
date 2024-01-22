@@ -19,13 +19,19 @@ import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
 import { formSchema } from '@/app/(dashboard)/(dashroutes)/(conversation bots)/boyfriend/constants'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
+import { SpinnerOne } from '@/components/spinner'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+
+const registering = (<div className='relative w-24 h-24'>
+  <Image src={SpinnerOne} alt='spinner' fill/></div>)
 
 export const SignUpForm = ()=>{
 
 const [message, setMessage] = useState<string | any>('Sign up with Email')
 const [isRegistered, setIsRegistered] = useState<boolean>(false)
+const [isRegistering, setIsRegistering] = useState<boolean>(false)
 
 const router = useRouter()
 
@@ -65,6 +71,7 @@ const FormSchema = z.object({
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
     
     try{
+      setIsRegistering(true)
     const processPayload = await fetch(`${BASE_URL}/registeruser/`, {
         mode: 'cors',
         method: 'POST',
@@ -75,21 +82,26 @@ const FormSchema = z.object({
     const response: any = await processPayload.json()
     if(!response) {
      setMessage("Server error! No response from server")
+     setIsRegistering(false)
     }else{
         if(response.success === true){
         setMessage(response.message)
         setIsRegistered(true)
+        setIsRegistering(false)
          
       }else{
         setMessage(response.error)
         console.log(response.error)
+        setIsRegistering(false)
       }
     }
 }
 
 catch(error: any){
   console.log(error.message)
-  setMessage("Server error! Make sure you are connected to the internet")
+  setMessage("No response! Unable to fetch from server. Check internet connection")
+}finally{
+  setIsRegistering(false)
 }
 
   }
@@ -99,10 +111,17 @@ catch(error: any){
     <div className='overflow-hidden flex flex-col justify-center items-center'>
      
      
-     <div className='text-center font-extrabold py-8 px-24'>
-        {message}
+     <div className='text-center  py-8 flex flex-col justify-center items-center '>
+        <p className='font-extrabold px-24'>{message}</p>
+        
+          {isRegistering?
+          <div>
+            {registering}
+          </div>:null
+          }
+        
     </div>
-
+     
 
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} 
