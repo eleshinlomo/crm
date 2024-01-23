@@ -45,9 +45,11 @@ function Title({ setMessages }: Props) {
         <p>CHAT</p>
         </div>
        {path === '/voicechat' ?
-        <Button variant='default'   className="text-white bg-gray-700 text-sm  py-4 rounded-2xl">
+        <Button variant='default'   className="text-white bg-gray-700
+         hover:bg-gray-700 text-sm  py-4 rounded-2xl">
           <Link href='/textchat'>SWITCH TO TEXT CHAT</Link></Button>:
-        <Button variant='default'  className="text-white bg-gray-700 text-sm rounded-2xl  py-4">
+        <Button variant='default'  className="text-white bg-gray-700
+         hover:bg-gray-700 text-sm rounded-2xl  py-4">
          <Link href='/voicechat'>SWITCH TO VOICE CHAT</Link></Button>
        }
       <button

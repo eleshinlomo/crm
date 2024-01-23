@@ -20,7 +20,7 @@ export const RecordMessage = ({ handleStop }: Props) => {
           
             
 <div className="flex">
-<Button className="bg-black text-white " 
+<Button className="bg-black text-white rounded-2xl" 
 onClick={startRecording}>Record</Button>
 <RecordIcon
               classText={
@@ -30,7 +30,7 @@ onClick={startRecording}>Record</Button>
               }
             />
             
-<Button className="bg-black text-white" 
+<Button className="bg-black text-white rounded-2xl" 
 onClick={stopRecording}>Stop</Button>
 
 </div>

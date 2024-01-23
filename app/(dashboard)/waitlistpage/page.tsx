@@ -9,7 +9,7 @@ const WaitlistPage = () => {
     <>
     <Sheet>
         <SheetTrigger asChild>
-            <Button className='w-full md:w-1/2'>
+            <Button className='w-full md:w-1/2 py-6 rounded-2xl bg-gray-700 hover:bg-gray-700'>
                 JOIN WAITLIST
             </Button>
         </SheetTrigger>

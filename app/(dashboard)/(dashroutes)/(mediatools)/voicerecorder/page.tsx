@@ -5,20 +5,35 @@ import {RecordMessage} from "@/components/(voicerecorder)/RecordMessage";
 import Link from 'next/link'
 import { SmileIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { voiceToText } from "@/components/voicetotext";
+import { SpinnerOne } from "@/components/spinner";
+import Image from 'next/image'
 
 const Controller = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isTranscribing, setIsTranscribing] = useState<boolean>(false);
   const [messages, setMessages] = useState<Array<string | any>>([]);
+  const [userMessage, setUserMessage] = useState<null | any>(null)
+  const [message, setMessage] = useState<string | null>('')
+  const [transcribedMessage, setTranscribedMessage] = useState<null | any>(null)
 
   // const data = "This is a fake blob"
   // const blob = new Blob([data], {type: "text/plain"})
   // const url = URL.createObjectURL(blob)
   // console.log(url)
 
+
+  const loading = (<div className='relative h-16 w-16'>
+    <Image src={SpinnerOne} alt='loader' fill/></div>)
+
+const transcribing = (<div className='relative h-16 w-16'>
+<Image src={SpinnerOne} alt='loader' fill/></div>)
  
   const handleStop = async (mediaBlobUrl: any) => {
     setIsLoading(true);
     console.log(mediaBlobUrl);
+
+   
   
     // Append recorded message to messages
     const myMessage = { sender: "me", mediaBlobUrl };
@@ -35,9 +50,25 @@ const Controller = () => {
       // Fetch the content from the URL and convert it to a Blob
       const response = await fetch(mediaBlobUrl);
       const blob = await response.blob();
+      setUserMessage(blob)
   
   
   };
+
+
+  const handleTranscription = async (e: any)=>{
+    if(!userMessage) return
+    setIsTranscribing(true)
+    const response: any = await voiceToText(e, userMessage)
+    if (response.ok){
+    setTranscribedMessage(response.data)
+    setIsTranscribing(false)
+    }else{
+      console.log(response.error)
+      setMessage(response.error)
+      setIsTranscribing(false)
+    }
+  }
   
   
   
@@ -48,7 +79,7 @@ const Controller = () => {
       {/* Title */}
       <Title setMessages={setMessages} />
 
-      <div className="flex flex-col justify-center items-center h-full  pb-96">
+      <div className="flex flex-col justify-center items-center">
         {/* Conversation */}
         <div className="mt-5 px-5">
           {messages?.map((audio, index) => {
@@ -81,9 +112,9 @@ const Controller = () => {
         <p>Your recorded voice is ready.</p>
         <p>You can download after playing it.</p>
         </div>
-        <Button>
-          <Link href='/aitranscriber'>Transcribe</Link>
-        </Button>
+
+        
+        
         </div>
        <SmileIcon />
        
@@ -108,30 +139,46 @@ const Controller = () => {
            
            }
 
-          {isLoading && (
+          {isLoading && messages && (
             <div className="flex text-center font-light italic mt-10 
             animate-pulse justify-center items-center">
               
-              <p>Processing</p>
+              {loading}
               
             </div>
           )}
 
-   
-
-           <div className="grid grid-flow-row w-full  ">
-            
-              
+          {/* Controllers */}
+          <div className="flex fex-col justify-center items-center py-4">
             <RecordMessage handleStop={handleStop} />
-            
-          
-        </div>
         </div>
 
-        
+
+        </div>
+
+        {/* Transcription */}
+        {messages && messages.length > 0 ?
+        <div className="text-center flex flex-col justify-center items-center py-4">
+       
+        <p className="font-extrabold py-4">
+          Want to convert recorded voice to text?</p>
+        <Button onClick={handleTranscription} className="rounded-2xl">
+          Transcribe
+        </Button>
+
+        {isTranscribing && userMessage?
+        <div>
+          {transcribing}
+        </div>:null
+        }
+
+        <p className="py-4 px-4 overflow-y-auto">{transcribedMessage?
+         transcribedMessage : null}</p>
+        </div>:null
+        }
       </div>
     </div>
   );
 };
 
-export default Controller;
+export default Controller

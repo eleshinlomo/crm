@@ -58,7 +58,7 @@ const HandleEmailWaitlist = async (e:any)=>{
           onChange={(e)=>setEmail(e.target.value)}
           type='email'
            required /><br/>
-           <Button type='submit' className='mt-2 ' variant='default'>Submit</Button>
+           <Button type='submit' className='mt-2 bg-gray-700' variant='default'>Submit</Button>
         </form>
       </div>
       </div>

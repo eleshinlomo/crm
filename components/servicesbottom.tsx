@@ -5,22 +5,21 @@ export const ServicesBottom = ()=>{
     return (
         <div className="flex flex-col justify-center items-center">
 
-            <div className=" grid  grid-flow-row md:grid-cols-2 
-            bg-black 
-             text-white font-mono 
-             gap-5
-             py-8 px-4 md:px-44  text-sm mx-0">
+            <div className=" grid  grid-flow-row md:grid-cols-4
+            bg-gray-900 text-white gap-5 font-mono
+             py-8 px-4 md:px-44  text-lg mx-0">
 
               
 
                     {/* ColOne */}
                     <div className="text-center flex flex-col justify-center items-center">
                 <p className="text-2xl font-extrabold py-4 text-blue-500 "> 
-                Text Search
+                Text Chat
                 </p>
-                <p className=" py-4 flex flex-wrap">
-                 Save the day and browse through the internet, emails or 
-                 your entire documents by chat.
+                <p className=" py-4 px-4 flex flex-wrap">
+                 Convert chat with LLM to voice immediately. 
+                 Ideal for creating voice-over foe video content 
+                 or presentation slides.
                  </p>
                  <Button className="bg-blue-500">
                     <Link href='/textchat'>Try Now</Link>
@@ -31,11 +30,11 @@ export const ServicesBottom = ()=>{
                     {/* ColTwo */}
                 <div className="text-center flex flex-col justify-center items-center">
                 <p className="text-2xl font-extrabold py-4 text-red-500 "> 
-                Voice Search
+                Voice Chat
                 </p>
                 <p className=" py-4  flex flex-wrap">
-                 Save the day and browse through the internet, emails or 
-                 your entire documents by just talking to your device.
+                 Our Visually Impaired friendly voice chat allows anyone to chat 
+                 with LLM by just talking to their device saving a ton of time.
                  </p>
                  <Button className="bg-red-500">
                     <Link href='/voicechat'>Try Now</Link>
@@ -48,9 +47,9 @@ export const ServicesBottom = ()=>{
                 <p className="text-2xl font-extrabold py-4 text-green-500 "> 
                 Transcriber
                 </p>
-                <p className=" py-4 flex flex-wrap">Our advance transcriber will 
+                <p className=" py-4 px-4 flex flex-wrap">Our advance transcriber will 
                 save you a ton of time at meetings and conferences. Record, convert to 
-                text, and share with your team in 1 minute.
+                text, and share with your team.
                 </p>
                 <Button className="bg-green-500">
                     <Link href='/aitranscriber'>Try Now</Link>

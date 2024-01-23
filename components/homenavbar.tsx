@@ -164,13 +164,13 @@ bg-black text-white '>
               
           {isLoggedIn?
           <Button size='sm' onClick={userLogout}
-          className='bg-blue-500'
+          className='bg-gray-700 py-5'
           >
           Sign Out
         </Button>:
          
 
-          <Button className='bg-blue-500 hover:bg-blue-500'>
+          <Button className='b hover:bgbg-gray-700gray-700 py-5'>
             <Link href='/signinpage'>Sign In</Link>
           </Button>
              }

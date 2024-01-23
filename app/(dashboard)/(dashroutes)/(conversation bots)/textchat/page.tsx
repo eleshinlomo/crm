@@ -16,13 +16,15 @@ import { cn } from '@/lib/utils'
 import { UserAvatar } from '@/components/user-avater'
 import { BotAvatar } from '@/components/BotAvatar'
 import Title from '@/components/(audiotospeech)/Title'
+import { textToVoice } from '@/components/texttovoice'
 
 
 
 
 const TextChatPage = () => {
     const [messages, setMessages] = useState<Array<{role: string; content: string}>>([])
-    
+    const [textMessage, setTextMessage] = useState<null | any>(null)
+    const [audioUrl, setAudioURL] = useState<null | any>(null)
 
     const router = useRouter()
     const form = useForm <z.infer<typeof formSchema>>({
@@ -63,6 +65,9 @@ const TextChatPage = () => {
             console.log(data.message)
 
             if(data) {
+            // Use Response for Text To Voice
+            setTextMessage(data.message)
+            // Continue with Chatbot
             const botMessage = {
                 role: "Bot",
                 content: ""
@@ -84,8 +89,44 @@ const TextChatPage = () => {
             router.refresh()
         }
     }
+
+
+    const handleTextToVoice = async ()=>{
+    
+        try{
+        const response: any = await textToVoice(textMessage)
+        if(response.ok){
+      const chatbotBlobURL = URL.createObjectURL(response)
+      
+      const ChatbotAudio = new Audio(chatbotBlobURL)
+      if(ChatbotAudio){
+      setAudioURL(chatbotBlobURL)
+      ChatbotAudio.play()
+      }
+        }else{
+            console.log(response.error)
+        }
+    }
+    catch(err){
+        console.log(err)
+    }
+    }
   return (
-    <div>
+    <div className='flex flex-col justify-center'>
+     
+     
+     <div className='className="text-center flex flex-col justify-center items-center font-extrabold py-4"'>
+     <p className="text-center font-extrabold text-xl py-4 px-8">USE CASES</p>
+     <ul className='text-center '>
+        <li>Can convert chat to audio file</li>
+        <li>Good for Social Media Voice-Over</li>
+        <li>Video Content Voice-Over</li>
+        <li>Slide Presentation Voice-Over</li>
+     </ul>
+     </div>
+
+     <p className="text-center font-extrabold text-3xl text-blue-700 py-8">
+        TEXT CHAT</p>
 
         <Title setMessages={setMessages} />
         <Heading
@@ -122,8 +163,8 @@ const TextChatPage = () => {
                </FormItem>
                )}
                />
-               <Button className='col-span-12 lg:col-span-2 w-full' disabled={isLoading}>
-                Generate
+               <Button className='col-span-12 lg:col-span-2 w-full rounded-2xl' disabled={isLoading}>
+                Chat
                </Button>
              </form>
             </Form>
@@ -153,9 +194,26 @@ const TextChatPage = () => {
     
                  >
                 {message.role == 'user' ? <UserAvatar /> : <BotAvatar />}
-                <p className='text-sm'>
-                 {message.content}
-                 </p>
+                
+                 {message.role === 'user' ? 
+                 <p className='text-md'>
+                    {message.content}
+                </p> :
+                <div className=''>
+                    <p className='text-md py-4'>
+                    {message.content}
+                </p>
+                <Button onClick={handleTextToVoice}>Convert to Voice</Button>
+                {audioUrl? 
+                <audio
+                    src={audioUrl}
+                    className="appearance-none"
+                    controls
+                    
+                  />:null}
+                </div>
+                 }
+                 
                  
                 </div>
             ))}
