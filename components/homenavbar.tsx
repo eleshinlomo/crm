@@ -1,8 +1,18 @@
 "use client"
 
 import {useState, useEffect} from 'react'
-import Image from 'next/image'
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger,
+} from "@/components/ui/menubar"
 import Link from 'next/link'
+import { UserAvatar } from "./user-avater"
+import Image from 'next/image'
 import { Button } from './ui/button'
 import { Menu} from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet'
@@ -16,6 +26,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+
 
 
 // Tools
@@ -66,7 +77,7 @@ const HomeNavBar = ()=>{
        <div>
         
         <div className='   text-white bg-black  
-        md:flex flex-1 justify-between  px-2 shadow-2xl '>
+        md:flex flex-1 justify-between  px-2 shadow-2xl py-8 '>
 
 
 {/* Col 1 */}
@@ -118,51 +129,39 @@ bg-black text-white '>
         }
 </div>
 
-    <NavigationMenu className='text-black grid grid-flow-col'>
-      <NavigationMenuList>
-      <NavigationMenuItem className=''>
-          <Link href="/" legacyBehavior passHref >
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Home
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Services</NavigationMenuTrigger>
-          <NavigationMenuContent className="text-white bg-black">
-            
-                
-                 
-                    <div className=''>
-                    
-                      <HomeNavItems />
-                      
-                      {/* {Tools ? Tools.map((index: any, category: any)=>(
-                      <div key={index} className='text-white'>
 
-                      {category.tools ? category.tools.map((tool: any, toolindex: any)=>(
-                      <div key={toolindex} className=" ">
-                      <p className=''>{tool.label}</p>
-                      <p>{tool.category}</p>
-                      </div>)):null
-                       }                 
-                       </div>)):null
-                        } */}
-                      </div>
-             
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Contact</NavigationMenuTrigger>
-          <NavigationMenuContent className="bg-black text-white">
-            <div className='px-2'>
-              <p>Please Mail: mgrsconcept@gmail.com</p>
-              </div>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-              
-          {isLoggedIn?
+
+<div className='mr-2'>
+          
+<Menubar className=" gap-3">
+  <MenubarMenu>
+    <MenubarTrigger><Link href='/'>Home</Link></MenubarTrigger>
+  </MenubarMenu>
+
+  <MenubarMenu>
+    <MenubarTrigger>Services</MenubarTrigger>
+    <MenubarContent className='flex flex-col mr-4'>
+      <MenubarItem>
+        <HomeNavItems />
+      </MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+
+  <MenubarMenu>
+    <MenubarTrigger>Contact</MenubarTrigger>
+    <MenubarContent className='flex flex-col mr-4'>
+      Please mail: mgrsconcept@gmail.com
+    </MenubarContent>
+  </MenubarMenu>
+
+  <MenubarMenu>
+    <MenubarTrigger>
+      <div className="h-6 w-8">
+      <UserAvatar />
+      </div>
+      </MenubarTrigger>
+    <MenubarContent className='flex flex-col mr-4'>
+    {isLoggedIn?
           <Button size='sm' onClick={userLogout}
           className='bg-gray-700 py-5'
           >
@@ -174,10 +173,16 @@ bg-black text-white '>
             <Link href='/signinpage'>Sign In</Link>
           </Button>
              }
+    </MenubarContent>
+  </MenubarMenu>
+  
+</Menubar>
+              
           
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
+          
+      
+    </div>
+
     </div>
 
 

@@ -46,7 +46,7 @@ export const TeamPage = ()=>{
        
     ]
     return (
-        <div className='bg-black text-white'>
+        <div className=''>
 
 
 <div className='py-4 text-center '>
@@ -71,7 +71,7 @@ export const TeamPage = ()=>{
             <Image src={chatbot.image} alt='member profile' fill  />  
             </div>
             <div className=' w-full flex flex-col justify-center items-center gap-2'>
-            <p className='text-l '>Name: {chatbot.chatbotname}</p>
+            <p className='text-l font-extrabold'>Name: {chatbot.chatbotname}</p>
             <p className='text-l '>Role: {chatbot.role}</p>
             {/* <p className='text-l text-black'>Project Info: {team.info}</p>  */}
             {/* <Button className=' text-lg w-full h-full'>

@@ -108,7 +108,7 @@ catch(error: any){
 
   return (
 
-    <div className='overflow-hidden flex flex-col justify-center items-center'>
+    <div className='overflow-hidden flex flex-col justify-center text-white items-center'>
      
      
      <div className='text-center  py-8 flex flex-col justify-center items-center '>
@@ -127,6 +127,9 @@ catch(error: any){
       <form onSubmit={form.handleSubmit(onSubmit)} 
       className=" flex flex-col justify-center items-center px-16">
 
+
+         <div className='grid grid-flow-row md:grid-cols-2 gap-3 
+         shadow-xl px-4 py-4 '>
         {/* Company */}
         <FormField
           control={form.control}
@@ -203,7 +206,10 @@ catch(error: any){
           )}
         />
 
-        <Button type="submit" className='bg-blue-700 hover:bg-blue-700'>Sign Up</Button>
+        </div>
+
+        <Button type="submit" className='bg-gray-900
+        mt-3 hover:bg-gray-900'>Sign Up</Button>
       </form>
     </Form>
     

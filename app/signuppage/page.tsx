@@ -22,20 +22,21 @@ const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 
 const SignUpPage = ()=>{
   return (
-   <div className="flex flex-col justify-center items-center gap-3 pt-12 text-black bg-blue-200">
+   <div className="flex flex-col justify-center items-center
+    gap-3 pt-12 bg-gray-700 text-white">
          
           <div className="text-center font-extrabold">
               <div className="">
               <Link href='/' className="flex flex-1 text-3xl">
               <ArrowLeftSquareIcon className="mt-5  text-3xl" />
-              <p className=" text-blue-800 py-4">Fixupe</p>
+              <p className="  py-4">Fixupe</p>
               </Link>
               </div>
               
               
               <div className="flex gap-2 py-8">
                 <p className="mt-1 ">Already Registered?</p>
-                <Button size='sm' className='bg-blue-700 hover:bg-blue-700'>
+                <Button size='sm' className='bg-gray-900 hover:bg-gray-900'>
                   <Link href='/signinpage'>Sign In</Link>
                   </Button>
               </div>

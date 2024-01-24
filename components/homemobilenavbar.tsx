@@ -5,6 +5,13 @@ import  Image  from 'next/image'
 import { GOOGLE_LOGIN_URL } from './urls'
 import { GOOGLE_LOGOUT_URL } from './urls'
 import Waitlist from './waitlistpage'
+import { HomeNavItems } from './homenavitems'
+
+//  Auth Functions
+import { loginChecker } from './auth'
+import WaitlistPage from '@/app/(dashboard)/waitlistpage/page'
+import { userLogout } from './auth'
+
 
 
 
@@ -12,10 +19,7 @@ import Waitlist from './waitlistpage'
  // URLs
  const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 
-//  Auth Functions
-import { loginChecker } from './auth'
-import WaitlistPage from '@/app/(dashboard)/waitlistpage/page'
-import { userLogout } from './auth'
+
 
 
 export const HomeMobileNavBar = () => {
@@ -59,9 +63,7 @@ useEffect(()=>{
           Sign Out
         </Button>
 
-        <Button className='' asChild>
-          <Link href='/dashboard'>Dashboard</Link>
-        </Button>
+        <HomeNavItems />
 
         <div>
           <Waitlist />
@@ -70,19 +72,21 @@ useEffect(()=>{
         </div>
         :
         <div className=' flex flex-col flex-1 gap-3 mt-5'>
-        <Button className='bg-blue-500 hover:bg-blue-500 w-full'>
+        <Button className='bg-gray-700 hover:bg-blue-500 w-full'>
           <Link href='signuppage'>Sign up</Link></Button>
 
-        <Button className='bg-blue-500 hover:bg-blue-500'>
+        <Button className='bg-gray-700 hover:bg-blue-500'>
             <Link href='/signinpage'>Sign In</Link>
         </Button>
+
+        <div>
+          <Waitlist />
+         </div>
 
         </div>
          }
 
-         <div>
-          <Waitlist />
-         </div>
+         
       </div>
     </div>
   )

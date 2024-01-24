@@ -6,7 +6,7 @@ export const ServicesBottom = ()=>{
         <div className="flex flex-col justify-center items-center">
 
             <div className=" grid  grid-flow-row md:grid-cols-4
-            bg-gray-900 text-white gap-5 font-mono
+            bg-black text-white gap-5 font-mono
              py-8 px-4 md:px-44  text-lg mx-0">
 
               

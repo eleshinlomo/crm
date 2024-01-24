@@ -33,7 +33,7 @@ const Hero = ()=>{
 
 
 
-<div className="h-auto   bg-black text-white
+<div className="h-auto 
              ">
 
 
@@ -42,8 +42,8 @@ const Hero = ()=>{
 {/* Left Side */}
 <div className="md:h-96 w-full md:flex justify-center items-center   ">
 
-<div className="relative  w-full h-72 md:h-96  px-2 ">
-<Image src='/bg/background-6824.gif' alt='hero pics' fill />
+<div className="relative  w-full h-72 md:h-72  px-2 ">
+<Image src='/bg/computer-3036166_1920.jpg' alt='hero pics' fill />
 </div>
 
 <div className="px-3 pb-2">

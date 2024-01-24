@@ -5,14 +5,14 @@ export const HomeNavItems = ()=>{
     return (
         <div className=''>
 
-  <div>
-    <ul className=''>
+  <div className='grid grid-cols-2 gap-3'>
+    
 <Button className='w-full'>
 <Link href='/dashboard'
 className=''>
     Dashboard</Link>
-</Button>
-
+</Button> 
+                        
                         <Button className='w-full'>
                         <Link href='/aitranscriber'
                       className=''
@@ -30,15 +30,27 @@ className=''>
                       <Button className='w-full'>
                         <Link href='/voicechat'
                       className=''
-                      >Voice Search</Link>
+                      >Voice Chat</Link>
                       </Button>
 
                       <Button className='w-full'>
                         <Link href='/textchat'
                       className=''
-                      >Text Search</Link>
+                      >Text Chat</Link>
                       </Button>
-                      </ul>
+
+                      <Button className='w-full'>
+                        <Link href='/'
+                      className=''
+                      >Settings</Link>
+                      </Button>
+
+                      {/* <Button className='w-full'>
+                        <Link href='/pdftoword'
+                      className=''
+                      >PDFtoWord</Link>
+                      </Button> */}
+                      
 
                       </div>
         </div>

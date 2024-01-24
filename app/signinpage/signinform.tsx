@@ -119,10 +119,10 @@ const FormSchema = z.object({
 
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} 
-      className=" flex flex-col justify-center items-center px-16">
+      className=" flex flex-col justify-center items-center px-16 ">
 
         
-
+         <div className='shadow-xl px-4 py-4'>
         {/* Username */}
         <FormField
           control={form.control}
@@ -161,9 +161,11 @@ const FormSchema = z.object({
           )}
         />
 
+        </div>
+
        <div className="flex gap-2 py-8">
                 <p className="mt-1 ">Forgot Password?</p>
-                <Button type='submit' className='bg-blue-700 hover:bg-blue-700'>
+                <Button type='submit' className='bg-gray-900 hover:bg-gray-900'>
                     Sign In
                     </Button>
               </div>
