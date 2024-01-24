@@ -72,10 +72,10 @@ useEffect(()=>{
         </div>
         :
         <div className=' flex flex-col flex-1 gap-3 mt-5'>
-        <Button className='bg-gray-700 hover:bg-blue-500 w-full'>
+        <Button className=' w-full'>
           <Link href='signuppage'>Sign up</Link></Button>
 
-        <Button className='bg-gray-700 hover:bg-blue-500'>
+        <Button className=''>
             <Link href='/signinpage'>Sign In</Link>
         </Button>
 

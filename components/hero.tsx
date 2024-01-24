@@ -69,7 +69,7 @@ and propelling businesses to unprecedented heights...</p>
 
 <div className="grid grid-flow-row mt-5  md:grid-cols-2 gap-2 ">
 <Button  
-className="bg-gray-700 hover:bg-gray-700 text-white py-6 rounded-2xl " 
+className=" text-white py-6 rounded-2xl " 
   >
 <Link href='/dashboard'>DASHBOARD</Link></Button>
 <div className="">

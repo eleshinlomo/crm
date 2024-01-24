@@ -140,7 +140,7 @@ const DashboardLayout = ({
 
 
         <div className='h-full pt-12 flex flex-col justify-center 
-        items-center gap-3  bg-blue-200 text-black font-extrabold'>
+        items-center gap-3  border border-blue-800 font-extrabold'>
             
             {isChecking ?
             <div>
@@ -175,7 +175,7 @@ const DashboardLayout = ({
         {/* End of is checking and message */}
 
         <div className='relative w-72 h-72 md:w-96 md:h-96 mb-4'>
-         <Image src='/images/girl1.png' alt='ai girl pics' fill />
+         <Image src='/images/image_guy.png' alt='ai girl pics' fill />
          </div>
 
         </div>
