@@ -9,23 +9,23 @@ import Image from 'next/image'
 const VoiceToTextPage = () => {
   const [fileInput, setFileInput] = useState<null | any>(null)
   const [transcribedMessage, setTranscribedMessage] = useState<null | any>(null)
-  const [isLoading, setIsloading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState<string | null>('')
 
-  const loading = (<div className='relative h-16 w-16'>
+  const loading = (<div className='relative h-24 w-24'>
     <Image src={SpinnerOne} alt='loader' fill/></div>)
 
 
     const handleTranscription = async (e: any)=>{
+        setIsLoading(true)
         const response: any = await voiceToText(e, fileInput)
-        setIsloading(true)
         if (response.ok){
         setTranscribedMessage(response.data)
-        setIsloading(false)
+        setIsLoading(false)
         }else{
           console.log(response.error)
           setMessage(response.error)
-          setIsloading(false)
+          setIsLoading(false)
         }
     }
     return (
@@ -62,6 +62,13 @@ const VoiceToTextPage = () => {
             <p>{loading}</p>:null
             }
           </div>
+
+          {/* Transcribed Message */}
+          <div className='py-8 px-4 border  shadow-2xl overflow-scroll'>
+            <p className='font-extrabold py-8'>Transcription</p>
+            {message?message:null}
+            {transcribedMessage? transcribedMessage: <p>No text available</p>}
+          </div>
            
            <div>
             <p className='py-4'>Don&apos;t have an Audio file?</p>
@@ -73,12 +80,6 @@ const VoiceToTextPage = () => {
           </div>
          
         
-
-          <div className='py-8 px-4 border  shadow-2xl overflow-scroll'>
-            <p className='font-extrabold py-4'>Transcription</p>
-            {message?message:null}
-            {transcribedMessage? transcribedMessage: <p>No text available</p>}
-          </div>
 
       </div>
     )

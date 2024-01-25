@@ -34,11 +34,9 @@ const transcribing = (<div className='relative h-16 w-16'>
     console.log(mediaBlobUrl);
 
    
-  
     // Append recorded message to messages
-    const myMessage = { sender: "me", mediaBlobUrl };
-    const messagesArr = [...messages, myMessage];
-    setMessages(messagesArr)
+    const myMessage: any = { sender: "me", mediaBlobUrl };
+    setMessages([myMessage])
     setIsLoading(false)
   
       // Play audio immediately
@@ -57,6 +55,7 @@ const transcribing = (<div className='relative h-16 w-16'>
 
 
   const handleTranscription = async (e: any)=>{
+    setTranscribedMessage('')
     if(!userMessage) return
     setIsTranscribing(true)
     const response: any = await voiceToText(e, userMessage)
@@ -75,9 +74,14 @@ const transcribing = (<div className='relative h-16 w-16'>
   
 
   return (
-    <div className="">
+    <div className="py-8">
       {/* Title */}
       <Title setMessages={setMessages} />
+
+      {/* Controllers */}
+      <div className="flex fex-col justify-center items-center py-4">
+            <RecordMessage handleStop={handleStop} />
+        </div>
 
       <div className="flex flex-col justify-center items-center">
         {/* Conversation */}
@@ -94,7 +98,7 @@ const transcribing = (<div className='relative h-16 w-16'>
                 <div className="mt-4 ">
                   <p
                     className={
-                      audio.sender == "rachel"
+                      audio.sender === "me"
                         ? "text-center mr-2 italic text-green-500"
                         : "ml-2 italic text-blue-500"
                     }
@@ -104,11 +108,11 @@ const transcribing = (<div className='relative h-16 w-16'>
                   
 
     {messages.length > 0 ?
-     <div className="flex text-center font-light italic py-2 mb-6
+     <div className="flex  text-center font-light italic py-2 mb-6
       justify-center items-center">
        
        <div>
-        <div className="animate-pulse">
+        <div className="animate-pulse text-blue font-extrabold">
         <p>Your recorded voice is ready.</p>
         <p>You can download after playing it.</p>
         </div>
@@ -120,43 +124,15 @@ const transcribing = (<div className='relative h-16 w-16'>
        
      </div>:null
     }
-                  {/* Message */}
+                  {/* Recorded Message with Transcription option */}
+                  <div className="flex flex-col justify-center items-center">
                   <audio
                     src={audio.mediaBlobUrl}
                     className="appearance-none"
                     controls
                     
                   />
-                </div>
-              </div>
-            );
-          })}
-
-          {messages.length == 0 && !isLoading ?
-            <div className="text-center font-light italic mt-10">
-              {"Voice Recorder..."}
-            </div>:null
-           
-           }
-
-          {isLoading && messages && (
-            <div className="flex text-center font-light italic mt-10 
-            animate-pulse justify-center items-center">
-              
-              {loading}
-              
-            </div>
-          )}
-
-          {/* Controllers */}
-          <div className="flex fex-col justify-center items-center py-4">
-            <RecordMessage handleStop={handleStop} />
-        </div>
-
-
-        </div>
-
-        {/* Transcription */}
+                  {/* Transcription */}
         {messages && messages.length > 0 ?
         <div className="text-center flex flex-col justify-center items-center py-4">
        
@@ -172,10 +148,34 @@ const transcribing = (<div className='relative h-16 w-16'>
         </div>:null
         }
 
-        <p className="py-4 px-4 overflow-y-auto">{transcribedMessage?
+        <p className="py-4 px-24 overflow-y-auto">{transcribedMessage?
          transcribedMessage : null}</p>
         </div>:null
         }
+        </div>
+                
+              </div>
+              </div>
+            );
+          })}
+
+         
+
+          {isLoading && messages && (
+            <div className="flex text-center font-light italic mt-10 
+            animate-pulse justify-center items-center">
+              
+              {loading}
+              
+            </div>
+          )}
+
+          
+
+
+        </div>
+
+        
       </div>
     </div>
   );

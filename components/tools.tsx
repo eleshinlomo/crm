@@ -105,24 +105,6 @@ export const Tools: [] | any = [
   //   ]},
 
 
- 
-
-  {
-    id:'conversation',
-    category: 'Conversation Tools',
-    tools: [
-        {
-        
-        label: "General Conversation",
-        icon: MessageSquare,
-        href: "/general",
-        color: "text-pink-500",
-        bgColor: "text-grey-500"
-        }
-        
-        
-    ]},
-
     
     {
       id:'media',
@@ -137,6 +119,14 @@ export const Tools: [] | any = [
           color: "text-blue-500",
           bgColor: "text-grey-500"
           },
+          {
+        
+            label: "Voice Chat",
+            icon: ImageIcon,
+            href: "/voicechat",
+            color: "text-blue-500",
+            bgColor: "text-grey-500"
+            },
         // {
         
         // label: "Image Generator",
@@ -188,6 +178,14 @@ export const Tools: [] | any = [
         color: "text-pink-500",
         bgColor: "text-grey-500"
         },
+        {
+        
+          label: "Text Writer",
+          icon: ImageIcon,
+          href: "/textchat",
+          color: "text-blue-500",
+          bgColor: "text-grey-500"
+          },
         // { 
           
         //   label: "Code Generation",
@@ -238,6 +236,23 @@ export const Tools: [] | any = [
           //       bgColor: "text-blue-500"
           //       }
           //     ]},
+
+          {
+            id:'content creator',
+            category: 'Content Creator',
+            tools: [
+              
+              {   
+        
+                label: "Audio Content",
+                icon: BotIcon,
+                href: "/audiocontent",
+                color: "text-pink-500",
+                bgColor: "text-grey-500"
+                },
+
+                ]},
+
 
               { 
                 id: 'Settings',

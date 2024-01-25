@@ -17,14 +17,17 @@ import { UserAvatar } from '@/components/user-avater'
 import { BotAvatar } from '@/components/BotAvatar'
 import Title from '@/components/(audiotospeech)/Title'
 import { textToVoice } from '@/components/texttovoice'
+import { SpinnerOne } from '@/components/spinner'
+import Image from 'next/image'
 
 
 
 
 const TextChatPage = () => {
-    const [messages, setMessages] = useState<Array<{role: string; content: string}>>([])
+    const [messages, setMessages] = useState<Array<{role: string; content: string, audio: null | any}>>([])
     const [textMessage, setTextMessage] = useState<null | any>(null)
     const [audioUrl, setAudioURL] = useState<null | any>(null)
+    const [isConvertingTextToAudio, setIsConvertingTextToAudio] = useState<boolean>(false)
 
     const router = useRouter()
     const form = useForm <z.infer<typeof formSchema>>({
@@ -35,6 +38,11 @@ const TextChatPage = () => {
     })
 
     const isLoading = form.formState.isSubmitting
+
+    const loading = (<div className='relative h-16 w-16'>
+<Image src={SpinnerOne} alt='loader' fill/></div>)
+
+
     const onSubmit = async (values: z.infer<typeof formSchema>)=>{
         console.log(values)
 
@@ -42,7 +50,8 @@ const TextChatPage = () => {
          
          const userMessage = {
             role: "user",
-            content: values.payload
+            content: values.payload,
+            audio: null
          }
 
         
@@ -69,8 +78,9 @@ const TextChatPage = () => {
             setTextMessage(data.message)
             // Continue with Chatbot
             const botMessage = {
-                role: "Bot",
-                content: ""
+                role: "bot",
+                content: "",
+                audio: null
             }
 
             
@@ -86,29 +96,50 @@ const TextChatPage = () => {
         }catch (error: any) {
             console.log(error)
         } finally {
-            router.refresh()
+            return
         }
     }
 
 
-    const handleTextToVoice = async ()=>{
+    
+    
+
+
+    const handleTextToVoice = async (textMessage: string)=>{
     
         try{
-        const response: any = await textToVoice(textMessage)
-        if(response.ok){
-      const chatbotBlobURL = URL.createObjectURL(response)
-      
-      const ChatbotAudio = new Audio(chatbotBlobURL)
-      if(ChatbotAudio){
-      setAudioURL(chatbotBlobURL)
-      ChatbotAudio.play()
-      }
+        setIsConvertingTextToAudio(true)
+        setAudioURL(null)
+        if(!textMessage) return {"error": "No textMessage found"}
+        console.log({"userMesssage": textMessage})
+        const blob: any = await textToVoice(textMessage)
+        if(blob){
+       
+            const chatbotBlob = new Blob([blob], {type: 'audio/wav'})
+            const chatbotBlobURL = URL.createObjectURL(chatbotBlob)
+
+            const botResponse = {
+                role: 'bot',
+                content: textMessage,
+                audio: chatbotBlobURL
+            }
+
+            setMessages([...messages, botResponse])
+            
+            // const ChatbotAudio = new Audio(chatbotBlobURL)
+            // ChatbotAudio.play()
+    
+      setIsConvertingTextToAudio(false)
+    
         }else{
-            console.log(response.error)
+            console.log(blob.error)
+            setIsConvertingTextToAudio(false)
         }
     }
     catch(err){
         console.log(err)
+    }finally{
+        setIsConvertingTextToAudio(false)
     }
     }
   return (
@@ -126,12 +157,12 @@ const TextChatPage = () => {
      </div>
 
      <p className="text-center font-extrabold text-3xl text-blue-700 py-8">
-        TEXT CHAT</p>
+        SCRIPT WRITER</p>
 
         <Title setMessages={setMessages} />
         <Heading
-        title='Text Chatbot'
-        description = 'Ask me anything'
+        title='Script Writer'
+        description = 'Content production on steroid'
         icon={MessageSquare}
         iconColor='text-violet-500'
         bgColor='bg-violet-500/10'
@@ -156,7 +187,7 @@ const TextChatPage = () => {
               focus=visible:ring-transparent
               focus-visible:ring-0'
               disabled={isLoading}
-              placeholder='Safest city in United States to raise kids?'
+              placeholder='Write a 500 word youtube script  about "Apple Fruit"'
               {...field}
                />
                </FormControl>
@@ -196,21 +227,53 @@ const TextChatPage = () => {
                 {message.role == 'user' ? <UserAvatar /> : <BotAvatar />}
                 
                  {message.role === 'user' ? 
-                 <p className='text-md'>
+                
+                 <p className='text-md font-semibold'>
                     {message.content}
                 </p> :
-                <div className=''>
+                <div className='font-semibold'>
                     <p className='text-md py-4'>
                     {message.content}
                 </p>
-                <Button onClick={handleTextToVoice}>Convert to Voice</Button>
-                {audioUrl? 
+
+                {/* Bot Response */}
+                <div className='flex'>
+               
+               {message.audio ?
+               <div className='flex gap-2'>
+                <Button className='mt-2'>
+                Use in Content Creator
+               </Button>
+               <Button className='mt-2'>Edit
+               </Button>
+               </div>:
+                <Button onClick={()=>handleTextToVoice(message.content)} className='mt-2'>
+                    
+                    Convert to Audio
+                </Button>
+               }
+                
+
+                {isConvertingTextToAudio ?
+                <div>
+                {loading}
+                </div>:null
+                }
+                </div>
+
+                {/* Blob Response */}
+                {message.audio?
+                <div>
+                
                 <audio
-                    src={audioUrl}
+                    src={message.audio}
                     className="appearance-none"
                     controls
                     
-                  />:null}
+                  />
+                  </div>:null
+                }
+                
                 </div>
                  }
                  
@@ -219,6 +282,8 @@ const TextChatPage = () => {
             ))}
            </div>
           </div>
+
+          
 
          </div>
     </div>

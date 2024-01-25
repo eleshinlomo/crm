@@ -7,7 +7,7 @@ export const textToVoice = async (textMessage: any)=>{
     }
   try{
     if(!textMessage) throw new Error("No text to convert")
-     console.log(textMessage)
+     
     const response: any = await fetch(`${BASE_URL}/texttovoice`, {
       mode: 'cors',
       method: 'POST',
@@ -19,10 +19,10 @@ export const textToVoice = async (textMessage: any)=>{
     if(!response) throw new Error("No response from server")
     const blob = await response.blob()
     if(blob){
-        console.log(blob)
         return blob
-    }
+    }else{
     return response.error
+    }
    }
     catch(error){
     console.log(error)
