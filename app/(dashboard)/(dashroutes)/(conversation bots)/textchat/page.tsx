@@ -156,7 +156,7 @@ const TextChatPage = () => {
      </ul>
      </div>
 
-     <p className="text-center font-extrabold text-3xl text-blue-700 py-8">
+     <p className="text-center font-extrabold text-2xl text-blue-700 py-8 px-4">
         SCRIPT & BLOG WRITER</p>
 
         <Title setMessages={setMessages} />
