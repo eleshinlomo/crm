@@ -157,11 +157,11 @@ const TextChatPage = () => {
      </div>
 
      <p className="text-center font-extrabold text-3xl text-blue-700 py-8">
-        SCRIPT WRITER</p>
+        SCRIPT & BLOG WRITER</p>
 
         <Title setMessages={setMessages} />
         <Heading
-        title='Script Writer'
+        title='Script & Blog Writer'
         description = 'Content production on steroid'
         icon={MessageSquare}
         iconColor='text-violet-500'
@@ -195,7 +195,7 @@ const TextChatPage = () => {
                )}
                />
                <Button className='col-span-12 lg:col-span-2 w-full rounded-2xl' disabled={isLoading}>
-                Chat
+                GO
                </Button>
              </form>
             </Form>
