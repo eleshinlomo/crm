@@ -146,7 +146,7 @@ const TextChatPage = () => {
     <div className='flex flex-col justify-center'>
      
      
-     <div className='className="text-center flex flex-col justify-center items-center font-extrabold py-4"'>
+     <div className='className="text-center flex flex-col justify-cencenter  py-4"'>
      <p className="text-center font-extrabold text-xl py-4 px-8">USE CASES</p>
      <ul className='text-center '>
         <li>Can convert chat to audio file</li>
@@ -202,7 +202,7 @@ const TextChatPage = () => {
           </div>
 
           {/* Chat Messages */}
-          <div className='space-y-4 mt-4'>
+          <div className='py-4 mt-4'>
             {isLoading && (
                 <div className='p-8 rounded-lg w-full flex items-center
                 justify-center bg-muted'>
@@ -214,44 +214,38 @@ const TextChatPage = () => {
                     <Empty label="No conversation started with Teema" />
                 </div>
             )}
-           <div className='flex flex-col-reverse gap-y-4'>
-            {messages.map((message, index)=>(
+           <div className='flex  w-full
+           flex-col-reverse items-start  gap-4 '>
+            {messages.map((message: any, index)=>(
                 <div
                  key={index}
-                 className={cn('p-8 w-full flex items-start gap-x-8 rounded-lg',
+                 className={cn('py-8 flex flex-col w-full flex-1 px-8 rounded-lg',
                  message.role == "user" ? "bg-blue border border-blue/10" :
                  "bg-muted"
                  )}
     
                  >
+
+                 
+
+                
+                {/* Message Content */}
                 {message.role == 'user' ? <UserAvatar /> : <BotAvatar />}
                 
                  {message.role === 'user' ? 
                 
-                 <p className='text-md font-semibold'>
+                 <p className=' text-md font-semibold'>
                     {message.content}
                 </p> :
-                <div className='font-semibold'>
+                <div className=' font-semibold'>
                     <p className='text-md py-4'>
                     {message.content}
                 </p>
 
-                {/* Bot Response */}
-                <div className='flex'>
+                {/* Bot Blob Response Buttons */}
+                <div className=' '>
                
-               {message.audio ?
-               <div className='flex gap-2'>
-                <Button className='mt-2'>
-                Use in Content Creator
-               </Button>
-               <Button className='mt-2'>Edit
-               </Button>
-               </div>:
-                <Button onClick={()=>handleTextToVoice(message.content)} className='mt-2'>
-                    
-                    Convert to Audio
-                </Button>
-               }
+              
                 
 
                 {isConvertingTextToAudio ?
@@ -261,9 +255,25 @@ const TextChatPage = () => {
                 }
                 </div>
 
-                {/* Blob Response */}
-                {message.audio?
-                <div>
+
+                {message.audio ?
+               <div className='grid w-full grid-flow-row md:grid-cols-2    gap-2 px-8'>
+                <Button className='mt-2 w-full'>
+                Use in Content Creator
+               </Button>
+               <Button className='mt-2 w-full'>Edit
+               </Button>
+               </div>:
+                <Button onClick={()=>handleTextToVoice(message.content)} 
+                className='mt-2'>
+                    
+                    Convert to Audio
+                </Button>
+               }
+
+                  {/* Blob Player */}
+                  {message.audio?
+                <div className='flex flex-col justify-center items-center'>
                 
                 <audio
                     src={message.audio}
@@ -273,7 +283,6 @@ const TextChatPage = () => {
                   />
                   </div>:null
                 }
-                
                 </div>
                  }
                  
