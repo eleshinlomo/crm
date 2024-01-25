@@ -55,6 +55,13 @@ const VoiceToTextPage = () => {
           
           Transcribe</Button>
           </form>
+
+           {/* Loading */}
+         <div>
+            {isLoading? 
+            <p>{loading}</p>:null
+            }
+          </div>
            
            <div>
             <p className='py-4'>Don&apos;t have an Audio file?</p>
@@ -65,12 +72,7 @@ const VoiceToTextPage = () => {
           </Link>
           </div>
          
-         {/* Loading */}
-          <div>
-            {isLoading? 
-            <p>{loading}</p>:null
-            }
-          </div>
+        
 
           <div className='py-8 px-4 border  shadow-2xl overflow-scroll'>
             <p className='font-extrabold py-4'>Transcription</p>

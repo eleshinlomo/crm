@@ -44,8 +44,8 @@ const FormSchema = z.object({
       message: " Password must be at least 6 characters.",
     }),
 
-    username: z.string().min(2, {
-      message: " Username must be at least 2 characters.",
+    email: z.string().min(2, {
+      message: " Email must be at least 2 characters.",
     }),
     
   
@@ -57,7 +57,7 @@ const FormSchema = z.object({
       resolver: zodResolver(FormSchema),
       defaultValues: {
         password: "",
-        username: ""
+        email: ""
       },
 
   })
@@ -75,10 +75,13 @@ const FormSchema = z.object({
         lastname, 
         sessionid,
         credits,
-        company} = response.message.data
+        company,
+        email
+      } = response.message.data
       
       // Save User Info
       const saveUsername = localStorage.setItem('username', username)
+      const saveUserEmail = localStorage.setItem('email', email)
       const saveSessionId = localStorage.setItem('sessionid', sessionid)
       const saveCredits = localStorage.setItem('credits', credits)
       const saveCompany = localStorage.setItem('company', company)
@@ -123,15 +126,15 @@ const FormSchema = z.object({
 
         
          <div className='shadow-xl px-4 py-4'>
-        {/* Username */}
+        {/* Email */}
         <FormField
           control={form.control}
-          name="username"
+          name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="Username" {...field} type='text' className='text-black' />
+                <Input placeholder="Email" {...field} type='text' className='text-black' />
               </FormControl>
               
               <FormDescription>
@@ -164,7 +167,9 @@ const FormSchema = z.object({
         </div>
 
        <div className="flex gap-2 py-8">
-                <p className="mt-1 ">Forgot Password?</p>
+                <a href='/passwordrecoverypage'>
+                  <p className="mt-1 text-blue-200">Forgot Password?</p>
+                  </a>
                 <Button type='submit' className='bg-gray-900 hover:bg-gray-900'>
                     Sign In
                     </Button>
