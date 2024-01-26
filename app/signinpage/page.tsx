@@ -23,7 +23,7 @@ const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 const SignInPage = ()=>{
   return (
    <div className="h-full flex flex-1 flex-col justify-center 
-   items-center gap-3 pt-12 text-white bg-gray-700">
+   items-center gap-3 pt-12 text-white bg-black">
          
           <div className="text-center font-extrabold">
               <div className="">

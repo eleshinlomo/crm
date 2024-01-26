@@ -5,12 +5,13 @@ import { Button } from '@/components/ui/button'
 import { voiceToText } from '@/components/voicetotext'
 import { SpinnerOne } from '@/components/spinner'
 import Image from 'next/image'
+import CopyButton from '@/components/copybutton'
 
 const VoiceToTextPage = () => {
   const [fileInput, setFileInput] = useState<null | any>(null)
   const [transcribedMessage, setTranscribedMessage] = useState<null | any>(null)
   const [isLoading, setIsLoading] = useState(false)
-  const [message, setMessage] = useState<string | null>('')
+  const [message, setMessage] = useState<string | any>('')
 
   const loading = (<div className='relative h-24 w-24'>
     <Image src={SpinnerOne} alt='loader' fill/></div>)
@@ -66,7 +67,11 @@ const VoiceToTextPage = () => {
           {/* Transcribed Message */}
           <div className='py-8 px-4 border  shadow-2xl overflow-scroll'>
             <p className='font-extrabold py-8'>Transcription</p>
-            {message?message:null}
+           
+            {typeof message === 'string'?message:null}
+            {/* <div>
+              <CopyButton text={message} />
+            </div> */}
             {transcribedMessage? transcribedMessage: <p>No text available</p>}
           </div>
            

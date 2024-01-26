@@ -24,6 +24,8 @@ import { SpinnerOne } from '@/components/spinner'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
+
+
 const registering = (<div className='relative w-24 h-24'>
   <Image src={SpinnerOne} alt='spinner' fill/></div>)
 
@@ -33,7 +35,9 @@ const [message, setMessage] = useState<string | any>('Sign up with Email')
 const [isRegistered, setIsRegistered] = useState<boolean>(false)
 const [isRegistering, setIsRegistering] = useState<boolean>(false)
 
+// Router
 const router = useRouter()
+
 
 const FormSchema = z.object({
   company: z.string().min(2, {
@@ -85,12 +89,23 @@ const FormSchema = z.object({
      setIsRegistering(false)
     }else{
         if(response.success === true){
-        setMessage(response.message)
+        setMessage(
+        <div>
+          <p className='py-4 text-green-600 text-xl'>
+          Registration Successful</p>
+          <div className='flex'>
+          <p>You will be redirected to Sign in page shortly...</p>
+          </div>
+          </div>)
         setIsRegistered(true)
         setIsRegistering(false)
+
+        setTimeout(()=>{
+         router.push('/signinpage')
+        }, 3000)
          
       }else{
-        setMessage(response.error)
+        setMessage(<p className='text-red-600'>{response.error}</p>)
         console.log(response.error)
         setIsRegistering(false)
       }
@@ -111,7 +126,7 @@ catch(error: any){
     <div className='overflow-hidden flex flex-col justify-center text-white items-center'>
      
      
-     <div className='text-center  py-8 flex flex-col justify-center items-center '>
+     <div className='text-center  py-4 flex flex-col justify-center items-center '>
         <p className='font-extrabold px-24'>{message}</p>
         
           {isRegistering?
