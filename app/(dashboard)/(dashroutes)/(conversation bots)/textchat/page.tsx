@@ -247,28 +247,42 @@ const TextChatPage = () => {
                 
                 {/* Avatars */}
                 {message.role == 'user' ? <UserAvatar /> : 
-                <div className='flex gap-3'>
-                    <BotAvatar />
-
-                    <div className='grid grid-flow-row md:grid-cols-3 gap-3'>
+                  <div className='flex md:flex-row justify-center'>
+                    <div className='grid grid-flow-row md:grid-cols-4 gap-1'>
                 <Button onClick={()=>handleTextToVoice(message.content)} 
-                className='mt-2'>
+                className='mt-2 rounded-2xl'>
                     
                     Convert to Audio
                 </Button>
                 <Button  
-                className='mt-2'>
+                className='mt-2 rounded-2xl'>
                     
                     Edit Text
                 </Button>
 
                 <Button
-                className='mt-2'>
+                className='mt-2 rounded-2xl '>
                     
                     Use Text In Creator
                 </Button>
+
+                {/* Blob Player */}
+                {message.audio?
+                
+                
+                <audio
+                    src={message.audio}
+                    className="appearance-none"
+                    controls
+                    
+                  />:null
+                  
+                }
                 </div>
-                </div>}
+                </div>
+
+                }
+                
                 
                  {message.role === 'user' ? 
                 
@@ -295,29 +309,9 @@ const TextChatPage = () => {
                 }
                 </div>
 
-                {/* If Convert to audio */}
-                {message.audio ?
-               <div className='grid w-full grid-flow-row md:grid-cols-2    gap-2 px-8'>
-                <Button className='mt-2 w-full'>
-                Use in Content Creator
-               </Button>
-               </div>:null
+            
 
-               
-               }
-
-                  {/* Blob Player */}
-                  {message.audio?
-                <div className='flex flex-col justify-center items-center'>
-                
-                <audio
-                    src={message.audio}
-                    className="appearance-none"
-                    controls
-                    
-                  />
-                  </div>:null
-                }
+                  
                 </div>
                  }
                  
