@@ -45,7 +45,7 @@ const Controller = () => {
       console.log(blobResponse)
       const chatbotData = await blobResponse.blob();
      
-      console.log({"user text": chatbotData})
+      console.log({"botblobresponse": chatbotData})
       
       if(!blobResponse.ok){throw new Error("Unable to get Blob response")}
       console.log(chatbotData);

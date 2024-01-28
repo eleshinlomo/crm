@@ -88,25 +88,18 @@ const FormSchema = z.object({
      setMessage("Server error! No response from server")
      setIsRegistering(false)
     }else{
-        if(response.success === true){
-        setMessage(
-        <div>
-          <p className='py-4 text-green-600 text-xl'>
-          Registration Successful</p>
-          <div className='flex'>
-          <p>You will be redirected to Sign in page shortly...</p>
-          </div>
-          </div>)
+        if(response.message.ok === true){
+        setMessage(response.message.data)
         setIsRegistered(true)
         setIsRegistering(false)
-
+        console.log(response.message)
         setTimeout(()=>{
          router.push('/signinpage')
         }, 3000)
          
       }else{
-        setMessage(<p className='text-red-600'>{response.error}</p>)
-        console.log(response.error)
+        setMessage(response.message.error)
+        console.log(response.message.error)
         setIsRegistering(false)
       }
     }
@@ -123,11 +116,12 @@ catch(error: any){
 
   return (
 
-    <div className='overflow-hidden flex flex-col justify-center text-white items-center'>
+    <div className='overflow-hidden flex flex-col justify-center
+     text-black items-center'>
      
      
      <div className='text-center  py-4 flex flex-col justify-center items-center '>
-        <p className='font-extrabold px-24'>{message}</p>
+        <p className='font-extrabold px-24 '>{message}</p>
         
           {isRegistering?
           <div>
@@ -140,7 +134,7 @@ catch(error: any){
 
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} 
-      className=" flex flex-col justify-center items-center px-16">
+      className=" flex flex-col justify-center items-center px-16 bg-blue-500">
 
 
          <div className='grid grid-flow-row md:grid-cols-2 gap-3 
@@ -220,7 +214,7 @@ catch(error: any){
                 />
               </FormControl>
               
-              <FormDescription>
+              <FormDescription className='text-white'>
                 Case sensitive.
               </FormDescription>
               <FormMessage />
@@ -231,7 +225,7 @@ catch(error: any){
         </div>
 
         <Button type="submit" className='bg-gray-900
-        mt-3 hover:bg-gray-900'>Sign Up</Button>
+        my-3 hover:bg-gray-900'>Sign Up</Button>
       </form>
     </Form>
     

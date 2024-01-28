@@ -122,7 +122,7 @@ const FormSchema = z.object({
 
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} 
-      className=" flex flex-col justify-center items-center px-16 ">
+      className=" flex flex-col justify-center items-center px-16 bg-blue-500 text-white rounded-2xl ">
 
         
          <div className='shadow-xl px-4 py-4'>

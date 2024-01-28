@@ -23,7 +23,7 @@ const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 const SignUpPage = ()=>{
   return (
    <div className="flex flex-col justify-center items-center
-    gap-3 pt-12 bg-black text-white">
+    gap-3 pt-12 text-black ">
          
           <div className="text-center font-extrabold">
               <div className="">

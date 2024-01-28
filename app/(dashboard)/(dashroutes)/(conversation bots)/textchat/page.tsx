@@ -27,6 +27,8 @@ const TextChatPage = () => {
     const [messages, setMessages] = useState<Array<{role: string; content: string, audio: null | any}>>([])
     const [textMessage, setTextMessage] = useState<null | any>(null)
     const [audioUrl, setAudioURL] = useState<null | any>(null)
+    const [editText, setEditText] = useState<string>('')
+    const [isEditing, setIsEditing] = useState<boolean>(true)
     const [isConvertingTextToAudio, setIsConvertingTextToAudio] = useState<boolean>(false)
 
     const router = useRouter()
@@ -76,6 +78,7 @@ const TextChatPage = () => {
             if(data) {
             // Use Response for Text To Voice
             setTextMessage(data.message)
+            setEditText(data.message)
             // Continue with Chatbot
             const botMessage = {
                 role: "bot",
@@ -87,6 +90,7 @@ const TextChatPage = () => {
             botMessage.content = data.message
             newMessages.push(botMessage)
         }
+             
             setMessages(newMessages)
         
             form.reset()
@@ -123,7 +127,7 @@ const TextChatPage = () => {
                 content: textMessage,
                 audio: chatbotBlobURL
             }
-
+            
             setMessages([...messages, botResponse])
             
             // const ChatbotAudio = new Audio(chatbotBlobURL)
@@ -170,6 +174,18 @@ const TextChatPage = () => {
 
          <div className='px-4 lg:px-8'>
           <div>
+
+          {/* Edit Text */}
+          {/* {isEditing ? 
+          <div>
+            <Input value={editText} onChange={(e)=>setEditText(e.target.value)}
+            className='h-72 w-72'
+            />
+            <Button onClick={()=>setTextMessage(editText)}>Update</Button>
+            </div>:null
+            } */}
+
+
             <Form {...form}>
              <form onSubmit={form.handleSubmit(onSubmit)}
              className='
@@ -187,7 +203,7 @@ const TextChatPage = () => {
               focus=visible:ring-transparent
               focus-visible:ring-0'
               disabled={isLoading}
-              placeholder='Write a 500 word youtube script  about "Apple Fruit"'
+              placeholder='Write a youtube script about "Apple Fruit"'
               {...field}
                />
                </FormControl>
@@ -229,19 +245,43 @@ const TextChatPage = () => {
                  
 
                 
-                {/* Message Content */}
-                {message.role == 'user' ? <UserAvatar /> : <BotAvatar />}
+                {/* Avatars */}
+                {message.role == 'user' ? <UserAvatar /> : 
+                <div className='flex gap-3'>
+                    <BotAvatar />
+
+                    <div className='grid grid-flow-row md:grid-cols-3 gap-3'>
+                <Button onClick={()=>handleTextToVoice(message.content)} 
+                className='mt-2'>
+                    
+                    Convert to Audio
+                </Button>
+                <Button  
+                className='mt-2'>
+                    
+                    Edit Text
+                </Button>
+
+                <Button
+                className='mt-2'>
+                    
+                    Use Text In Creator
+                </Button>
+                </div>
+                </div>}
                 
                  {message.role === 'user' ? 
                 
                  <p className=' text-md font-semibold'>
                     {message.content}
                 </p> :
+                // Bot response
+                
                 <div className=' font-semibold'>
                     <p className='text-md py-4'>
                     {message.content}
                 </p>
-
+                    
                 {/* Bot Blob Response Buttons */}
                 <div className=' '>
                
@@ -255,20 +295,15 @@ const TextChatPage = () => {
                 }
                 </div>
 
-
+                {/* If Convert to audio */}
                 {message.audio ?
                <div className='grid w-full grid-flow-row md:grid-cols-2    gap-2 px-8'>
                 <Button className='mt-2 w-full'>
                 Use in Content Creator
                </Button>
-               <Button className='mt-2 w-full'>Edit
-               </Button>
-               </div>:
-                <Button onClick={()=>handleTextToVoice(message.content)} 
-                className='mt-2'>
-                    
-                    Convert to Audio
-                </Button>
+               </div>:null
+
+               
                }
 
                   {/* Blob Player */}

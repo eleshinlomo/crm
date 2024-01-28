@@ -1,11 +1,9 @@
 import React, {useState} from 'react';
 import { Cursor, useTypewriter } from 'react-simple-typewriter';
 
-interface TypewriterProps {
-    customText: string[]
-}
 
-const Typewriter: React.FC<TypewriterProps> = ({customText}) => {
+
+const Typewriter = ({customText} : {customText: Array<string>}) => {
 
   const [ text ] = useTypewriter({
     words:customText,

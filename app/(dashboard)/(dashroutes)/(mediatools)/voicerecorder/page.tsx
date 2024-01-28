@@ -28,12 +28,12 @@ const Controller = () => {
 
 const transcribing = (<div className='relative h-16 w-16'>
 <Image src={SpinnerOne} alt='loader' fill/></div>)
- 
+
+//  Handle Start and Stop
   const handleStop = async (mediaBlobUrl: any) => {
     setIsLoading(true);
     console.log(mediaBlobUrl);
 
-   
     // Append recorded message to messages
     const myMessage: any = { sender: "me", mediaBlobUrl };
     setMessages([myMessage])
