@@ -50,7 +50,7 @@ interface toolisOpenProps{
   
     return (
       <div>
-        <div className='w-full flex flex-col space-y-4 text-white'>
+        <div className='w-full flex flex-col space-y-4 text-white pt-14'>
           <div className=" py-2 flex-1">
             <Link href="/" className="flex items-center pl-3 mb-14">
               <div className="relative w-8 h-8 mr-4">
@@ -61,7 +61,7 @@ interface toolisOpenProps{
               </h1>
             </Link>
   
-            <div className="space-y-1 w-full pt-16">
+            <div className="px-2 w-full">
               {/* Start of Tools */}
               <div className=''>
                 {Tools.map((category: any, index: any) => (

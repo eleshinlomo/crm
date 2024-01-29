@@ -178,14 +178,7 @@ export const Tools: [] | any = [
         color: "text-pink-500",
         bgColor: "text-grey-500"
         },
-        {
         
-          label: "Text Writer",
-          icon: ImageIcon,
-          href: "/textchat",
-          color: "text-blue-500",
-          bgColor: "text-grey-500"
-          },
         // { 
           
         //   label: "Code Generation",
@@ -242,12 +235,12 @@ export const Tools: [] | any = [
             category: 'Content Creator',
             tools: [
               
-              {   
+              {
         
-                label: "Audio Content",
-                icon: BotIcon,
-                href: "/audiocontent",
-                color: "text-pink-500",
+                label: "Creator's Lab",
+                icon: ImageIcon,
+                href: "/textchat",
+                color: "text-blue-500",
                 bgColor: "text-grey-500"
                 },
 

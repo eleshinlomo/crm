@@ -42,7 +42,7 @@ function Title({ setMessages }: Props) {
     <div className="flex justify-between items-center text-sm
     p-4 bg-gray-900 text-white font-extrabold shadow mx-4 mb-5 ">
       <div className="italic">
-        <p>CHAT</p>
+        <p>CONTENT</p>
         </div>
        {path === '/voicechat' ?
         <Button variant='default'   className="text-white bg-gray-700

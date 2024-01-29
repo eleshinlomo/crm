@@ -78,14 +78,26 @@ className=" text-white py-6 rounded-2xl "
 </div> 
 </div>
  
-           
-
-
     </div>
 
 
            </div>
+       <div className="text-center flex flex-col justify-center items-center
+        font-extrabold font-mono text-lg py-4">
+        <h3 className="bg-black p-4 rounded-2xl text-white py-4">
+          NEW FEATURES</h3>
+        <ul>
+        <li className="md:flex gap-3">
+          <p className="mt-2">Text Editing Now Available in the Creator&apos;s Lab</p>
+           <Link href='/textchat'><Button>Try Now</Button></Link>
+           </li>
 
+           <li className="md:flex gap-3">
+          <p className="mt-2">Ultra-real human voices avialable soon in the Creator&apos;s Lab</p>
+           
+           </li>
+        </ul>
+       </div>
         </div>
     )
 }

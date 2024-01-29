@@ -2,7 +2,7 @@
 import {useState, useEffect} from 'react'
 import * as z from 'zod'
 import {Heading} from '@/components/heading'
-import {  MessageSquare } from 'lucide-react'
+import {  MessageSquare, SmilePlusIcon } from 'lucide-react'
 import {  useForm } from 'react-hook-form'
 import { formSchema } from './constants'
 import {zodResolver} from '@hookform/resolvers/zod'
@@ -23,12 +23,13 @@ import Image from 'next/image'
 
 
 
+
 const TextChatPage = () => {
     const [messages, setMessages] = useState<Array<{role: string; content: string, audio: null | any}>>([])
     const [textMessage, setTextMessage] = useState<null | any>(null)
     const [audioUrl, setAudioURL] = useState<null | any>(null)
-    const [editText, setEditText] = useState<string>('')
-    const [isEditing, setIsEditing] = useState<boolean>(true)
+    const [editText, setEditText] = useState<string | any>('')
+    const [isEditing, setIsEditing] = useState<boolean>(false)
     const [isConvertingTextToAudio, setIsConvertingTextToAudio] = useState<boolean>(false)
 
     const router = useRouter()
@@ -79,6 +80,7 @@ const TextChatPage = () => {
             // Use Response for Text To Voice
             setTextMessage(data.message)
             setEditText(data.message)
+            setEditText(data.message)
             // Continue with Chatbot
             const botMessage = {
                 role: "bot",
@@ -105,18 +107,23 @@ const TextChatPage = () => {
     }
 
 
-    
+    // Update TextMessage
+    const updateTextMessage = (e: any)=>{
+        e.preventDefault()
+        setTextMessage(editText)
+    }
     
 
-
-    const handleTextToVoice = async (textMessage: string)=>{
-    
+// Handle Voice to Text
+    const handleTextToVoice = async (e: any)=>{
+        e.preventDefault()
+        const messageToConvert = textMessage
         try{
         setIsConvertingTextToAudio(true)
         setAudioURL(null)
-        if(!textMessage) return {"error": "No textMessage found"}
-        console.log({"userMesssage": textMessage})
-        const blob: any = await textToVoice(textMessage)
+        if(!messageToConvert) return {"error": "No textMessage found"}
+        console.log({"userMesssage": messageToConvert})
+        const blob: any = await textToVoice(messageToConvert)
         if(blob){
        
             const chatbotBlob = new Blob([blob], {type: 'audio/wav'})
@@ -146,26 +153,35 @@ const TextChatPage = () => {
         setIsConvertingTextToAudio(false)
     }
     }
+
+    
+
   return (
     <div className='flex flex-col justify-center'>
      
      
      <div className='className="text-center flex flex-col justify-cencenter  py-4"'>
      <p className="text-center font-extrabold text-xl py-4 px-8">USE CASES</p>
-     <ul className='text-center '>
+     <ul className='text-center text-sm grid grid-flow-row 
+     md:grid-cols-3 font-semibold'>
+        <li>Email writing</li>
+        <li>Text Message writing</li>
         <li>Can convert chat to audio file</li>
         <li>Good for Social Media Voice-Over</li>
         <li>Video Content Voice-Over</li>
         <li>Slide Presentation Voice-Over</li>
+        <li>Song Lyrics</li>
+        <li>YouTube Channel Script</li>
+        <li>Script for Roleplays</li>
      </ul>
      </div>
 
      <p className="text-center font-extrabold text-2xl text-blue-700 py-8 px-4">
-        SCRIPT & BLOG WRITER</p>
+        CREATOR&apos;S LAB</p>
 
         <Title setMessages={setMessages} />
         <Heading
-        title='Script & Blog Writer'
+        title='Create content faster than competition'
         description = 'Content production on steroid'
         icon={MessageSquare}
         iconColor='text-violet-500'
@@ -174,47 +190,85 @@ const TextChatPage = () => {
 
          <div className='px-4 lg:px-8'>
           <div>
-
-          {/* Edit Text */}
-          {/* {isEditing ? 
-          <div>
-            <Input value={editText} onChange={(e)=>setEditText(e.target.value)}
-            className='h-72 w-72'
-            />
-            <Button onClick={()=>setTextMessage(editText)}>Update</Button>
-            </div>:null
-            } */}
+           
+           {/* Announcements */}
+           <p className='text-center text-pink-500 font-extrabold'>New ultra-real human voices coming soon...</p>
 
 
-            <Form {...form}>
-             <form onSubmit={form.handleSubmit(onSubmit)}
-             className='
-             rounded-lg border w-full p-4 px-3 md:px-6 
-             focus-within:shadow-sm grid grid-cols-12 gap-2
-             '
-             >
-                <FormField 
-                name="payload"
-                render={({ field })=>(
-                
-               <FormItem className="col-span-12 lg:col-span-10">
-               <FormControl className='M-0 P-0'>
-              <Input className='border-0 outline-none 
-              focus=visible:ring-transparent
-              focus-visible:ring-0'
-              disabled={isLoading}
-              placeholder='Write a youtube script about "Apple Fruit"'
-              {...field}
-               />
-               </FormControl>
-               </FormItem>
-               )}
-               />
-               <Button className='col-span-12 lg:col-span-2 w-full rounded-2xl' disabled={isLoading}>
-                GO
-               </Button>
-             </form>
-            </Form>
+           {/* Message Form */}
+            <div>
+            {isEditing ?
+
+// Editing Mode
+<div className='flex flex-col justify-center items-center'>
+<Button className='my-4 rounded-2xl' onClick={()=>setIsEditing(false)}>Close Editing</Button>
+<Form {...form}>
+<form onSubmit={(e)=>updateTextMessage(e)}
+className='
+rounded-lg border w-full p-4 px-3 md:px-6 
+focus-within:shadow-sm grid grid-cols-12 gap-2
+'
+>
+   <FormField 
+   name="textMessage"
+   render={()=>(
+   
+  <FormItem className="col-span-12 lg:col-span-10">
+  <FormControl className='M-0 P-0'>
+ <Input className='border-0 outline-none 
+ focus=visible:ring-transparent
+ focus-visible:ring-0'
+ disabled={isLoading}
+ value={editText}
+ onChange={(e)=>setEditText(e.target.value)}
+  />
+  </FormControl>
+  </FormItem>
+  )}
+  />
+  <Button className='col-span-12 lg:col-span-2 w-full rounded-2xl' disabled={isLoading}>
+   Update Text
+  </Button>
+</form>
+</Form>
+</div>
+            :
+            <div>
+
+           {/* Writing Mode */}
+
+           <Form {...form}>
+           <form onSubmit={form.handleSubmit(onSubmit)}
+           className='
+           rounded-lg border w-full p-4 px-3 md:px-6 
+           focus-within:shadow-sm grid grid-cols-12 gap-2
+           '
+           >
+              <FormField 
+              name="payload"
+              render={({ field })=>(
+              
+             <FormItem className="col-span-12 lg:col-span-10">
+             <FormControl className='M-0 P-0'>
+            <Input className='border-0 outline-none 
+            focus=visible:ring-transparent
+            focus-visible:ring-0'
+            disabled={isLoading}
+            placeholder="Write a love message for my Dad"
+            {...field}
+             />
+             </FormControl>
+             </FormItem>
+             )}
+             />
+             <Button className='col-span-12 lg:col-span-2 w-full rounded-2xl' disabled={isLoading}>
+              GO
+             </Button>
+           </form>
+          </Form>
+          </div>
+              }
+              </div>
           </div>
 
           {/* Chat Messages */}
@@ -245,17 +299,28 @@ const TextChatPage = () => {
                  
 
                 
-                {/* Avatars */}
+                {/* Avatars and header buttons */}
                 {message.role == 'user' ? <UserAvatar /> : 
+                <div>
+                    {isEditing ?
+                    <p className='text-blue-500'>Editing mode...</p>:null
+                    }
                   <div className='flex md:flex-row justify-center'>
-                    <div className='grid grid-flow-row md:grid-cols-4 gap-1'>
-                <Button onClick={()=>handleTextToVoice(message.content)} 
+                    
+                    <div className={`grid grid-flow-row md:grid-cols-${message.audio? 4 : 3} gap-1`}>
+                
+                {/* Convert to audio button */}
+                <Button onClick={(e)=>handleTextToVoice(e)} 
                 className='mt-2 rounded-2xl'>
                     
                     Convert to Audio
                 </Button>
+                 
+
                 <Button  
-                className='mt-2 rounded-2xl'>
+                className='mt-2 rounded-2xl'
+                onClick={()=>setIsEditing(true)}
+                >
                     
                     Edit Text
                 </Button>
@@ -266,42 +331,21 @@ const TextChatPage = () => {
                     Use Text In Creator
                 </Button>
 
-                {/* Blob Player */}
-                {message.audio?
-                
-                
-                <audio
-                    src={message.audio}
-                    className="appearance-none"
-                    controls
+                {message.audio ?
+                <Button
+                className='mt-2 rounded-2xl '>
                     
-                  />:null
-                  
-                }
+                    Use Text & Audio
+                </Button>:null
+                } 
                 </div>
                 </div>
-
+                
+                </div>
                 }
-                
-                
-                 {message.role === 'user' ? 
-                
-                 <p className=' text-md font-semibold'>
-                    {message.content}
-                </p> :
-                // Bot response
-                
-                <div className=' font-semibold'>
-                    <p className='text-md py-4'>
-                    {message.content}
-                </p>
-                    
-                {/* Bot Blob Response Buttons */}
-                <div className=' '>
-               
-              
-                
 
+                {/* Is Converting Text To Voice Blob */}
+                <div className=' flex flex-col justify-center items-center'>
                 {isConvertingTextToAudio ?
                 <div>
                 {loading}
@@ -309,9 +353,56 @@ const TextChatPage = () => {
                 }
                 </div>
 
+             {/* Audio Blob */}
             
+                <div className='flex justify-center items-center'>
+                {/* Blob Player */}
+                {message.audio?
+                
+                <div>
+                <audio
+                    src={message.audio}
+                    className="appearance-none"
+                    controls     
+                  />
+                  </div>:null
+                }
+                </div>
+                
+                
+                {/* Bot and User Messages */}
+                
+                 {message.role === 'user' ? 
+                
 
-                  
+                //   User Prompt
+                 <p className=' text-md font-semibold'>
+                    {message.content}
+                </p> :
+                // Bot response
+                <div className=' font-semibold  '>
+                    <div>
+                
+                {/* Bot Message */}
+
+                {
+                <div>
+                <p className='text-md py-4'>
+                    {textMessage}
+                </p>
+                
+          </div>
+                
+                }
+
+                {/* Free Plan warning */}
+                <div className=''>
+                <p className='text-red-700 text-sm py-1 mt-2'>
+                    ...some text missing in FREE PLAN</p>
+                    <Button className='rounded-2xl'>Buy Credits</Button>
+                </div>
+                </div>
+                
                 </div>
                  }
                  

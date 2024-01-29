@@ -11,6 +11,7 @@ import { GOOGLE_LOGOUT_URL } from './urls'
 // Auth Functions
 
 import { userLogout } from './auth'
+import HomeNavBar from './homenavbar'
 
 
 
@@ -24,26 +25,14 @@ export const DashNavbar = (user: any) => {
 
   
   return (
-    <div className="flex items-center p-4 ">
+    <div className="p-2 bg-black mb-4 ">
+      {/* Mobile */}
         <MobileSidebar />
-
-        <div className="flex w-full justify-end pr-2">
-{/*         
-        {user ?
-        <div>
-         <p>{user.username}</p>
-        </div>:null
-        } */}
-        
-        <Button size='sm' onClick={userLogout}>
-          Sign Out
-        </Button>
-        
-
-         {/* <ProfileAvatar /> */}
-         
-         
-        </div>
+      
+      {/* Desktop */}
+        <div className="hidden md:flex flex-1 justify-end">
+        <HomeNavBar />
+       </div>
     </div>
   )
 }
