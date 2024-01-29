@@ -111,6 +111,12 @@ const TextChatPage = () => {
     const updateTextMessage = (e: any)=>{
         e.preventDefault()
         setTextMessage(editText)
+        const botResponse = {
+            role: 'bot',
+            content: textMessage,
+            audio: ''
+        }
+        setMessages([...messages, botResponse])
     }
     
 
@@ -307,7 +313,7 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
                     }
                   <div className='flex md:flex-row justify-center'>
                     
-                    <div className={`grid grid-flow-row md:grid-cols-${message.audio? 4 : 3} gap-1`}>
+                    <div className={`w-full grid grid-flow-row md:grid-cols-${message.audio? 4 : 3} gap-1`}>
                 
                 {/* Convert to audio button */}
                 <Button onClick={(e)=>handleTextToVoice(e)} 
@@ -332,11 +338,19 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
                 </Button>
 
                 {message.audio ?
+                <div className='grid grid-flow-row md:grid-cols-2'>
+                <Button
+                className='mt-2 rounded-2xl'>
+                    
+                    Use Audio
+                </Button>
                 <Button
                 className='mt-2 rounded-2xl '>
                     
                     Use Text & Audio
-                </Button>:null
+                </Button>
+                </div>
+                :null
                 } 
                 </div>
                 </div>

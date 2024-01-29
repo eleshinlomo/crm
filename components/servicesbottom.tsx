@@ -14,12 +14,12 @@ export const ServicesBottom = ()=>{
                     {/* ColOne */}
                     <div className="text-center flex flex-col justify-center items-center">
                 <p className="text-2xl font-extrabold py-4 text-blue-500 "> 
-                Text Chat
+                Creator&apos;s Lab
                 </p>
                 <p className=" py-4 px-4 flex flex-wrap">
-                 Convert chat with LLM to voice immediately. 
-                 Ideal for creating voice-over foe video content 
-                 or presentation slides.
+                 Our Creator&apos;s Lab allows 
+                 you to create any type of content fast and high quality.
+                 Our users are ahead of the competition.
                  </p>
                  <Button className="bg-blue-500">
                     <Link href='/textchat'>Try Now</Link>
