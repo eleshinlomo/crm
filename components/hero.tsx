@@ -83,7 +83,7 @@ className=" text-white py-6 rounded-2xl "
 
            </div>
        <div className="text-center flex flex-col justify-center items-center
-        font-extrabold font-mono text-lg py-4">
+        font-extrabold font-mono text-lg py-4 px-6">
         <h3 className="bg-black p-4 rounded-2xl text-white py-4">
           NEW FEATURES</h3>
         <ul>
