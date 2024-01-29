@@ -88,12 +88,12 @@ className=" text-white py-6 rounded-2xl "
           NEW FEATURES</h3>
         <ul>
         <li className="md:flex gap-3">
-          <p className="mt-2">Text Editing Now Available in the Creator&apos;s Lab</p>
+          <p className="mt-2">Text Editing Now Available in Creator&apos;s Lab</p>
            <Link href='/textchat'><Button>Try Now</Button></Link>
            </li>
 
            <li className="md:flex gap-3">
-          <p className="mt-2">Ultra-real human voices avialable soon in the Creator&apos;s Lab</p>
+          <p className="mt-2">Ultra-real human voices avialable soon in Creator&apos;s Lab</p>
            
            </li>
         </ul>

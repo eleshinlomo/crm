@@ -36,7 +36,7 @@ className=''>
                       <Button className='w-full'>
                         <Link href='/textchat'
                       className=''
-                      >Text Chat</Link>
+                      >Creator&apos;s Lab</Link>
                       </Button>
 
                       <Button className='w-full'>
