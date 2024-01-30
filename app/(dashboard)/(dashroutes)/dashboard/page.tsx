@@ -12,12 +12,28 @@ import Waitlist from '@/components/waitlistpage';
 import { Footer } from '@/components/footer';
 import CreditPage from '@/components/creditpage';
 
+// Admin
+import { getAdminData } from '@/components/adminpage';
+
 const DashboardPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [selectedToolIndex, setSelectedToolIndex] = useState<any | null>();
   const [showTool, setShowTool] = useState(false)
   const router = useRouter();
+
+  // Admin Data Handler
+  useEffect(()=>{
+  const handleAdmin = async ()=>{
+     const adminData = await getAdminData()
+     if (adminData){
+      console.log(adminData)
+     }else{
+      console.log('Admin Data not found')
+     }
+  }
+  handleAdmin()
+}, [])
 
   const handleToolClick = (tool: any) => {
     setSelectedToolIndex(tool);

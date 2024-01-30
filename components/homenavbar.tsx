@@ -177,10 +177,15 @@ const HomeNavBar = ()=>{
   
 </Menubar>
               
-          
-          
-      
+        
     </div>
+     
+    <div className='md:hidden mt-2 h-7 w-7'>
+          <UserAvatar />
+          <ul className='z-10'>
+            <li><Button className='right-6 my-1 px-12'>Sign Out</Button></li>
+          </ul>
+      </div>
 
     </div>
 
@@ -191,6 +196,8 @@ const HomeNavBar = ()=>{
         
       
      </div>
+
+     
 
      </div>
 

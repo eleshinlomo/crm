@@ -5,12 +5,14 @@ import { Menu} from "lucide-react"
 import { Button } from "./ui/button"
 import Sidebar from "./dashsidebar"
 import { SheetContent, Sheet, SheetTrigger } from "./ui/sheet"
+import { UserAvatar } from './user-avater'
 
 
 // URLs
 const GOOGLE_AUTH_URL = process.env.NEXT_PUBLIC_GOOGLE_LOGIN_URL
 const SSO_LOGIN: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGIN_URL
 const SSO_LOGOUT: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGOUT_URL
+
 
 
 const MobileSidebar = () => {
@@ -25,7 +27,8 @@ const MobileSidebar = () => {
   }
 
   return (
-    <div>
+    <div className='flex justify-between'>
+      <div>
       <Sheet >
         <SheetTrigger>
          <Button variant='ghost' size='icon' className="md:hidden text-white">
@@ -39,6 +42,9 @@ const MobileSidebar = () => {
           </div>
         </SheetContent>
         </Sheet>
+        </div>
+
+        
     </div>
   )
 }
