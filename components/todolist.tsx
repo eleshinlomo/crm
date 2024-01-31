@@ -42,7 +42,7 @@ export const Todolist = ()=>{
 
   const [taskOne, setTaskOne] = useState<string | any>(()=>localStorage.getItem('task1') || 'No Task')
   const [dateOne, setDateOne] = useState<string | any>(()=>localStorage.getItem('date1') || 'No Task')
-  const [status, setStatus] = useState<string | any>(()=>localStorage.getItem('status') || 'Uncompleted')
+  const [status, setStatus] = useState<string | any>(()=>localStorage.getItem('status') || 'No Task')
   const [isCompleteTask, setIsCompleteTask] = useState<boolean | any>(()=>localStorage.getItem('iscompletetask')|| false)
   const [taskAvialable, setTaskAvailable] = useState<boolean | any>(()=>localStorage.getItem('taskavailable') || false)
 
@@ -147,9 +147,7 @@ const removeTask = ()=>{
     
     <p className="text-center md:text-start font-extrabold text-lg mb-6">
         Set Today&apos;s Task and Manage Productivity</p>
-        {isCompleteTask ?
-            <p className='py-8 animate-bounce'>Hi Five for completing your task today</p>:null
-            }
+        
 
     <div className="md:flex flex-row justify-between gap-12  ">
     <Form {...form} >
@@ -218,9 +216,13 @@ const removeTask = ()=>{
         </div>
       </form>
     </Form>
+
+    {isCompleteTask ?
+            <p className='text-center py-8 animate-bounce'>Hi Five for completing your task today</p>:null
+            }
      
      {/* Task Display */}
-     <div className={`grid grid-cols-2 md:grid-cols-4`}>
+     <div className={`grid grid-cols-2 md:grid-cols-4 gap-3`}>
 
     <div>
         <p className='font-extrabold '>Your Task</p>
