@@ -36,7 +36,7 @@ const DashboardPage = () => {
       <div className="">
 
         <div className='text-center flex flex-col justify-center items-center'>
-          <MessageFromDev />
+          {/* <MessageFromDev /> */}
           <Waitlist />
         
         </div>
