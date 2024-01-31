@@ -1,7 +1,7 @@
 "use client"
 import {useState} from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
-import { CalendarIcon } from "@radix-ui/react-icons"
+import { CalendarIcon, FaceIcon } from "@radix-ui/react-icons"
 import { format } from "date-fns"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -24,7 +24,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { toast } from "@/components/ui/use-toast"
-import { SmileIcon } from "lucide-react"
+import { ScanFaceIcon, SmileIcon } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { useEffect } from "react"
 import { dateFomatter } from './dateformatter'
@@ -145,9 +145,16 @@ const removeTask = ()=>{
   return (
     <div className="px-4 flex flex-col justify-center items-center">
     
-    <p className="text-center md:text-start font-extrabold text-lg mb-6">
+    <p className="text-center md:text-start font-extrabold text-lg py-8">
         Set Today&apos;s Task and Manage Productivity</p>
         
+        {isCompleteTask ?
+            <div className='flex'>
+            <p className='text-center py-8 animate-bounce'>
+                Hi Five for completing your task today</p>
+            <FaceIcon className='h-8 w-8'/>
+            </div>:null
+            }
 
     <div className="md:flex flex-row justify-between gap-12  ">
     <Form {...form} >
@@ -160,7 +167,7 @@ const removeTask = ()=>{
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input placeholder="Task" {...field} type="text" className="text-black" />
+                      <Input placeholder={`Write task here`} {...field} type="text" className="text-black" />
                     </FormControl>
                     <FormDescription></FormDescription>
                     <FormMessage />
@@ -205,7 +212,7 @@ const removeTask = ()=>{
                   />
                 </PopoverContent>
               </Popover>
-              <FormDescription>
+              <FormDescription className='flex'>
                 Stay commited to your task today. <SmileIcon />
               </FormDescription>
               <FormMessage />
@@ -217,9 +224,7 @@ const removeTask = ()=>{
       </form>
     </Form>
 
-    {isCompleteTask ?
-            <p className='text-center py-8 animate-bounce'>Hi Five for completing your task today</p>:null
-            }
+   
      
      {/* Task Display */}
      <div className={`grid grid-cols-2 md:grid-cols-4 gap-3`}>
