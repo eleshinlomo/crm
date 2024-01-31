@@ -13,7 +13,8 @@ import { Footer } from '@/components/footer';
 import CreditPage from '@/components/creditpage';
 
 // Admin
-import { getAdminData } from '@/components/adminpage';
+import { getAdminData } from '@/components/admindata';
+import MessageFromDev from '@/components/messagefromdev';
 
 const DashboardPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -22,18 +23,7 @@ const DashboardPage = () => {
   const [showTool, setShowTool] = useState(false)
   const router = useRouter();
 
-  // Admin Data Handler
-  useEffect(()=>{
-  const handleAdmin = async ()=>{
-     const adminData = await getAdminData()
-     if (adminData){
-      console.log(adminData)
-     }else{
-      console.log('Admin Data not found')
-     }
-  }
-  handleAdmin()
-}, [])
+  
 
   const handleToolClick = (tool: any) => {
     setSelectedToolIndex(tool);
@@ -46,6 +36,7 @@ const DashboardPage = () => {
       <div className="">
 
         <div className='text-center flex flex-col justify-center items-center'>
+          <MessageFromDev />
           <Waitlist />
         
         </div>

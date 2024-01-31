@@ -94,7 +94,9 @@ const DashboardLayout = ({
  }, [])
 
     return(
-         <div className=''>
+         <div className='relative'>
+
+            
 
              <div className='text-center font-extrabold'>
               <p>{error? error: null}</p>

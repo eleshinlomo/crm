@@ -13,14 +13,12 @@ export const getAdminData = async ()=>{
         }
         
     })
+    if(!response) return "Server error"
 
     const data = await response.json()
-    if(!data) return {"error": "Server error"}
-    if(data.ok){
-        console.log(data)
+    if(data){
         return data
     }else{
-        console.log(data.error)
         return data.error
     }
 }

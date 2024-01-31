@@ -19,6 +19,7 @@ import { Tools} from '@/components/tools'
 // import { DocumentTools} from '@/components/tools'
 // import { MediaTools} from '@/components/tools'
 import WaitlistPage from './waitlistpage';
+import { OtherSideBarButtons } from './othersidebarbuttons';
 
 
 
@@ -40,6 +41,7 @@ interface toolisOpenProps{
     const [toolItemIsOpen, setToolItemIsOpen] = useState(false);
     const [isOpenSettings, setIsOpenSettings] = useState<boolean>(false);
     const [selectedItem, setSelectedItem] = useState<null | any>(null);
+    const [isOpen, setIsOpen] = useState<boolean>(false)
   
     const handleSideBarClick = (category: any) => {
       setSelectedItem(category);
@@ -50,7 +52,7 @@ interface toolisOpenProps{
   
     return (
       <div>
-        <div className='w-full flex flex-col  text-white pt-14'>
+        <div className='w-full flex flex-col  text-white pt-14 px-2'>
           <div className=" py-2 flex-1">
             <Link href="/" className="flex items-center pl-3 mb-14">
               <div className="relative w-8 h-8 mr-4">
@@ -61,7 +63,7 @@ interface toolisOpenProps{
               </h1>
             </Link>
   
-            <div className="px-2 w-full">
+            <div className=" w-full">
               {/* Start of Tools */}
               <div className=''>
                 {Tools.map((category: any, index: any) => (
@@ -87,7 +89,7 @@ interface toolisOpenProps{
                       >
                         <div className='flex flex-1 justify-between items-start'>
                           <p>{category.category}</p>
-                          {pathname === category.id ? <ArrowBigRight /> : <ArrowBigDown />}
+                          {pathname === category.id ? <ArrowBigRight className='' /> : <ArrowBigDown />}
                         </div>
                       </Button>}
                     </div>
@@ -119,6 +121,10 @@ interface toolisOpenProps{
               </div>
             </div>
           </div>
+        </div>
+        {/* Other Sidebar buttons */}
+        <div>
+        <OtherSideBarButtons />
         </div>
       </div>
     );
