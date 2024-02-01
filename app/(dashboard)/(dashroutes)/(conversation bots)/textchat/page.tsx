@@ -19,6 +19,8 @@ import Title from '@/components/(audiotospeech)/Title'
 import { textToVoice } from '@/components/texttovoice'
 import { SpinnerOne } from '@/components/spinner'
 import Image from 'next/image'
+import { creditFunction } from '@/components/credithandler'
+import { Textarea } from '@/components/ui/textarea'
 
 
 
@@ -26,12 +28,15 @@ import Image from 'next/image'
 
 const TextChatPage = () => {
     const [messages, setMessages] = useState<Array<{role: string; content: string, audio: null | any}>>([])
+    const [message, setMessage] = useState<string | any>('')
     const [textMessage, setTextMessage] = useState<null | any>(null)
     const [audioUrl, setAudioURL] = useState<null | any>(null)
     const [editText, setEditText] = useState<string | any>('')
     const [isEditing, setIsEditing] = useState<boolean>(false)
     const [isConvertingTextToAudio, setIsConvertingTextToAudio] = useState<boolean>(false)
-
+    const [updated, setUpdated] = useState<boolean>(false)
+    
+   
     const router = useRouter()
     const form = useForm <z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -48,7 +53,9 @@ const TextChatPage = () => {
 
     const onSubmit = async (values: z.infer<typeof formSchema>)=>{
         console.log(values)
-
+        const sessionid = localStorage.getItem('sessionid')
+        console.log({"sessionid chatbot": sessionid})
+        if(!sessionid) return
         try {
          
          const userMessage = {
@@ -62,25 +69,26 @@ const TextChatPage = () => {
          setMessages(newMessages)
          const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
          const API_URL = `${BASE_URL}/general/`
-         await fetch(API_URL, {
+         const res = await fetch(API_URL, {
             mode: 'cors',
             method: 'POST',
-            headers: {"Content-Type": "application/json"},
+            headers: {
+                "Content-Type": "application/json",
+                "sessionid": sessionid
+            },
             body: JSON.stringify({payload: values.payload})
             
          })
-         .then((res)=>{
+           
+         
            if (!res) throw new Error("No response from server")
-           return res.json()
-         })
-         .then((data)=>{
-            console.log(data.message)
-
-            if(data) {
+           const data = await  res.json()
+         
+            if(data.message.ok) {
             // Use Response for Text To Voice
-            setTextMessage(data.message)
-            setEditText(data.message)
-            setEditText(data.message)
+            setTextMessage(data.message.data)
+            setEditText(data.message.data)
+            
             // Continue with Chatbot
             const botMessage = {
                 role: "bot",
@@ -89,17 +97,20 @@ const TextChatPage = () => {
             }
 
             
-            botMessage.content = data.message
+            botMessage.content = data.message.data
             newMessages.push(botMessage)
-        }
-             
             setMessages(newMessages)
-        
             form.reset()
-         })
-
-
-        }catch (error: any) {
+        }else{
+            console.log(data.message.error)
+            setMessage(data.message.error)
+            
+            }
+             
+            
+         }
+        
+        catch(error: any) {
             console.log(error)
         } finally {
             return
@@ -109,6 +120,7 @@ const TextChatPage = () => {
 
     // Update TextMessage
     const updateTextMessage = (e: any)=>{
+        setUpdated(false)
         e.preventDefault()
         setTextMessage(editText)
         const botResponse = {
@@ -117,6 +129,7 @@ const TextChatPage = () => {
             audio: ''
         }
         setMessages([...messages, botResponse])
+        setUpdated(true)
     }
     
 
@@ -207,7 +220,11 @@ const TextChatPage = () => {
 
 // Editing Mode
 <div className='flex flex-col justify-center items-center'>
-<Button className='my-4 rounded-2xl' onClick={()=>setIsEditing(false)}>Close Editing</Button>
+<div className='text-center'>
+<Button className='my-4 rounded-2xl' onClick={()=>setIsEditing(false)}>
+    Close Editing</Button>
+    <p>{updated? 'Updated': null}</p>
+</div>
 <Form {...form}>
 <form onSubmit={(e)=>updateTextMessage(e)}
 className='
@@ -221,7 +238,7 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
    
   <FormItem className="col-span-12 lg:col-span-10">
   <FormControl className='M-0 P-0'>
- <Input className='border-0 outline-none 
+ <Textarea className='border-0 outline-none  text-md
  focus=visible:ring-transparent
  focus-visible:ring-0'
  disabled={isLoading}
@@ -275,6 +292,11 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
           </div>
               }
               </div>
+          </div>
+           
+           {/* Message */}
+          <div className='text-center py-8 px-8'>
+            {message}
           </div>
 
           {/* Chat Messages */}

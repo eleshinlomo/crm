@@ -10,7 +10,7 @@ import Image from 'next/image'
 import { Footer } from '@/components/footer';
 // @ts-ignore
 import Cookies from 'js-cookie'
-import CreditPage from '@/components/creditpage';
+import CreditPage from '@/app/(dashboard)/(dashroutes)/creditpage';
 import { useSearchParams, useRouter , usePathname} from 'next/navigation';
 import type { Metadata } from 'next'
 

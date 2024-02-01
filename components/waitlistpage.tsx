@@ -31,7 +31,7 @@ const HandleEmailWaitlist = async (e:any)=>{
     }else{
       setMessage('Your email has been received')
     }
-  
+    setEmail('')
   }
   catch(err: any){
      setMessage(`"Error": ${err.message}`)

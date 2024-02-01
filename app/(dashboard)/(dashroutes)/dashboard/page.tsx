@@ -10,11 +10,12 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link'
 import Waitlist from '@/components/waitlistpage';
 import { Footer } from '@/components/footer';
-import CreditPage from '@/components/creditpage';
+import CreditPage from '@/app/(dashboard)/(dashroutes)/creditpage';
 
 // Admin
 import { getAdminData } from '@/components/admindata';
 import MessageFromDev from '@/components/messagefromdev';
+import FeedbackPage from '@/app/feedbackpage/page';
 
 const DashboardPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -37,7 +38,12 @@ const DashboardPage = () => {
 
         <div className='text-center flex flex-col justify-center items-center'>
           {/* <MessageFromDev /> */}
+          <div>
           <Waitlist />
+          <FeedbackPage />
+          </div>
+
+
         
         </div>
 
