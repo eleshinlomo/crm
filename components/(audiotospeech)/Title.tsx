@@ -40,7 +40,7 @@ function Title({ setMessages }: Props) {
 
   return (
     <div className="flex justify-between items-center text-sm
-    p-4 bg-gray-900 text-white font-extrabold shadow mx-4 mb-5 ">
+    p-4 bg-gray-900 text-white font-extrabold shadow  mb-5 ">
       <div className="italic">
         <p>CONTENT</p>
         </div>

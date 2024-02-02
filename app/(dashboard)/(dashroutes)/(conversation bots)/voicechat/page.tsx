@@ -71,11 +71,11 @@ const Controller = () => {
   
 
   return (
-    <div className="w-full flex flex-col justify-center">
+    <div className="relative w-full flex flex-col justify-center bg-black text-white">
        
        <div className='className="text-center flex flex-col justify-center items-center font-extrabold py-4"'>
      <p className="text-center font-extrabold text-xl py-4 px-8">USE CASES</p>
-     <ul className="text-center ">
+     <ul className="text-center px-8 text-xs ">
         <li>Gives Visually impaired people access to GPT</li>
         <li>Allows multi-tasking while using GPT</li>
         <li>Voice Chat is Faster than Text Chat</li>
@@ -85,13 +85,16 @@ const Controller = () => {
      <p className="text-center font-extrabold text-3xl text-blue-700 py-8">
         VOICE CHAT</p>
         
-      {/* Title */}
-      <Title setMessages={setMessages} />
+     
 
-      <div className="text-center flex flex-col justify-between h-full overflow-y-scroll 
+      <div className="text-center bg-white text-black flex flex-col justify-between h-full overflow-y-scroll 
       pb-96">
 
-        
+         {/* Title */}
+      <div className="">
+      <Title setMessages={setMessages} />
+      </div>
+      
         {/* Conversation */}
         <div className=" px-5">
           {messages?.map((audio, index) => {

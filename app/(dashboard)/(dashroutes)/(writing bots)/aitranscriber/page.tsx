@@ -65,8 +65,8 @@ const VoiceToTextPage = () => {
           </div>
 
           {/* Transcribed Message */}
-          <div className='py-8 px-4 border  shadow-2xl overflow-scroll'>
-            <p className='font-extrabold py-8'>Transcription</p>
+          <div className='text-start py-8 px-4 border  shadow-2xl overflow-scroll'>
+            <p className='font-extrabold py-8 text-center'>Transcription</p>
            
             {typeof message === 'string'?message:null}
             {/* <div>

@@ -14,8 +14,10 @@ const UserSubscriptionPage = () => {
 
   
   
-   useEffect(()=>{
-    const creditHandler = async ()=>{
+  
+    
+const creditHandler = async ()=>{
+      try{
     const response: any = await creditFunction()
     if (response.message.ok){
       setData(response.message.data)
@@ -23,6 +25,12 @@ const UserSubscriptionPage = () => {
       console.log(response.message.error)
     }
   }
+catch(err){
+  console.log(err)
+}
+}
+
+useEffect(()=>{
   creditHandler()
 }, [])
 
@@ -30,9 +38,9 @@ const UserSubscriptionPage = () => {
 
   
   return (
-    <div>
+    <div className='text-black'>
         <div className='py-4'>
-        {data.length >= 0?  
+        {data.length > 0?  
         data.map((plan, index)=>
         <div key={index}>
         <div className='font-extrabold' >
@@ -41,15 +49,19 @@ const UserSubscriptionPage = () => {
         <div className=''>
               <p className='font-extrabold'>PLAN: {plan.plan[0].toUpperCase() + plan.plan.slice(1)}</p>
             {plan.plan ==='free'?<Button variant='default' className='bg-black hover:bg-black
-             text-white rounded-full '>
+              rounded-full '>
               UPGRADE TO PREMIUM</Button>:
               <Button variant='default' className='bg-black hover:bg-black
-              text-white rounded-full '>
+               rounded-full '>
                DO ANYTHING</Button>
               }
             </div>
 
-          </div>):null}
+          </div>):
+          <div className='text-black'>
+            <p>Fetching credit...</p>
+          </div>
+          }
         
         </div>
     </div>

@@ -176,12 +176,12 @@ const TextChatPage = () => {
     
 
   return (
-    <div className='flex flex-col justify-center'>
+    <div className='flex flex-col justify-center bg-black text-white'>
      
      
-     <div className='className="text-center flex flex-col justify-cencenter  py-4"'>
+     <div className='className="text-center flex flex-col justify-cencenter   py-4"'>
      <p className="text-center font-extrabold text-xl py-4 px-8">USE CASES</p>
-     <ul className='text-center text-sm grid grid-flow-row 
+     <ul className='text-center text-xs grid grid-flow-row 
      md:grid-cols-3 font-semibold'>
         <li>Email writing</li>
         <li>Text Message writing</li>
@@ -197,7 +197,8 @@ const TextChatPage = () => {
 
      <p className="text-center font-extrabold text-2xl text-blue-700 py-8 px-4">
         CREATOR&apos;S LAB</p>
-
+        
+        <div className='bg-white text-black'>
         <Title setMessages={setMessages} />
         <Heading
         title='Create content faster than competition'
@@ -448,7 +449,7 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
            </div>
           </div>
 
-          
+          </div>
 
          </div>
     </div>

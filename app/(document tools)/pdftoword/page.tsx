@@ -35,12 +35,14 @@ const PDFToWordPage = () => {
       // Parse the response as JSON
       const blob = await response.blob();
    
-      if (!blob) throw new Error("No response from server");
+      if (blob){
 
       // Set the transcribed message and stop 
       console.log(blob)
+      
       setWordFileBlob(blob);
-      setIsLoading(false);
+      setIsLoading(false)
+      }
     
       
     } catch (error) {
@@ -48,23 +50,28 @@ const PDFToWordPage = () => {
       setIsLoading(false);
     }finally{
       setIsLoading(false)
+      setFileInput('')
     }
   };
 
 
-  // const handleDownload = () => {
-  //   if(! wordFileBlob) return
+  const handleDownload = () => {
+    if(! wordFileBlob) return
     
-  //     const url = URL.createObjectURL(wordFileBlob);
+      const newBlob = new Blob([wordFileBlob], {type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'})
+      const blobURL = URL.createObjectURL(newBlob)
 
-  //     // Create an invisible link and trigger a click to download
-  //     const a = document.createElement('a');
-  //     a.href = url;
-  //     a.download = 'output.docx';
-  //     document.body.appendChild(a);
-  //     a.click();
-  //     document.body.removeChild(a);
-  // };
+      // Create an invisible link and trigger a click to download
+      const a = document.createElement('a');
+      a.href = blobURL;
+      a.download = 'output.docx';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+
+       // Revoke the Blob URL to free up memory
+    URL.revokeObjectURL(blobURL);
+  };
 
   return (
     <div className="text-center flex flex-col justify-center 
@@ -94,7 +101,10 @@ const PDFToWordPage = () => {
         {isLoading ? <p>{loading}</p> : null}
       </div>
 
-      <Button >Download Word File</Button>
+      <Button onClick={handleDownload}>Download Word File</Button>
+      {/* <div>
+        {wordFileBlob}
+      </div> */}
 
       <div>
         <p className='py-4'>Want to Record Your Meetings?</p>
