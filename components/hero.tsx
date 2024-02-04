@@ -67,11 +67,16 @@ const Hero = ()=>{
 </div>
 
 {userName? 
-<div className="absolute left-44  top-16 md:top-16 md:left-96 pl-5 md:pl:0 mt-4 font-mono">
-<p>Welcome back</p>
-<p className="font-extrabold">{userName.toUpperCase()}
-</p>
-</div>:null
+<div className="absolute left-44  top-16 md:top-16 md:left-96 pl-5 
+md:pl:0 mt-4 font-mono px-2">
+<p className="font-extrabold">Hi, {userName.toUpperCase()}</p>
+<p>Welcome back to</p>
+</div>:
+<div className="absolute left-44  top-16 md:top-16 md:left-96 px-2
+pl-5 md:pl:0 mt-4 font-mono">
+<p className="font-extrabold">Hi, GUEST</p>
+<p>Welcome to</p>
+</div>
 }
 </div>
 

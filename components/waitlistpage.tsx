@@ -46,7 +46,7 @@ const HandleEmailWaitlist = async (e:any)=>{
       items-center text-center text-black
        font-extrabold'>
   
-  <p className='px-6  py-2  '>Please join waitlist to stay 
+  <p className='px-6  py-2 text-muted-foreground '>Please join waitlist to stay 
   informed when new tools are added.</p>
             <p className='text-blue-500 ml-6 '>{message}</p>
         <form className='px-6' onSubmit={HandleEmailWaitlist}>
