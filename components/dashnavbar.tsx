@@ -15,6 +15,8 @@ import HomeNavBar from './homenavbar'
 
 // UserProfile
 import { getUserProfile } from './userprofile'
+import DatePage from './date'
+
 
 
 
@@ -57,17 +59,19 @@ const handleToggle = ()=>{
 
   
   return (
-    <div className="p-2 bg-black mb-4 pr-2">
+    <div className="flex flex-col p-2 bg-black text-white mb-4 pr-2">
       {/* Mobile */}
       <div className='relative flex flex-1 justify-between w-full'>
         <MobileSidebar />
 
         <div className=''>
 
-          <Button size='icon' className='h-6 w-6 mt-6' onClick={handleToggle}>
+          <Button size='icon' className='h-6 w-6 mt-5 mr-3' onClick={handleToggle}>
           <UserAvatar  />
           </Button>
            
+
+           {/* User Profile */}
            {isOpen?
           <div>
 
@@ -90,13 +94,11 @@ const handleToggle = ()=>{
             </div>:null
           }
       </div>
-
+            
+           
         </div>
 
-
-      
-      
-
+     <DatePage />
        
     </div>
   )

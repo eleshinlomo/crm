@@ -11,6 +11,7 @@ import { HomeNavItems } from './homenavitems'
 import { loginChecker } from './auth'
 import WaitlistPage from '@/app/(dashboard)/waitlistpage/page'
 import { userLogout } from './auth'
+import DatePage from './date'
 
 
 
@@ -56,7 +57,8 @@ useEffect(()=>{
         <div className='relative w-24 h-12'>
           <Image src='/logos/fixupe_logo.png' alt='logo' fill />
         </div>
-        
+
+
         { isLoggedIn ?
         <div className='flex flex-col gap-3 mt-10'>
        <Button size='sm' onClick={userLogout}>

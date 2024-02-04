@@ -39,6 +39,7 @@ import { Tools } from './tools'
 import { userLogout } from './auth'
 import { loginChecker } from './auth'
 import { HomeNavItems } from './homenavitems'
+import DatePage from './date'
 
 
 
@@ -74,10 +75,10 @@ const HomeNavBar = ()=>{
  
 
     return(
-       <div>
+       <div className='py-4 bg-black text-white'>
         
-        <div className='   text-white bg-black  
-        md:flex flex-1 justify-between  px-2 shadow-2xl py-8 '>
+        <div className='    
+        md:flex flex-1 justify-between  px-2 shadow-2xl  '>
 
 
 {/* Col 1 */}
@@ -96,17 +97,16 @@ const HomeNavBar = ()=>{
 <div className='md:hidden'>
 <Sheet>
 <SheetTrigger>
-  <div className='flex gap-2'>
-  {username?
-        <p className='mt-2 font-extrabold'>Hi {username[0].toUpperCase() + username.slice(1)}</p>:<p className='mt-2 font-extrabold'>Hi {'Guest'}</p>
-        }
+  <div className=''>
+ 
+
 <Button size='icon'  className='mt-2 w-10 h-8 bg-white hover:bg-white text-black '  asChild>
   <Menu  />
 </Button>
 </div>
 </SheetTrigger>
 
-<SheetContent side='right' className='bg-gray-700 text-white'>
+<SheetContent side='right' className=''>
   <div>
   <HomeMobileNavBar />
   </div>
@@ -119,7 +119,7 @@ const HomeNavBar = ()=>{
 
 
 {/* Col3 */}
-<div className="hidden md:flex text-black mt-2 gap-3">
+<div className="hidden md:flex  mt-2 gap-3">
 
 <div className='text-white'>
 {username?
@@ -128,10 +128,11 @@ const HomeNavBar = ()=>{
         }
 </div>
 
+<div className='mt-2'>
+<DatePage />
+</div>
 
-
-<div className='mr-2'>
-          
+<div className='mr-2 text-black'>
 <Menubar className=" gap-3">
   <MenubarMenu>
     <MenubarTrigger><Link href='/'>Home</Link></MenubarTrigger>
@@ -188,16 +189,14 @@ const HomeNavBar = ()=>{
       </div>
 
     </div>
-
-
-
-        
-          
-        
-      
      </div>
 
-     
+     <div className='text-center text-white md:hidden mt-2'>
+     {username?
+        <p className='mt-2 font-thin'>Hi {username[0].toUpperCase() + username.slice(1)}</p>:<p className='mt-2 font-extrabold'>Hi {'Guest'}</p>
+        }
+        <DatePage />
+        </div>
 
      </div>
 

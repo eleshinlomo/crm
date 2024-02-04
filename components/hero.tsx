@@ -11,6 +11,15 @@ import WaitlistPage from "@/app/(dashboard)/waitlistpage/page"
 const Hero = ()=>{
 
     const [customText, setCustomText] = useState<Array<string>>([])
+    const [userName, setUserName] = useState<string | any>('')
+
+
+    useEffect(()=>{
+    const getUserName = localStorage.getItem('username')
+    if(getUserName){
+      setUserName(getUserName)
+    }
+  }, [])
 
   useEffect(()=>{
     setCustomText(
@@ -33,7 +42,7 @@ const Hero = ()=>{
 
 
 
-<div className="h-auto 
+<div className="h-auto w-full
              ">
 
 
@@ -41,9 +50,29 @@ const Hero = ()=>{
 
 {/* Left Side */}
 <div className="md:h-96 w-full md:flex justify-center items-center   ">
+ 
+{/* Hero Image overlay */}
+<div className="relative w-full">
 
+<div className="">
 <div className="relative  w-full h-72 md:h-72  px-2 ">
 <Image src='/bg/computer-3036166_1920.jpg' alt='hero pics' fill />
+</div>
+</div>
+
+<div className="absolute top-32 left-44 md:left-96 md:top-32   px-2 z-10">
+<div className="relative w-24 h-16   px-2 ">
+<Image src='/logos/fixupe_logo.png' alt='hero pics' fill />
+</div>
+</div>
+
+{userName? 
+<div className="absolute left-44  top-16 md:top-16 md:left-96 pl-5 md:pl:0 mt-4 font-mono">
+<p>Welcome back</p>
+<p className="font-extrabold">{userName.toUpperCase()}
+</p>
+</div>:null
+}
 </div>
 
 <div className="px-3 pb-2">

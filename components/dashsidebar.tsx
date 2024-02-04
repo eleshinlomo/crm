@@ -52,7 +52,7 @@ interface toolisOpenProps{
   
     return (
       <div>
-        <div className='w-full flex flex-col  text-white pt-14 px-2'>
+        <div className='w-full flex flex-col  text-white pt-14 md:pt-2 px-2'>
           <div className=" py-2 flex-1">
             <Link href="/" className="flex items-center pl-3 mb-14">
               <div className="relative w-8 h-8 mr-4">

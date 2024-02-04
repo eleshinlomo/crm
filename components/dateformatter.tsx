@@ -1,5 +1,7 @@
+
+
 export const dateFomatter = (dateValue: any) => {
-    
+    if(!dateValue) return 'Please provide a data value'
     const date = new Date(dateValue);
   
     // Check if the parsed date is valid
