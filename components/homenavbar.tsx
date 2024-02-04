@@ -193,7 +193,7 @@ const HomeNavBar = ()=>{
 
      <div className='text-center text-white md:hidden mt-2'>
      {username?
-        <p className='mt-2 font-thin'>Hi {username[0].toUpperCase() + username.slice(1)}</p>:<p className='mt-2 font-extrabold'>Hi {'Guest'}</p>
+        <p className='mt-2 font-thin'>{username[0].toUpperCase() + username.slice(1)}</p>:<p className='mt-2 font-extrabold'>Hi {'Guest'}</p>
         }
         <DatePage />
         </div>
