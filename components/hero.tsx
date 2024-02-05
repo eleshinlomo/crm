@@ -55,12 +55,12 @@ const Hero = ()=>{
 <div className="relative w-full">
 
 <div className="">
-<div className="relative  w-full h-72 md:h-72  px-2 ">
+<div className="relative  w-full h-72   px-2 ">
 <Image src='/bg/computer-3036166_1920.jpg' alt='hero pics' fill />
 </div>
 </div>
 
-<div className="absolute top-32 left-44 md:left-96 md:top-32   px-2 z-10">
+<div className="absolute  sm:top-32 sm:left-44 md:left-96 md:top-32   px-2 z-10">
 <div className="relative w-24 h-16   px-2 ">
 <Image src='/logos/fixupe_logo.png' alt='hero pics' fill />
 </div>
@@ -93,11 +93,10 @@ pl-5 md:pl:0 mt-4 font-mono">
 </div>
 <p className="flex-wrap text-start  md:pr-8 ">
 
-In a world driven by technology, the demand for cutting-edge 
-solutions has never been more critical. Fixupe is your gateway to a 
-future where modern technology tools 
-transcend boundaries, reshaping industries, 
-and propelling businesses to unprecedented heights...</p>
+The AI keeps changing the traditional work environment. Modern work platform 
+requires modern work tools. We provide modern business
+tools for businesses to leverage on and ensure they are able to solve today&apos;s 
+tasks faster and more efficiently.</p>
 </div>
 
 
