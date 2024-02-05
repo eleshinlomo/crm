@@ -60,7 +60,7 @@ const Hero = ()=>{
 </div>
 </div>
 
-<div className="absolute  sm:top-32 sm:left-44 md:left-96 md:top-32   px-2 z-10">
+{/* <div className="absolute  sm:top-32 sm:left-44 md:left-96 md:top-32   px-2 z-10">
 <div className="relative w-24 h-16   px-2 ">
 <Image src='/logos/fixupe_logo.png' alt='hero pics' fill />
 </div>
@@ -77,7 +77,7 @@ pl-5 md:pl:0 mt-4 font-mono">
 <p className="font-extrabold">Hi, GUEST</p>
 <p>Welcome to</p>
 </div>
-}
+} */}
 </div>
 
 <div className="px-3 pb-2">
