@@ -240,7 +240,7 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
   <FormItem className="col-span-12 lg:col-span-10">
   <FormControl className='M-0 P-0'>
  <Textarea className='border-0 outline-none  text-md
- focus=visible:ring-transparent
+ focus=visible:ring-transparent h-44
  focus-visible:ring-0'
  disabled={isLoading}
  value={editText}
