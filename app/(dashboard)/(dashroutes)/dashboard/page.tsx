@@ -16,6 +16,7 @@ import CreditPage from '@/app/(dashboard)/(dashroutes)/creditpage';
 import { getAdminData } from '@/components/admindata';
 import MessageFromDev from '@/components/messagefromdev';
 import FeedbackPage from '@/app/feedbackpage/page';
+import { OtherDashButtons } from '@/components/otherdashbuttons';
 
 const DashboardPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -117,7 +118,10 @@ const DashboardPage = () => {
               </div>
             ))}
           </div>
-             
+             <p className='text-2xl text-center font-extrabold py-2'>OTHER TOOLS</p>
+             <div className='flex flex-col justify-center items-center w-auto py-4'>
+             <OtherDashButtons />
+             </div>
         </div>
       </div>
 

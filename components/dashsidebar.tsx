@@ -19,7 +19,7 @@ import { Tools} from '@/components/tools'
 // import { DocumentTools} from '@/components/tools'
 // import { MediaTools} from '@/components/tools'
 import WaitlistPage from './waitlistpage';
-import { OtherSideBarButtons } from './othersidebarbuttons';
+import { OtherDashButtons } from './otherdashbuttons';
 
 
 
@@ -124,7 +124,7 @@ interface toolisOpenProps{
         </div>
         {/* Other Sidebar buttons */}
         <div>
-        <OtherSideBarButtons />
+        <OtherDashButtons />
         </div>
       </div>
     );

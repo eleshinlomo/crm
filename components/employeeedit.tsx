@@ -32,14 +32,6 @@ const EmployeePageSettings = () => {
             <p className='py-4'>What Would you like to do today ?</p>
             </div>
           
-            {/* Body */}
-
-            <div className='px-6 flex justify-center items-center gap-3'>
-                <Button>Onboarding</Button>
-                <Button>Training</Button>
-                <Button>Safety Training</Button>
-                <Button>Knowledgebase</Button>
-            </div>
            
         </div>
 

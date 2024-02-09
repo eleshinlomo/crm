@@ -92,9 +92,9 @@ useEffect(()=>{
     <div>
        
        {/* Date and Time */}
-       <div className='text-center  text-xs flex justify-center items-center'>
+       <div className='pt-1 text-center  text-xs flex justify-center items-center'>
             <p>{pstTime? pstTime:null}</p>
-            <p>|</p>
+            <p className='px-2'>|</p>
             <p>{estTime? estTime:null}</p>
         </div>
 

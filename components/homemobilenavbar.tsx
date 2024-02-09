@@ -5,7 +5,7 @@ import  Image  from 'next/image'
 import { GOOGLE_LOGIN_URL } from './urls'
 import { GOOGLE_LOGOUT_URL } from './urls'
 import Waitlist from './waitlistpage'
-import { HomeNavItems } from './homenavitems'
+import { HomeNavItems } from './otherhomenavbuttons'
 
 //  Auth Functions
 import { loginChecker } from './auth'

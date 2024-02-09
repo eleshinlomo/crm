@@ -38,7 +38,7 @@ import { Tools } from './tools'
 // Auth Functions
 import { userLogout } from './auth'
 import { loginChecker } from './auth'
-import { HomeNavItems } from './homenavitems'
+import { OtherHomeNavButtons } from './otherhomenavbuttons'
 import DatePage from './date'
 
 
@@ -142,7 +142,7 @@ const HomeNavBar = ()=>{
     <MenubarTrigger>Services</MenubarTrigger>
     <MenubarContent className='flex flex-col mr-4'>
       <MenubarItem>
-        <HomeNavItems />
+        <OtherHomeNavButtons />
       </MenubarItem>
     </MenubarContent>
   </MenubarMenu>
@@ -193,9 +193,13 @@ const HomeNavBar = ()=>{
 
      <div className='text-center text-white md:hidden mt-2'>
      {username?
-        <p className='mt-2 font-thin'>{username[0].toUpperCase() + username.slice(1)}</p>:<p className='mt-2 font-extrabold'>Hi {'Guest'}</p>
+        <p className=' font-thin'>{username[0].toUpperCase() + username.slice(1)}</p>:<p className='mt-2 font-extrabold'>Hi {'Guest'}</p>
         }
+
+        {/* Date */}
+        <div>
         <DatePage />
+        </div>
         </div>
 
      </div>

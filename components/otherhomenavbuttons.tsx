@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Button } from './ui/button'
 
-export const HomeNavItems = ()=>{
+export const OtherHomeNavButtons = ()=>{
     return (
         <div className=''>
 
@@ -13,8 +13,8 @@ className=''>
     Dashboard</Link>
 </Button> 
                         
-                        <Button className='w-full'>
-                        <Link href='/aitranscriber'
+                      <Button className='w-full'>
+                      <Link href='/aitranscriber'
                       className=''
                       >Transcriber</Link>
                       </Button>

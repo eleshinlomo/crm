@@ -5,7 +5,7 @@ import { CalendarIcon, FaceIcon } from "@radix-ui/react-icons"
 import { format } from "date-fns"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-
+import Image from 'next/image'
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -45,7 +45,7 @@ export const Todolist = ()=>{
   const [status, setStatus] = useState<string | any>(()=>localStorage.getItem('status') || 'No Task')
   const [isCompleteTask, setIsCompleteTask] = useState<boolean | any>(()=>localStorage.getItem('iscompletetask')|| false)
   const [taskAvialable, setTaskAvailable] = useState<boolean | any>(()=>localStorage.getItem('taskavailable') || false)
-
+   
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -143,8 +143,10 @@ const removeTask = ()=>{
   
 
   return (
-    <div className="px-4 flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center">
     
+    <div className='px-4'>
+
     <p className="text-center md:text-start font-extrabold text-lg py-8">
         Set Today&apos;s Task and Manage Productivity</p>
         
@@ -260,6 +262,13 @@ const removeTask = ()=>{
     
     {/* End of task display */}
 
+    </div>
+
+    
+
+    </div>
+    <div className='relative w-full h-44 mt-3'>
+      <Image src='/images/abstract-69124_1280.jpg' alt='girl image' fill />
     </div>
     </div>
   )

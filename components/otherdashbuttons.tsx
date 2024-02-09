@@ -5,7 +5,7 @@ import { ArrowBigDown, ArrowBigRight } from 'lucide-react';
 import React from 'react'
 import { Button } from '@/components/ui/button';
 
-export const OtherSideBarButtons = () => {
+export const OtherDashButtons = () => {
 
     const [isOpen, setIsOpen] = useState<boolean>(false)
   
@@ -15,8 +15,8 @@ export const OtherSideBarButtons = () => {
   return (
     <div className='flex flex-col gap-2'>
         {/* Todo button */}
-        <div className='px-2'>
-          <Button className='w-full flex justify-between'
+        <div className='px-2 w-auto flex flex-col justify-center items-center'>
+          <Button className='w-full flex flex-1 justify-between'
           onClick={()=>{
             setIsOpen(!isOpen); 
             router.push('/todolistpage')
