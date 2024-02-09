@@ -179,10 +179,11 @@ const TextChatPage = () => {
     <div className='flex flex-col justify-center'>
      
      
-     <div className='className="text-center flex flex-col justify-cencenter   py-4"'>
+     <div className='className="text-center flex 
+     flex-col justify-cencenter bg-black text-white   py-4"'>
      <p className="text-center font-extrabold text-xl py-4 px-8">USE CASES</p>
      <ul className='text-center text-xs grid grid-flow-row 
-     md:grid-cols-3 font-semibold'>
+     md:grid-cols-3 font-semibold py-2'>
         <li>Email writing</li>
         <li>Text Message writing</li>
         <li>Can convert chat to audio file</li>
@@ -212,7 +213,8 @@ const TextChatPage = () => {
           <div>
            
            {/* Announcements */}
-           <p className='text-center text-pink-500 font-extrabold'>New ultra-real human voices coming soon...</p>
+           <p className='text-center text-blue-500 font-extrabold'>
+            New ultra-real human voices coming soon...</p>
 
 
            {/* Message Form */}
@@ -278,7 +280,7 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
             focus=visible:ring-transparent
             focus-visible:ring-0'
             disabled={isLoading}
-            placeholder="Write a love message for my Dad"
+            placeholder="Write an email to employees about TGIF"
             {...field}
              />
              </FormControl>

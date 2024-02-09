@@ -60,7 +60,7 @@ const handleToggle = ()=>{
 
   
   return (
-    <div className="flex flex-col p-2 bg-black text-white mb-4 pr-2">
+    <div className="flex flex-col p-2 bg-black text-white  pr-2">
       {/* Mobile */}
       <div className='relative flex flex-1 justify-between w-full'>
         <MobileSidebar />

@@ -90,10 +90,7 @@ const Controller = () => {
       <div className="text-center bg-white text-black flex flex-col justify-between h-full overflow-y-scroll 
       pb-96">
 
-         {/* Title */}
-      <div className="">
-      <Title setMessages={setMessages} />
-      </div>
+      
       
         {/* Conversation */}
         <div className=" px-5">
