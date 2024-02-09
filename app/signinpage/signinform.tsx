@@ -106,7 +106,8 @@ const FormSchema = z.object({
 
   return (
 
-    <div className='overflow-hidden flex flex-col justify-center items-center text-black'>
+    <div className='overflow-hidden flex flex-col justify-center items-center
+     text-white'>
      
      {isSiginingIn?
      <div>
@@ -115,7 +116,7 @@ const FormSchema = z.object({
       
      }
      
-     <div className='text-center font-extrabold  px-24'>
+     <div className='text-center font-extrabold  px-24 py-4'>
         {message}
     </div>
 
@@ -126,7 +127,7 @@ const FormSchema = z.object({
        bg-blue-500  rounded-2xl ">
 
         
-         <div className='shadow-xl px-4 py-4'>
+         <div className='shadow-xl px-4 py-4 '>
         {/* Email */}
         <FormField
           control={form.control}

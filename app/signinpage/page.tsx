@@ -22,27 +22,35 @@ const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 
 const SignInPage = ()=>{
   return (
-   <div className="h-full flex flex-1 flex-col justify-center 
-   items-center gap-3 pt-12 text-black">
+   <div className="h-full md:flex flex-1  justify-around w-full
+   items-center gap-3 pt-12 bg-black text-white">
          
-          <div className="text-center font-extrabold">
+          
+              
+              
+              
+              <div className="h-auto flex flex-col justify-center items-center 
+              gap-2 py-8 w-full md:w-1/2">
               <div className="">
-              <Link href='/' className="flex flex-1 text-3xl">
+              <Link href='/' className="flex flex-1 w-full text-3xl">
               <ArrowLeftSquareIcon className="mt-5  text-3xl" />
               <p className="  py-4">Fixupe</p>
               </Link>
-              </div>
-              
-              
-              <div className="flex gap-2 py-8">
-                <p className="mt-1 ">Not Registered?</p>
+              <div className="flex flex-1 gap-3">
+              <p className="mt-1 ">Not Registered?</p>
                 <Button size='sm'  className='bg-gray-900 hover:bg-gray-900
                 shadow-2xl  '>
                     <Link href='/signuppage'>
                     Sign Up
                     </Link>
                     </Button>
+                </div>
               </div>
+
+
+        <div className="relative h-72 w-full md:w-1/2">
+        <Image src='/images/girl10.png' alt='' fill />
+        </div>
           </div>
         
          
@@ -72,11 +80,11 @@ const SignInPage = ()=>{
         </Button> */}
       
         {/* Email */}
+        <div className="h-auto w-full md:w-1/2 flex justify-center 
+        items-center pb-2">
         <SignInForm />
-        
-        <div className="relative h-72 w-72">
-        <Image src='/images/girl10.png' alt='' fill />
         </div>
+        
         
       </div>
   )

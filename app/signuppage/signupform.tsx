@@ -117,7 +117,7 @@ catch(error: any){
   return (
 
     <div className='overflow-hidden flex flex-col justify-center
-     text-black items-center'>
+     text-white items-center'>
      
      
      <div className='text-center  py-4 flex flex-col justify-center items-center '>
