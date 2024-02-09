@@ -16,6 +16,7 @@ import HomeNavBar from './homenavbar'
 // UserProfile
 import { getUserProfile } from './userprofile'
 import DatePage from './date'
+import CreditPage from '@/app/(dashboard)/(dashroutes)/creditpage'
 
 
 
@@ -63,6 +64,8 @@ const handleToggle = ()=>{
       {/* Mobile */}
       <div className='relative flex flex-1 justify-between w-full'>
         <MobileSidebar />
+
+        <CreditPage />
 
         <div className=''>
 

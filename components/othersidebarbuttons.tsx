@@ -28,6 +28,20 @@ export const OtherSideBarButtons = () => {
             </Button>
         </div>
 
+         {/* Employee's page button */}
+         <div className='px-2'>
+          <Button className='w-full flex justify-between'
+          onClick={()=>{
+            setIsOpen(!isOpen); 
+            router.push('/employeepage')
+            pathname    ? pathname : null
+          }}
+          >
+             Employee&apos;s Page
+            {isOpen?<ArrowBigRight /> : <ArrowBigDown/>}
+            </Button>
+        </div>
+
          {/* Admin button */}
          {/* <div className='px-2'>
           <Button className='w-full flex justify-between'

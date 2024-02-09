@@ -8,7 +8,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
 
 
-const UserSubscriptionPage = () => {
+const CreditPage = () => {
 
   const [data, setData] = useState<Array<string | any>>([])
 
@@ -38,34 +38,36 @@ useEffect(()=>{
 
   
   return (
-    <div className='text-black'>
+    <div className='text-white'>
+
+      <div className='text-center flex flex-col justify-center 
+      items-center text-xs'>
         <div className='py-4'>
         {data.length > 0?  
         data.map((plan, index)=>
         <div key={index}>
-        <div className='font-extrabold' >
+        <div className='' >
           <p>Your credit is {plan.credits}</p></div>
         
         <div className=''>
-              <p className='font-extrabold'>PLAN: {plan.plan[0].toUpperCase() + plan.plan.slice(1)}</p>
-            {plan.plan ==='free'?<Button variant='default' className='bg-black hover:bg-black
-              rounded-full '>
-              UPGRADE TO PREMIUM</Button>:
-              <Button variant='default' className='bg-black hover:bg-black
-               rounded-full '>
-               DO ANYTHING</Button>
+              <p className='font-extrabold '>PLAN: {plan.plan[0].toUpperCase() + plan.plan.slice(1)}</p>
+            {plan.plan ==='free'?<Button variant='default' className='rounded-full '>
+              UPGRADE TO PREMIUM</Button>:null
+              
               }
             </div>
 
           </div>):
-          <div className='text-black'>
+          <div className=''>
             <p>Fetching credit...</p>
           </div>
           }
         
         </div>
+
+        </div>
     </div>
   )
 }
 
-export default UserSubscriptionPage
+export default CreditPage

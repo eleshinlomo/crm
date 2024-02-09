@@ -13,7 +13,7 @@ export const Empty = ({
             <Image
             alt= "Empty"
             fill
-            src="/images/girl1.png"
+            src="/girlfriend.gif"
             />
         </div>
         <p className="text-muted-foreground text-sm text-center">

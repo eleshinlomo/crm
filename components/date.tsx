@@ -33,6 +33,7 @@ const currentDate = ()=>{
 }
 
 
+  // EST Time
   const getCurrentESTTime = () =>{
     // Create a Date object 
     let estDateObject = new Date();
@@ -91,8 +92,9 @@ useEffect(()=>{
     <div>
        
        {/* Date and Time */}
-       <div className='text-center text-xs'>
+       <div className='text-center  text-xs flex justify-center items-center'>
             <p>{pstTime? pstTime:null}</p>
+            <p>|</p>
             <p>{estTime? estTime:null}</p>
         </div>
 

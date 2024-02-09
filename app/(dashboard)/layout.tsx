@@ -111,14 +111,17 @@ const DashboardLayout = ({
                 <Sidebar />
             </div>
             
-           <main className=" w-full md:ml-72 h-full ">
+           <main className=" w-full md:ml-72  ">
             <DashNavbar user={currentUser} />
             <div className='text-center flex flex-col flex-1 justify-center 
             items-center px-4 
-             '> {username ?
+             '> 
+             {/* <div>
+             {username ?
                 <p className='font-extrabold'>
                     {`Hi, ${username}`}</p>:null
              }
+             </div> */}
 
             {anonymousUser ?
                 <p className='font-extrabold'>
@@ -127,10 +130,10 @@ const DashboardLayout = ({
                         You are currently viewing this web as a Ghost User</p>
                     </p>:null
              }
-             <CreditPage  />
+             
              </div>
 
-             <div className='py-8'>
+             <div className=''>
             {children}
             </div>
            </main>

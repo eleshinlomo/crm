@@ -176,7 +176,7 @@ const TextChatPage = () => {
     
 
   return (
-    <div className='flex flex-col justify-center bg-black text-white'>
+    <div className='flex flex-col justify-center'>
      
      
      <div className='className="text-center flex flex-col justify-cencenter   py-4"'>
@@ -199,7 +199,7 @@ const TextChatPage = () => {
         CREATOR&apos;S LAB</p>
         
         <div className='bg-white text-black'>
-        <Title setMessages={setMessages} />
+    
         <Heading
         title='Create content faster than competition'
         description = 'Content production on steroid'

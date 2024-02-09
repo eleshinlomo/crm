@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { voiceToText } from "@/components/voicetotext";
 import { SpinnerOne } from "@/components/spinner";
 import Image from 'next/image'
+import { Empty } from "@/components/empty";
 
 const Controller = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -177,6 +178,12 @@ const transcribing = (<div className='relative h-16 w-16'>
 
         
       </div>
+     
+     {messages.length <= 0 ?
+      <div>
+        <Empty label="No recorded file" />
+        </div>:null
+    }
     </div>
   );
 };
