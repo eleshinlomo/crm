@@ -2,7 +2,7 @@
 import EmployeePageSettings from '@/components/employeeedit'
 import { Button } from '@/components/ui/button'
 import { MenuIcon } from 'lucide-react'
-import React from 'react'
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
 
 const EmployeePage = () => {
@@ -71,10 +71,11 @@ const EmployeePage = () => {
         </Button>
       </div>
       
-
+      
+      <div className=''>
       {/* Show Buttons */}
       {showButtons ?
-      <div className='py-4 flex flex-col gap-3 z-10'>
+      <div className='py-4 flex flex-col md:flex-row  gap-3 z-10 w-full'>
       <div>
         <Button
         onClick={handleOnboarding}
@@ -94,8 +95,18 @@ const EmployeePage = () => {
       </div>
       </div>:null
      }
+      
+     </div>
+
+      {/* Image */}
+      <div className='relative w-1/2 h-72   '>
+      <Image src='/bg/computer-3036166_1920.jpg' alt='image of a girl' fill />
+     </div>
 
       {/* Content */}
+      <div>
+      <p className='py-4 text-center font-bold'>
+        What Would you like to do today ?</p>
       {!showContent ?
       <div>
       {/* Onboarding */}
@@ -106,6 +117,7 @@ const EmployeePage = () => {
       }
       </div>: <Idle />
      }
+     </div>
      {/* End of Show Content */}
 
 

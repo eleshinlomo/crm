@@ -26,10 +26,9 @@ const EmployeePageSettings = () => {
 
             {/* Heading */}
             <div className='text-center flex flex-col gap-3'>
-            <p className='text-xl'>Welcome to {company ? company: null} Employee&apos;s Page</p>
+            <p className='text-xl font-extrabold'>Welcome to {company ? company: null}&apos;s LLM-Powered Employee&apos;s Page</p>
             <DatePage />
 
-            <p className='py-4'>What Would you like to do today ?</p>
             </div>
           
            

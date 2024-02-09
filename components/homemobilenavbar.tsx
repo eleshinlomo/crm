@@ -5,7 +5,7 @@ import  Image  from 'next/image'
 import { GOOGLE_LOGIN_URL } from './urls'
 import { GOOGLE_LOGOUT_URL } from './urls'
 import Waitlist from './waitlistpage'
-import { HomeNavItems } from './otherhomenavbuttons'
+import { OtherHomeNavButtons } from './otherhomenavbuttons'
 
 //  Auth Functions
 import { loginChecker } from './auth'
@@ -65,7 +65,7 @@ useEffect(()=>{
           Sign Out
         </Button>
 
-        <HomeNavItems />
+        <OtherHomeNavButtons />
 
         <div>
           <Waitlist />
