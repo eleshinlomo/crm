@@ -107,7 +107,7 @@ const FormSchema = z.object({
   return (
 
     <div className='overflow-hidden flex flex-col justify-center items-center
-     text-white'>
+     text-white w-full'>
      
      {isSiginingIn?
      <div>
@@ -124,7 +124,7 @@ const FormSchema = z.object({
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} 
       className=" flex flex-col justify-center items-center px-16
-       bg-blue-500  rounded-2xl ">
+       bg-gray-900  rounded-2xl w-full mt-2">
 
         
          <div className='shadow-xl px-4 py-4 '>
@@ -155,7 +155,8 @@ const FormSchema = z.object({
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input placeholder="Password" {...field} type='password' className='text-black' />
+                <Input placeholder="Password" {...field} type='password' 
+                className='text-black font-semibold' />
               </FormControl>
               
               <FormDescription>
@@ -172,7 +173,7 @@ const FormSchema = z.object({
                 <a href='/passwordrecoverypage'>
                   <p className="mt-1 text-blue-200">Forgot Password?</p>
                   </a>
-                <Button type='submit' className='bg-gray-900 hover:bg-gray-900'>
+                <Button type='submit' className='bg-gray-500 hover:bg-gray-500'>
                     Sign In
                     </Button>
               </div>

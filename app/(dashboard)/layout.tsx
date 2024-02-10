@@ -70,10 +70,10 @@ const DashboardLayout = ({
         const user: any = loginChecker()
         if(user !== null && user !== 'undefined' && user !== undefined ){
             console.log(user)
-            const {username, userid, company, sessionid, credits} = user
-            // Username
-            if(username !== undefined && username !== 'undefined' 
-            && username !== null){
+            const {username, sessionid} = user
+            // Sessionid
+            if(sessionid !== undefined && sessionid !== 'undefined' 
+            && sessionid !== null){
             setIsChecking(false)
             setUsername(username[0].toUpperCase() + username.slice(1))
             setCurrentUser(user)
@@ -123,13 +123,6 @@ const DashboardLayout = ({
              }
              </div> */}
 
-            {anonymousUser ?
-                <p className='font-extrabold'>
-                    {`Hi, ${anonymousUser.toUpperCase()}`}
-                    <p className=' text-muted-foreground'>
-                        You are currently viewing this web as a Ghost User</p>
-                    </p>:null
-             }
              
              </div>
 

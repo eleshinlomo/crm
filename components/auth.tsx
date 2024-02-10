@@ -131,13 +131,30 @@ return null
 
 
   // Logout
-  export const userLogout = ()=>{
+  export const userLogout = async ()=>{
+
+    const response: any = await fetch(`${BASE_URL}/logoutapi/`, {
+      mode: 'cors',
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'}
+
+    })
+    if (! response) throw new Error('Server error')
+    const data = await response.json()
+    if (data.message.ok){
+    console.log(data)
     localStorage.removeItem('username')
     localStorage.removeItem('userid')
     localStorage.removeItem('sessionid')
     localStorage.removeItem('credits')
     localStorage.removeItem('company')
     window.location.href=`/`
+    return data.message.data
+   }else{
+    console.log(data.message.error)
+    return data.message.error
+   }
+    
     }
   
 

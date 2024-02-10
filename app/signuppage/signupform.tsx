@@ -117,11 +117,12 @@ catch(error: any){
   return (
 
     <div className='overflow-hidden flex flex-col justify-center
-     text-white items-center'>
+     text-white items-center w-full'>
      
      
-     <div className='text-center  py-4 flex flex-col justify-center items-center '>
-        <p className='font-extrabold px-24 '>{message}</p>
+     <div className='text-center  pt-4 flex flex-col justify-center 
+     items-center '>
+        <p className='font-extrabold text-xl px-4 '>{message}</p>
         
           {isRegistering?
           <div>
@@ -134,7 +135,8 @@ catch(error: any){
 
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} 
-      className=" flex flex-col justify-center items-center px-16 bg-blue-500">
+      className=" flex flex-col justify-center items-center 
+       bg-gray-800 mt-16 w-full ">
 
 
          <div className='grid grid-flow-row md:grid-cols-2 gap-3 
@@ -224,8 +226,8 @@ catch(error: any){
 
         </div>
 
-        <Button type="submit" className='bg-gray-900
-        my-3 hover:bg-gray-900'>Sign Up</Button>
+        <Button type="submit" className='bg-gray-500
+        my-3 hover:bg-gray-500'>Sign Up</Button>
       </form>
     </Form>
     

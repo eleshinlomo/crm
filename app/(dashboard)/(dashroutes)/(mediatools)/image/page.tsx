@@ -65,7 +65,7 @@ const ImagePage = () => {
       
         try {
 
-          setImages([])
+          
            console.log(data)
           const BASE_URL = process.env.NEXT_PUBLIC_FAST_API_BASE_URL;
           const API_URL = `${BASE_URL}/generateimage`;
@@ -130,6 +130,7 @@ const ImagePage = () => {
               disabled={isLoading}
               placeholder='Ultra real baby picture'
               {...field}
+              required
                />
                </FormControl>
                </FormItem>
@@ -190,7 +191,7 @@ const ImagePage = () => {
                key={index}
                className='rounded-lg overflow-hidden'
                >
-
+                 <a href={src} target='_blank'>
                 <div className='relative aspect-square h-72 w-72 flex flex-row-reverse'>
                  <Image
                  src={src}
@@ -198,6 +199,7 @@ const ImagePage = () => {
                  fill
                   />
                 </div>
+                </a>
 
                 <CardFooter>
                   

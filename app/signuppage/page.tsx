@@ -22,12 +22,8 @@ const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 
 const SignUpPage = ()=>{
   return (
-   <div className="h-full md:flex flex-1  justify-around w-full
+   <div className="h-full flex flex-col  justify-around w-full
    items-center gap-3 pt-12 bg-black text-white">
-         
-          
-              
-              
               
               <div className="h-auto flex flex-col justify-center items-center 
               gap-2 py-8 w-full md:w-1/2">
@@ -38,7 +34,7 @@ const SignUpPage = ()=>{
               </Link>
               <div className="flex flex-1 gap-3">
               <p className="mt-1 ">Already Registered?</p>
-                <Button size='sm'  className='bg-gray-900 hover:bg-gray-900
+                <Button size='sm'  className='bg-gray-500 hover:bg-gray-900
                 shadow-2xl  '>
                     <Link href='/signinpage'>
                     Sign in
@@ -47,10 +43,6 @@ const SignUpPage = ()=>{
                 </div>
               </div>
 
-
-        <div className="relative h-72 w-full md:w-1/2">
-        <Image src='/images/girl10.png' alt='' fill />
-        </div>
           </div>
         
          
@@ -78,11 +70,19 @@ const SignUpPage = ()=>{
          Sign in with Linkedin
           </Link>
         </Button> */}
-      
+       
+       <div className="md:flex w-full">
         {/* Email */}
         <div className="h-auto w-full md:w-1/2 flex justify-center 
-        items-center pb-2">
+        items-center mt-5">
         <SignUpForm />
+        </div>
+
+        {/* Image */}
+        <div className="relative h-72 w-full md:w-1/2 md:mt-32">
+        <Image src='/images/ai_web.png' alt='' fill />
+        </div>
+
         </div>
         
         

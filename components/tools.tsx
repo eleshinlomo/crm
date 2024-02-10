@@ -247,18 +247,18 @@ export const Tools: [] | any = [
                 ]},
 
 
-              { 
-                id: 'Settings',
-                category: 'Settings',
-                href: "/settings",
-                tools: [{   
-                  label: "Viewing Dashboard",
-                  icon: AreaChartIcon,
-                  href: "/settings",
-                  color: "text-pink-500",
-                  bgColor: "text-grey-500"
-                }]
-              },
+              // { 
+              //   id: 'Settings',
+              //   category: 'Settings',
+              //   href: "/settings",
+              //   tools: [{   
+              //     label: "Viewing Dashboard",
+              //     icon: AreaChartIcon,
+              //     href: "/settings",
+              //     color: "text-pink-500",
+              //     bgColor: "text-grey-500"
+              //   }]
+              // },
 
                      
           
