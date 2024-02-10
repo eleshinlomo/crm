@@ -50,8 +50,12 @@ useEffect(()=>{
           <p>Your credit is {plan.credits}</p></div>
         
         <div className=''>
+              <div>
               <p className='font-extrabold '>PLAN: {plan.plan[0].toUpperCase() + plan.plan.slice(1)}</p>
-            {plan.plan ==='free'?<Button variant='default' className='rounded-full '>
+              <Button className='p-4 bg-blue-800'>BETA</Button>
+              </div>
+            {plan.plan ==='free'?
+            <Button variant='default' className='rounded-full '>
               UPGRADE TO PREMIUM</Button>:null
               
               }
