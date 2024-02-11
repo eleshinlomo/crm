@@ -8,7 +8,7 @@ const AdminPage = () => {
 
     // Admin Data Handler
   useEffect(()=>{
-    const handleAdmin = async ()=>{
+    const handleAdminData = async ()=>{
        const response = await getAdminData()
        if (response.message.ok){
         console.log(response)
@@ -17,7 +17,7 @@ const AdminPage = () => {
         console.log(response.message)
        }
     }
-    handleAdmin()
+    handleAdminData()
   }, [])
   return (
     <div>
@@ -32,9 +32,10 @@ const AdminPage = () => {
         </div>
 
         <div>
-            <p className='text-center font-extrabold'>No of Users: {users.length}</p>
+            <p className='text-center font-extrabold'>No of Users: 
+            {users.length > 0 ? users.length: null}</p>
         </div>
-        {users.map((user: any, index)=>
+        {users?.map((user: any, index)=>
         
         <div key={index} className='flex gap-6'>
 

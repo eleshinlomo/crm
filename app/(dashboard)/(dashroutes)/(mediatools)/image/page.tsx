@@ -69,7 +69,7 @@ const ImagePage = () => {
            console.log(data)
           const BASE_URL = process.env.NEXT_PUBLIC_FAST_API_BASE_URL;
           const API_URL = `${BASE_URL}/generateimage`;
-          const res = await fetch(API_URL, {
+          const res: any = await fetch(API_URL, {
             mode: "cors",
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -79,6 +79,8 @@ const ImagePage = () => {
           if (res.ok) {
             const image_url = await res.json();
             setImages([...images, image_url.data])
+        }else{
+          console.log(res.error)
         }
       
           form.reset();
