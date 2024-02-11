@@ -147,13 +147,10 @@ const HomeNavBar = ()=>{
     </MenubarContent>
   </MenubarMenu>
 
-  <MenubarMenu>
-    <MenubarTrigger>Contact</MenubarTrigger>
-    <MenubarContent className='flex flex-col mr-4'>
-      Please mail: mgrsconcept@gmail.com
-    </MenubarContent>
+    <MenubarMenu>
+    <MenubarTrigger><Link href='/contactpage'>Contact</Link></MenubarTrigger>
   </MenubarMenu>
-
+  
   <MenubarMenu>
     <MenubarTrigger>
       <div className="h-6 w-8">
