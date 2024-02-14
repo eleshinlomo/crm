@@ -42,7 +42,7 @@ const Hero = ()=>{
 
 
 
-<div className="h-auto w-full text-black ">
+<div className="h-auto w-full ">
 
 
 

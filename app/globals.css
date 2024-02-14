@@ -71,7 +71,7 @@
     @apply border-border;
   }
   body {
-    @apply text-white bg-gradient-to-b  from-black/50 via-black
+    @apply text-white bg-gradient-to-b  from-black via-black/70
     to-gray-800 ;
   }
 }
