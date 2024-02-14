@@ -87,7 +87,7 @@ const FormSchema = z.object({
       const saveCompany = localStorage.setItem('company', company)
       const saveUserId = localStorage.setItem("userid", userid)
       setIsSigningIn(false)
-      router.push('/dashboard')
+      router.push('/dashboard/dashboardpage')
     
   }else{
     console.log(response.message.error)

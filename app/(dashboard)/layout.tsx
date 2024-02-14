@@ -106,7 +106,7 @@ const DashboardLayout = ({
         <div className="relative flex flex-1 gap-2 w-full overflow-hidden">
 
             <div className="hidden h-full md:flex w-72 md:flex-col flex-1
-             md:fixed md:inset-y-0 z-[80] bg-black">
+             md:fixed md:inset-y-0 z-[80] bg-black overflow-y-auto">
 
                 <Sidebar />
             </div>

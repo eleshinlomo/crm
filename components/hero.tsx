@@ -104,7 +104,7 @@ tasks faster and more efficiently.</p>
 <Button  
 className=" text-white py-6 rounded-2xl " 
   >
-<Link href='/dashboard'>DASHBOARD</Link></Button>
+<Link href='/dashboard/dashboardpage'>DASHBOARD</Link></Button>
 <div className="">
 <WaitlistPage />
 </div>

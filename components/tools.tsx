@@ -28,11 +28,11 @@ export const Tools: [] | any = [
   { 
     id: 'dash',
     category: 'Dashboard',
-    href: "/dashboard",
+    href: "/dashboard/dashboardpage",
     tools: [{   
       label: "Viewing Dashboard",
       icon: AreaChartIcon,
-      href: "/dashboard",
+      href: "/dashboard/dashboardpage",
       color: "text-pink-500",
       bgColor: "text-grey-500"
     }]

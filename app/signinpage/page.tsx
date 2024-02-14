@@ -27,8 +27,6 @@ const SignInPage = ()=>{
          
           
               
-              
-              
               <div className="h-auto flex flex-col justify-center items-center 
               gap-2 py-8 w-full ">
               <div className="">
@@ -86,7 +84,7 @@ const SignInPage = ()=>{
 
          {/* Image */}
          <div className="relative h-72 md:h-82 w-full md:w-1/2 md:mt-16 ">
-        <Image src='/bg/lines_gif.gif' alt='' fill />
+        <Image src='/images/abstract-69124_1280.jpg' alt='' fill />
         </div>
 
         </div>
