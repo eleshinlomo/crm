@@ -45,10 +45,7 @@ export const Footer = ()=>{
 
     {/* First Column */}
     <div className=''>
-    <div className=''>
-      <p className='ml-4 font-extrabold'>Fixupe</p>
-    {/* <Image src={footer.logo} alt='logo' fill /> */}
-    </div>
+    
     
     <div className='flex'>
 

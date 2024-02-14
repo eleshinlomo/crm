@@ -15,6 +15,7 @@ import Link from 'next/link'
 import { SignInForm } from "./signinform"
 import { ArrowLeftSquareIcon, XIcon } from "lucide-react"
 import Image from 'next/image'
+import { Footer } from "../../components/footer"
 
 
 // URLs
@@ -22,14 +23,14 @@ const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 
 const SignInPage = ()=>{
   return (
-   <div className="h-full fixed md:flex flex-col  justify-around w-full
+   <div className="h-full  md:flex flex-col  justify-around w-full
    items-center gap-3 pt-12 bg-gradient-to-r from-black/50 via-black
     to-gray-800 
     text-white">
          
           
               
-              <div className="absolute top-32 bottom-30 left-0 right-0 flex flex-col  
+              <div className=" flex flex-col  
               gap-2 py-8 w-full ">
                 {/* Top Content */}
               <div className="flex flex-col justify-center items-center ">
@@ -78,14 +79,13 @@ const SignInPage = ()=>{
         
        
         {/* Email */}
-        <div className="absolute bottom-0">
+        <div className="h-auto mt-5">
         <SignInForm />
         </div>
 
-         {/* Image */}
-         {/* <div className="relative h-72 md:h-auto w-full md:w-1/2 bg-white ">
-        <Image src='/images/abstract-69124_1280.jpg' alt='' fill />
-        </div> */}
+        <div className="w-full">
+        <Footer />
+        </div>
 
         </div>
       
