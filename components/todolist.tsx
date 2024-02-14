@@ -189,7 +189,7 @@ const removeTask = ()=>{
                     <Button
                       variant={"outline"}
                       className={cn(
-                        "w-[240px] pl-3 text-left font-normal",
+                        "w-[240px] pl-3 text-left font-normal text-black",
                         !field.value && "text-muted-foreground"
                       )}
                     >
@@ -202,7 +202,7 @@ const removeTask = ()=>{
                     </Button>
                   </FormControl>
                 </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
+                <PopoverContent className="w-auto p-0 " align="start">
                   <Calendar
                     mode="single"
                     selected={field.value}
@@ -211,6 +211,7 @@ const removeTask = ()=>{
                       date > new Date() || date < new Date("1900-01-01")
                     }
                     initialFocus
+                
                   />
                 </PopoverContent>
               </Popover>
@@ -268,7 +269,7 @@ const removeTask = ()=>{
 
     </div>
     <div className='relative w-full h-44 mt-3'>
-      <Image src='/images/abstract-69124_1280.jpg' alt='girl image' fill />
+      <Image src='/confetti.svg' alt='girl image' fill />
     </div>
     </div>
   )

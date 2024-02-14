@@ -106,7 +106,7 @@ const HomeNavBar = ()=>{
 </div>
 </SheetTrigger>
 
-<SheetContent side='right' className=''>
+<SheetContent side='right' className='bg-black'>
   <div>
   <HomeMobileNavBar />
   </div>

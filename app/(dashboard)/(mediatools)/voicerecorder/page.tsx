@@ -149,7 +149,7 @@ const transcribing = (<div className='relative h-16 w-16'>
         </div>:null
         }
 
-        <p className="text-start py-4 px-2 md:px-24  overflow-scroll">{transcribedMessage?
+        <p className="text-start py-4 px-2 md:px-24  overflow-y-scroll">{transcribedMessage?
          transcribedMessage : null}</p>
         </div>:null
         }

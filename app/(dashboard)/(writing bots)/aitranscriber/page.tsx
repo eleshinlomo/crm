@@ -31,7 +31,7 @@ const VoiceToTextPage = () => {
     }
     return (
       <div className=" text-center flex flex-col justify-center items-center
-       text-black text-2xl gap-4 px-4 py-8">
+        text-2xl gap-4 px-4 py-8">
           
            <p className='py-4 font-extrabold font-sans text-2xl'>TRANSCRIBER</p>
           <p className='py-8 font-extrabold text-sm'>File uploads are currently limited to 
@@ -65,14 +65,15 @@ const VoiceToTextPage = () => {
           </div>
 
           {/* Transcribed Message */}
-          <div className='text-start py-8 px-4 border  shadow-2xl overflow-scroll'>
+          <div className='text-start w-full py-8 px-4 border  shadow-2xl overflow-y-scroll'>
             <p className='font-extrabold py-8 text-center'>Transcription</p>
            
             {typeof message === 'string'?message:null}
             {/* <div>
               <CopyButton text={message} />
             </div> */}
-            {transcribedMessage? transcribedMessage: <p>No text available</p>}
+            {transcribedMessage? transcribedMessage: 
+            <p className='text-center'>No text available</p>}
           </div>
            
            <div>

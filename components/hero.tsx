@@ -42,21 +42,20 @@ const Hero = ()=>{
 
 
 
-<div className="h-auto w-full
-             ">
+<div className="h-auto w-full text-black ">
 
 
 
 
 {/* Left Side */}
-<div className="md:h-96 w-full md:flex justify-center items-center   ">
+<div className="md:h-96 w-full md:flex justify-center items-center">
  
 {/* Hero Image overlay */}
 <div className="relative w-full">
 
 <div className="">
 <div className="relative  w-full h-72   px-2 ">
-<Image src='/bg/computer-3036166_1920.jpg' alt='hero pics' fill />
+<Image src='/speech-bubble-5022_512.gif' alt='hero pics' fill />
 </div>
 </div>
 
