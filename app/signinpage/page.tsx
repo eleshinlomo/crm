@@ -22,15 +22,18 @@ const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 
 const SignInPage = ()=>{
   return (
-   <div className="h-full md:flex flex-col  justify-around w-full
-   items-center gap-3 pt-12 bg-black text-white">
+   <div className="h-full fixed md:flex flex-col  justify-around w-full
+   items-center gap-3 pt-12 bg-gradient-to-r from-black/50 via-black
+    to-gray-800 
+    text-white">
          
           
               
-              <div className="h-auto flex flex-col justify-center items-center 
+              <div className="absolute top-32 bottom-30 left-0 right-0 flex flex-col  
               gap-2 py-8 w-full ">
-              <div className="">
-              <Link href='/' className="flex flex-1 w-full text-3xl">
+                {/* Top Content */}
+              <div className="flex flex-col justify-center items-center ">
+              <Link href='/' className="text-center justify-center  flex flex-1 w-full text-3xl">
               <ArrowLeftSquareIcon className="mt-5  text-3xl" />
               <p className="  py-4">Fixupe</p>
               </Link>
@@ -72,25 +75,20 @@ const SignInPage = ()=>{
          Sign in with Linkedin
           </Link>
         </Button> */}
-
-        <div className="md:flex w-full">
         
        
         {/* Email */}
-        <div className="h-auto w-full md:w-1/2 flex justify-center 
-        items-center ">
+        <div className="absolute bottom-0">
         <SignInForm />
         </div>
 
          {/* Image */}
-         <div className="relative h-72 md:h-82 w-full md:w-1/2 md:mt-16 ">
+         {/* <div className="relative h-72 md:h-auto w-full md:w-1/2 bg-white ">
         <Image src='/images/abstract-69124_1280.jpg' alt='' fill />
-        </div>
+        </div> */}
 
         </div>
-        
-        
-      </div>
+      
   )
 }
 

@@ -93,8 +93,6 @@ const ImagePage = () => {
       };
       
 
-
-    
   return (
     <div className='text-black'>
 

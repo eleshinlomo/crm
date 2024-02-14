@@ -22,8 +22,10 @@ const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 
 const SignUpPage = ()=>{
   return (
-   <div className="h-full flex flex-col  justify-around w-full
-   items-center gap-3 pt-12 bg-black text-white">
+   <div className="h-full fixed md:flex flex-col  justify-around w-full
+   items-center gap-3 pt-12 bg-gradient-to-r from-black/50 via-black
+    to-gray-800 
+    text-white">
               
               <div className="h-auto flex flex-col justify-center items-center 
               gap-2 py-8 w-full md:w-1/2">
@@ -71,7 +73,7 @@ const SignUpPage = ()=>{
           </Link>
         </Button> */}
        
-       <div className="md:flex w-full">
+       
         {/* Email */}
         <div className="h-auto w-full md:w-1/2 flex justify-center 
         items-center mt-5">
@@ -79,14 +81,13 @@ const SignUpPage = ()=>{
         </div>
 
         {/* Image */}
-        <div className="relative h-72 w-full md:w-1/2 md:mt-32">
+        {/* <div className="relative h-72 w-full md:w-1/2 md:mt-32">
         <Image src='/images/ai_web.png' alt='' fill />
-        </div>
+        </div> */}
 
         </div>
         
-        
-      </div>
+      
   )
 }
 

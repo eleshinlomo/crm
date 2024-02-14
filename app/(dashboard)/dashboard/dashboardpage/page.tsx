@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link'
 import Waitlist from '@/components/waitlistpage';
 import { Footer } from '@/components/footer';
-import CreditPage from '@/app/(dashboard)/(dashroutes)/creditpage';
+import CreditPage from '@/app/(dashboard)/creditpage';
 
 // Admin
 import { getAdminData } from '@/components/admindata';

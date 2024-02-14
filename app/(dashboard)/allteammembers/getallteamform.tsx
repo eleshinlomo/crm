@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
-import { formSchema } from '@/app/(dashboard)/(dashroutes)/(conversation bots)/boyfriend/constants'
+import { formSchema } from '@/app/(dashboard)/(conversation bots)/boyfriend/constants'
 import { useRouter } from 'next/navigation'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL

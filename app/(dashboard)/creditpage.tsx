@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/button'
 import React, { useState, useEffect } from 'react'
 import { cn } from '@/lib/utils'
-import { creditFunction } from '../../../components/credithandler'
+import { creditFunction } from '../../components/credithandler'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
