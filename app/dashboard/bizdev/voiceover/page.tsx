@@ -182,7 +182,7 @@ const TextChatPage = () => {
      
      
 
-     <p className="text-center font-extrabold text-2xl text-blue-700 py-8 px-4">
+     <p className="text-center font-extrabold text-2xl text-white py-8 px-4">
         VOICE OVER CREATOR</p>
         
         <div className='bg-white text-black'>
@@ -199,7 +199,7 @@ const TextChatPage = () => {
           <div>
            
            {/* Announcements */}
-           <p className='text-center text-blue-500 font-extrabold'>
+           <p className='text-center text-blue-900 font-extrabold'>
             New ultra-real human voices coming soon...</p>
 
 

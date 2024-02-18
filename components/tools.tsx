@@ -107,7 +107,7 @@ export const Tools: [] | any = [
   
   {
     id:'3',
-    category: 'Business Development Tools',
+    category: 'Business Dev Tools',
     tools: [
       
       {

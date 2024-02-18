@@ -138,7 +138,7 @@ const TextChatPage = () => {
     <div className='flex flex-col justify-center'>
      
 
-     <p className="text-center font-extrabold text-2xl text-blue-700 py-8 px-4">
+     <p className="text-center font-extrabold text-2xl text-white py-8 px-4">
         CONTENT WRITER</p>
         
         <div className='bg-white text-black'>

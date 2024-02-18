@@ -50,15 +50,14 @@ const TextChatPage = () => {
 <Image src={SpinnerOne} alt='loader' fill/></div>)
 
 
-    const onSubmit = async (data: z.infer<typeof formSchema>)=>{
+    const handleVoiceToText = async (e: any)=>{
     
-      
+       e.preventDefault()
         try{
         
         setIsConvertingTextToAudio(true)
         setAudioURL(null)
         if(!editText) return {"error": "No textMessage found"}
-        console.log({"userMesssage": editText})
         const blob: any = await textToVoice(editText)
         if(blob){
        
@@ -67,11 +66,11 @@ const TextChatPage = () => {
 
             const botResponse = {
                 role: 'bot',
-                content: textMessage,
+                content: editText,
                 audio: chatbotBlobURL
             }
             
-            setMessages([...messages, botResponse])
+            setMessages([botResponse])
             
             // const ChatbotAudio = new Audio(chatbotBlobURL)
             // ChatbotAudio.play()
@@ -115,7 +114,7 @@ const TextChatPage = () => {
           <div>
            
            {/* Announcements */}
-           <p className='text-center text-blue-500 font-extrabold'>
+           <p className='text-center text-blue-900 font-extrabold'>
             New ultra-real human voices coming soon...</p>
 
 
@@ -124,9 +123,18 @@ const TextChatPage = () => {
             
 
 <div className='flex flex-col justify-center items-center'>
+         
+         {/* Is Converting Text To Voice Blob */}
+         <div className=' flex flex-col justify-center items-center'>
+                {isConvertingTextToAudio ?
+                <div>
+                {loading}
+                </div>:null
+                }
+                </div>
 
-<Form {...form}>
-           <form onSubmit={form.handleSubmit(onSubmit)}
+         <Form {...form}>
+           <form onSubmit={(e)=>handleVoiceToText(e)}
            className='
            rounded-lg border w-full p-4 px-3 md:px-6 
            focus-within:shadow-sm grid grid-cols-12 gap-2
@@ -138,9 +146,9 @@ const TextChatPage = () => {
    
                 <FormItem className="col-span-12 lg:col-span-10">
                 <FormControl className='M-0 P-0'>
-               <Textarea className='border-0 outline-none  text-md
-               focus=visible:ring-transparent h-44
-               focus-visible:ring-0'
+               <Textarea className='border border-black outline-none  text-md
+               focus=visible:ring-transparent h-44 
+               focus-visible:ring-0' 
                disabled={isLoading}
                value={editText}
                onChange={(e)=>setEditText(e.target.value)}
@@ -149,7 +157,8 @@ const TextChatPage = () => {
              </FormItem>
              )}
              />
-             <Button className='col-span-12 lg:col-span-2 w-full rounded-2xl'>
+             <Button type='submit' className='col-span-12 lg:col-span-2 w-full rounded-2xl'
+             disabled={isLoading}>
               READ TEXT
              </Button>
            </form>
@@ -193,16 +202,6 @@ const TextChatPage = () => {
 
                  
 
-
-                {/* Is Converting Text To Voice Blob */}
-                <div className=' flex flex-col justify-center items-center'>
-                {isConvertingTextToAudio ?
-                <div>
-                {loading}
-                </div>:null
-                }
-                </div>
-
              {/* Audio Blob */}
             
                 <div className='flex justify-center items-center'>
@@ -213,44 +212,14 @@ const TextChatPage = () => {
                 <audio
                     src={message.audio}
                     className="appearance-none"
+                    autoPlay
                     controls     
                   />
                   </div>:null
                 }
                 </div>
                 
-                
-                {/* Bot and User Messages */}
-                
-                 {message.role === 'user' ? 
-                
-
-                //   User Prompt
-                 <p className=' text-md font-semibold'>
-                    {message.content}
-                </p> :
-                // Bot response
-                <div className=' font-semibold  '>
-                    <div>
-                
-                {/* Bot Message */}
-
-                {
-                <div>
-                <p className='text-md py-4'>
-                    {textMessage}
-                </p>
-                
-          </div>
-                
-                }
-
-               
-                </div>
-                
-                </div>
-                 }
-                 
+            
                  
                 </div>
             ))}

@@ -29,7 +29,7 @@ bgColor
        </div>
 
         <div>
-            <h2 className='text-xl font-bold'>
+            <h2 className='text-lg font-bold'>
                 {title}
             </h2>
             <p className='text-sm text-muted-foreground'>
