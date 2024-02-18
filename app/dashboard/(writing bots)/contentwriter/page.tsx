@@ -19,7 +19,7 @@ import Title from '@/components/(audiotospeech)/Title'
 import { textToVoice } from '@/components/texttovoice'
 import { SpinnerOne } from '@/components/spinner'
 import Image from 'next/image'
-import { creditFunction } from '@/components/credithandler'
+import { creditHandler } from '@/components/credithandler'
 import { Textarea } from '@/components/ui/textarea'
 
 
@@ -85,9 +85,9 @@ const TextChatPage = () => {
            const data = await  res.json()
          
             if(data.message.ok) {
-            // Use Response for Text To Voice
             setTextMessage(data.message.data)
             setEditText(data.message.data)
+            await creditHandler()
             
             // Continue with Chatbot
             const botMessage = {
@@ -133,47 +133,6 @@ const TextChatPage = () => {
     }
     
 
-// Handle Voice to Text
-    const handleTextToVoice = async (e: any)=>{
-        e.preventDefault()
-        const messageToConvert = textMessage
-        try{
-        setIsConvertingTextToAudio(true)
-        setAudioURL(null)
-        if(!messageToConvert) return {"error": "No textMessage found"}
-        console.log({"userMesssage": messageToConvert})
-        const blob: any = await textToVoice(messageToConvert)
-        if(blob){
-       
-            const chatbotBlob = new Blob([blob], {type: 'audio/wav'})
-            const chatbotBlobURL = URL.createObjectURL(chatbotBlob)
-
-            const botResponse = {
-                role: 'bot',
-                content: textMessage,
-                audio: chatbotBlobURL
-            }
-            
-            setMessages([...messages, botResponse])
-            
-            // const ChatbotAudio = new Audio(chatbotBlobURL)
-            // ChatbotAudio.play()
-    
-      setIsConvertingTextToAudio(false)
-    
-        }else{
-            console.log(blob.error)
-            setIsConvertingTextToAudio(false)
-        }
-    }
-    catch(err){
-        console.log(err)
-    }finally{
-        setIsConvertingTextToAudio(false)
-    }
-    }
-
-    
 
   return (
     <div className='flex flex-col justify-center'>
@@ -277,7 +236,7 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
           </div>
            
            {/* Message */}
-          <div className='text-center py-8 px-8'>
+          <div className='text-center py-2 px-8'>
             {message}
           </div>
 
@@ -319,14 +278,9 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
                     
                     <div className={`w-full grid grid-flow-row md:grid-cols-${message.audio? 4 : 3} gap-1`}>
                 
-                {/* Convert to audio button */}
-                <Button onClick={(e)=>handleTextToVoice(e)} 
-                className='mt-2 rounded-2xl'>
-                    
-                    Convert to Audio
-                </Button>
+               
                  
-
+                {/* Edit Buttons */}
                 <Button  
                 className='mt-2 rounded-2xl'
                 onClick={()=>setIsEditing(true)}
@@ -341,21 +295,6 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
                     Use Text In Creator
                 </Button>
 
-                {message.audio ?
-                <div className='grid grid-flow-row md:grid-cols-2'>
-                <Button
-                className='mt-2 rounded-2xl'>
-                    
-                    Use Audio
-                </Button>
-                <Button
-                className='mt-2 rounded-2xl '>
-                    
-                    Use Text & Audio
-                </Button>
-                </div>
-                :null
-                } 
                 </div>
                 </div>
                 

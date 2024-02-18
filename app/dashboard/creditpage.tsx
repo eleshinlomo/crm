@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/button'
 import React, { useState, useEffect } from 'react'
 import { cn } from '@/lib/utils'
-import { creditFunction } from '../../components/credithandler'
+import { creditHandler } from '../../components/credithandler'
 import Link from 'next/link'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
@@ -17,9 +17,9 @@ const CreditPage = () => {
   
   
     
-const creditHandler = async ()=>{
+const handleCredit = async ()=>{
       try{
-    const response: any = await creditFunction()
+    const response: any = await creditHandler()
     if (response.message.ok){
       setData(response.message.data)
     }else{
@@ -32,7 +32,7 @@ catch(err){
 }
 
 useEffect(()=>{
-  creditHandler()
+  handleCredit()
 }, [])
 
   
@@ -56,7 +56,7 @@ useEffect(()=>{
               <Button className='p-4 bg-blue-800'>BETA</Button>
               </div>
             {plan.plan ==='free'?
-            <Link href='/dashboard/paymentpage' className='py-2'>
+            <Link href='/dashboard/dashboardpage' className='py-2'>
             <Button variant='default' className='rounded-full mt-2'>
               UPGRADE TO PREMIUM</Button>
               </Link>

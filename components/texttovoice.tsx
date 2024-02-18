@@ -19,8 +19,10 @@ export const textToVoice = async (textMessage: any)=>{
     if(!response) throw new Error("No response from server")
     const blob = await response.blob()
     if(blob){
+        console.log(blob)
         return blob
     }else{
+    console.log(response.error)
     return response.error
     }
    }

@@ -25,15 +25,13 @@ import { Textarea } from '@/components/ui/textarea'
 
 
 
-
-
 const TextChatPage = () => {
     const [messages, setMessages] = useState<Array<{role: string; content: string, audio: null | any}>>([])
     const [message, setMessage] = useState<string | any>('')
     const [textMessage, setTextMessage] = useState<null | any>(null)
     const [audioUrl, setAudioURL] = useState<null | any>(null)
     const [editText, setEditText] = useState<string | any>('')
-    const [isEditing, setIsEditing] = useState<boolean>(false)
+    const [isEditing, setIsEditing] = useState<boolean>(true)
     const [isConvertingTextToAudio, setIsConvertingTextToAudio] = useState<boolean>(false)
     const [updated, setUpdated] = useState<boolean>(false)
     
@@ -52,99 +50,16 @@ const TextChatPage = () => {
 <Image src={SpinnerOne} alt='loader' fill/></div>)
 
 
-    const onSubmit = async (values: z.infer<typeof formSchema>)=>{
-        console.log(values)
-        const sessionid = localStorage.getItem('sessionid')
-        console.log({"sessionid chatbot": sessionid})
-        if(!sessionid) return
-        try {
-         
-         const userMessage = {
-            role: "user",
-            content: values.payload,
-            audio: null
-         }
-
-        
-         const newMessages = [...messages, userMessage]
-         setMessages(newMessages)
-         const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
-         const API_URL = `${BASE_URL}/general/`
-         const res = await fetch(API_URL, {
-            mode: 'cors',
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-                "sessionid": sessionid
-            },
-            body: JSON.stringify({payload: values.payload})
-            
-         })
-           
-         
-           if (!res) throw new Error("No response from server")
-           const data = await  res.json()
-         
-            if(data.message.ok) {
-            // Use Response for Text To Voice
-            setTextMessage(data.message.data)
-            setEditText(data.message.data)
-            await creditHandler()
-            
-            // Continue with Chatbot
-            const botMessage = {
-                role: "bot",
-                content: "",
-                audio: null
-            }
-
-            
-            botMessage.content = data.message.data
-            newMessages.push(botMessage)
-            setMessages(newMessages)
-            form.reset()
-        }else{
-            console.log(data.message.error)
-            setMessage(data.message.error)
-            
-            }
-             
-            
-         }
-        
-        catch(error: any) {
-            console.log(error)
-        } finally {
-            return
-        }
-    }
-
-
-    // Update TextMessage
-    const updateTextMessage = (e: any)=>{
-        setUpdated(false)
-        e.preventDefault()
-        setTextMessage(editText)
-        const botResponse = {
-            role: 'bot',
-            content: textMessage,
-            audio: ''
-        }
-        setMessages([...messages, botResponse])
-        setUpdated(true)
-    }
+    const onSubmit = async (data: z.infer<typeof formSchema>)=>{
     
-
-// Handle Voice to Text
-    const handleTextToVoice = async (e: any)=>{
-        e.preventDefault()
-        const messageToConvert = textMessage
+      
         try{
+        
         setIsConvertingTextToAudio(true)
         setAudioURL(null)
-        if(!messageToConvert) return {"error": "No textMessage found"}
-        console.log({"userMesssage": messageToConvert})
-        const blob: any = await textToVoice(messageToConvert)
+        if(!editText) return {"error": "No textMessage found"}
+        console.log({"userMesssage": editText})
+        const blob: any = await textToVoice(editText)
         if(blob){
        
             const chatbotBlob = new Blob([blob], {type: 'audio/wav'})
@@ -173,23 +88,24 @@ const TextChatPage = () => {
     }finally{
         setIsConvertingTextToAudio(false)
     }
+
     }
 
     
 
   return (
+
     <div className='flex flex-col justify-center'>
      
      
-
-     <p className="text-center font-extrabold text-2xl text-blue-700 py-8 px-4">
-        VOICE OVER CREATOR</p>
+     <p className="text-center font-extrabold text-2xl  py-8 px-4">
+        TEXT READER</p>
         
         <div className='bg-white text-black'>
     
         <Heading
-        title='Create content faster than competition'
-        description = 'Content production on steroid'
+        title='Reads text while you focus on other things'
+        description = 'Increase productivity'
         icon={MessageSquare}
         iconColor='text-violet-500'
         bgColor='bg-violet-500/10'
@@ -205,51 +121,11 @@ const TextChatPage = () => {
 
            {/* Message Form */}
             <div>
-            {isEditing ?
+            
 
-// Editing Mode
 <div className='flex flex-col justify-center items-center'>
-<div className='text-center'>
-<Button className='my-4 rounded-2xl' onClick={()=>setIsEditing(false)}>
-    Close Editing</Button>
-    <p>{updated? 'Updated': null}</p>
-</div>
+
 <Form {...form}>
-<form onSubmit={(e)=>updateTextMessage(e)}
-className='
-rounded-lg border w-full p-4 px-3 md:px-6 
-focus-within:shadow-sm grid grid-cols-12 gap-2
-'
->
-   <FormField 
-   name="textMessage"
-   render={()=>(
-   
-  <FormItem className="col-span-12 lg:col-span-10">
-  <FormControl className='M-0 P-0'>
- <Textarea className='border-0 outline-none  text-md
- focus=visible:ring-transparent h-44
- focus-visible:ring-0'
- disabled={isLoading}
- value={editText}
- onChange={(e)=>setEditText(e.target.value)}
-  />
-  </FormControl>
-  </FormItem>
-  )}
-  />
-  <Button className='col-span-12 lg:col-span-2 w-full rounded-2xl' disabled={isLoading}>
-   Update Text
-  </Button>
-</form>
-</Form>
-</div>
-            :
-            <div>
-
-           {/* Writing Mode */}
-
-           <Form {...form}>
            <form onSubmit={form.handleSubmit(onSubmit)}
            className='
            rounded-lg border w-full p-4 px-3 md:px-6 
@@ -257,29 +133,31 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
            '
            >
               <FormField 
-              name="payload"
-              render={({ field })=>(
-              
-             <FormItem className="col-span-12 lg:col-span-10">
-             <FormControl className='M-0 P-0'>
-            <Input className='border-0 outline-none 
-            focus=visible:ring-transparent
-            focus-visible:ring-0'
-            disabled={isLoading}
-            placeholder="Write a short script advert for an IT firm"
-            {...field}
+              name="editText"
+              render={()=>(
+   
+                <FormItem className="col-span-12 lg:col-span-10">
+                <FormControl className='M-0 P-0'>
+               <Textarea className='border-0 outline-none  text-md
+               focus=visible:ring-transparent h-44
+               focus-visible:ring-0'
+               disabled={isLoading}
+               value={editText}
+               onChange={(e)=>setEditText(e.target.value)}
              />
              </FormControl>
              </FormItem>
              )}
              />
-             <Button className='col-span-12 lg:col-span-2 w-full rounded-2xl' disabled={isLoading}>
-              GO
+             <Button className='col-span-12 lg:col-span-2 w-full rounded-2xl'>
+              READ TEXT
              </Button>
            </form>
           </Form>
-          </div>
-              }
+</div>
+           
+          
+       
               </div>
           </div>
            
@@ -315,59 +193,6 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
 
                  
 
-                
-                {/* Avatars and header buttons */}
-                {message.role == 'user' ? <UserAvatar /> : 
-                <div>
-                    {isEditing ?
-                    <p className='text-blue-500'>Editing mode...</p>:null
-                    }
-                  <div className='flex md:flex-row justify-center'>
-                    
-                    <div className={`w-full grid grid-flow-row md:grid-cols-${message.audio? 4 : 3} gap-1`}>
-                
-                {/* Convert to audio button */}
-                <Button onClick={(e)=>handleTextToVoice(e)} 
-                className='mt-2 rounded-2xl'>
-                    
-                    Convert to Audio
-                </Button>
-                 
-
-                <Button  
-                className='mt-2 rounded-2xl'
-                onClick={()=>setIsEditing(true)}
-                >
-                    
-                    Edit Text
-                </Button>
-
-                <Button
-                className='mt-2 rounded-2xl '>
-                    
-                    Use Text In Creator
-                </Button>
-
-                {message.audio ?
-                <div className='grid grid-flow-row md:grid-cols-2'>
-                <Button
-                className='mt-2 rounded-2xl'>
-                    
-                    Use Audio
-                </Button>
-                <Button
-                className='mt-2 rounded-2xl '>
-                    
-                    Use Text & Audio
-                </Button>
-                </div>
-                :null
-                } 
-                </div>
-                </div>
-                
-                </div>
-                }
 
                 {/* Is Converting Text To Voice Blob */}
                 <div className=' flex flex-col justify-center items-center'>
@@ -420,12 +245,7 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
                 
                 }
 
-                {/* Free Plan warning */}
-                <div className=''>
-                <p className='text-red-700 text-sm py-1 mt-2'>
-                    ...some text missing in FREE PLAN</p>
-                    <Button className='rounded-2xl'>Buy Credits</Button>
-                </div>
+               
                 </div>
                 
                 </div>

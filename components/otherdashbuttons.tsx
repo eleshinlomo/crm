@@ -14,6 +14,21 @@ export const OtherDashButtons = () => {
     const router = useRouter();
   return (
     <div className='flex flex-col gap-2'>
+
+      {/* Text Reader button */}
+      <div className='px-2 w-auto flex flex-col justify-center items-center'>
+          <Button className='w-full flex flex-1 justify-between'
+          onClick={()=>{
+            setIsOpen(!isOpen); 
+            router.push('/dashboard/textreaderpage')
+            pathname   ? pathname : null
+          }}
+          >
+             Text Reader
+            {isOpen?<ArrowBigRight /> : <ArrowBigDown/>}
+            </Button>
+        </div>
+        
         {/* Todo button */}
         <div className='px-2 w-auto flex flex-col justify-center items-center'>
           <Button className='w-full flex flex-1 justify-between'
@@ -27,6 +42,8 @@ export const OtherDashButtons = () => {
             {isOpen?<ArrowBigRight /> : <ArrowBigDown/>}
             </Button>
         </div>
+
+         
 
          {/* Employee's page button */}
          {/* <div className='px-2'>

@@ -7,11 +7,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import * as z from 'zod'
 import {  useForm } from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
+import { purchaseHandler } from "@/components/purchasehandler";
+import StripeCheckoutForm from "@/app/dashboard/stripecheckoutpage";
+import StripeCheckoutPage from "@/app/dashboard/stripecheckoutpage";
 
 
-interface MessageProps {
-  message: string;
-}
 
 
 const PaymentPage = () => {
@@ -21,7 +21,7 @@ const PaymentPage = () => {
 
   const FormSchema = z.object({
 
-    price1: z.string().min(0),
+    amount: z.string().min(0),
     
   })
 
@@ -29,7 +29,7 @@ const PaymentPage = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      price1: '5',
+      amount: '5',
     },
 
 })
@@ -39,8 +39,8 @@ const PaymentPage = () => {
   
 
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
-      console.log(data)
-
+      const {amount} = data
+      const response = purchaseHandler(amount)
   }
 
   useEffect(() => {
@@ -94,7 +94,7 @@ const PaymentPage = () => {
                 
           <FormField
           control={form.control}
-          name="price1"
+          name="amount"
           render={({ field }) => (
             <FormItem className="col-span-12 lg:col-span-12 my-4">
               <FormLabel>Select Credit Amount</FormLabel>
@@ -123,7 +123,8 @@ const PaymentPage = () => {
              </form>
             </Form>
           </div>
-
+         
+         
      </div>
 }
 

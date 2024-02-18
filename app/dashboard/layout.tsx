@@ -11,6 +11,7 @@ import { Footer } from '@/components/footer';
 // @ts-ignore
 import { useSearchParams, useRouter , usePathname} from 'next/navigation';
 import type { Metadata } from 'next'
+import { creditHandler } from '@/components/credithandler';
 
 
 
@@ -63,7 +64,7 @@ const DashboardLayout = ({
    
    
     //  Login Checker Handler
-    const handleLoginChecker = ()=>{
+    const handleLoginChecker = async ()=>{
         setIsChecking(true)
         const user: any = loginChecker()
         if(user !== null && user !== 'undefined' && user !== undefined ){
@@ -76,6 +77,7 @@ const DashboardLayout = ({
             setUsername(username[0].toUpperCase() + username.slice(1))
             setCurrentUser(user)
             setIsLoggedIn(true)
+            await creditHandler()
         }else{
             setMessage("Valid Username not found please re-login")
         }
