@@ -118,57 +118,6 @@ const TextChatPage = () => {
             New ultra-real human voices coming soon...</p>
 
 
-           {/* Message Form */}
-            <div>
-            
-
-<div className='flex flex-col justify-center items-center'>
-         
-         {/* Is Converting Text To Voice Blob */}
-         <div className=' flex flex-col justify-center items-center'>
-                {isConvertingTextToAudio ?
-                <div>
-                {loading}
-                </div>:null
-                }
-                </div>
-
-         <Form {...form}>
-           <form onSubmit={(e)=>handleVoiceToText(e)}
-           className='
-           rounded-lg border w-full p-4 px-3 md:px-6 
-           focus-within:shadow-sm grid grid-cols-12 gap-2
-           '
-           >
-              <FormField 
-              name="editText"
-              render={()=>(
-   
-                <FormItem className="col-span-12 lg:col-span-10">
-                <FormControl className='M-0 P-0'>
-               <Textarea className='border border-black outline-none  text-md
-               focus=visible:ring-transparent h-44 
-               focus-visible:ring-0' 
-               disabled={isLoading}
-               value={editText}
-               onChange={(e)=>setEditText(e.target.value)}
-               placeholder="Paste your text here"
-             />
-             </FormControl>
-             </FormItem>
-             )}
-             />
-             <Button type='submit' className='col-span-12 lg:col-span-2 w-full rounded-2xl'
-             disabled={isLoading}>
-              READ TEXT
-             </Button>
-           </form>
-          </Form>
-</div>
-           
-          
-       
-              </div>
           </div>
            
            {/* Message */}
@@ -176,14 +125,59 @@ const TextChatPage = () => {
             {message}
           </div>
 
-          {/* Chat Messages */}
-          <div className='py-4 mt-4'>
-            {isLoading && (
-                <div className='p-8 rounded-lg w-full flex items-center
-                justify-center bg-muted'>
-                <Loader />
-                </div>
-            )}
+           
+
+           {/* Message Form */}
+           <div>
+            
+
+            <div className='flex flex-col justify-center items-center'>
+                     
+                     {/* Is Converting Text To Voice Blob */}
+                     <div className=' flex flex-col justify-center items-center'>
+                            {isConvertingTextToAudio ?
+                            <div>
+                            {loading}
+                            </div>:null
+                            }
+                            </div>
+            
+                     <Form {...form}>
+                       <form onSubmit={(e)=>handleVoiceToText(e)}
+                       className='
+                       rounded-lg border w-full p-4 px-3 md:px-6 
+                       focus-within:shadow-sm grid grid-cols-12 gap-2
+                       '
+                       >
+                          <FormField 
+                          name="editText"
+                          render={()=>(
+               
+                            <FormItem className="col-span-12 lg:col-span-10">
+                            <FormControl className='M-0 P-0'>
+                           <Textarea className='border border-black outline-none  text-md
+                           focus=visible:ring-transparent h-72
+                           focus-visible:ring-0' 
+                           disabled={isLoading}
+                           value={editText}
+                           onChange={(e)=>setEditText(e.target.value)}
+                           placeholder="Paste your text here"
+                         />
+                         </FormControl>
+                         </FormItem>
+                         )}
+                         />
+                         <Button type='submit' className='col-span-12 lg:col-span-2 w-full rounded-2xl'
+                         disabled={isLoading}>
+                          READ TEXT
+                         </Button>
+                       </form>
+                      </Form>
+            </div>
+            
+
+
+
             {messages.length == 0 && !isLoading && (
                 <div>
                     <Empty label="No conversation started with Teema" />
@@ -228,7 +222,10 @@ const TextChatPage = () => {
           </div>
 
           </div>
+            
 
+             
+                      
          </div>
     </div>
   )
