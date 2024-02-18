@@ -78,7 +78,7 @@ const VoiceToTextPage = () => {
            
            <div>
             <p className='py-4'>Don&apos;t have an Audio file?</p>
-          <Link href='/voicerecorder'>
+          <Link href='/dashboard/voicerecorder'>
             <Button className=' text-white p-2 rounded-2xl'>
             Use Voice Recorder
           </Button>
