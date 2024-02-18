@@ -28,7 +28,7 @@ export const ServicesTop = ()=>{
                  contract, invoices, team, and follow-up.
                  </p>
                  <Button className="bg-blue-700">
-                    <Link href='/crm'>Try Now</Link>
+                    <Link href='/dashboard/crm'>Try Now</Link>
                  </Button>
 
                  <div className="relative h-72 w-72">

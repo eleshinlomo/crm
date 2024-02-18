@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link'
 import Waitlist from '@/components/waitlistpage';
 import { Footer } from '@/components/footer';
-import CreditPage from '@/app/(dashboard)/creditpage';
+import CreditPage from '@/app/dashboard/creditpage';
 
 // Admin
 import { getAdminData } from '@/components/admindata';
@@ -34,7 +34,7 @@ const DashboardPage = () => {
   };
 
   return (
-    <div className='relative'>
+    <div className='relative bg-white text-black'>
       <div className="">
 
         <div className='text-center flex flex-col justify-center items-center'>

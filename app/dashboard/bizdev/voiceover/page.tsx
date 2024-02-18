@@ -179,25 +179,9 @@ const TextChatPage = () => {
     <div className='flex flex-col justify-center'>
      
      
-     <div className='className="text-center flex 
-     flex-col justify-cencenter bg-black text-white   py-4"'>
-     <p className="text-center font-extrabold text-xl py-4 px-8">USE CASES</p>
-     <ul className='text-center text-xs grid grid-flow-row 
-     md:grid-cols-3 font-semibold py-2'>
-        <li>Email writing</li>
-        <li>Text Message writing</li>
-        <li>Can convert chat to audio file</li>
-        <li>Good for Social Media Voice-Over</li>
-        <li>Video Content Voice-Over</li>
-        <li>Slide Presentation Voice-Over</li>
-        <li>Song Lyrics</li>
-        <li>YouTube Channel Script</li>
-        <li>Script for Roleplays</li>
-     </ul>
-     </div>
 
      <p className="text-center font-extrabold text-2xl text-blue-700 py-8 px-4">
-        CREATOR&apos;S LAB</p>
+        VOICE OVER CREATOR</p>
         
         <div className='bg-white text-black'>
     
@@ -280,7 +264,7 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
             focus=visible:ring-transparent
             focus-visible:ring-0'
             disabled={isLoading}
-            placeholder="Write an email to employees about TGIF"
+            placeholder="Write a short script advert for an IT firm"
             {...field}
              />
              </FormControl>

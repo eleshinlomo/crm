@@ -31,7 +31,7 @@ const VoiceToTextPage = () => {
     }
     return (
       <div className=" text-center flex flex-col justify-center items-center
-        text-2xl gap-4 px-4 py-8">
+        text-2xl gap-4 px-4 py-8 bg-white text-black">
           
            <p className='py-4 font-extrabold font-sans text-2xl'>TRANSCRIBER</p>
           <p className='py-8 font-extrabold text-sm'>File uploads are currently limited to 

@@ -11,7 +11,7 @@ import {usePathname, useRouter} from 'next/navigation'
 import { AvatarImage } from "./ui/avatar";
 import { DIRTY } from "zod";
 import { GOOGLE_LOGOUT_URL } from "./urls";
-import CreditPage from "@/app/(dashboard)/creditpage";
+import CreditPage from "@/app/dashboard/creditpage";
 import { Button } from "./ui/button";
 // AI Tools
 import { Tools} from '@/components/tools'
@@ -55,15 +55,15 @@ interface toolisOpenProps{
         <div className='w-full flex flex-col  text-white pt-14 md:pt-2 px-2'>
           <div className=" py-2 flex-1">
             <Link href="/" className="flex items-center pl-3 mb-14">
-              <div className="relative w-8 h-8 mr-4">
-                <Image fill alt="logo" src="/logo.png" />
+              <div className="relative w-16 h-8 mr-4">
+                <Image fill alt="logo" src="/logos/fixupe_logo.png" />
               </div>
               <h1 className={cn("text-2xl font-bold", montserrat.className)}>
                 Fixupe
               </h1>
             </Link>
   
-            <div className=" w-full">
+            <div className=" w-full pt-12">
               {/* Start of Tools */}
               <div className=''>
                 {Tools.map((category: any, index: any) => (

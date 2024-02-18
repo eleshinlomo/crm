@@ -16,7 +16,7 @@ import HomeNavBar from './homenavbar'
 // UserProfile
 import { getUserProfile } from './userprofile'
 import DatePage from './date'
-import CreditPage from '@/app/(dashboard)/creditpage'
+import CreditPage from '@/app/dashboard/creditpage'
 
 
 
@@ -60,7 +60,7 @@ const handleToggle = ()=>{
 
   
   return (
-    <div className="flex flex-col p-2 bg-black text-white">
+    <div className="flex flex-col px-2 bg-black text-white ">
       {/* Mobile */}
       <div className='relative flex flex-1 justify-between w-full'>
         <MobileSidebar />

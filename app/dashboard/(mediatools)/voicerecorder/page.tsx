@@ -75,7 +75,7 @@ const transcribing = (<div className='relative h-16 w-16'>
   
 
   return (
-    <div className="py-8">
+    <div className="py-8 bg-white text-black">
       {/* Title */}
       <Title setMessages={setMessages} />
 

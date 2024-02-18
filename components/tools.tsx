@@ -1,4 +1,4 @@
-import DashboardLayout from "@/app/(dashboard)/layout";
+import DashboardLayout from "@/app/layout";
 import { AreaChartIcon, BookIcon, BotIcon, CodeIcon, EyeIcon, 
     FileIcon, 
     ImageIcon, LayoutDashboard, 
@@ -104,8 +104,25 @@ export const Tools: [] | any = [
         
   //   ]},
 
+  
+  {
+    id:'3',
+    category: 'Business Development Tools',
+    tools: [
+      
+      {
+      
+        label: "voice over",
+        icon: ImageIcon,
+        href: "/dashboard/bizdev/voiceover",
+        color: "text-blue-500",
+        bgColor: "text-grey-500"
+        },
+      ]
 
-    
+        },
+
+
     {
       id:'media',
       category: 'Media Tools',
@@ -115,7 +132,7 @@ export const Tools: [] | any = [
         
           label: "Voice Recorder",
           icon: ImageIcon,
-          href: "/voicerecorder",
+          href: "/dashboard/voicerecorder",
           color: "text-blue-500",
           bgColor: "text-grey-500"
           },
@@ -123,7 +140,7 @@ export const Tools: [] | any = [
         
             label: "Voice Chat",
             icon: ImageIcon,
-            href: "/voicechat",
+            href: "/dashboard/voicechat",
             color: "text-blue-500",
             bgColor: "text-grey-500"
             },
@@ -174,19 +191,19 @@ export const Tools: [] | any = [
         
         label: "Transcriber",
         icon: BotIcon,
-        href: "/aitranscriber",
+        href: "/dashboard/aitranscriber",
         color: "text-pink-500",
         bgColor: "text-grey-500"
         },
         
-        // { 
-          
-        //   label: "Code Generation",
-        //   icon: CodeIcon,
-        //   href: "/code",
-        //   color: "text-grey-500",
-        //   bgColor: "text-grey-500"
-        // }
+        {
+        
+          label: "Content Writer",
+          icon: BookIcon,
+          href: "/dashboard/contentwriter",
+          color: "text-blue-500",
+          bgColor: "text-grey-500"
+          },
       ]},
 
     //  Document Tools
@@ -230,21 +247,11 @@ export const Tools: [] | any = [
           //       }
           //     ]},
 
-          {
-            id:'content creator',
-            category: 'Content Creator',
-            tools: [
+         
               
-              {
-        
-                label: "Creator's Lab",
-                icon: ImageIcon,
-                href: "/textchat",
-                color: "text-blue-500",
-                bgColor: "text-grey-500"
-                },
+             
 
-                ]},
+                
 
 
               // { 

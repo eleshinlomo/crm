@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import React, { useState, useEffect } from 'react'
 import { cn } from '@/lib/utils'
 import { creditFunction } from '../../components/credithandler'
+import Link from 'next/link'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
@@ -55,8 +56,11 @@ useEffect(()=>{
               <Button className='p-4 bg-blue-800'>BETA</Button>
               </div>
             {plan.plan ==='free'?
-            <Button variant='default' className='rounded-full '>
-              UPGRADE TO PREMIUM</Button>:null
+            <Link href='/dashboard/paymentpage' className='py-2'>
+            <Button variant='default' className='rounded-full mt-2'>
+              UPGRADE TO PREMIUM</Button>
+              </Link>
+              :null
               
               }
             </div>

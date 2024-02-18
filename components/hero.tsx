@@ -6,7 +6,7 @@ import { Button } from "./ui/button"
 import {useEffect, useState} from 'react'
 import  Typewriter  from "@/components/typewriter"
 import Link from 'next/link'
-import WaitlistPage from "@/app/(dashboard)/waitlistpage/page"
+import WaitlistPage from "@/app/dashboard/waitlistpage/page"
 
 const Hero = ()=>{
 
@@ -42,7 +42,7 @@ const Hero = ()=>{
 
 
 
-<div className="h-auto w-full ">
+<div className="h-auto w-full bg-white text-black">
 
 
 

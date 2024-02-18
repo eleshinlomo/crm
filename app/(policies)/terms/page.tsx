@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const TermsPage = () => {
     return (
-      <div className="container mx-auto p-8 text-black ">
+      <div className="container mx-auto p-8 bg-white text-black ">
 
       <Button className="my-3" asChild>
           <Link href='/'>Back to Home</Link>

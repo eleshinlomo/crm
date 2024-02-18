@@ -1,4 +1,5 @@
 
+
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
@@ -7,8 +8,8 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'AI Writer',
-  description: 'Write with AI on Fixupe',
+  title: 'Content Creator',
+  description: 'General Conversation with AI',
 }
 
 

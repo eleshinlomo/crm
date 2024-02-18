@@ -143,7 +143,7 @@ const removeTask = ()=>{
   
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center bg-white text-black">
     
     <div className='px-4'>
 

@@ -134,7 +134,7 @@ const FormSchema = z.object({
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="Email" {...field} type='text' className='text-black' />
+                <Input placeholder="Email" {...field} type='text' className='text-black font-semibold' />
               </FormControl>
               
               <FormDescription>

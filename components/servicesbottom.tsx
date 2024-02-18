@@ -22,7 +22,7 @@ export const ServicesBottom = ()=>{
                  Our users are ahead of the competition.
                  </p>
                  <Button className="bg-blue-500">
-                    <Link href='/textchat'>Try Now</Link>
+                    <Link href='/dashboard/textchat'>Try Now</Link>
                  </Button>
                 
                 </div>
@@ -37,7 +37,7 @@ export const ServicesBottom = ()=>{
                  with LLM by just talking to their device saving a ton of time.
                  </p>
                  <Button className="bg-red-500">
-                    <Link href='/voicechat'>Try Now</Link>
+                    <Link href='/dashboard/voicechat'>Try Now</Link>
                  </Button>
                 
                 </div>
@@ -52,7 +52,7 @@ export const ServicesBottom = ()=>{
                 text, and share with your team.
                 </p>
                 <Button className="bg-green-500">
-                    <Link href='/aitranscriber'>Try Now</Link>
+                    <Link href='/dashboard/aitranscriber'>Try Now</Link>
                  </Button>
                 </div>
 
@@ -68,7 +68,7 @@ export const ServicesBottom = ()=>{
                 text in 1 minute.
                 </p>
                 <Button className="bg-gray-500">
-                    <Link href='/voicerecorder'>Try Now</Link>
+                    <Link href='/dashboard/voicerecorder'>Try Now</Link>
                  </Button>
                 </div>
                

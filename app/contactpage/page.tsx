@@ -6,7 +6,7 @@ import FeedbackPage from '../feedbackpage/page'
 
 const ContactPage = () => {
   return (
-    <div>
+    <div className='bg-white'>
       <HomeNavBar />
         <Contact />
         
