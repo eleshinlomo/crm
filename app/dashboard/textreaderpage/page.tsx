@@ -152,6 +152,7 @@ const TextChatPage = () => {
                disabled={isLoading}
                value={editText}
                onChange={(e)=>setEditText(e.target.value)}
+               placeholder="Paste your text here"
              />
              </FormControl>
              </FormItem>
