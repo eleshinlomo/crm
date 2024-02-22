@@ -100,7 +100,7 @@ return null
  // Login Checker
  export const loginChecker =  async (sessionid: string)=>{
   
-    if(!sessionid) return
+    if(!sessionid) return null
     
       // Veirify sessionid
      const response: any = await fetch(`${BASE_URL}/loginchecker/`, {
@@ -117,9 +117,8 @@ return null
       
     throw new Error("No response from server")
   }else{
-    if (response){
+    if (response.ok){
     const data: any = await response.json()
-    console.log(data)
     return data
   }else{
     return response.message.error
