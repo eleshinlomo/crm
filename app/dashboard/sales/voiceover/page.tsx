@@ -69,7 +69,7 @@ const TextChatPage = () => {
          const newMessages = [...messages, userMessage]
          setMessages(newMessages)
          const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
-         const API_URL = `${BASE_URL}/general/`
+         const API_URL = `${BASE_URL}/voiceover/`
          const res = await fetch(API_URL, {
             mode: 'cors',
             method: 'POST',
@@ -188,7 +188,7 @@ const TextChatPage = () => {
         <div className='bg-white text-black'>
     
         <Heading
-        title='Create content faster than competition'
+        title='Create voice over for your projects 10x faster'
         description = 'Content production on steroid'
         icon={MessageSquare}
         iconColor='text-violet-500'
@@ -262,11 +262,11 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
               
              <FormItem className="col-span-12 lg:col-span-10">
              <FormControl className='M-0 P-0'>
-            <Input className='border-0 outline-none 
-            focus=visible:ring-transparent
+            <Textarea className='border border-black 
+            focus=visible:ring-transparent h-44
             focus-visible:ring-0'
             disabled={isLoading}
-            placeholder="Write a short script advert for an IT firm"
+            placeholder="Write a naration for this topic 'Top 10 Businesses In Botswana'"
             {...field}
              />
              </FormControl>

@@ -2,6 +2,7 @@ import DashboardLayout from "@/app/layout";
 import { AreaChartIcon, BookIcon, BotIcon, CodeIcon, EyeIcon, 
     FileIcon, 
     ImageIcon, LayoutDashboard, 
+    MailIcon, 
     MenuIcon, 
     MessageSquare, 
     Music2Icon, 
@@ -107,14 +108,24 @@ export const Tools: [] | any = [
   
   {
     id:'3',
-    category: 'Business Dev Tools',
+    category: 'Sales',
     tools: [
       
+
+      {
+      
+        label: "Email",
+        icon: MailIcon,
+        href: "/dashboard/sales/emailpage",
+        color: "text-blue-500",
+        bgColor: "text-grey-500"
+        },
+
       {
       
         label: "voice over",
         icon: ImageIcon,
-        href: "/dashboard/bizdev/voiceover",
+        href: "/dashboard/sales/voiceover",
         color: "text-blue-500",
         bgColor: "text-grey-500"
         },

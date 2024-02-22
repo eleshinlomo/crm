@@ -65,27 +65,36 @@ const DashboardLayout = ({
    
     //  Login Checker Handler
     const handleLoginChecker = async ()=>{
+        try{
         setIsChecking(true)
-        const user: any = loginChecker()
-        if(user !== null && user !== 'undefined' && user !== undefined ){
-            console.log(user)
-            const {username, sessionid} = user
-            // Sessionid
-            if(sessionid !== undefined && sessionid !== 'undefined' 
-            && sessionid !== null){
+        // Get sessionid and check validity
+        const sessionid: any = localStorage.getItem('sessionid')
+        const user: any = await loginChecker(sessionid)
+        if (!user) return
+        if (user.message.ok){
+            const {username} = user.message.data
             setIsChecking(false)
-            setUsername(username[0].toUpperCase() + username.slice(1))
+            setUsername(username)
             setCurrentUser(user)
             setIsLoggedIn(true)
             await creditHandler()
+           
         }else{
             setMessage("Valid Username not found please re-login")
-        }
-        }else{
             setIsLoggedIn(false)
             setIsChecking(false)
+            console.log(user.message.error)
         }
+
+    }
+    catch(err){
+        console.log(err)
+    }finally{
+        setIsChecking(false)
+    }
+    
 }
+   
 
 
 
@@ -106,7 +115,8 @@ const DashboardLayout = ({
         <div className="relative flex flex-1 gap-2 w-full overflow-hidden">
 
             <div className="hidden h-full md:flex w-72 md:flex-col flex-1
-             md:fixed md:inset-y-0 z-[80] bg-black overflow-y-auto">
+             md:fixed md:inset-y-0 z-[80] bg-gradient-to-r from-black
+             via-gray-800 to-black overflow-y-auto">
 
                 <Sidebar />
             </div>
@@ -138,7 +148,7 @@ const DashboardLayout = ({
 
 
         <div className='h-full pt-12 flex flex-col justify-center 
-        items-center gap-3  border border-blue-800 font-extrabold'>
+        items-center gap-3  border  font-extrabold'>
             
             {isChecking ?
             <div>
@@ -162,7 +172,7 @@ const DashboardLayout = ({
         </Button> 
         </div>
 
-        <div className='px-4 text-blue-700 font-extrabold text-center'>
+        <div className='px-4 font-extrabold text-center'>
          {isChecking?
          <div>
          <p className=' animate-pulse'>{checking}</p>

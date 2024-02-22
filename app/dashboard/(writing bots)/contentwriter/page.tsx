@@ -214,11 +214,11 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
               
              <FormItem className="col-span-12 lg:col-span-10">
              <FormControl className='M-0 P-0'>
-            <Input className='border-0 outline-none 
+            <Input className='border border-black 
             focus=visible:ring-transparent
-            focus-visible:ring-0'
+            focus-visible:ring-0 '
             disabled={isLoading}
-            placeholder="Write an email to employees about TGIF"
+            placeholder="Write an email to all employees about TGIF"
             {...field}
              />
              </FormControl>

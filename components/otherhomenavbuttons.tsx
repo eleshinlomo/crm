@@ -8,35 +8,35 @@ export const OtherHomeNavButtons = ()=>{
   <div className='grid grid-cols-2 gap-3'>
     
 <Button className='w-full'>
-<Link href='/dashboard'
+<Link href='/dashboard/dashboardpage'
 className=''>
     Dashboard</Link>
 </Button> 
                         
                       <Button className='w-full'>
-                      <Link href='/aitranscriber'
+                      <Link href='/dashboard/aitranscriber'
                       className=''
                       >Transcriber</Link>
                       </Button>
 
                   
                       <Button className='w-full'>
-                        <Link href='/voicerecorder'
+                        <Link href='/dashboard/voicerecorder'
                       className=''
                       >Voice Recorder</Link>
                       </Button>
 
                     
                       <Button className='w-full'>
-                        <Link href='/voicechat'
+                        <Link href='/dashboard/voicechat'
                       className=''
                       >Voice Chat</Link>
                       </Button>
 
                       <Button className='w-full'>
-                        <Link href='/textchat'
+                        <Link href='/dashboard/contentwriter'
                       className=''
-                      >Creator&apos;s Lab</Link>
+                      >Content Writer</Link>
                       </Button>
 
                       <Button className='w-full'>

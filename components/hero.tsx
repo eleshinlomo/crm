@@ -48,15 +48,23 @@ const Hero = ()=>{
 
 
 {/* Left Side */}
-<div className="md:h-96 w-full md:flex justify-center items-center">
+<div className="md:h-auto w-full md:flex justify-center items-center">
  
 {/* Hero Image overlay */}
 <div className="relative w-full">
 
 <div className="">
-<div className="relative  w-full h-72   px-2 ">
+
+    <video 
+    loop
+    autoPlay
+    muted
+    src='/videos/trees_video.mp4'
+    />
+  
+{/* <div className="relative  w-full h-72   px-2 ">
 <Image src='/speech-bubble-5022_512.gif' alt='hero pics' fill />
-</div>
+</div> */}
 </div>
 
 {/* <div className="absolute  sm:top-32 sm:left-44 md:left-96 md:top-32   px-2 z-10">

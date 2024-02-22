@@ -32,7 +32,8 @@ export const Footer = ()=>{
     return (
         <div>
 
-<div className='bottom-0 text-white md:text-left bg-black px-6 py-8  w-full'>
+<div className='bottom-0 text-white md:text-left bg-gradient-to-r from-black
+             via-gray-800 to-black px-6 py-8  w-full'>
   <p className='text-center text-2xl mb-2'>Quick Links</p>
   
 

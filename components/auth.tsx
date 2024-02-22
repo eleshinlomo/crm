@@ -98,31 +98,34 @@ return null
 
 
  // Login Checker
- export const loginChecker =  ()=>{
+ export const loginChecker =  async (sessionid: string)=>{
   
-  const getUserName = localStorage.getItem('username')
-  const getUserId = localStorage.getItem('userid')
-  const getSessionId = localStorage.getItem('sessionid')
-  const getCompany = localStorage.getItem('company')
-  const getCredits = localStorage.getItem('credits')
-  
-  if(getUserName && getUserId && getSessionId && getCompany && getCredits){
+    if(!sessionid) return
+    
+      // Veirify sessionid
+     const response: any = await fetch(`${BASE_URL}/loginchecker/`, {
+       method: 'GET',
+       mode: 'cors',
+       credentials: 'include',
+       headers: {
+        'Content-Type': 'application/json',
+        'sessionid': sessionid
+       }
+     })
 
-    const user = {
-      "username": getUserName,
-      "userid": getUserId,
-      "sessionid": getSessionId,
-      "company": getCompany,
-      "credits": getCredits
-    }
-    
-    return user
+     if(!response){
+      
+    throw new Error("No response from server")
   }else{
-    const errorMessage = "No User found"
-    console.log(errorMessage)
-    return null
+    if (response){
+    const data: any = await response.json()
+    console.log(data)
+    return data
+  }else{
+    return response.message.error
   }
-    
+ 
+} 
 }
 
 
@@ -145,6 +148,7 @@ return null
     localStorage.removeItem('sessionid')
     localStorage.removeItem('credits')
     localStorage.removeItem('company')
+    localStorage.removeItem('email')
     window.location.href=`/`
     return data.message.data
    }else{
