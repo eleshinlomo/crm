@@ -72,7 +72,7 @@ export const Tools: [] | any = [
       bgColor: "text-grey-500"
     },
     {   
-      label: "CRM",
+      label: "crm",
       icon: DatabaseIcon,
       href: "/dashboard/crm/crmpage",
       color: "text-pink-500",
