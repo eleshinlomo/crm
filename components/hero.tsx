@@ -25,8 +25,8 @@ const Hero = ()=>{
     setCustomText(
       [ 
         
-        "Advance CRM for businesses",
-        "Business Development Tools",
+        "Optimized CRM",
+        "HD Image Generator",
         "Follow up with clients",
         "Advance Business Tools",
         "Advance AI Models",
@@ -41,64 +41,21 @@ const Hero = ()=>{
         <div>
 
 
-
-<div className="h-auto w-full bg-white text-black">
-
-
+<div className="relative h-auto w-full md:flex 
+justify-between items-center px-4 py-8">
 
 
 {/* Left Side */}
-<div className="md:h-auto w-full md:flex justify-center items-center">
- 
-{/* Hero Image overlay */}
-<div className="relative w-full">
+<div className=" w-full md:w-1/2 z-[10]">
+<h1 className="text-center md:text-start py-4  font-arial 
+font-extrabold text-green-500 
+text-md  md:text-xl">
+Go Take A Walk And Let AI Take-over
+  </h1>
 
-<div className="">
-
-    <video 
-    loop
-    autoPlay
-    muted
-    src='/videos/trees_video.mp4'
-    />
-  
-{/* <div className="relative  w-full h-72   px-2 ">
-<Image src='/speech-bubble-5022_512.gif' alt='hero pics' fill />
-</div> */}
-</div>
-
-{/* <div className="absolute  sm:top-32 sm:left-44 md:left-96 md:top-32   px-2 z-10">
-<div className="relative w-24 h-16   px-2 ">
-<Image src='/logos/fixupe_logo.png' alt='hero pics' fill />
-</div>
-</div>
-
-{userName? 
-<div className="absolute left-44  top-16 md:top-16 md:left-96 pl-5 
-md:pl:0 mt-4 font-mono px-2">
-<p className="font-extrabold">Hi, {userName.toUpperCase()}</p>
-<p>Welcome to</p>
-</div>:
-<div className="absolute left-44  top-16 md:top-16 md:left-96 px-2
-pl-5 md:pl:0 mt-4 font-mono">
-<p className="font-extrabold">Hi, GUEST</p>
-<p>Welcome to</p>
-</div>
-} */}
-</div>
-
-<div className="px-3 pb-2">
-
-<div className="  my-3">
-<h1 className="py-4  font-arial font-extrabold text-2xl ">
-  {"All Business Tools On One Platform!"}</h1>
-</div>
-
-<div>
-<div>
 <Typewriter customText={customText} />
-</div>
-<p className="flex-wrap text-start  md:pr-8 ">
+
+<p className="mb-5">
 
 The AI keeps changing the traditional work environment. Modern work platform 
 requires modern work tools. We provide modern business
@@ -106,24 +63,45 @@ tools for businesses to leverage on and ensure they are able to solve today&apos
 tasks faster and more efficiently.</p>
 </div>
 
+ 
+{/* Hero Video */}
+{/* Middle */}
+<div className="absolute h-72 w-full z-[-10]">
 
-<div className="grid grid-flow-row mt-5  md:grid-cols-2 gap-2 ">
+    <video 
+    loop
+    autoPlay
+    muted
+    src='/videos/legwork.mp4'
+    className="w-full"
+    />
+  
+</div>
+
+{/* Right Side */}
+{/* Text and Buttons */}
+
+<div className="flex flex-col justify-center items-center md:justify-end 
+md:items-end w-full md:w-1/2 ">
+
+<div className="grid grid-flow-row md:grid-cols-2 gap-5 ">
 <Button  
-className=" text-white py-6 rounded-2xl " 
+className="bg-blue-500 text-white  rounded-2xl py-6 w-full  my-2 md:my-0" 
   >
-<Link href='/dashboard/dashboardpage'>DASHBOARD</Link></Button>
+<Link href='/dashboard/dashboardpage'>DASHBOARD</Link>
+</Button>
 <div className="">
 <WaitlistPage />
 </div>
 </div> 
 </div>
- 
+{/* End of Buttons */}
+
+ </div>
     </div>
 
-
-           </div>
        
-        </div>
+  
     )
 }
 

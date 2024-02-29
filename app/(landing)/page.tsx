@@ -85,26 +85,10 @@ const HomePage = () => {
     <HomeNavBar  />
 
     <div className='    w-full  h-full overflow-hidden flex flex-col '>
-     <div className=''>
-
-     {/* Error Message */}
-     <div className='text-center text-white font-extrabold'>
-              <p>{error}</p>
-             </div>
-      
+     
       <Hero />
-      </div>
       
-      {/* <ServicesTop /> */}
-      {/* <ServicesMiddle /> */}
-      {/* <div className="relative h-72 w-full">
-          <Image src='/bg/background-6824.gif' alt='biz dev image' fill />
-        </div> */}
         <ServicesBottom />
-       
-       <div className="relative h-72 w-full">
-          <Image src='/bg/background-6824.gif' alt='biz dev image' fill />
-        </div>
         
        <TeamPage />
        <SocialCTA />

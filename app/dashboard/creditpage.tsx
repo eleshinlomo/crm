@@ -56,7 +56,7 @@ useEffect(()=>{
               <Button className='p-4 bg-blue-800'>BETA</Button>
               </div>
             {plan.plan ==='free'?
-            <Link href='' className='py-2'>
+            <Link href='/dashboard/purchase/purchasepage' className='py-2'>
             <Button variant='default' className='rounded-full mt-2'>
               UPGRADE TO PREMIUM</Button>
               </Link>

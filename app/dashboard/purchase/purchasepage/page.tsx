@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { Button } from "@/components/ui/button";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const sessionid: any = localStorage.getItem('sessionid');
 
 
 const PurchasePage = () => {
@@ -24,32 +25,8 @@ const PurchasePage = () => {
     }
   }, []);
 
-  const handleCheckout = async (e:any) => {
-    const sessionid: any = localStorage.getItem('sessionid');
-    if (!sessionid) return
-    e.preventDefault()
-    try {
-       
-      const response = await fetch(`${BASE_URL}/stripe/create-checkout-session`, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-          'sessionid': sessionid // Include session ID in headers
-        }
-      });
+  
 
-      if (!response.ok) {
-        throw new Error('Server error');
-      }
-
-      const data = await response.json();
-      console.log(data); // Handle response data as needed
-
-    } catch (error: any) {
-      console.error(error.message);
-    }
-  };
 
   return (
     <div className="bg-white text-black py-8 px-4 flex flex-col justify-center items-center">
@@ -58,10 +35,10 @@ const PurchasePage = () => {
       }
 
       <div className="product text-center font-extrabold text-xl w-full flex flex-col justify-center gap-3 items-center">
-        <div className="relative h-72 w-72">
+        <div className="relative h-72 w-72 aspect-square">
           <Image
-            src="/images/credit_clerk.png"
-            alt="The cover of Stubborn Attachments" fill
+            src="/images/happy_dog_hd.png"
+            alt="Happy dog hd" fill
           />
         </div>
         <div className="description">
@@ -71,7 +48,8 @@ const PurchasePage = () => {
       </div>
 
       {/* Stripe Form */}
-      <form onSubmit={handleCheckout}>
+      <form action={`${BASE_URL}/create-checkout-session`} method='POST'>
+      <input type='hidden' value={sessionid} name='sessionid' />
       <Button type='submit'>
         Checkout
       </Button>

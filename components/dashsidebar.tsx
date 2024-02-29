@@ -63,7 +63,7 @@ interface toolisOpenProps{
               </h1>
             </Link>
   
-            <div className=" w-full pt-12">
+            <div className=" w-full pt-12 shadow-2xl">
               {/* Start of Tools */}
               <div className=''>
                 {Tools.map((category: any, index: any) => (
@@ -71,7 +71,6 @@ interface toolisOpenProps{
                     <div className=''>
                       {category.category === 'Dashboard' || 
                       category.category === 'Settings' || 
-                      category.category === 'CRM' ||
                       category.category === 'Home' 
                         ?
                       <Button

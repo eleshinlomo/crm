@@ -72,6 +72,6 @@
   }
   body {
     @apply text-white bg-gradient-to-r from-black
-    via-gray-800 to-black ;
+    via-black/70 to-gray-800 ;
   }
 }

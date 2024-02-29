@@ -15,50 +15,44 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
   const [message, setMessage] = useState("");
 
   const router = useSearchParams()
-
   const stripe_session_id: any = router?.get('session_id')
-  
+  const session_id: any = localStorage.getItem('sessionid')
+  console.log(stripe_session_id)
 
-  // Confirm if payment was indeed successful
-  const confirmPaymentAndUpdateCredits = async ()=>{
-      if (! stripe_session_id) return
-      const response: any = await fetch(`${BASE_URL}/stripe/confirmpayment/`, {
-        mode: 'cors',
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'stripe_session_id': stripe_session_id
-        }
-
-      })
-
-      if (! response) throw new Error('Server error')
-      const data: any = await response.json()
-      if (data.ok){
-        console.log(data)
-      }else{
-        console.log(response.error)
+  const handleSuccessPayment = async ()=>{
+    if (!stripe_session_id) return null
+    const response: any = await fetch(`${BASE_URL}/paymentconfirmation/`, {
+      mode: 'cors',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'stripesessionid': stripe_session_id,
+        'sessionid': session_id
       }
+    })
+
+    if(! response) return null
+    const data = await response.json()
+
+    if (data.ok){
+      console.log(data)
+    }else{
+      console.log(response.error)
+    }
   }
 
-useEffect(()=>{
-  confirmPaymentAndUpdateCredits()
-}, [])
-
+  useEffect(()=>{
+    handleSuccessPayment()
+  }, [])
 
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
 
     if (query.get("success")) {
-      setMessage("Order placed! You will receive an email confirmation.");
+      setMessage("Order placed! Thank you for your purchase.");
     }
 
-    if (query.get("canceled")) {
-      setMessage(
-        "Order canceled -- continue to shop around and checkout when you're ready."
-      );
-    }
   }, []);
 
   return  (
@@ -84,7 +78,7 @@ useEffect(()=>{
     </div>
 
       <Button type="submit" className="mt-3">
-        <Link href='/'>
+        <Link href='/dashboard/dashboardpage'>
         Back to Dashboard
         </Link>
       </Button>

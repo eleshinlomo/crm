@@ -53,11 +53,6 @@ const handleToggle = ()=>{
    setIsOpen(!isOpen)
 }
 
-
-
-
-
-
   
   return (
     <div className="flex flex-col px-2  text-white ">

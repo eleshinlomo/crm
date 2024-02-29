@@ -43,6 +43,20 @@ export const OtherDashButtons = () => {
             </Button>
         </div>
 
+        {/* Credit topup button */}
+        <div className='px-2 w-auto flex flex-col justify-center items-center'>
+          <Button className='w-full flex flex-1 justify-between'
+          onClick={()=>{
+            setIsOpen(!isOpen); 
+            router.push('/dashboard/purchase/purchasepage')
+            pathname   ? pathname : null
+          }}
+          >
+             Top up credit
+            {isOpen?<ArrowBigRight /> : <ArrowBigDown/>}
+            </Button>
+        </div>
+
          
 
          {/* Employee's page button */}

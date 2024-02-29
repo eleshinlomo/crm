@@ -45,7 +45,7 @@ export const Todolist = ()=>{
   const [status, setStatus] = useState<string | any>(()=>localStorage.getItem('status') || 'No Task')
   const [isCompleteTask, setIsCompleteTask] = useState<boolean | any>(()=>localStorage.getItem('iscompletetask')|| false)
   const [taskAvialable, setTaskAvailable] = useState<boolean | any>(()=>localStorage.getItem('taskavailable') || false)
-   
+  const [progress, setProgress] = useState<number>(0)
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -146,9 +146,13 @@ const removeTask = ()=>{
     <div className="flex flex-col justify-center items-center bg-white text-black">
     
     <div className='px-4'>
-
-    <p className="text-center md:text-start font-extrabold text-lg py-8">
+     
+     <div className='md:flex gap-6 py-8'>
+    <p className="text-center md:text-start font-extrabold text-lg ">
         Set Today&apos;s Task and Manage Productivity</p>
+
+        <progress value={progress} max={100} className='rounded-2xl mt-2 bg-black'></progress>
+      </div>
         
         {isCompleteTask ?
             <div className='flex'>

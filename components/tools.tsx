@@ -1,11 +1,12 @@
 import DashboardLayout from "@/app/layout";
-import { AreaChartIcon, BookIcon, BotIcon, CodeIcon, EyeIcon, 
+import { AreaChartIcon, BookIcon, BotIcon, CodeIcon, DatabaseIcon, EyeIcon, 
     FileIcon, 
     ImageIcon, LayoutDashboard, 
     MailIcon, 
     MenuIcon, 
     MessageSquare, 
     Music2Icon, 
+    PhoneIcon, 
     Settings, 
     VideoIcon 
 } from "lucide-react";
@@ -58,18 +59,27 @@ export const Tools: [] | any = [
 
   // CRM Tool
 
-  // { 
-  //   id: 'CRM',
-  //   category: 'CRM',
-  //   href: "/crm",
-  //   tools: [{   
-  //     label: "View CRM",
-  //     icon: AreaChartIcon,
-  //     href: "/crm",
-  //     color: "text-pink-500",
-  //     bgColor: "text-grey-500"
-  //   }]
-  // },
+  { 
+    id: 'CRM',
+    category: 'CRM',
+    tools: [
+      
+      {   
+      label: "Phone Book",
+      icon: PhoneIcon,
+      href: "/dashboard/crm/phonebookpage",
+      color: "text-pink-500",
+      bgColor: "text-grey-500"
+    },
+    {   
+      label: "CRM",
+      icon: DatabaseIcon,
+      href: "/dashboard/crm/crmpage",
+      color: "text-pink-500",
+      bgColor: "text-grey-500"
+    }
+  ]
+  },
 
   // Business Dev Tool
 
@@ -108,27 +118,36 @@ export const Tools: [] | any = [
   
   {
     id:'3',
-    category: 'Sales',
+    category: 'Sales Tools',
     tools: [
       
 
-      {
+      // {
       
-        label: "Email",
-        icon: MailIcon,
-        href: "/dashboard/sales/emailpage",
-        color: "text-blue-500",
-        bgColor: "text-grey-500"
-        },
+      //   label: "Email",
+      //   icon: MailIcon,
+      //   href: "/dashboard/sales/emailpage",
+      //   color: "text-blue-500",
+      //   bgColor: "text-grey-500"
+      //   },
 
-      {
+      //   {
       
-        label: "voice over",
-        icon: ImageIcon,
-        href: "/dashboard/sales/voiceover",
-        color: "text-blue-500",
-        bgColor: "text-grey-500"
-        },
+      //     label: "Mass Email",
+      //     icon: MailIcon,
+      //     href: "/dashboard/sales/massemailpage",
+      //     color: "text-blue-500",
+      //     bgColor: "text-grey-500"
+      //     },
+
+        {
+      
+          label: "image generator",
+          icon: ImageIcon,
+          href: "/dashboard/sales/imagepage",
+          color: "text-blue-500",
+          bgColor: "text-grey-500"
+          },
       ]
 
         },
@@ -139,6 +158,14 @@ export const Tools: [] | any = [
       category: 'Media Tools',
       tools: [
         
+        {
+      
+          label: "voice over generator",
+          icon: ImageIcon,
+          href: "/dashboard/sales/voiceover",
+          color: "text-blue-500",
+          bgColor: "text-grey-500"
+          },
         {
         
           label: "Voice Recorder",

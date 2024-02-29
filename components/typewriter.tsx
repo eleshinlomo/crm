@@ -13,7 +13,7 @@ const Typewriter = ({customText} : {customText: Array<string>}) => {
 
   return (
     <div>
-      <div className=' font-extrabold text-start text-xl md:text-3xl'>
+      <div className=' font-extrabold text-start text-xl md:text-2xl'>
         <span className=''>{text? text:null}</span>
         <Cursor cursorColor='blue' />
       </div>

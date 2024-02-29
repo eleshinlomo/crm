@@ -56,7 +56,7 @@ const HomeNavBar = ()=>{
    //  Login Checker Handler
    const handleLoginChecker = async ()=>{
     const sessionid: any = localStorage.getItem('sessionid')
-    if (! sessionid) return
+    if (!sessionid) return
     const user: any = await loginChecker(sessionid)
     if (!user) return
     if (user.message.ok){

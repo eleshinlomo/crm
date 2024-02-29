@@ -59,9 +59,9 @@ const DashboardPage = () => {
         {/* Start of Tools */}
         <div>
           
-          <div className="px-4 md:px-32 ">
+          <div className="px-4 md:px-32">
             {Tools.map((tool: any, index: any) => (
-              <div key={index}>
+              <div key={index} className=''>
                 
                 {/* Dashboard, CRM and Settings are directly forwarded to href */}
                   { 
@@ -70,7 +70,8 @@ const DashboardPage = () => {
                   tool.category === 'Home'? null 
                  :
 
-                  <div className='flex flex-1 justify-between'>
+                  <div className='flex flex-1 justify-between rounded-2xl
+                  shadow-2xl py-4'>
                     <p className="text-center text-md px-4 py-4 
                     font-extrabold">
                   {tool.category}</p>
@@ -92,11 +93,12 @@ const DashboardPage = () => {
                     key={index}
                     className='p-4 border-black/50 flex items-center
                      justify-between hover:shadow-md transition 
-                     cursor-pointer '
+                     cursor-pointer'
                   >
                     
                     
-                    <div className="flex justify-between items-center gap-x-4">
+                    <div className="flex justify-between 
+                    items-center gap-x-4">
                       <div className={cn(`w-p-2 w-fit rounded-md`, 
                       tool.bgColor)}>
                         <tool.icon className={cn('w-8 h-8', tool.color)} />
@@ -118,10 +120,7 @@ const DashboardPage = () => {
               </div>
             ))}
           </div>
-             <p className='text-2xl text-center font-extrabold py-2'>OTHER TOOLS</p>
-             <div className='flex flex-col justify-center items-center w-auto py-4'>
-             <OtherDashButtons />
-             </div>
+             
         </div>
       </div>
 
