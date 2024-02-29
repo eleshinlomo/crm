@@ -100,7 +100,7 @@ return null
  // Login Checker
  export const loginChecker =  async (sessionid: string)=>{
   
-    if(!sessionid) return null
+    if(!sessionid) return 
     
       // Veirify sessionid
      const response: any = await fetch(`${BASE_URL}/loginchecker/`, {
