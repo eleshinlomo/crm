@@ -49,7 +49,7 @@ export const ServicesBottom = ()=>{
                  with LLM by just talking to their device saving a ton of time.
                  </p>
                  <Button className="bg-red-500">
-                    <Link href='/dashboard/voicechat'>Try Now</Link>
+                    <Link href='/dashboard/mediatools/voicechat'>Try Now</Link>
                  </Button>
                  </div>
 
@@ -94,7 +94,7 @@ export const ServicesBottom = ()=>{
                 text in 1 minute. An essential to for every business.
                 </p>
                 <Button className="bg-gray-500">
-                    <Link href='/dashboard/voicerecorder'>Try Now</Link>
+                    <Link href='/dashboard/mediatools/voicerecorder'>Try Now</Link>
                  </Button>
                 </div>
 

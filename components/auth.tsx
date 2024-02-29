@@ -4,11 +4,11 @@
 import Cookies from 'js-cookie'
 import {useRouter} from 'next/router'
 import {useState, useEffect} from 'react'
+import { BASE_URL } from './urls'
 
 
 // URLs
 export const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
-export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
  
 
 

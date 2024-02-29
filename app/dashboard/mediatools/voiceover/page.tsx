@@ -420,12 +420,7 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
                 
                 }
 
-                {/* Free Plan warning */}
-                <div className=''>
-                <p className='text-red-700 text-sm py-1 mt-2'>
-                    ...some text missing in FREE PLAN</p>
-                    <Button className='rounded-2xl'>Buy Credits</Button>
-                </div>
+               
                 </div>
                 
                 </div>

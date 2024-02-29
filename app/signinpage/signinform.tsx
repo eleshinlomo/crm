@@ -23,8 +23,6 @@ import { SpinnerOne } from '@/components/spinner'
 // Auth Functions
 import { emailLogin } from '@/components/auth' 
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
-
 export const SignInForm = ()=>{
 
 const [message, setMessage] = useState<string | any>('Sign in with Email')
