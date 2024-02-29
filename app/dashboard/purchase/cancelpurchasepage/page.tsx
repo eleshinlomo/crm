@@ -4,11 +4,13 @@ import Image from 'next/image'
 import { Button } from "@/components/ui/button";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-const sessionid: any = localStorage.getItem('sessionid');
+
 
 
 const CancelPage = () => {
   const [message, setMessage] = useState<string | any>("")
+
+  const sessionid: any = localStorage.getItem('sessionid');
 
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
