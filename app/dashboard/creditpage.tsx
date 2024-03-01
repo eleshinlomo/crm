@@ -48,7 +48,7 @@ useEffect(()=>{
         data.map((plan, index)=>
         <div key={index}>
         <div className='' >
-          <p>Your credit is {plan.credits}</p></div>
+          <p>Your credit is {plan.credits || plan.trial}</p></div>
         
         <div className=''>
               <div>

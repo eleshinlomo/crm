@@ -84,6 +84,7 @@ const ImagePage = () => {
           if (!res)throw new Error("Network problem")
             const image_url = await res.json();
         if (image_url.message.ok){
+           setError('')
             console.log(image_url.message.data)
             setImages([...images, image_url.message.data])
             
@@ -179,7 +180,7 @@ const ImagePage = () => {
                 
 
                
-               <Button className='col-span-12 lg:col-span-2 w-full 
+               <Button className='col-span-12 lg:col-span-4 my-2 w-full 
                 rounded-2xl' disabled={isLoading}>
                 Generate Image
                </Button>
