@@ -28,6 +28,7 @@ const ImagePage = () => {
     
     
     const [images, setImages] = useState<Array<string | any>>([])
+    const [error, setError] = useState<string | any>('')
     const [url, setUrl] = useState<null | any>(null)
     
 
@@ -68,21 +69,25 @@ const ImagePage = () => {
 
           
           console.log(data)
-          const BASE_URL = process.env.NEXT_PUBLIC_FAST_API_BASE_URL;
-          const res: any = await fetch(`${BASE_URL}/generateimage`, {
+          const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+          const sessionid: any = localStorage.getItem('sessionid')
+          const res: any = await fetch(`${BASE_URL}/imagegenerator/`, {
             mode: "cors",
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { 
+              "Content-Type": "application/json",
+              "sessionid": sessionid
+            },
             body: JSON.stringify(data),
           });
           
           if (!res)throw new Error("Network problem")
-          if (res.ok) {
             const image_url = await res.json();
-            setImages([...images, image_url.data])
+        if (image_url.ok){
+            setImages([...images, image_url.message.data])
         }else{
-          console.log(res.error)
-          return res.error
+          setError(image_url.message.error)
+          setImages([...images])
         }
       
           form.reset();
@@ -181,6 +186,9 @@ const ImagePage = () => {
              </form>
             </Form>
           </div>
+         
+         {/* Error */}
+         <p className='text-red-500 py-4 px-2 font-extrabold'>{error? error: null}</p>
 
           {/* Chat Messages */}
           <div className='space-y-4 mt-4'>

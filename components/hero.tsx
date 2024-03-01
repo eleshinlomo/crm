@@ -50,7 +50,7 @@ justify-between items-center px-4 py-8">
 <h1 className="text-center md:text-start py-4  font-arial 
 font-extrabold text-green-500 
 text-md  md:text-xl">
-Go Take A Walk And Let AI Take-over
+Go Take A Walk And Let AI Take-Over
   </h1>
 
 <Typewriter customText={customText} />
