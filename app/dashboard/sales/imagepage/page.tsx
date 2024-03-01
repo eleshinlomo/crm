@@ -83,19 +83,21 @@ const ImagePage = () => {
           
           if (!res)throw new Error("Network problem")
             const image_url = await res.json();
-        if (image_url.ok){
+        if (image_url.message.ok){
+            console.log(image_url.message.data)
             setImages([...images, image_url.message.data])
+            
         }else{
           setError(image_url.message.error)
-          setImages([...images])
+          console.log(image_url.message.error)
+          
         }
       
-          form.reset();
         } 
       catch (error: any) {
           console.log("Error:", error.error);
         } finally {
-          router.refresh();
+        form.reset()
         }
       };
       
