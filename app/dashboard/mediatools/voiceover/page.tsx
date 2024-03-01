@@ -87,6 +87,7 @@ const TextChatPage = () => {
          
             if(data.message.ok) {
             // Use Response for Text To Voice
+            setMessage('')
             setTextMessage(data.message.data)
             setEditText(data.message.data)
             await creditHandler()
@@ -283,8 +284,8 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
               </div>
           </div>
            
-           {/* Message */}
-          <div className='text-center py-2 px-8'>
+           {/* Error Message */}
+          <div className='text-center py-2 px-8 font-extrabold text-red-500'>
             {message}
           </div>
 

@@ -85,6 +85,7 @@ const TextChatPage = () => {
            const data = await  res.json()
          
             if(data.message.ok) {
+            setMessage('')
             setTextMessage(data.message.data)
             setEditText(data.message.data)
             await creditHandler()
