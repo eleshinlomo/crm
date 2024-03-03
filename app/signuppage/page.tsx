@@ -15,7 +15,7 @@ import Link from 'next/link'
 import { ArrowLeftSquareIcon, XIcon } from "lucide-react"
 import Image from 'next/image'
 import { SignUpForm } from "./signupform"
-import { Footer } from "../../components/footer"
+
 
 
 // URLs
@@ -24,12 +24,10 @@ const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 const SignUpPage = ()=>{
   return (
    <div className="h-full md:flex flex-col  justify-around w-full
-   items-center gap-3 pt-12 bg-gradient-to-r from-black/50 via-black
-    to-gray-800 
-    text-white">
+   items-center gap-3 pt-12 ">
               
               <div className="h-auto flex flex-col justify-center items-center 
-              gap-2 py-8 w-full md:w-1/2">
+              gap-2  w-full md:w-1/2">
               <div className="">
               <Link href='/' className="flex flex-1 w-full text-3xl">
               <ArrowLeftSquareIcon className="mt-5  text-3xl" />
@@ -76,14 +74,12 @@ const SignUpPage = ()=>{
        
        
         {/* Email */}
-        <div className="h-auto 
+        <div className="
          mt-5">
         <SignUpForm />
         </div>
        
-       <div className="w-full">
-       <Footer />
-       </div>
+       
 
         </div>
         

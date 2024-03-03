@@ -150,6 +150,12 @@ const HomeNavBar = ()=>{
     <MenubarMenu>
     <MenubarTrigger><Link href='/contactpage'>Contact</Link></MenubarTrigger>
   </MenubarMenu>
+
+  {/* <MenubarMenu>
+    <MenubarTrigger asChild><Link href='/supportpage'>
+      <Button size='sm' variant='outline' className='rounded-xl text-white  bg-blue-700'>Support</Button>
+      </Link></MenubarTrigger>
+  </MenubarMenu> */}
   
   <MenubarMenu>
     <MenubarTrigger>

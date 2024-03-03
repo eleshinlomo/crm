@@ -1,6 +1,6 @@
 
 
-import { Footer } from "@/components/footer";
+import Footer  from "@/components/footer";
 import HomeNavBar from "@/components/homenavbar";
 import { Button } from "@/components/ui/button";
 import { FileIcon } from "lucide-react";

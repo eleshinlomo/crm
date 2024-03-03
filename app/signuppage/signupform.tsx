@@ -115,7 +115,7 @@ catch(error: any){
   return (
 
     <div className='overflow-hidden flex flex-col justify-center
-     text-white items-center w-full'>
+      items-center w-full'>
      
      
      <div className='text-center  pt-4 flex flex-col justify-center 
@@ -134,7 +134,7 @@ catch(error: any){
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} 
       className=" flex flex-col justify-center items-center 
-       bg-gray-800 mt-4 w-full ">
+       bg-gray-800 text-white mt-4 w-full ">
 
 
          <div className='grid grid-flow-row md:grid-cols-2 gap-3 

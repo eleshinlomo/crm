@@ -155,14 +155,14 @@ export const Tools: [] | any = [
 
     {
       id:'media',
-      category: 'Media Tools',
+      category: 'Conversation Tools',
       tools: [
         
         {
       
           label: "voice over generator",
           icon: ImageIcon,
-          href: "/dashboard/mediatools/voiceover",
+          href: "/dashboard/conversationtools/voiceover",
           color: "text-blue-500",
           bgColor: "text-grey-500"
           },
@@ -170,7 +170,7 @@ export const Tools: [] | any = [
         
           label: "Voice Recorder",
           icon: ImageIcon,
-          href: "/dashboard/mediatools/voicerecorder",
+          href: "/dashboard/conversationtools/voicerecorder",
           color: "text-blue-500",
           bgColor: "text-grey-500"
           },
@@ -178,7 +178,7 @@ export const Tools: [] | any = [
         
             label: "Voice Chat",
             icon: ImageIcon,
-            href: "/dashboard/mediatools/voicechat",
+            href: "/dashboard/conversationtools/voicechat",
             color: "text-blue-500",
             bgColor: "text-grey-500"
             },

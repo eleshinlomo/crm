@@ -9,7 +9,6 @@ import { Tools } from '@/components/tools';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link'
 import Waitlist from '@/components/waitlistpage';
-import { Footer } from '@/components/footer';
 import CreditPage from '@/app/dashboard/creditpage';
 
 // Admin
@@ -40,7 +39,7 @@ const DashboardPage = () => {
         <div className='text-center flex flex-col justify-center items-center'>
           {/* <MessageFromDev /> */}
           <div>
-          <Waitlist />
+          
           <FeedbackPage />
           </div>
 
@@ -59,7 +58,7 @@ const DashboardPage = () => {
         {/* Start of Tools */}
         <div>
           
-          <div className="px-4 md:px-32">
+          <div className="px-4 md:px-32 pb-8">
             {Tools.map((tool: any, index: any) => (
               <div key={index} className=''>
                 

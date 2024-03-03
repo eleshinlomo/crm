@@ -1,108 +1,90 @@
-"use client"
-import { BotIcon, BriefcaseIcon, ComputerIcon, MailPlusIcon, PiIcon } from "lucide-react"
-import Image from 'next/image'
-import { CtaBlockPage } from "./ctablock"
-import { Button } from "./ui/button"
-import {useEffect, useState} from 'react'
-import  Typewriter  from "@/components/typewriter"
+
+import VideoThumb from '@/public/boxes.png'
+import ModalVideo from '@/components/modal-video'
+import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import WaitlistPage from "@/app/dashboard/waitlistpage/page"
 
 const Hero = ()=>{
+  return (
+    <section className="relative">
 
-    const [customText, setCustomText] = useState<Array<string>>([])
-    const [userName, setUserName] = useState<string | any>('')
+      {/* Illustration behind hero content */}
+      <div className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none -z-1" aria-hidden="true">
+        <svg width="1360" height="578" viewBox="0 0 1360 578" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="illustration-01">
+              <stop stopColor="#FFF" offset="0%" />
+              <stop stopColor="#EAEAEA" offset="77.402%" />
+              <stop stopColor="#DFDFDF" offset="100%" />
+            </linearGradient>
+          </defs>
+          <g fill="url(#illustration-01)" fillRule="evenodd">
+            <circle cx="1232" cy="128" r="128" />
+            <circle cx="155" cy="443" r="64" />
+          </g>
+        </svg>
+      </div>
 
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
-    useEffect(()=>{
-    const getUserName = localStorage.getItem('username')
-    if(getUserName){
-      setUserName(getUserName)
-    }
-  }, [])
+        {/* Hero content */}
+        <div className="pt-32 pb-12 md:pt-40 md:pb-20">
 
-  useEffect(()=>{
-    setCustomText(
-      [ 
-        
-        "Optimized CRM",
-        "HD Image Generator",
-        "Follow up with clients",
-        "Advance Business Tools",
-        "Advance AI Models",
-        "Web and Mobile CRM",
-        "Innovative ML Approach",
-        "Cutting Edge Technologies"
-      ]
-    )
-  }, [])
+          {/* Section header */}
+          <div className="text-center pb-12 md:pb-16">
+            <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter 
+            tracking-tighter mb-4" data-aos="zoom-y-out">Run your business on
+            </h1>
+            <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter 
+            tracking-tighter mb-4" data-aos="zoom-y-out">
+            <span className="bg-clip-text py-8 text-transparent
+             bg-gradient-to-r from-blue-800 to-teal-800">FIXUPE</span></h1>
+            <div className="max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 mb-8" data-aos="zoom-y-out" 
+              data-aos-delay="150">
+                If you do not let{' '}
+                 <span className='text-blue-700 font-extrabold'>
+                   AI</span> run your business, 
+                your competitors will do.
+                Don&apos;t leave money on the table.
+                </p>
+              <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center gap-3" 
+              data-aos="zoom-y-out" data-aos-delay="300">
+                <div>
+                <Link href='/signuppage'>
+                  <Button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 
+                  sm:w-auto sm:mb-0 rounded-2xl">
+                    Start free trial
+                  </Button>
+                  </Link>
+                </div>
+                <div>
+                <Link href='/dashboard/dashboardpage'>
+                <Button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 
+                  sm:w-auto sm:mb-0 rounded-2xl">
+                    Dashboard
+                  </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    return (
-        <div>
+          {/* Hero image */}
+          <ModalVideo
+            thumb={VideoThumb}
+            thumbWidth={768}
+            thumbHeight={432}
+            thumbAlt="Modal video thumbnail"
+            video="/videos/video.mp4"
+            videoWidth={1920}
+            videoHeight={1080} />
 
+        </div>
 
-<div className="relative h-auto w-full md:flex 
-justify-between items-center px-4 py-8">
-
-
-{/* Left Side */}
-<div className=" w-full md:w-1/2 z-[10]">
-<h1 className="text-center md:text-start py-4  font-arial 
-font-extrabold text-green-500 
-text-md  md:text-xl">
-Go Take A Walk And Let AI Take-Over
-  </h1>
-
-<Typewriter customText={customText} />
-
-<p className="mb-5">
-
-The AI keeps changing the traditional work environment. Modern work platform 
-requires modern work tools. We provide modern business
-tools for businesses to leverage on and ensure they are able to solve today&apos;s 
-tasks faster and more efficiently.</p>
-</div>
-
- 
-{/* Hero Video */}
-{/* Middle */}
-<div className="absolute h-72 w-full z-[-10]">
-
-    <video 
-    loop
-    autoPlay
-    muted
-    src='/videos/legwork.mp4'
-    className="w-full"
-    />
-  
-</div>
-
-{/* Right Side */}
-{/* Text and Buttons */}
-
-<div className="flex flex-col justify-center items-center md:justify-end 
-md:items-end w-full md:w-1/2 ">
-
-<div className="grid grid-flow-row md:grid-cols-2 gap-5 ">
-<Button  
-className="bg-blue-500 text-white  rounded-2xl py-6 w-full  my-2 md:my-0" 
-  >
-<Link href='/dashboard/dashboardpage'>DASHBOARD</Link>
-</Button>
-<div className="">
-<WaitlistPage />
-</div>
-</div> 
-</div>
-{/* End of Buttons */}
-
- </div>
-    </div>
-
-       
-  
-    )
+      </div>
+    </section>
+  )
 }
 
 export default Hero

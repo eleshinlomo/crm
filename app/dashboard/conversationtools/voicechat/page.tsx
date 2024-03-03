@@ -71,7 +71,7 @@ const Controller = () => {
   
 
   return (
-    <div className="relative w-full flex flex-col justify-center bg-black text-white">
+    <div className="relative w-full flex flex-col justify-center">
        
        <div className='className="text-center flex flex-col justify-center items-center font-extrabold py-4"'>
      <p className="text-center font-extrabold text-xl py-4 px-8">USE CASES</p>
@@ -141,7 +141,7 @@ const Controller = () => {
 
           {messages.length == 0 && !isLoading && (
             <div className="text-center font-light italic mt-10">
-              Having a chat with Bola...
+              You are chatting with Bola...
             </div>
           )}
 

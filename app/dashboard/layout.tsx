@@ -7,7 +7,7 @@ import  Link  from 'next/link';
 import PropTypes from 'prop-types'
 import { getcsrfToken } from '@/components/auth';
 import Image from 'next/image'
-import { Footer } from '@/components/footer';
+import Footer  from '@/components/footer';
 // @ts-ignore
 import { useSearchParams, useRouter , usePathname} from 'next/navigation';
 import type { Metadata } from 'next'
@@ -160,6 +160,9 @@ const DashboardLayout = ({
             }
             
             <div className='flex flex-col gap-5 justify-center items-center '>
+            <div className='relative h-4 py-16 w-32'>
+            <Image src='/logos/fixupe_logo.png' alt='logo' fill />
+            </div>
             <p className='text-2xl'>Please Sign in</p>
 
             <div className='flex gap-5'>
@@ -194,10 +197,7 @@ const DashboardLayout = ({
          }
 
 
-         {/* Footer */}
-         {path === '/voicechat'? null :
-         <Footer />
-         }
+         
 
         </div>
     )

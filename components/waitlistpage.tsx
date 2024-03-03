@@ -1,3 +1,4 @@
+'use client'
 import {useState, useEffect} from 'react'
 import { BASE_URL } from './urls'
 import { Button } from './ui/button'
@@ -42,14 +43,14 @@ const HandleEmailWaitlist = async (e:any)=>{
     return (
 
     <div>
-      <div className='py-4 flex flex-col justify-center 
-      items-center text-center text-black
+      <div className='py-4  
+       text-black
        font-extrabold'>
   
-  <p className='px-6  py-2 text-muted-foreground '>Please join waitlist to stay 
-  informed when new tools are added.</p>
-            <p className='text-blue-500 ml-6 '>{message}</p>
-        <form className='px-6' onSubmit={HandleEmailWaitlist}>
+  <p className='  py-2 text-muted-foreground '>Please join our newsletter to stay ahead 
+  of AI news and how it affects businesses.</p>
+            <p className='text-blue-500  '>{message}</p>
+        <form className=' md:flex gap-3' onSubmit={HandleEmailWaitlist}>
           <input 
           className='border border-black px-1 text-center'
           value={email}
@@ -58,7 +59,7 @@ const HandleEmailWaitlist = async (e:any)=>{
           onChange={(e)=>setEmail(e.target.value)}
           type='email'
            required /><br/>
-           <Button type='submit' className='mt-2 ' variant='default'>
+           <Button type='submit' className=' bg-blue-500 mt-2 md:m-0 ' variant='default'>
             Submit</Button>
         </form>
       </div>

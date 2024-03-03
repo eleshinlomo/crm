@@ -1,5 +1,6 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar"
+import { Button } from "@/components/ui/button"
 import { string } from "zod"
 
 export const UserAvatar = ()=>{
@@ -7,11 +8,11 @@ export const UserAvatar = ()=>{
  
     return (
         
-            <Avatar className="h-12 w-12" >
+            <Avatar className="h-8 w-8" >
                 <AvatarImage src='/avatar-1968236_1280.png' />
               
                 <AvatarFallback>
-                  You
+                  <Button>Profile</Button>
                 </AvatarFallback>
             </Avatar>
     )

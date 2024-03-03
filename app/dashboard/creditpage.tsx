@@ -39,7 +39,7 @@ useEffect(()=>{
 
   
   return (
-    <div className='text-white'>
+    <div className=''>
 
       <div className='text-center flex flex-col justify-center 
       items-center text-xs'>

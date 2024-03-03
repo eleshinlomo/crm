@@ -76,11 +76,13 @@ const CRMPage = () => {
 
   return (
     <div>
+      <p className="text-center bg-clip-text text-2xl py-4 font-extrabold">
+        CRM</p>
       <p className="text-center py-4 font-extrabold">COMING SOON</p>
     <div className="overflow-x-auto">
       <table className="table-auto w-full border-collapse border">
         <thead>
-          <tr>
+          <tr className="text-white">
             <th className="px-4 py-2 bg-gray-800 border">ID</th>
             <th className="px-4 py-2 bg-gray-800 border">Name</th>
             <th className="px-4 py-2 bg-gray-800 border">Phone</th>

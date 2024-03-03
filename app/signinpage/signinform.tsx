@@ -103,7 +103,7 @@ const FormSchema = z.object({
   return (
 
     <div className='overflow-hidden flex flex-col justify-center items-center
-     text-white w-full'>
+      w-full'>
      
      {isSiginingIn?
      <div>
@@ -120,7 +120,7 @@ const FormSchema = z.object({
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} 
       className=" flex flex-col justify-center items-center px-16
-       bg-gray-900   w-full mt-2">
+       bg-gray-900 text-white   w-full mt-2">
 
         
          <div className='shadow-xl px-4 py-4 '>
