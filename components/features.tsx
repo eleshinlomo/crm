@@ -46,7 +46,7 @@ export default function Features() {
                 <h3 className="h3 mb-3">CRM Tools</h3>
                 <p className="text-xl text-gray-600">
                   Enjoy our free CRM tool that offers robust benefits. 
-                  Why pay for CRM when you can use our one free for life with advance features no other CRM offers..</p>
+                  Why pay for CRM when you can use our free for life crm with advance features no other CRM offers..</p>
               </div>
               {/* Tabs buttons */}
               <div className="mb-8 md:mb-0">
