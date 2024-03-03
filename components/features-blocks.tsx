@@ -70,7 +70,7 @@ export default function FeaturesBlocks() {
                   </g>
                 </svg>
                 <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">Calendar</h4>
-                <p className="text-gray-600 text-center">Keep track of your meetings and recieve alerts when meeting is coming up.</p>
+                <p className="text-gray-600 text-center">Manage meetings and receive alerts when a meeting is coming up.</p>
               </div>
   
               {/* 4th item */}
