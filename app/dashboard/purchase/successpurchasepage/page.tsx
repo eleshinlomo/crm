@@ -72,8 +72,8 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
       />
       </div>
       <div className="description">
-      <p className="text-xl">Thank you for your purchase.</p>
-      <h3>Your credits has been topped up with 50,000 credits</h3>
+      <p className="text-xl">Your credit is up 50,000 credits</p>
+      <p className="text-xl text-blue-600">Please refresh the window</p>
       </div>
     </div>
 
