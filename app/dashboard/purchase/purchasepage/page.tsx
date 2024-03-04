@@ -50,7 +50,7 @@ const PurchasePage = () => {
       </div>
 
       {/* Stripe Form */}
-      <form action={`${BASE_URL}/create-checkout-session`} method='POST'>
+      <form action={`${BASE_URL}/fixupe-checkout-session/`} method='POST'>
       <input type='hidden' value={sessionid} name='sessionid' />
       <Button type='submit'>
         Checkout

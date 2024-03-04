@@ -103,7 +103,7 @@ const DashboardLayout = ({
  }, [])
 
     return(
-         <div className='relative'>
+         <div className='overflow-hidden'>
 
             
 
