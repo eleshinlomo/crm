@@ -72,7 +72,6 @@ const DashboardLayout = ({
         const usersessionid: any = await loginChecker()
         setSessionid(usersessionid)
         if ( sessionid === null) return
-        console.log('Sessionid found', sessionid)
         setIsChecking(false)
         setUsername(localStorage.getItem('username'))
         setIsLoggedIn(true)
@@ -156,11 +155,11 @@ const DashboardLayout = ({
             <p className='text-2xl'>Please Sign in</p>
 
             <div className='flex gap-5'>
-        <Button className='flex gap-1'>
+        <Button className='flex gap-1' asChild>
          <Link href='/signinpage'>Login</Link>
          </Button> 
 
-        <Button className='flex gap-1'>
+        <Button className='flex gap-1' asChild>
         <Link href='/'>Home</Link>
         </Button> 
         </div>

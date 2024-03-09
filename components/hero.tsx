@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 const Hero = ()=>{
   return (
-    <section className="relative">
+    <section className="relative w-full">
 
       {/* Illustration behind hero content */}
       <div className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none -z-1" aria-hidden="true">
@@ -51,20 +51,24 @@ const Hero = ()=>{
               <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center gap-3" 
               data-aos="zoom-y-out" data-aos-delay="300">
                 <div>
-                <Link href='/signuppage'>
+                
                   <Button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 
-                  sm:w-auto sm:mb-0 rounded-2xl">
+                  sm:w-auto sm:mb-0 rounded-2xl" asChild>
+                    <Link href='/signuppage'>
                     Start free trial
+                    </Link>
                   </Button>
-                  </Link>
+                  
                 </div>
                 <div>
-                <Link href='/dashboard/dashboardpage'>
+                
                 <Button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 
-                  sm:w-auto sm:mb-0 rounded-2xl">
+                  sm:w-auto sm:mb-0 rounded-2xl" asChild>
+                    <Link href='/dashboard/dashboardpage'>
                     Dashboard
+                    </Link>
                   </Button>
-                  </Link>
+                  
                 </div>
               </div>
             </div>

@@ -80,7 +80,7 @@ useEffect(()=>{
  
 
     return(
-       <div className='py-4 bg-black text-white'>
+       <div className='py-4 bg-black text-white w-full'>
         
         <div className='    
         md:flex flex-1 justify-between  px-2 shadow-2xl  '>

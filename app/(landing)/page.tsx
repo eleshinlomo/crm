@@ -14,7 +14,7 @@ import CookiePage from '@/components/cookiepage'
   
   export default function Home() {
     return (
-      <div className='relative  w-full over-flow-hidden'>
+      <div className='relative  h-full w-full'>
         <HomeNavBar />
         <Hero />
         <Features />
