@@ -15,7 +15,7 @@ const SSO_LOGOUT: any = process.env.NEXT_PUBLIC_SSO_DJANGO_LOGOUT_URL
 
 
 
-const MobileSidebar = () => {
+const DashMobileSidebar = () => {
   const [isMounted, setIsMounted] = useState(false)
 
   useEffect(()=>{
@@ -27,7 +27,7 @@ const MobileSidebar = () => {
   }
 
   return (
-    <div className='flex justify-between'>
+    <div className=''>
       <div>
       <Sheet >
         <SheetTrigger>
@@ -49,4 +49,4 @@ const MobileSidebar = () => {
   )
 }
 
-export default MobileSidebar
+export default DashMobileSidebar

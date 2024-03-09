@@ -98,33 +98,40 @@ return null
 
 
  // Login Checker
- export const loginChecker =  async (sessionid: string)=>{
+ export const loginChecker =  async ()=>{
   
-    if(!sessionid) return 
-    
-      // Veirify sessionid
-     const response: any = await fetch(`${BASE_URL}/loginchecker/`, {
-       method: 'GET',
-       mode: 'cors',
-       credentials: 'include',
-       headers: {
-        'Content-Type': 'application/json',
-        'sessionid': sessionid
-       }
-     })
+    const sessionid = localStorage.getItem('sessionid')
+    if (sessionid !== null && sessionid !== undefined && sessionid !== 'undefined'){
+      return sessionid
+    }else{
+      return null
+    }
 
-     if(!response){
+
+    
+      // Verify sessionid
+//      const response: any = await fetch(`${BASE_URL}/loginchecker/`, {
+//        method: 'GET',
+//        mode: 'cors',
+//        credentials: 'include',
+//        headers: {
+//         'Content-Type': 'application/json',
+//         'sessionid': sessionid
+//        }
+//      })
+
+//      if(!response){
       
-    throw new Error("No response from server")
-  }else{
-    if (response.ok){
-    const data: any = await response.json()
-    return data
-  }else{
-    return response.message.error
-  }
+//     throw new Error("No response from server")
+//   }else{
+//     if (response.ok){
+//     const data: any = await response.json()
+//     return data
+//   }else{
+//     return response.message.error
+//   }
  
-} 
+// } 
 }
 
 

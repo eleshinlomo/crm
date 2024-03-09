@@ -48,30 +48,35 @@ const HomeNavBar = ()=>{
 
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false) 
   const [username, setUsername] = useState<string | null>(null)
+  const [sessionid, setSessionid] = useState<null | any>(null)
 
   // URLs
   const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
  
   
-   //  Login Checker Handler
-   const handleLoginChecker = async ()=>{
-    const sessionid: any = localStorage.getItem('sessionid')
-    if (!sessionid) return
-    const user: any = await loginChecker(sessionid)
-    if (!user) return
-    if (user.message.ok){
-        const {username} = user.message.data
-        setUsername(username)
-        setIsLoggedIn(true)
-    }else{
-        setIsLoggedIn(false)
-        console.log(user.message.error)
-    }
-}
+    //  Login Checker Handler
+    const handleLoginChecker = async ()=>{
+      try{
+      // Get sessionid and check validity
+      const usersessionid: any = await loginChecker()
+      setSessionid(usersessionid)
+      if ( sessionid === null) return
+      console.log('Sessionid found', sessionid)
+      setUsername(localStorage.getItem('username'))
+      setIsLoggedIn(true)
+      
 
-  useEffect(()=>{
-   handleLoginChecker()
-  }, [])
+  }
+  catch(err){
+      console.log(err)
+  }
+  
+}
+ 
+
+useEffect(()=>{
+  handleLoginChecker()
+}, [sessionid])
  
 
     return(

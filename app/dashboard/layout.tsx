@@ -52,6 +52,7 @@ const DashboardLayout = ({
     const [username, setUsername] = useState<string | null>(null)
     const [anonymousUser, setAnonymousUser] = useState<string | null>(null)
     const [credit, setCredit] = useState<null | any>(null)
+    const [sessionid, setSessionid] = useState<null | any>(null)
 
     // Hooks
     const path = usePathname()
@@ -68,23 +69,14 @@ const DashboardLayout = ({
         try{
         setIsChecking(true)
         // Get sessionid and check validity
-        const sessionid: any = localStorage.getItem('sessionid')
-        const user: any = await loginChecker(sessionid)
-        if (!user) return
-        if (user.message.ok){
-            const {username} = user.message.data
-            setIsChecking(false)
-            setUsername(username)
-            setCurrentUser(user)
-            setIsLoggedIn(true)
-            await creditHandler()
-           
-        }else{
-            setMessage("Valid Username not found please re-login")
-            setIsLoggedIn(false)
-            setIsChecking(false)
-            console.log(user.message.error)
-        }
+        const usersessionid: any = await loginChecker()
+        setSessionid(usersessionid)
+        if ( sessionid === null) return
+        console.log('Sessionid found', sessionid)
+        setIsChecking(false)
+        setUsername(localStorage.getItem('username'))
+        setIsLoggedIn(true)
+        await creditHandler()
 
     }
     catch(err){
@@ -96,11 +88,9 @@ const DashboardLayout = ({
 }
    
 
-
-
  useEffect(()=>{
     handleLoginChecker()
- }, [])
+ }, [sessionid])
 
     return(
          <div className='overflow-hidden'>

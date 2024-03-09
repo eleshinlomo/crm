@@ -10,10 +10,11 @@ export const metadata = {
   import Newsletter from '@/components/newsletter'
 import HomeNavBar from '@/components/homenavbar'
 import Footer  from '@/components/footer'
+import CookiePage from '@/components/cookiepage'
   
   export default function Home() {
     return (
-      <div className='w-full over-flow-hidden'>
+      <div className='relative  w-full over-flow-hidden'>
         <HomeNavBar />
         <Hero />
         <Features />
@@ -21,6 +22,7 @@ import Footer  from '@/components/footer'
         <Testimonials />
         <Newsletter />
         <Footer />
+        <CookiePage />
       </div>
     )
   }

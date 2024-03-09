@@ -27,31 +27,36 @@ export const HomeMobileNavBar = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false)
   const [username, setUsername] = useState<string | null>(null)
+  const [sessionid, setSessionid] = useState<null | any>(null)
     
 
   //  Login Checker Handler
   const handleLoginChecker = async ()=>{
-    const sessionid: any = localStorage.getItem('sessionid')
-    if (! sessionid) return
-    const user: any = await loginChecker(sessionid)
-    if (!user) return
-    if (user.message.ok){
-        const {username} = user.message.data
-        setUsername(username)
-        setIsLoggedIn(true)
-    }else{
-        setIsLoggedIn(false)
-        console.log(user.message.error)
-    }
+    try{
+    // Get sessionid and check validity
+    const usersessionid: any = await loginChecker()
+    setSessionid(usersessionid)
+    if ( sessionid === null) return
+    console.log('Sessionid found', sessionid)
+    setUsername(localStorage.getItem('username'))
+    setIsLoggedIn(true)
+    
+
+}
+catch(err){
+    console.log(err)
 }
 
-  useEffect(()=>{
-   handleLoginChecker()
-  }, [])
+}
+
+
+useEffect(()=>{
+handleLoginChecker()
+}, [sessionid])
 
 
   return (
-    <div>
+    <div className=''>
       <div className='flex flex-col flex-1 gap-4'>
         <div className='relative w-24 h-12'>
           <Image src='/logos/fixupe_logo.png' alt='logo' fill />

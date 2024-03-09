@@ -2,7 +2,7 @@
 import {useState, useEffect} from 'react'
 import { LogOutIcon, Menu } from "lucide-react"
 import { Button } from "./ui/button"
-import MobileSidebar from "./dashmobilesidebar"
+import DashMobileSidebar from "./dashmobilesidebar"
 import Link from 'next/link'
 import { UserAvatar } from './user-avater'
 // import ProfileAvatar  from './profile-avatar'
@@ -55,10 +55,10 @@ const handleToggle = ()=>{
 
   
   return (
-    <div className="flex flex-col px-2  ">
+    <div className="flex flex-col px-2 bg-black text-white pb-2">
       {/* Mobile */}
       <div className='relative flex flex-1 justify-between w-full'>
-        <MobileSidebar />
+        <DashMobileSidebar />
 
         <CreditPage />
 
