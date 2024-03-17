@@ -9,7 +9,7 @@ import {useState, useEffect} from 'react'
     let utcDate = new Date();
 
     // Get the time zone offset for PST (in minutes) PST IS UTC-8 (8 hours behind)
-    let timeDifference = 8 * 60; // Pacific Standard Time in munites
+    let timeDifference = 7 * 60; // Pacific Standard Time in munites
 
     // Calculate the time difference between UTC and PST (in milliseconds)
     let timeDiffInMillsecs = timeDifference * 60 * 1000;
@@ -39,7 +39,7 @@ const currentDate = ()=>{
     let estDateObject = new Date();
 
     // Get the time time difference in minutes for EST (in minutes)
-    let esttimeDifference = 5 * 60; // Eastern Standard Time (EST) is UTC-5 (5 hours behind UTC)
+    let esttimeDifference = 4 * 60; // Eastern Standard Time (EST) is UTC-5 (5 hours behind UTC)
 
     // EST time difference in milliseconds
     let esttimeDiffInMillsecs = esttimeDifference  * 60 * 1000;
