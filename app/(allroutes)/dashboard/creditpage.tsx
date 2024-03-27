@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/button'
 import React, { useState, useEffect } from 'react'
 import { cn } from '@/lib/utils'
-import { creditHandler } from '../../components/credithandler'
+import { creditHandler } from '@/components/credithandler'
 import Link from 'next/link'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
@@ -10,6 +10,10 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
 
 const CreditPage = () => {
+
+  interface creditState {
+    credits: string
+  }
 
   const [data, setData] = useState<Array<string | any>>([])
 

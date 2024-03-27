@@ -27,12 +27,18 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 const registering = (<div className='relative w-24 h-24'>
   <Image src={SpinnerOne} alt='spinner' fill/></div>)
 
+
+interface OnUserAdded {
+   onUserAdded: () => void
+}
+
 export const AddUserPage = ()=>{
 
-const [message, setMessage] = useState<string | any>('Sign up with Email')
+const [message, setMessage] = useState<string | any>('Add A New User')
 const [isRegistered, setIsRegistered] = useState<boolean>(false)
 const [isRegistering, setIsRegistering] = useState<boolean>(false)
-const [appname, setAppname] = useState<string | any>('Fixupe')
+const [usersource, setUsersource] = useState<string | any>('Fixupe')
+const [reloadComponent, setReloadComponent] = useState<boolean>(false)
 
 // Router
 const router = useRouter()
@@ -55,8 +61,8 @@ const FormSchema = z.object({
       message: " Username must be at least 2 characters.",
     }),
 
-    appname: z.string().min(2, {
-      message: " Username must be at least 2 characters.",
+    usersource: z.string().min(2, {
+      message: " usersource must be at least 2 characters.",
     }),
 
     
@@ -71,7 +77,7 @@ const FormSchema = z.object({
         company: "",
         email: "",
         password: "",
-        appname: appname,
+        usersource: usersource,
         username: ""
       },
 
@@ -119,29 +125,31 @@ catch(error: any){
 
   return (
 
-    <div className='overflow-hidden flex flex-col justify-center
-      items-center w-full'>
+    <div className='relative w-full'>
      
      
-     <div className='text-center  pt-4 flex flex-col justify-center 
-     items-center '>
-        <p className='font-extrabold text-xl px-4 '>{message}</p>
-        
+     <div className='text-center flex flex-col justify-center 
+     items-center'>
+      
           {isRegistering?
           <div>
             {registering}
           </div>:null
-          }
-        
+          }  
     </div>
      
-
+     
+     {/* Form starts */}
+    <div className='absolute md:fixed text-center z-40 md:left-10 md:right-10
+     bg-black text-white   px-8 py-2 mt-3'>
+    <p className='font-extrabold text-xl px-4 '>{message}</p>
+        <p className='text-sm'>New Users will be forced to change their email on first login</p>
     <Form {...form}>
+
+      
       <form onSubmit={form.handleSubmit(onSubmit)} 
-      className=" flex flex-col justify-center items-center 
-        text-black mt-4 w-full ">
-
-
+      className=" flex flex-col 
+          w-full ">
          <div className='grid grid-flow-row md:grid-cols-2 gap-3 
          shadow-xl px-4 py-4 '>
         {/* Company */}
@@ -185,8 +193,8 @@ catch(error: any){
           )}
         />
         
-        {/* App Name */}
-        <input type='hidden' name='appname' value={appname} />
+        {/* Usersource */}
+        <input type='hidden' name='usersource' value={usersource} />
 
         {/* Username */}
         <FormField
@@ -233,9 +241,11 @@ catch(error: any){
         </div>
 
         <Button type="submit" className='bg-gray-500
-        my-3 hover:bg-gray-500'>Add User</Button>
+        py-2 hover:bg-gray-500'>Add User</Button>
       </form>
     </Form>
+    </div>
+    {/* End of Form */}
     
     </div>
   )

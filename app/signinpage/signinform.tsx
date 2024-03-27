@@ -20,8 +20,13 @@ import { Input } from "@/components/ui/input"
 import { useRouter } from 'next/navigation'
 import { SpinnerOne } from '@/components/spinner'
 
+
 // Auth Functions
 import { emailLogin } from '@/components/auth' 
+
+interface SignupFormProps {
+  saveUsername: string,
+}
 
 export const SignInForm = ()=>{
 
@@ -61,6 +66,7 @@ const FormSchema = z.object({
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
     try{
     setIsSigningIn(true)
+    setMessage('')
     const response: any = await emailLogin(data)
     if(response.message.ok){
       console.log(response)
@@ -76,14 +82,14 @@ const FormSchema = z.object({
       } = response.message.data
       
       // Save User Info
-      const saveUsername = localStorage.setItem('username', username)
-      const saveUserEmail = localStorage.setItem('email', email)
-      const saveSessionId = localStorage.setItem('sessionid', sessionid)
-      const saveCredits = localStorage.setItem('credits', credits)
-      const saveCompany = localStorage.setItem('company', company)
-      const saveUserId = localStorage.setItem("userid", userid)
+      localStorage.setItem('username', username)
+      localStorage.setItem('email', email)
+      localStorage.setItem('sessionid', sessionid)
+      localStorage.setItem('credits', credits)
+      localStorage.setItem('company', company)
+      localStorage.setItem("userid", userid)
       setIsSigningIn(false)
-      router.push('/dashboard/dashboardpage')
+      router.push('/dashboard/dashboardpage' + `/${company}`)
     
   }else{
     console.log(response.message.error)

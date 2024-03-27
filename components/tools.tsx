@@ -1,18 +1,38 @@
-import DashboardLayout from "@/app/layout";
-import { AreaChartIcon, BookIcon, BotIcon, CodeIcon, DatabaseIcon, EyeIcon, 
-    FileIcon, 
-    ImageIcon, LayoutDashboard, 
-    MailIcon, 
-    MenuIcon, 
-    MessageSquare, 
-    Music2Icon, 
-    PhoneIcon, 
-    Settings, 
-    VideoIcon 
+"use client"
+import { AreaChartIcon, BookIcon, BotIcon, DatabaseIcon, 
+    ImageIcon, 
+   
 } from "lucide-react";
 
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { ArrowRight, EyeIcon} from 'lucide-react';
+import { Card } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
+import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link'
+import FeedbackPage from '@/app/feedbackpage/page';
 
-export const Tools: [] | any = [
+
+
+
+interface ToolsProps {
+  id: string;
+  category: string;
+  href: string;
+  tools: {
+    label: string;
+    icon: React.ElementType;
+    href: string;
+    color: string;
+    bgColor: string;
+  }[];
+}
+
+
+
+export const Tools = [
 
   { 
     id: 'home',
@@ -40,23 +60,6 @@ export const Tools: [] | any = [
     }]
   },
 
-  // Idea Validation Tool
-
-  // {
-  //   id:'idea',
-  //   category: 'Validate Idea',
-  //   tools: [
-  //       {
-        
-  //       label: null,
-  //       icon: MessageSquare,
-  //       href: `/validateidea/${null}`,
-  //       color: "text-pink-500",
-  //       bgColor: "text-grey-500"
-  //       },
-          
-  //   ]},
-
   // CRM Tool
 
   { 
@@ -64,81 +67,27 @@ export const Tools: [] | any = [
     category: 'CRM',
     tools: [
       
-      {   
-      label: "Phone Book",
-      icon: PhoneIcon,
-      href: "/dashboard/crm/phonebookpage",
-      color: "text-pink-500",
-      bgColor: "text-grey-500"
-    },
     {   
       label: "crm",
       icon: DatabaseIcon,
-      href: "/dashboard/crm/crmpage",
+      href: "/crm/crmpage",
       color: "text-pink-500",
       bgColor: "text-grey-500"
-    }
+    },
+    // {   
+    //   label: "Admin",
+    //   icon: DatabaseIcon,
+    //   href: "/crm/adminpage",
+    //   color: "text-pink-500",
+    //   bgColor: "text-grey-500"
+    // }
   ]
   },
 
-  // Business Dev Tool
-
-  // {
-  //   id:'business devs',
-  //   category: 'Business Development',
-  //   tools: [
-  //       {
-        
-  //       label: "Send Mailshot",
-  //       icon: MessageSquare,
-  //       href: "/general",
-  //       color: "text-pink-500",
-  //       bgColor: "text-grey-500"
-  //       },
-  //       {
-        
-  //         label: "Send Mass Text Messages",
-  //         icon: MessageSquare,
-  //         href: "/general",
-  //         color: "text-pink-500",
-  //         bgColor: "text-grey-500"
-  //         },
-  //         {
-        
-  //           label: "Cold Call",
-  //           icon: MessageSquare,
-  //           href: "/general",
-  //           color: "text-pink-500",
-  //           bgColor: "text-grey-500"
-  //           }
-        
-        
-  //   ]},
-
-  
   {
     id:'3',
     category: 'Sales Tools',
     tools: [
-      
-
-      // {
-      
-      //   label: "Email",
-      //   icon: MailIcon,
-      //   href: "/dashboard/sales/emailpage",
-      //   color: "text-blue-500",
-      //   bgColor: "text-grey-500"
-      //   },
-
-      //   {
-      
-      //     label: "Mass Email",
-      //     icon: MailIcon,
-      //     href: "/dashboard/sales/massemailpage",
-      //     color: "text-blue-500",
-      //     bgColor: "text-grey-500"
-      //     },
 
         {
       
@@ -182,31 +131,7 @@ export const Tools: [] | any = [
             color: "text-blue-500",
             bgColor: "text-grey-500"
             },
-        // {
         
-        // label: "Image Generator",
-        // icon: ImageIcon,
-        // href: "/image",
-        // color: "text-blue-500",
-        // bgColor: "text-grey-500"
-        // },
-
-        // {   
-            
-        //     label: "Video Generator",
-        //     icon: VideoIcon,
-        //     href: "/video",
-        //     color: "text-blue-500",
-        //     bgColor: "text-grey-500"
-        //     },
-
-        //     {
-        //       label: "Music Generator",
-        //       icon: Music2Icon,
-        //       href: "/music",
-        //       color: "text-purple-500",
-        //       bgColor: "text-grey-500"
-        //       }
             ]},
 
 
@@ -217,14 +142,7 @@ export const Tools: [] | any = [
     href: "",
     tools: [
     
-    // {
-   
-    // label: "Blog Writer",
-    // icon: AreaChartIcon,
-    // href: "/aiwriter",
-    // color: "text-pink-500",
-    // bgColor: "text-grey-500"
-    // },
+  
     {   
         
         label: "Transcriber",
@@ -243,121 +161,115 @@ export const Tools: [] | any = [
           bgColor: "text-grey-500"
           },
       ]},
+    ]
 
-    //  Document Tools
+    const DashboardTools = ()=> {
 
-          // {
-          //   id:'document',
-          //   category: 'Document Tools',
-          //   tools: [
-          //     {   
-                
-          //       label: "PDFtoWORD",
-          //       icon: FileIcon,
-          //       href: "/pdftoword",
-          //       color: "text-blue-500",
-          //       bgColor: "text-blue-500"
-          //       },
-          //       {   
-                
-          //         label: "WORDtoPDF",
-          //         icon: FileIcon,
-          //         href: "/wordtopdf",
-          //         color: "text-blue-500",
-          //         bgColor: "text-blue-500"
-          //         },
-          // { 
-            
-          //   label: "PDF Voice Reader",
-          //   icon: BookIcon,
-          //   href: "/pdftovoice",
-          //   color: "text-blue-500",
-          //   bgColor: "text-red-500"
-          //   },
+      const [isLoggedIn, setIsLoggedIn] = useState(false);
+      const [user, setUser] = useState(null);
+      const [selectedToolIndex, setSelectedToolIndex] = useState<any | null>();
+      const [isSelectedTool, setIsSelectedTool]= useState<boolean>(false)
+      const [showTool, setShowTool] = useState(false)
+      const router = useRouter();
+    
       
-          //   {   
-                
-          //       label: "CSV File Analyser",
-          //       icon: FileIcon,
-          //       href: "/csvanalyser",
-          //       color: "text-blue-500",
-          //       bgColor: "text-blue-500"
-          //       }
-          //     ]},
+    
+      const handleToolClick = (tool: any) => {
+        setShowTool(true)
+        setSelectedToolIndex(tool);
+      };
 
-         
-              
-             
+      const closeShowTools = (tool: any)=>{
+        setShowTool(false)
+      }
 
-                
-
-
-              // { 
-              //   id: 'Settings',
-              //   category: 'Settings',
-              //   href: "/settings",
-              //   tools: [{   
-              //     label: "Viewing Dashboard",
-              //     icon: AreaChartIcon,
-              //     href: "/settings",
-              //     color: "text-pink-500",
-              //     bgColor: "text-grey-500"
-              //   }]
-              // },
-
-                     
+      return (
+        <div className='relative bg-white text-black'>
           
-                      ]
+              
+            {/* Start of Tools */}
+            <div>
+              
+              <div className="px-4 md:px-32 pb-8">
+                {Tools.map((tool: any, index: any) => (
+                  <div key={index} className=''>
+                    
+                    {/* Dashboard, CRM and Settings are directly forwarded to href */}
+                      { 
+                      
+                      tool.category === 'Dashboard' || 
+                      tool.category === 'Home'? null 
+                     :
+    
+                      <div className='flex flex-1 justify-between rounded-2xl
+                      shadow-2xl py-4'>
+                        <p className="text-center text-md px-4 py-4 
+                        font-extrabold">
+                      {tool.category}</p>
+                      <Button size='icon'
+                      onClick={handleToolClick ? () => handleToolClick(tool):
+                         ()=>closeShowTools}
+                      >
+                        <EyeIcon />
+                      </Button>
+                      
+                    
+                      
+                      </div>
+                    }
+                    
+                    {selectedToolIndex === tool ?
+                    selectedToolIndex.tools.map((tool: any, index: any) => (
+                      <div key={index}>
 
-
+                      {/* Display Tools */}
+                      {showTool ?
+                      <Card
+                        
+                        className='p-4 border-black/50 flex items-center
+                         justify-between hover:shadow-md transition 
+                         cursor-pointer'
+                      >
+                        
+                        
+                        <div className="flex justify-between 
+                        items-center gap-x-4">
+                          <div className={cn(`w-p-2 w-fit rounded-md`, 
+                          tool.bgColor)}>
+                            <tool.icon className={cn('w-8 h-8', tool.color)} />
+                          </div>
+                          <div className="font-semibold">{tool.label === null ? 
+                          <div>
+                            <Button><Link href='/ideapage'>Create Idea</Link></Button>
+                            <p>Validate your idea by real people before investing time and resources</p>
+                          </div>: tool.label}</div>
+                        </div>
+                        <Link href={tool.label === null ? <span>{tool.href}</span> : tool.href}>
+                        <Button size='icon'>
+                        <ArrowRight className="" />
+                        </Button>
+                        </Link>
+                      </Card>:null
+                    }
+                    {/* End Display Tools */}
+                    </div>
+                    )):null}
+                    {/* End Tools Mapping */}
+                  </div>
+                ))}
+              </div>
+                 
+            </div>
+          
+    
         
-     
-
-   
-
-  
-// export const DocumentTools = [
-  
-//   {heading: 'Document Tools'},
-  
+        </div>
+      );
+    };
     
-//         ]
-
-
-
-
-//   export const MediaTools: [
-
-//     {heading: 'Media Tools'},
-  
-      
-         
-  
-//   ]
-
-
-//   export const ConversationTools  = [
+    export default DashboardTools;
     
-//     {heading: 'Conversation Tools'},
 
-    
-  
-      // {
-      //   label: "AI Boyfriend",
-      //   icon: MenuIcon,
-      //   href: "/boyfriend",
-      //   color: "text-grey-500",
-      //   bgColor: "text-grey-500"
-      //   },
-  
-      // {
-      //   label: "AI Girlfriend",
-      //   icon: EyeIcon,
-      //   href: "/girlfriend",
-      //   color: "text-grey-500",
-      //   bgColor: "text-grey-500"
-      //   },
-             
-  
+
 
 

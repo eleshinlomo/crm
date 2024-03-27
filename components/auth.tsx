@@ -1,39 +1,17 @@
 // @ts-ignore
 
-// @ts-ignore
 import Cookies from 'js-cookie'
 import {useRouter} from 'next/router'
 import {useState, useEffect} from 'react'
-import { BASE_URL } from './urls'
+
 
 
 // URLs
-export const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
- 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
-
-// Get CSRF Token
-export const getcsrfToken = async ()=>{
-
-  try {
-  const response = await fetch(`${ALLAUTH_BASE_URL}}/getcsrftoken/`, {
-    mode: 'cors',
-    method: 'GET',
-    credentials: 'include',
-    headers: {'Content-Type': 'application/json'}
-  })
-  if (!response) throw new Error("No csrf_token found")
-  return await response.json()
-    
-   }
-
-   catch(error) {
-    console.log(error)
-   }
-
-  }
-  
-
+interface PayloadProp {
+  payload: string
+}
 
 
    // Get Access Token
@@ -55,18 +33,6 @@ export const getAccessToken = async (code: any)=>{
       return data
 }
     
-   
-
-// // Login
-//    export const userLogin = ()=>{
-//     const getAccessToken = localStorage.getItem('access_token')
-//     if(getAccessToken !== null){
-//     console.log({"user authorized": getAccessToken})
-//     return getAccessToken
-//   }else{
-//     return "You need to be logged in"
-//   }
-//   }
 
 
 // Email Login
@@ -100,39 +66,29 @@ return null
  // Login Checker
  export const loginChecker =  async ()=>{
   
-    const sessionid = localStorage.getItem('sessionid')
-    if (sessionid !== null && sessionid !== undefined && sessionid !== 'undefined'){
-      return sessionid
-    }else{
-      return null
-    }
+  const sessionid = localStorage.getItem('sessionid')
+  const payload: any = sessionid
+  const response: any = await fetch(`${BASE_URL}/loginchecker/`, {
+      method: 'GET',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        'sessionid': payload
+    },
+      
+  })
 
+  if (!response) throw new Error('Server not responding')
+  const data: any = await response.json()
+  if (data.message.ok){
+      return data.message.data
+  }else{
+  return response.message.error
+  }
+  
+}
 
     
-      // Verify sessionid
-//      const response: any = await fetch(`${BASE_URL}/loginchecker/`, {
-//        method: 'GET',
-//        mode: 'cors',
-//        credentials: 'include',
-//        headers: {
-//         'Content-Type': 'application/json',
-//         'sessionid': sessionid
-//        }
-//      })
-
-//      if(!response){
-      
-//     throw new Error("No response from server")
-//   }else{
-//     if (response.ok){
-//     const data: any = await response.json()
-//     return data
-//   }else{
-//     return response.message.error
-//   }
- 
-// } 
-}
 
 
 

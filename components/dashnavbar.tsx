@@ -16,10 +16,7 @@ import HomeNavBar from './homenavbar'
 // UserProfile
 import { getUserProfile } from './userprofile'
 import DatePage from './date'
-import CreditPage from '@/app/dashboard/creditpage'
-
-
-
+import CreditPage from '@/app/(allroutes)/dashboard/creditpage'
 
 
 
@@ -30,7 +27,7 @@ const [userData, setUserData] = useState<null | any>(null)
 const [company, setCompany] = useState<null | any>(null)
 
 
-// User Profile Hnalder
+// User Profile Handler
 useEffect(()=>{
 const handleUserProfile = ()=>{
     const userprofile = getUserProfile()

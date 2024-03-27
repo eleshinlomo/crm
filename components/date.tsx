@@ -66,7 +66,6 @@ const DatePage = ()=>{
 const pstTimeHandler = ()=>{
   const getPstTime = getCurrentPSTTime()
   if (getPstTime){
-  console.log({"Pst Time": getPstTime})
   setPstTime(getPstTime)
   }else{
     throw new Error('unable to get PST TIME')

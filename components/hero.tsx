@@ -1,10 +1,18 @@
-
+'use client'
+import {useState, useEffect} from 'react'
 import VideoThumb from '@/public/boxes.png'
 import ModalVideo from '@/components/modal-video'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { Company } from './urls'
+import { useCompanyValue } from './contextprovider'
+
+interface HeroPageProps {
+ companyValue: string
+}
 
 const Hero = ()=>{
+ 
   return (
     <section className="relative w-full">
 
@@ -64,7 +72,7 @@ const Hero = ()=>{
                 
                 <Button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 
                   sm:w-auto sm:mb-0 rounded-2xl" asChild>
-                    <Link href='/dashboard/dashboardpage'>
+                    <Link href={`/dashboard/dashboardpage`}>
                     Dashboard
                     </Link>
                   </Button>

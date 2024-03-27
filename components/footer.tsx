@@ -1,5 +1,5 @@
 
-import WaitlistPage from '@/app/dashboard/waitlistpage/page'
+import WaitlistPage from '@/app/(allroutes)/dashboard/waitlistpage/page'
 import Logo from './logo'
 import Link from 'next/link'
 

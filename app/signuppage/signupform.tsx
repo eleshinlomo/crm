@@ -32,7 +32,7 @@ export const SignUpForm = ()=>{
 const [message, setMessage] = useState<string | any>('Sign up with Email')
 const [isRegistered, setIsRegistered] = useState<boolean>(false)
 const [isRegistering, setIsRegistering] = useState<boolean>(false)
-const [appname, setAppname] = useState<string | any>('Fixupe')
+const [usersource, setUsersource] = useState<string | any>('Fixupe')
 
 // Router
 const router = useRouter()
@@ -55,7 +55,7 @@ const FormSchema = z.object({
       message: " Username must be at least 2 characters.",
     }),
 
-    appname: z.string().min(2, {
+    usersource: z.string().min(2, {
       message: " Username must be at least 2 characters.",
     }),
 
@@ -71,7 +71,7 @@ const FormSchema = z.object({
         company: "",
         email: "",
         password: "",
-        appname: appname,
+        usersource: usersource,
         username: ""
       },
 
@@ -188,7 +188,7 @@ catch(error: any){
         />
         
         {/* App Name */}
-        <input type='hidden' name='appname' value={appname} />
+        <input type='hidden' name='usersource' value={usersource} />
 
         {/* Username */}
         <FormField

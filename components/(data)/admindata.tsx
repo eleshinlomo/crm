@@ -1,10 +1,10 @@
 
 const BASE_URL: any = process.env.NEXT_PUBLIC_BASE_URL
-export const getAdminData = async ()=>{
+export const getAllUsers = async ()=>{
     const sessionid = localStorage.getItem('sessionid')
     try{
     if(!sessionid) return
-    const response = await fetch(`${BASE_URL}/adminuser/`, {
+    const response = await fetch(`${BASE_URL}/getallusers/`, {
          mode: 'cors',
          method: 'GET',
          headers: {

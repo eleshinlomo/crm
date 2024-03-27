@@ -11,9 +11,12 @@ export const metadata = {
 import HomeNavBar from '@/components/homenavbar'
 import Footer  from '@/components/footer'
 import CookiePage from '@/components/cookiepage'
+
   
   export default function Home() {
+    
     return (
+
       <div className='relative  h-full w-full'>
         <HomeNavBar />
         <Hero />

@@ -9,7 +9,7 @@ import { OtherHomeNavButtons } from './otherhomenavbuttons'
 
 //  Auth Functions
 import { loginChecker } from './auth'
-import WaitlistPage from '@/app/dashboard/waitlistpage/page'
+import WaitlistPage from '@/app/(allroutes)/dashboard/waitlistpage/page'
 import { userLogout } from './auth'
 import DatePage from './date'
 

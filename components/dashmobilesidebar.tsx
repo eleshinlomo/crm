@@ -35,7 +35,7 @@ const DashMobileSidebar = () => {
             <Menu />
         </Button>
         </SheetTrigger>
-        <SheetContent side='left' className="h-full  bg-black  mb-8 ">
+        <SheetContent side='left' className="h-full md:hidden lg:hidden  bg-black  mb-8 ">
           
           <div className=' h-full w-full'>
           <Sidebar />
