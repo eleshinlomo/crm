@@ -49,20 +49,20 @@ const FormSchema = z.object({
     message: "Company name must be at least 2 characters.",
   }),
 
-  contact: z.string().min(2, {
+  contact: z.string().min(0, {
     message: "Email must be at least 2 characters.",
   }),
 
-    email: z.string().min(2, {
+    email: z.string().min(0, {
       message: "Email must be at least 2 characters.",
     }),
 
     mobile: z.string().min(0, {
-      message: " Password must be at least 6 characters.",
+      message: " Mobile must be at least 6 characters.",
     }),
 
     phone: z.string().min(0, {
-      message: " Username must be at least 2 characters.",
+      message: " Phone must be at least 2 characters.",
     }),
 
     followup: z.string().min(0, {
