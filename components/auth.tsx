@@ -81,9 +81,9 @@ return null
   if (!response) throw new Error('Server not responding')
   const data: any = await response.json()
   if (data.message.ok){
-      return data.message.data
+      return data
   }else{
-  return response.message.error
+  return response
   }
   
 }

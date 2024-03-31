@@ -14,7 +14,8 @@ const Typewriter = ({customText} : {customText: Array<string>}) => {
   return (
     <div>
       <div className=' font-extrabold text-start text-xl md:text-2xl'>
-        <span className=''>{text? text:null}</span>
+      <span className="bg-clip-text py-8 text-transparent
+             bg-gradient-to-r from-blue-800 via-white to-teal-800">{text? text:null}</span>
         <Cursor cursorColor='blue' />
       </div>
     </div>

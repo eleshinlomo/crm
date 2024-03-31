@@ -71,9 +71,6 @@ const FormSchema = z.object({
     address: z.string().min(0, {
       message: "Email must be at least 2 characters.",
     }),
-    contractrate: z.string().min(0, {
-      message: "Email must be at least 2 characters.",
-    }),
 
     servicefee: z.string().min(0, {
       message: "Email must be at least 2 characters.",
@@ -95,10 +92,9 @@ const FormSchema = z.object({
         contact: "",
         mobile: "",
         phone: "",
-        followup: "",
+        followup: "New client added",
         address: "",
-        contractrate: "",
-        servicefee: "servicefee",
+        servicefee: "10",
         contractdoc: "",
       },
 
@@ -108,10 +104,14 @@ const FormSchema = z.object({
     
     try{
       setIsAddingClient(true)
+      const sessionid: any = localStorage.getItem('sessionid')
     const processPayload = await fetch(`${BASE_URL}/registerclient/`, {
         mode: 'cors',
         method: 'POST',
-        headers: {"Content-Type": "application/json"},
+        headers: {
+          "Content-Type": "application/json",
+          "sessionid": sessionid
+        },
         body: JSON.stringify(data)
     })
 
@@ -121,10 +121,11 @@ const FormSchema = z.object({
      setIsAddingClient(false)
     }else{
         if(response.ok === true){
-        setMessage(response.data)
+        setMessage('')
         setIsRegistered(true)
         setIsAddingClient(false)
         console.log(response.data)
+        setMessage(response.data)
         window.location.reload()
      
       }else{
@@ -162,9 +163,9 @@ catch(error: any){
      
      {/* Form starts */}
     <div className='  md:fixed  z-40  md:left-52
-     bg-gray-600 text-white   px-8 py-2 mt-3'>
+     bg-gray-800 text-white   px-8 py-2 mt-3'>
       <div className='text-center'>
-    <p className='font-extrabold text-xl px-4 '>{message}</p>
+    <p className='font-extrabold text-xl px-4 py-4 text-red-300'>{message}</p>
       
     </div>
     <Form {...form}>
@@ -203,7 +204,7 @@ catch(error: any){
             <FormItem>
               <FormLabel>Contact(Optional)</FormLabel>
               <FormControl>
-                <Input placeholder="Email" {...field}
+                <Input placeholder="Company's contact person" {...field}
                 className='text-black font-semibold'
                  />
               </FormControl>
@@ -277,27 +278,6 @@ catch(error: any){
           )}
         />
 
-        {/* follow up */}
-        <FormField
-          control={form.control}
-          name="followup"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Follow up(Optional)</FormLabel>
-              <FormControl>
-                <Input placeholder="Follow up" {...field}
-                className='text-black font-semibold'
-                 />
-              </FormControl>
-              
-              <FormDescription>
-                
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
         {/* Address */}
         <FormField
           control={form.control}
@@ -319,34 +299,13 @@ catch(error: any){
           )}
         />
 
-        {/* Contract rate */}
-        <FormField
-          control={form.control}
-          name="contractrate"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Contract(Optional)</FormLabel>
-              <FormControl>
-                <Input placeholder="Agreed Rate" {...field}
-                className='text-black font-semibold'
-                 />
-              </FormControl>
-              
-              <FormDescription>
-                
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
         {/* contact */}
         <FormField
           control={form.control}
           name="servicefee"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Service Fee(Optional)</FormLabel>
+              <FormLabel>Service Fee(%)</FormLabel>
               <FormControl>
                 <Input placeholder="Service Fee" {...field}
                 className='text-black font-semibold'
@@ -370,6 +329,27 @@ catch(error: any){
               <FormLabel>Contract document(Optional)</FormLabel>
               <FormControl>
                 <Input placeholder="Contract Document" {...field}
+                className='text-black font-semibold'
+                 />
+              </FormControl>
+              
+              <FormDescription>
+                
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        {/* follow up */}
+        <FormField
+          control={form.control}
+          name="followup"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Follow up(Optional)</FormLabel>
+              <FormControl>
+                <Input placeholder="Follow up" {...field}
                 className='text-black font-semibold'
                  />
               </FormControl>
