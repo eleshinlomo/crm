@@ -126,7 +126,9 @@ const FormSchema = z.object({
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} 
       className=" flex flex-col justify-center items-center px-16
-       bg-gray-900 text-white   w-full mt-2">
+       bg-gray-900 text-white   w-full mt-2"
+       autoComplete = "off"
+       >
 
         
          <div className='shadow-xl px-4 py-4 '>
@@ -138,7 +140,8 @@ const FormSchema = z.object({
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="Email" {...field} type='text' className='text-black font-semibold' />
+                <Input placeholder="Email" {...field} type='text' 
+                className='text-black font-semibold' autoComplete = "none"  />
               </FormControl>
               
               <FormDescription>
@@ -158,7 +161,7 @@ const FormSchema = z.object({
               <FormLabel>Password</FormLabel>
               <FormControl>
                 <Input placeholder="Password" {...field} type='password' 
-                className='text-black font-semibold' />
+                className='text-black font-semibold' autoComplete = "none" />
               </FormControl>
               
               <FormDescription>

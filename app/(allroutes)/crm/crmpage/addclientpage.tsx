@@ -171,7 +171,9 @@ catch(error: any){
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} 
       className=" flex flex-col 
-          w-full ">
+          w-full "
+          autoComplete='off'
+          >
          <div className=' grid grid-flow-row md:grid-cols-3 gap-3 
          shadow-xl px-4 py-4 font-extrabold '>
 
@@ -185,7 +187,7 @@ catch(error: any){
               <FormLabel>Company</FormLabel>
               <FormControl>
                 <Input placeholder="Company name" {...field} 
-                className='text-black font-semibold' required />
+                className='text-black font-semibold' autoComplete='none' required />
               </FormControl>
               
               <FormDescription>
@@ -205,7 +207,7 @@ catch(error: any){
               <FormLabel>Contact(Optional)</FormLabel>
               <FormControl>
                 <Input placeholder="Company's contact person" {...field}
-                className='text-black font-semibold'
+                className='text-black font-semibold' autoComplete='none'
                  />
               </FormControl>
               
@@ -227,7 +229,7 @@ catch(error: any){
               <FormLabel>Email(Optional)</FormLabel>
               <FormControl>
                 <Input placeholder="Email" {...field}
-                className='text-black font-semibold'
+                className='text-black font-semibold' autoComplete='none'
                  />
               </FormControl>
               
@@ -248,7 +250,7 @@ catch(error: any){
               <FormLabel>Mobile number(Optional)</FormLabel>
               <FormControl>
                 <Input placeholder="Mobile number" {...field} type='text' 
-                className='text-black font-semibold'
+                className='text-black font-semibold' autoComplete='none'
                 />
               </FormControl>
               
@@ -266,7 +268,7 @@ catch(error: any){
               <FormLabel>Phone number(Optional)</FormLabel>
               <FormControl>
                 <Input placeholder="Phone number" {...field}
-                className='text-black font-semibold'
+                className='text-black font-semibold' autoComplete='none'
                  />
               </FormControl>
               
@@ -287,7 +289,7 @@ catch(error: any){
               <FormLabel>Address(Optional)</FormLabel>
               <FormControl>
                 <Input placeholder="Address" {...field}
-                className='text-black font-semibold'
+                className='text-black font-semibold' autoComplete='none'
                  />
               </FormControl>
               
@@ -308,7 +310,7 @@ catch(error: any){
               <FormLabel>Service Fee(%)</FormLabel>
               <FormControl>
                 <Input placeholder="Service Fee" {...field}
-                className='text-black font-semibold'
+                className='text-black font-semibold' autoComplete='none'
                  />
               </FormControl>
               
@@ -329,7 +331,7 @@ catch(error: any){
               <FormLabel>Contract document(Optional)</FormLabel>
               <FormControl>
                 <Input placeholder="Contract Document" {...field}
-                className='text-black font-semibold'
+                className='text-black font-semibold' autoComplete='none'
                  />
               </FormControl>
               
@@ -350,7 +352,7 @@ catch(error: any){
               <FormLabel>Follow up(Optional)</FormLabel>
               <FormControl>
                 <Input placeholder="Follow up" {...field}
-                className='text-black font-semibold'
+                className='text-black font-semibold' autoComplete='none'
                  />
               </FormControl>
               

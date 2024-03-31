@@ -141,7 +141,9 @@ catch(error: any){
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} 
       className=" flex flex-col justify-center items-center 
-       bg-gray-800 text-white mt-4 w-full ">
+       bg-gray-800 text-white mt-4 w-full "
+       autoComplete='off'
+       >
 
 
          <div className='grid grid-flow-row md:grid-cols-2 gap-3 
@@ -155,7 +157,7 @@ catch(error: any){
               <FormLabel>Company</FormLabel>
               <FormControl>
                 <Input placeholder="Company name" {...field} 
-                className='text-black font-semibold' />
+                className='text-black font-semibold' autoComplete='none' />
               </FormControl>
               
               <FormDescription>
@@ -175,7 +177,7 @@ catch(error: any){
               <FormLabel>Email</FormLabel>
               <FormControl>
                 <Input placeholder="Email" {...field}
-                className='text-black font-semibold'
+                className='text-black font-semibold' autoComplete='none'
                  />
               </FormControl>
               
@@ -199,7 +201,7 @@ catch(error: any){
               <FormLabel>Username</FormLabel>
               <FormControl>
                 <Input placeholder="Username" {...field}
-                className='text-black font-semibold'
+                className='text-black font-semibold' autoComplete='none'
                  />
               </FormControl>
               
@@ -220,7 +222,7 @@ catch(error: any){
               <FormLabel>Password</FormLabel>
               <FormControl>
                 <Input placeholder="Password" {...field} type='password' 
-                className='text-black font-semibold'
+                className='text-black font-semibold' autoComplete='none'
                 />
               </FormControl>
               
