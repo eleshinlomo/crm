@@ -28,7 +28,7 @@ interface SignupFormProps {
   saveUsername: string,
 }
 
-const PASSWORD_RESET_URL = process.env.NEXT_PUBLIC_PASSWORD_RESET_URL
+const PASSWORD_RESET_URL = process.env.NEXT_PUBLIC_PASS_RESET_URL
 
 export const SignInForm = ()=>{
 
