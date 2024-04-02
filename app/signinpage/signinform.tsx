@@ -28,6 +28,8 @@ interface SignupFormProps {
   saveUsername: string,
 }
 
+const PASSWORD_RESET_URL = process.env.NEXT_PUBLIC_PASSWORD_RESET_URL
+
 export const SignInForm = ()=>{
 
 const [message, setMessage] = useState<string | any>('Sign in with Email')
@@ -175,7 +177,7 @@ const FormSchema = z.object({
         </div>
 
        <div className="flex gap-2 py-8">
-                <a href='/passwordrecoverypage'>
+                <a href={PASSWORD_RESET_URL}>
                   <p className="mt-1 text-blue-200">Forgot Password?</p>
                   </a>
                 <Button type='submit' className='bg-gray-500 hover:bg-gray-500'>
