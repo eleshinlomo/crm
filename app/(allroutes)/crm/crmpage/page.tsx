@@ -43,12 +43,14 @@ interface UserPayload {
     const handleGetClients = async ()=>{
        const response = await getClients()
        if (response.ok){
-        const userClients = response.data
-        if (userClients > 0){
+
+        const userClients = await response.data
+        if (userClients.length > 0){
         setClients(userClients)
-        console.log(userClients)
+        }else{
+        console.log(userClients.message)
+        setMessage(userClients.message)
         }
-        setMessage(response.message)
        }else{
         console.log(response.error)
        }

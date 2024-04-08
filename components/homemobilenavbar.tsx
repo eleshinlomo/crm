@@ -9,9 +9,8 @@ import { OtherHomeNavButtons } from './otherhomenavbuttons'
 
 //  Auth Functions
 import { loginChecker } from './auth'
-import WaitlistPage from '@/app/(allroutes)/dashboard/waitlistpage/page'
 import { userLogout } from './auth'
-import DatePage from './date'
+
 
 
 
@@ -36,15 +35,15 @@ export const HomeMobileNavBar = () => {
     // Get sessionid and check validity
     const usersessionid: any = await loginChecker()
     setSessionid(usersessionid)
-    if ( sessionid === null) return
-    console.log('Sessionid found', sessionid)
+    if (sessionid !== null || sessionid !== undefined || sessionid !== 'undefined'){
     setUsername(localStorage.getItem('username'))
     setIsLoggedIn(true)
-    
-
-}
-catch(err){
-    console.log(err)
+  }else{
+  setIsLoggedIn(false)
+  }
+    }
+    catch(err){
+      console.log(err)
 }
 
 }
@@ -52,7 +51,7 @@ catch(err){
 
 useEffect(()=>{
 handleLoginChecker()
-}, [sessionid])
+}, [])
 
 
   return (
@@ -63,7 +62,7 @@ handleLoginChecker()
         </div>
 
 
-        { isLoggedIn ?
+        { isLoggedIn === true ?
         <div className='flex flex-col gap-3 mt-10'>
        <Button size='sm' onClick={userLogout}>
           Sign Out

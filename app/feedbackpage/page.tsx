@@ -17,7 +17,6 @@ const handleFeedback = async (e:any)=>{
     e.preventDefault()
     const response = await FeedbackHandler(e, feedback)
     if(response.ok){
-    console.log(response)
     setMessage(response.message)
     }else{
         console.log(response.error)

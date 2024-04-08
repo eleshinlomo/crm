@@ -4,7 +4,7 @@ export const getClients = async ()=>{
     const sessionid = localStorage.getItem('sessionid')
     try{
     if(!sessionid) return
-    const response = await fetch(`${BASE_URL}/getclients/`, {
+    const response: any = await fetch(`${BASE_URL}/getclients/`, {
          mode: 'cors',
          method: 'GET',
          headers: {
@@ -17,10 +17,10 @@ export const getClients = async ()=>{
 
     const data = await response.json()
     if(data){
-        console.log(response)
+        
         return data
     }else{
-        return data.error
+        return response.error
     }
 }
 catch(err){
