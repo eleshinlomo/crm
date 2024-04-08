@@ -11,9 +11,6 @@ import { Button } from '@/components/ui/button'
 import {useRouter} from 'next/navigation'
 import {Empty} from '@/components/empty'
 import {Loader} from '@/components/loader'
-import { cn } from '@/lib/utils'
-import { UserAvatar } from '@/components/user-avater'
-import { BotAvatar } from '@/components/BotAvatar'
 import { EmptyImage } from '@/components/emptyimage'
 import Image from 'next/image'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
@@ -85,7 +82,6 @@ const ImagePage = () => {
             const image_url = await res.json();
         if (image_url.message.ok){
            setError('')
-            console.log(image_url.message.data)
             setImages([...images, image_url.message.data])
             
         }else{

@@ -17,6 +17,7 @@ export const getClients = async ()=>{
 
     const data = await response.json()
     if(data){
+        console.log(response)
         return data
     }else{
         return data.error

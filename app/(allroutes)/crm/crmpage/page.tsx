@@ -24,8 +24,9 @@ const AdminPage = () => {
     const [isModifying, setIsModifying] = useState<boolean>(false)
     const [isDeleting, setIsDeleting] = useState<boolean>(false)
     const [id, setId] = useState<string | any>('')
+    const [message, setMessage] = useState<string | any>(null)
     const [username, setUsername] = useState<string | any>(null)
-    const [reloadComponent, setReloadComponent] = useState<boolean>(false)
+  
 
 interface UserPayload {
   userid: string,
@@ -42,8 +43,12 @@ interface UserPayload {
     const handleGetClients = async ()=>{
        const response = await getClients()
        if (response.ok){
-        setClients(response.data)
-
+        const userClients = response.data
+        if (userClients > 0){
+        setClients(userClients)
+        console.log(userClients)
+        }
+        setMessage(response.message)
        }else{
         console.log(response.error)
        }
@@ -139,6 +144,9 @@ interface UserPayload {
     <CRMNavBar />
      </div>
     
+    {/* Message */}
+
+    <p className='text-center text-xl'>{message}</p>
      
     {/* Table */}
     <div className="overflow-x-auto table-container ">

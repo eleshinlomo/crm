@@ -32,8 +32,9 @@ export const PolicyAgreePopup = ()=>{
         justify-center items-center  text-black">
         
          <p>
-         We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, 
-         advertising and analytics partners.
+         We value your privacy
+         Websites use cookies all the time. GlobalLogic, a Hitachi Group Company uses it to make our websites secure, functional, and accessible (Necessary Cookies), to understand how you use our website to improve your experience (Analytics Cookies), and to present you with personalized content (Marketing Cookies - this includes reaching out to you through our campaigns). Also, the buttons “Share” and “Like” communicate with your social media accounts - this involves sharing some of your data for technical and security reasons with your social media. For more detailed information and to manage 
+         your preferences later, please see our Cookies Policy.
          </p>
          <Sheet>
             <SheetTrigger>

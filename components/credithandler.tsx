@@ -10,7 +10,6 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
   
     if(!sessionid) return
     try{
-    console.log(sessionid)
     const response: any = await fetch(`${BASE_URL}/getcredit/`, {
       method: 'GET',
       mode: 'cors',
