@@ -93,18 +93,17 @@ const FormSchema = z.object({
      setMessage("Server error! No response from server")
      setIsRegistering(false)
     }else{
-        if(response.message.ok === true){
-        setMessage(response.message.data)
+        if(response.ok === true){
+        setMessage(response.data)
         setIsRegistered(true)
         setIsRegistering(false)
-        console.log(response.message)
         setTimeout(()=>{
          router.push('/signinpage')
         }, 3000)
          
       }else{
-        setMessage(response.message.error)
-        console.log(response.message.error)
+        setMessage(response.error)
+        console.log(response.error)
         setIsRegistering(false)
       }
     }

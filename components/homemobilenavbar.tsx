@@ -30,24 +30,25 @@ export const HomeMobileNavBar = () => {
     
 
   //  Login Checker Handler
-  const handleLoginChecker = async ()=>{
-    try{
-    // Get sessionid and check validity
-    const usersessionid: any = await loginChecker()
-    setSessionid(usersessionid)
-    if (sessionid !== null || sessionid !== undefined || sessionid !== 'undefined'){
-    setUsername(localStorage.getItem('username'))
-    setIsLoggedIn(true)
-  }else{
-  setIsLoggedIn(false)
-  }
-    }
-    catch(err){
-      console.log(err)
+ //  Login Checker Handler
+ const handleLoginChecker = async ()=>{
+  try{
+  // Get sessionid and check validity
+  const session_id = localStorage.getItem('sessionid')
+  if (!session_id || session_id === null || session_id === 'undefined') throw new Error('Sessionid not found')
+  setSessionid(session_id)
+  const response = await loginChecker(sessionid)
+  if (response.ok){
+  setUsername(localStorage.getItem('username'))
+  setIsLoggedIn(true)
 }
+console.log(response.error)
+}
+catch(err){
+  console.log(err)
 
 }
-
+ }
 
 useEffect(()=>{
 handleLoginChecker()

@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react'
 import { getClients } from '@/components/(data)/crmdata'
 import {useRouter} from 'next/navigation'
 import { Button } from '@/components/ui/button'
-import { adminDeleteUser } from '@/components/crudfunctionsadmin'
+import { DeleteClient, ModifyClient} from '@/components/crudfunctionsadmin'
 import { adminModifyUser } from '@/components/crudfunctionsadmin'
 import { AddClientPage } from './addclientpage'
 import Link from 'next/link'
@@ -28,10 +28,16 @@ const AdminPage = () => {
     const [username, setUsername] = useState<string | any>(null)
   
 
-interface UserPayload {
+interface ClientPayloadProps {
   userid: string,
-  username: string,
-  company: string
+  company: string,
+  contact: string,
+  mobile: string,
+  phone: string,
+  followup: string,
+  address: string,
+  servicefee: string,
+  contractdoc: string
 }
 
 
@@ -48,7 +54,6 @@ interface UserPayload {
         if (userClients.length > 0){
         setClients(userClients)
         }else{
-        console.log(userClients.message)
         setMessage(userClients.message)
         }
        }else{
@@ -66,6 +71,8 @@ interface UserPayload {
     const { value } = e.target;
     setClients(prevClients =>
       prevClients.map(client => {
+
+        // Is modifying
         if (client.id === userId) {
           return { 
             ...client, 
@@ -73,7 +80,8 @@ interface UserPayload {
             isModifying: value === 'modify'
           };
         }
-
+         
+        // Is deleting
         if (client.id === userId) {
           return { 
             ...client, 
@@ -88,27 +96,44 @@ interface UserPayload {
   };
 
   // Modify User Handler
-  const handleModify = async (userId: any) => {
+  const handleModify = async (clientId: any) => {
   setIsModifying(true)
-  const user = clients.find((user) => user.id === userId); // Find the user object with the given userId
-  if (!user) return; // Return if user not found
-    const {id, username, company} = user 
+  const client = clients.find((client) => client.id === clientId); 
+  if (!client) return; // Return if client not found
+    const {
+      userid:id,
+      company,
+      contact,
+      mobile,
+      phone,
+      followup,
+      address,
+      servicefee,
+      contractdoc
 
-    const payload: UserPayload = {
+    } = client
+
+    const payload: ClientPayloadProps = {
         userid:id,
-        username,
-        company
+        company,
+        contact,
+        mobile,
+        phone,
+        followup,
+        address,
+        servicefee,
+        contractdoc
     }
-    const response: any = await adminModifyUser(payload)
+    const response: any = await ModifyClient(payload)
      setIsModifying(false)
      window.location.reload()
   };
 
   // Input Change Handler
-  const handleInputChange = (value: any, field: any, userId: any) => {
+  const handleInputChange = (value: any, field: any, clientId: any) => {
     setClients((prevClients) =>
       prevClients.map((client) => {
-        if (client.id === userId) {
+        if (client.id === clientId) {
           return {
             ...client,
             [field]: value,
@@ -122,7 +147,7 @@ interface UserPayload {
   // Handle User Delete
   const handleDelete = async (userid: any) => {
     setIsDeleting(true)
-    const response = await adminDeleteUser(userid)
+    const response = await DeleteClient(userid)
     setIsDeleting(false)
     window.location.reload()
   };
@@ -214,88 +239,98 @@ onClick={() => handleDelete(client.id)}
               
             {/* UserId */}
             <td className="px-2 py-2 border">{client.id}</td>
-            {/* Username */}
-            <td className="px-2 py-2 border">
-            {client.action ?
+
+              {/* Company */}
+              <td className="px-4 py-2 border">
+              {client.action ?
               <input value={client.company} 
-              onChange={(e)=>handleInputChange(e.target.value, 'username', client.id)}
+              onChange={(e)=>handleInputChange(e.target.value, 'company', client.id)}
               className={client.action === 'modify' ? 'bg-blue-500' : 'bg-red-500'}
               />
               : <div>{client.company}</div>
               }
               </td>
+
+              {/* Contact */}
               <td className="px-4 py-2 border">
-              {/* Company */}
               {client.action ?
               <input value={client.contact} 
-              onChange={(e)=>handleInputChange(e.target.value, 'company', client.id)}
+              onChange={(e)=>handleInputChange(e.target.value, 'contact', client.id)}
               className={client.action === 'modify' ? 'bg-blue-500' : 'bg-red-500'}
               />
               : <div>{client.contact}</div>
               }
               </td>
+             
+              {/* Email */}
               <td className="px-4 py-2 border">
               {client.action ?
               <input value={client.email} 
-              className={client.action === 'modify' ? 'bg-blue-500' :
-               'bg-red-500'}
+              onChange={(e)=>handleInputChange(e.target.value, 'email', client.id)}
+              className={client.action === 'modify' ? 'bg-blue-500' : 'bg-red-500'}
               />
               : <div>{client.email}</div>
               }
               </td>
 
+              
               {/* Mobile */}
               <td className="px-4 py-2 border">
               {client.action ?
               <input value={client.mobile} 
-              className={client.action === 'modify' ? 'bg-blue-500' : 
-              'bg-red-500'}
+              onChange={(e)=>handleInputChange(e.target.value, 'mobile', client.id)}
+              className={client.action === 'modify' ? 'bg-blue-500' : 'bg-red-500'}
               />
               : <div>{client.mobile}</div>
               }
               </td>
 
-              {/* Phone */}
-              <td className="px-4 py-2 border">
-              {client.action ?
-              <input value={client.phone} 
-              className={client.action === 'modify' ? 'bg-blue-500' : 
-              'bg-red-500'}
-              />
-              : <div>{client.phone}</div>
-              }
-              </td>
-
-              {/* Follow up */}
+              
+              {/* Followup */}
               <td className="px-4 py-2 border">
               {client.action ?
               <input value={client.followup} 
-              className={client.action === 'modify' ? 'bg-blue-500' : 
-              'bg-red-500'}
+              onChange={(e)=>handleInputChange(e.target.value, 'followup', client.id)}
+              className={client.action === 'modify' ? 'bg-blue-500' : 'bg-red-500'}
               />
               : <div>{client.followup}</div>
               }
               </td>
 
+              
+              {/* Phone */}
+              <td className="px-4 py-2 border">
+              {client.action ?
+              <input value={client.phone} 
+              onChange={(e)=>handleInputChange(e.target.value, 'phone', client.id)}
+              className={client.action === 'modify' ? 'bg-blue-500' : 'bg-red-500'}
+              />
+              : <div>{client.phone}</div>
+              }
+              </td>
+
+              
               {/* Address */}
               <td className="px-4 py-2 border">
               {client.action ?
               <input value={client.address} 
-              className={client.action === 'modify' ? 'bg-blue-500' : 
-              'bg-red-500'}
+              onChange={(e)=>handleInputChange(e.target.value, 'address', client.id)}
+              className={client.action === 'modify' ? 'bg-blue-500' : 'bg-red-500'}
               />
               : <div>{client.address}</div>
               }
               </td>
 
-              {/* Service fee */}
+              
+
+              {/* Contract Rate */}
               <td className="px-4 py-2 border">
               {client.action ?
-              <input value={client.servicefee} 
-              className={client.action === 'modify' ? 'bg-blue-500' : 
-              'bg-red-500'}
+              <input value={client.contractrate} 
+              onChange={(e)=>handleInputChange(e.target.value, 'contractrate', client.id)}
+              className={client.action === 'modify' ? 'bg-blue-500' : 'bg-red-500'}
               />
-              : <div>{client.servicefee}</div>
+              : <div>{client.contractrate}</div>
               }
               </td>
 
@@ -304,7 +339,7 @@ onClick={() => handleDelete(client.id)}
               {client.action ?
               <input value={client.servicedoc} 
               className={client.action === 'modify' ? 'bg-blue-500' : 
-              'bg-red-500'}
+              'bg-red-500'} type='file'
               />
               : <div>{client.servicedoc}</div>
               }

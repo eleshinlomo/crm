@@ -62,15 +62,18 @@ const AllRoutesLayout = ({
         try{
         setIsChecking(true)
         // Get sessionid and check validity
-        const response = await loginChecker()
-        if (response.message.ok){
+        const session_id = localStorage.getItem('sessionid')
+        if (!session_id || session_id === null || session_id === 'undefined') throw new Error('Sessionid not found')
+        setSessionid(session_id)
+        const response = await loginChecker(sessionid)
+        if (response.ok){
         setCurrentUser(response)
         setIsChecking(false)
         setUsername(localStorage.getItem('username'))
         setIsLoggedIn(true)
         await creditHandler()
     }
-     console.log(response.message.error)
+     console.log(response.error)
     }
     catch(err){
         console.log(err)

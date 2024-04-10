@@ -163,9 +163,9 @@ catch(error: any){
      
      {/* Form starts */}
     <div className='  md:fixed  z-40  md:left-52
-     bg-gray-800 text-white   px-8 py-2 mt-3'>
+     bg-blue-900 text-white   px-8 py-2 mt-3'>
       <div className='text-center'>
-    <p className='font-extrabold text-xl px-4 py-4 text-red-300'>{message}</p>
+    <p className='font-extrabold text-xl px-4 py-4 text-white'>{message}</p>
       
     </div>
     <Form {...form}>
@@ -372,8 +372,8 @@ catch(error: any){
           </div>:null
           }
 
-        <Button type="submit" className='bg-black/80 hover:bg-black/80
-        py-2 hover:bg-gray-500 rounded-2xl'>ADD CLIENT</Button>
+        <Button type="submit" className='bg-blue-700 hover:bg-blue-700
+        py-2  rounded-2xl shadow-2xl'>ADD CLIENT</Button>
       </form>
     </Form>
     </div>

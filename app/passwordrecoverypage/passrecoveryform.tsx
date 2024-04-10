@@ -32,7 +32,7 @@ const PASSWORD_RESET_URL = process.env.NEXT_PUBLIC_PASS_RESET_URL
 
 export const SignInForm = ()=>{
 
-const [message, setMessage] = useState<string | any>('Sign in with Email')
+const [message, setMessage] = useState<string | any>('Recover password')
 const [isRegistered, setIsRegistered] = useState<boolean>(false)
 const [isSiginingIn, setIsSigningIn] = useState(false)
 
@@ -140,7 +140,7 @@ const FormSchema = z.object({
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Enter your email</FormLabel>
               <FormControl>
                 <Input placeholder="Email" {...field} type='text' 
                 className='text-black font-semibold' autoComplete = "none"  />
@@ -154,31 +154,13 @@ const FormSchema = z.object({
           )}
         />
 
-{/* Password */}
-<FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input placeholder="Password" {...field} type='password' 
-                className='text-black font-semibold' autoComplete = "none" />
-              </FormControl>
-              
-              <FormDescription>
-                Case sensitive.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+
 
         </div>
 
        <div className="flex gap-2 py-8">
-                <a href='/passwordrecoverypage'>
-                  <p className="mt-1 text-blue-200">Forgot Password?</p>
+                <a href={PASSWORD_RESET_URL}>
+                  <p className="mt-1 text-blue-200">Registered?</p>
                   </a>
                 <Button type='submit' className='bg-gray-500 hover:bg-gray-500'>
                     Sign In

@@ -64,9 +64,8 @@ return null
 
 
  // Login Checker
- export const loginChecker =  async ()=>{
+ export const loginChecker =  async (sessionid: string)=>{
   
-  const sessionid = localStorage.getItem('sessionid')
   const payload: any = sessionid
   const response: any = await fetch(`${BASE_URL}/loginchecker/`, {
       method: 'GET',
@@ -80,7 +79,7 @@ return null
 
   if (!response) throw new Error('Server not responding')
   const data: any = await response.json()
-  if (data.message.ok){
+  if (data.ok){
       return data
   }else{
   return response
@@ -103,7 +102,7 @@ return null
     })
     if (! response) throw new Error('Server error')
     const data = await response.json()
-    if (data.message.ok){
+    if (data.ok){
     console.log(data)
     localStorage.removeItem('username')
     localStorage.removeItem('userid')
@@ -112,10 +111,10 @@ return null
     localStorage.removeItem('company')
     localStorage.removeItem('email')
     window.location.href=`/`
-    return data.message.data
+    return data
    }else{
-    console.log(data.message.error)
-    return data.message.error
+    console.log(response.error)
+    return response
    }
     
     }

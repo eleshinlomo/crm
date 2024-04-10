@@ -4,7 +4,7 @@ import {Button} from '@/components/ui/button'
 import { userLogout } from '@/components/auth'
 import {useState, useEffect} from 'react'
 import { MenuIcon } from 'lucide-react'
-import AdminNavButtons from './adminnavbuttons'
+import AdminNavButtons from './crmnavbuttons'
 
 const CRMNavBar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
