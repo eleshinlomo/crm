@@ -48,7 +48,7 @@ const FormSchema = z.object({
     }),
 
     email: z.string().min(2, {
-      message: " Email must be at least 2 characters.",
+      message: " You must enter an email.",
     }),
     
   
@@ -158,17 +158,23 @@ const FormSchema = z.object({
 
         </div>
 
-       <div className="flex gap-2 py-8">
+        <Button type='submit' className='bg-gray-500 mb-3 hover:bg-gray-500'>
+                    Recover Password
+          </Button>
+
+      
+          
+      </form>
+    </Form>
+
+    <div className="flex gap-2 py-8">
                 <a href={PASSWORD_RESET_URL}>
-                  <p className="mt-1 text-blue-200">Registered?</p>
+                  <p className="mt-1">Registered?</p>
                   </a>
                 <Button type='submit' className='bg-gray-500 hover:bg-gray-500'>
                     Sign In
                     </Button>
               </div>
-          
-      </form>
-    </Form>
     
     </div>
   )
