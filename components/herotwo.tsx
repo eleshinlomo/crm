@@ -69,7 +69,7 @@ className=" text-white bg-blue-500 rounded-2xl"
   ><Link href='/signuppage'>START FREE TRIAL</Link></Button>
 <Button variant='outline' size='sm'
 className=" text-white bg-blue-500 rounded-2xl" 
-  ><Link href='/dashboard/dashboardpage'>SIGN IN</Link></Button>
+  ><Link href='/dashboard/dashboardpage'>DASHBOARD</Link></Button>
 </div> 
 </div>
  

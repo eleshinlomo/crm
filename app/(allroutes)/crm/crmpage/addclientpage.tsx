@@ -45,7 +45,7 @@ const router = useRouter()
 
 
 const FormSchema = z.object({
-  company: z.string().min(2, {
+  company: z.string().min(0, {
     message: "Company name must be at least 2 characters.",
   }),
 
@@ -226,7 +226,7 @@ catch(error: any){
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email(Optional)</FormLabel>
+              <FormLabel>Email</FormLabel>
               <FormControl>
                 <Input placeholder="Email" {...field}
                 className='text-black font-semibold' autoComplete='none'
