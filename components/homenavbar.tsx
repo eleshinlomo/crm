@@ -61,7 +61,10 @@ const handleLoginChecker = async ()=>{
   try{
   setIsChecking(true)
   // Get sessionid and check validity
-  const user = await loginChecker()
+  const session_id = localStorage.getItem('sessionid')
+  if (!session_id || session_id === null || session_id === 'undefined') throw new Error('Sessionid not found')
+  setSessionid(session_id)
+  const user = await loginChecker(sessionid)
   const {username} = user
   setUsername(username)
   setIsChecking(false)
