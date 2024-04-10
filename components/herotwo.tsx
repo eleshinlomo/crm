@@ -66,10 +66,10 @@ With intuitive interfaces and powerful features,
 <div className="flex flex-col md:flex-row pt-8 gap-3 ">
 <Button variant='outline' size='sm'
 className=" text-white bg-blue-500 rounded-2xl" 
-  ><Link href='/signinpage'>START FREE TRIAL</Link></Button>
+  ><Link href='/signuppage'>START FREE TRIAL</Link></Button>
 <Button variant='outline' size='sm'
 className=" text-white bg-blue-500 rounded-2xl" 
-  ><Link href='/dashboard/dashboardpage'>DASHBOARD</Link></Button>
+  ><Link href='/dashboard/dashboardpage'>SIGN IN</Link></Button>
 </div> 
 </div>
  
