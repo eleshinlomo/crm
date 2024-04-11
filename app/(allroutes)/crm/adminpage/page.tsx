@@ -19,10 +19,10 @@ const AdminPage = () => {
 
     const [users, setUsers] = useState<Array<any | null>>([])
     const [isAddingUser, setIsAddingUser] = useState<boolean>(false)
+    const [isSuperUser, setIsSuperUser] = useState<boolean>(false)
     const [modify, setModify] = useState<boolean>(false)
     const [isModifying, setIsModifying] = useState<boolean>(false)
     const [isDeleting, setIsDeleting] = useState<boolean>(false)
-    const [id, setId] = useState<string | any>('')
     const [username, setUsername] = useState<string | any>(null)
     const [reloadComponent, setReloadComponent] = useState<boolean>(false)
 
@@ -43,9 +43,22 @@ interface UserPayload {
 
        const response = await getAllUsers()
        if (response.message.ok){
-        console.log(response)
-        setUsers(response.message.data)
+        
+       const users = response.message.data
+      //  Check if current User is a Superuser
+       const userId = localStorage.getItem('userid')
+       
+        users.forEach((user: any)=>{
+          if (user.is_superuser){
+          setIsSuperUser(true)
+        }  
+        })
+        
+          
+          setUsers(users)
+          setUsername(localStorage.getItem('username'))
 
+        
        }else{
         console.log(response.message)
        }
@@ -127,9 +140,12 @@ interface UserPayload {
 
   return (
     <div className=''>
-
+    
+    {isSuperUser ?
+    <div>
    <p className="text-center bg-clip-text text-2xl py-4 font-extrabold">
-    ADMIN PAGE</p>
+    ADMIN SUPER USER PAGE</p>
+    <p className='text-center font-extrabold'>Current User: {username? username.toUpperCase(): null}</p>
    <div className="text-center bg-clip-text text-xl py-1 font-extrabold">
     {users.length > 0 ? 
     <p>Total Contractors/Employees:
@@ -334,6 +350,22 @@ onClick={() => handleDelete(user.id)}
 `}</style>
 
     </div>
+
+    </div>:
+
+    // Not a Super User
+
+    <div>
+      <p>You are not a Super user</p>
+
+      <div className='md: flex gap-2 px-2'>
+      <Button><Link href='/'>Home</Link></Button>
+      <Button><Link href='/dashboard/dashboardpage'>Dashboard</Link></Button>
+      </div>
+    </div>
+}
+
+
     </div>
   );
 }

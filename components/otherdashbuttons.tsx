@@ -28,20 +28,6 @@ export const OtherDashButtons = () => {
             {isOpen?<ArrowBigRight /> : <ArrowBigDown/>}
             </Button>
         </div>
-        
-        {/* Todo button */}
-        <div className='px-2 w-auto flex flex-col justify-center items-center'>
-          <Button className='w-full flex flex-1 justify-between'
-          onClick={()=>{
-            setIsOpen(!isOpen); 
-            router.push('/dashboard/todolistpage')
-            pathname   ? pathname : null
-          }}
-          >
-             To Do
-            {isOpen?<ArrowBigRight /> : <ArrowBigDown/>}
-            </Button>
-        </div>
 
         {/* Credit topup button */}
         <div className='px-2 w-auto flex flex-col justify-center items-center'>
@@ -57,30 +43,12 @@ export const OtherDashButtons = () => {
             </Button>
         </div>
 
-       
-
-         
-
-         {/* Employee's page button */}
-         {/* <div className='px-2'>
-          <Button className='w-full flex justify-between'
+        {/* Admin */}
+        {/* <div className='px-2 w-auto flex flex-col justify-center items-center'>
+          <Button className='w-full flex flex-1 justify-between'
           onClick={()=>{
             setIsOpen(!isOpen); 
-            router.push('/employeepage')
-            pathname    ? pathname : null
-          }}
-          >
-             Employee&apos;s Page
-            {isOpen?<ArrowBigRight /> : <ArrowBigDown/>}
-            </Button>
-        </div> */}
-
-         {/* Admin button */}
-         {/* <div className='px-2'>
-          <Button className='w-full flex justify-between'
-          onClick={()=>{
-            setIsOpen(!isOpen); 
-            router.push('/adminpage')
+            router.push('/crm/adminpage')
             pathname   ? pathname : null
           }}
           >
@@ -88,6 +56,22 @@ export const OtherDashButtons = () => {
             {isOpen?<ArrowBigRight /> : <ArrowBigDown/>}
             </Button>
         </div> */}
+
+        {/* Todo button */}
+        <div className='px-2 w-auto flex flex-col justify-center items-center'>
+          <Button className='w-full flex flex-1 justify-between'
+          onClick={()=>{
+            setIsOpen(!isOpen); 
+            router.push('/dashboard/todolistpage')
+            pathname   ? pathname : null
+          }}
+          >
+             To Do
+            {isOpen?<ArrowBigRight /> : <ArrowBigDown/>}
+            </Button>
+        </div>
+
+       
 
     </div>
   )

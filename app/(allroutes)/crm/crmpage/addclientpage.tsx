@@ -162,20 +162,19 @@ catch(error: any){
      
      
      {/* Form starts */}
-    <div className='  md:fixed  z-40  md:left-52
-     bg-blue-900 text-white   px-8 py-2 mt-3'>
+    <div className='  md:fixed  z-40  md:left-52 bg-gradient-to-br
+     from-blue-400 via-black to-gray-600 text-white   px-8 py-2 mt-3'>
       <div className='text-center'>
     <p className='font-extrabold text-xl px-4 py-4 text-white'>{message}</p>
       
     </div>
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} 
-      className=" flex flex-col 
-          w-full "
+      className=" "
           autoComplete='off'
           >
-         <div className=' grid grid-flow-row md:grid-cols-3 gap-3 
-         shadow-xl px-4 py-4 font-extrabold '>
+         <div className=' grid grid-flow-row md:grid-cols-2 gap-3 
+          px-4 py-4 font-extrabold '>
 
 
         {/* Company */}
@@ -228,7 +227,7 @@ catch(error: any){
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="Email" {...field}
+                <Input placeholder="Email" {...field} type='email'
                 className='text-black font-semibold' autoComplete='none'
                  />
               </FormControl>
@@ -301,36 +300,15 @@ catch(error: any){
           )}
         />
 
-        {/* contact */}
+        {/* Service Fee */}
         <FormField
           control={form.control}
           name="servicefee"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Service Fee(%)</FormLabel>
+              <FormLabel>Service Fee</FormLabel>
               <FormControl>
                 <Input placeholder="Service Fee" {...field}
-                className='text-black font-semibold' autoComplete='none'
-                 />
-              </FormControl>
-              
-              <FormDescription>
-                
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* contract */}
-        <FormField
-          control={form.control}
-          name="contractdoc"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Contract document(Optional)</FormLabel>
-              <FormControl>
-                <Input placeholder="Contract Document" {...field}
                 className='text-black font-semibold' autoComplete='none'
                  />
               </FormControl>
@@ -361,19 +339,50 @@ catch(error: any){
               </FormDescription>
               <FormMessage />
             </FormItem>
+
+            
           )}
         />
+         
+         
+        {/* Doc */}
+        <FormField
+          control={form.control}
+          name="contractdoc"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Contract Document(Optional)</FormLabel>
+              <FormControl>
+                <Input placeholder="Follow up" {...field} type='file'
+                className='text-black font-semibold' autoComplete='none'
+                 />
+              </FormControl>
+              
+              <FormDescription>
+                
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
 
+            
+          )}
+        />
+        
+      
+        
+
+        <Button type="submit" className='bg-blue-700 hover:bg-blue-700
+        py-2  rounded-2xl shadow-2xl'>ADD CLIENT</Button>
+        
         </div>
-
+        
         {isAddingClient?
           <div className='text-center'>
             {'Adding client...'}
           </div>:null
           }
 
-        <Button type="submit" className='bg-blue-700 hover:bg-blue-700
-        py-2  rounded-2xl shadow-2xl'>ADD CLIENT</Button>
+        
       </form>
     </Form>
     </div>

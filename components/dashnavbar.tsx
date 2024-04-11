@@ -54,9 +54,10 @@ const handleToggle = ()=>{
   return (
     <div className="flex flex-col px-2 bg-black text-white pb-2">
       {/* Mobile */}
-      <div className='relative flex flex-1 justify-between w-full'>
+      
+      <div className='relative flex  justify-between '>
         <DashMobileSidebar />
-
+         
         <CreditPage />
 
         <div className=''>
@@ -64,11 +65,13 @@ const handleToggle = ()=>{
           <Button size='icon' className='h-6 w-6 mt-5 mr-3' onClick={handleToggle}>
           <UserAvatar  />
           </Button>
+          
            
 
            {/* User Profile */}
            {isOpen?
           <div>
+            
 
             <div className='absolute right-6 bg-black text-white 
              flex flex-col

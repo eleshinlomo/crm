@@ -1,5 +1,5 @@
 
-
+// Admin CRUD
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
 interface AdminUserPayloadProps {
@@ -32,8 +32,8 @@ interface AdminUserPayloadProps {
     if(dataResponse){
         return dataResponse
     }else{
-      console.log(dataResponse.message.error)
-      return dataResponse.message.error
+      console.log(dataResponse.error)
+      return dataResponse.error
     }
   }
   catch(err: any){
@@ -75,12 +75,13 @@ interface AdminUserPayloadProps {
   }
 
 
-  
+// CLIENT CRUD
 
 interface ClientPayloadProps {
-  userid: string,
+  clientid: string,
   company: string,
   contact: string,
+  email: string,
   mobile: string,
   phone: string,
   followup: string,
@@ -88,70 +89,70 @@ interface ClientPayloadProps {
   servicefee: string,
   contractdoc: string
 }
+// Client Delete
+export const deleteClient = async (clientid: string)=>{
 
-  export const DeleteClient = async (userid: string)=>{
+  const sessionid = localStorage.getItem('sessionid')
 
-    const sessionid = localStorage.getItem('sessionid')
+  if(!clientid) return
+  try{
   
-    if(!userid) return
-    try{
-    
-    const response: any = await fetch(`${BASE_URL}/admindeleteuser/`, {
-      method: 'POST',
-      mode: 'cors',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
+  const response: any = await fetch(`${BASE_URL}/deleteclient/`, {
+    method: 'POST',
+    mode: 'cors',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+
+    },
+    body: JSON.stringify({clientid})
+  })
+  if(!response)throw new Error("No response from server")
+  const dataResponse = await response.json()
+  if(dataResponse){
+      return dataResponse
+  }else{
+    console.log(dataResponse.error)
+    return dataResponse.error
+  }
+}
+catch(err: any){
+  console.log(err)
+}
+}
+
+
+//   Client Modify
+export const modifyClient = async (payload: ClientPayloadProps)=>{
+
+  const sessionid = localStorage.getItem('sessionid')
+   const {clientid} = payload
+  if(!clientid) return
+  try{
   
-      },
-      body: JSON.stringify({userid})
-    })
-    if(!response)throw new Error("No response from server")
-    const dataResponse = await response.json()
-    if(dataResponse){
-        return dataResponse
-    }else{
-      console.log(dataResponse.message.error)
-      return dataResponse.message.error
-    }
-  }
-  catch(err: any){
-    console.log(err)
-  }
-  }
+  const response: any = await fetch(`${BASE_URL}/modifyclient/`, {
+    method: 'POST',
+    mode: 'cors',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
 
-
-//    Modify Client
-  export const ModifyClient = async (payload: ClientPayloadProps)=>{
-
-    const sessionid = localStorage.getItem('sessionid')
-     const {userid} = payload
-    if(!userid) return
-    try{
-    
-    const response: any = await fetch(`${BASE_URL}/adminmodifyuser/`, {
-      method: 'POST',
-      mode: 'cors',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-  
-      },
-      body: JSON.stringify(payload)
-    })
-    if(!response)throw new Error("No response from server")
-    const dataResponse = await response.json()
-    if(dataResponse){
-        return dataResponse
-    }else{
-      console.log(response)
-      return response
-    }
+    },
+    body: JSON.stringify(payload)
+  })
+  if(!response)throw new Error("No response from server")
+  const dataResponse = await response.json()
+  if(dataResponse){
+      return dataResponse
+  }else{
+    console.log(dataResponse.error)
+    return dataResponse.error
   }
-  catch(err: any){
-    console.log(err)
-  }
-  }
+}
+catch(err: any){
+  console.log(err)
+}
+}
 
  
 

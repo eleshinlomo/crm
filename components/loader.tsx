@@ -4,7 +4,7 @@ export const Loader = ()=>{
 return (
     <div className="h-full text-center flex flex-col flex-1 gap-y-4 
     items-center justify-center">
-        <div className='w-10 h-10 relative animate-spin '>
+        <div className='w-5 h-5 relative animate-spin '>
             <Image
             alt= 'Loading' 
             fill

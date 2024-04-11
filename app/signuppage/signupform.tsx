@@ -24,7 +24,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
 
 
-const registering = (<div className='relative w-24 h-24'>
+const registering = (<div className='relative w-10 h-10 '>
   <Image src={SpinnerOne} alt='spinner' fill/></div>)
 
 export const SignUpForm = ()=>{
@@ -123,16 +123,17 @@ catch(error: any){
     <div className='overflow-hidden flex flex-col justify-center
       items-center w-full'>
      
+     {isRegistering?
+          <div>
+            Verifying credentials...
+          </div>:null
+          }
      
      <div className='text-center  pt-4 flex flex-col justify-center 
      items-center '>
         <p className='font-extrabold text-xl px-4 '>{message}</p>
         
-          {isRegistering?
-          <div>
-            {registering}
-          </div>:null
-          }
+         
         
     </div>
      

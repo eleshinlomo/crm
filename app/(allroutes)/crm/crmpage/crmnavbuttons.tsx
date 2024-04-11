@@ -15,15 +15,15 @@ const AdminNavButtons = () => {
     <Button className='rounded-2xl'><Link href={`/dashboard/dashboardpage`} >
       Dashboard</Link></Button>
     <Button className='rounded-2xl'>
-      <Link href='/crm/adminpage/adminanalyticspage'>Analytics</Link></Button>
+      <Link href=''>Analytics</Link></Button>
     <Button className='rounded-2xl'>
-      <Link href='/crm/adminpage/adminexpensespage'>Expenses</Link></Button>
+      <Link href=''>Expenses</Link></Button>
     <Button onClick={userLogout} className='rounded-2xl'>Logout</Button>
     {/* Add User */}
     {isAddingUser ?
      <div className='w-full'>
     <Button onClick={(e)=>setIsAddingUser(false)} 
-    className='rounded-2xl w-full bg-red-500 hover:bg-red-500'>Close</Button>
+    className='rounded-2xl w-full bg-blue-500 hover:bg-blue-500'>Close</Button>
      <AddClientPage />
      </div>:
      <div>

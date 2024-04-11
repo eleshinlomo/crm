@@ -3,8 +3,8 @@ import {useState, useEffect} from 'react'
 import { getClients } from '@/components/(data)/crmdata'
 import {useRouter} from 'next/navigation'
 import { Button } from '@/components/ui/button'
-import { DeleteClient, ModifyClient} from '@/components/crudfunctionsadmin'
-import { adminModifyUser } from '@/components/crudfunctionsadmin'
+import { deleteClient } from '@/components/crudfunctionsadmin'
+import { modifyClient } from '@/components/crudfunctionsadmin'
 import { AddClientPage } from './addclientpage'
 import Link from 'next/link'
 import CRMNavBar from './crmnavbar'
@@ -23,15 +23,15 @@ const AdminPage = () => {
     const [modify, setModify] = useState<boolean>(false)
     const [isModifying, setIsModifying] = useState<boolean>(false)
     const [isDeleting, setIsDeleting] = useState<boolean>(false)
-    const [id, setId] = useState<string | any>('')
     const [message, setMessage] = useState<string | any>(null)
     const [username, setUsername] = useState<string | any>(null)
   
 
 interface ClientPayloadProps {
-  userid: string,
+  clientid: string,
   company: string,
   contact: string,
+  email: string,
   mobile: string,
   phone: string,
   followup: string,
@@ -50,14 +50,12 @@ interface ClientPayloadProps {
        const response = await getClients()
        if (response.ok){
 
-        const userClients = await response.data
-        if (userClients.length > 0){
-        setClients(userClients)
-        }else{
-        setMessage(userClients.message)
-        }
+        const listOfClients = await response.data
+        setClients(listOfClients)
+        
        }else{
         console.log(response.error)
+        setMessage(response.error)
        }
       }
     
@@ -67,13 +65,13 @@ interface ClientPayloadProps {
   }, [])
 
 
-  const handleActionChange = (e: any, userId: any) => {
+  const handleActionChange = (e: any, clientId: any) => {
     const { value } = e.target;
     setClients(prevClients =>
       prevClients.map(client => {
 
         // Is modifying
-        if (client.id === userId) {
+        if (client.id === clientId) {
           return { 
             ...client, 
             action: value, 
@@ -82,7 +80,7 @@ interface ClientPayloadProps {
         }
          
         // Is deleting
-        if (client.id === userId) {
+        if (client.id === clientId) {
           return { 
             ...client, 
             action: value, 
@@ -95,15 +93,16 @@ interface ClientPayloadProps {
     );
   };
 
-  // Modify User Handler
+  // Modify Client Handler
   const handleModify = async (clientId: any) => {
   setIsModifying(true)
   const client = clients.find((client) => client.id === clientId); 
   if (!client) return; // Return if client not found
     const {
-      userid:id,
+      id,
       company,
       contact,
+      email,
       mobile,
       phone,
       followup,
@@ -112,21 +111,23 @@ interface ClientPayloadProps {
       contractdoc
 
     } = client
-
+    const tempdoc = 'Undefined'
     const payload: ClientPayloadProps = {
-        userid:id,
+        clientid:id,
         company,
         contact,
+        email,
         mobile,
         phone,
         followup,
         address,
         servicefee,
-        contractdoc
+        contractdoc: tempdoc
     }
-    const response: any = await ModifyClient(payload)
+    const response: any = await modifyClient(payload)
+    console.log(response)
      setIsModifying(false)
-     window.location.reload()
+     
   };
 
   // Input Change Handler
@@ -147,7 +148,7 @@ interface ClientPayloadProps {
   // Handle User Delete
   const handleDelete = async (userid: any) => {
     setIsDeleting(true)
-    const response = await DeleteClient(userid)
+    const response = await deleteClient(userid)
     setIsDeleting(false)
     window.location.reload()
   };
@@ -156,10 +157,13 @@ interface ClientPayloadProps {
   return (
     <div className=''>
 
+   
+
+    <div>
    <p className="text-center bg-clip-text text-2xl py-4 font-extrabold">
      BUSINESS DEVELOPMENT PAGE</p>
    <div className="text-center bg-clip-text text-xl py-1 font-extrabold">
-    {clients.length > 0 ? 
+    {clients && clients.length > 0 ? 
     <p>Total Clients:
     {clients.length}</p>
     :null
@@ -175,8 +179,15 @@ interface ClientPayloadProps {
 
     <p className='text-center text-xl'>{message}</p>
      
-    {/* Table */}
+    
+    
+      
     <div className="overflow-x-auto table-container ">
+
+    {/* Table */}
+    {clients && clients.length > 0 ?
+    <div>
+
       <table className="table-auto w-full border-collapse border">
         <thead>
           <tr className="text-white">
@@ -285,6 +296,18 @@ onClick={() => handleDelete(client.id)}
               }
               </td>
 
+               
+              {/* Phone */}
+              <td className="px-4 py-2 border">
+              {client.action ?
+              <input value={client.phone} 
+              onChange={(e)=>handleInputChange(e.target.value, 'phone', client.id)}
+              className={client.action === 'modify' ? 'bg-blue-500' : 'bg-red-500'}
+              />
+              : <div>{client.phone}</div>
+              }
+              </td>
+
               
               {/* Followup */}
               <td className="px-4 py-2 border">
@@ -294,18 +317,6 @@ onClick={() => handleDelete(client.id)}
               className={client.action === 'modify' ? 'bg-blue-500' : 'bg-red-500'}
               />
               : <div>{client.followup}</div>
-              }
-              </td>
-
-              
-              {/* Phone */}
-              <td className="px-4 py-2 border">
-              {client.action ?
-              <input value={client.phone} 
-              onChange={(e)=>handleInputChange(e.target.value, 'phone', client.id)}
-              className={client.action === 'modify' ? 'bg-blue-500' : 'bg-red-500'}
-              />
-              : <div>{client.phone}</div>
               }
               </td>
 
@@ -326,11 +337,11 @@ onClick={() => handleDelete(client.id)}
               {/* Contract Rate */}
               <td className="px-4 py-2 border">
               {client.action ?
-              <input value={client.contractrate} 
-              onChange={(e)=>handleInputChange(e.target.value, 'contractrate', client.id)}
+              <input value={client.servicefee} 
+              onChange={(e)=>handleInputChange(e.target.value, 'servicefee', client.id)}
               className={client.action === 'modify' ? 'bg-blue-500' : 'bg-red-500'}
               />
-              : <div>{client.contractrate}</div>
+              : <div>{client.servicefee}</div>
               }
               </td>
 
@@ -351,6 +362,14 @@ onClick={() => handleDelete(client.id)}
         ))}
 
       </table>
+
+      </div>: 
+      <div className='text-center font-extrabold text-lg'>
+        <p>You have not added any Client</p>
+        
+      </div>
+        }
+      
 
 {/* Custom scrollbar */}
 <style jsx>{`
@@ -384,8 +403,10 @@ onClick={() => handleDelete(client.id)}
     background: #555;
   }
 `}</style>
-
     </div>
+
+
+   </div>
     </div>
   );
 }
