@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input"
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { SpinnerOne } from '@/components/spinner'
+import RefreshComponent  from '@/components/pagereferesher'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
@@ -28,8 +29,8 @@ const registering = (<div className='relative w-24 h-24'>
   <Image src={SpinnerOne} alt='spinner' fill/></div>)
 
 
-interface OnUserAdded {
-   onUserAdded: () => void
+interface AddClientProps {
+   count: number
 }
 
 export const AddClientPage = ()=>{
@@ -39,6 +40,7 @@ const [isRegistered, setIsRegistered] = useState<boolean>(false)
 const [isAddingClient, setIsAddingClient] = useState<boolean>(false)
 const [usersource, setUsersource] = useState<string | any>('Fixupe')
 const [reloadComponent, setReloadComponent] = useState<boolean>(false)
+const [count, setCount] = useState<number>(0)
 
 // Router
 const router = useRouter()
@@ -100,6 +102,9 @@ const FormSchema = z.object({
 
   })
 
+
+  
+
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
     
     try{
@@ -127,6 +132,7 @@ const FormSchema = z.object({
         console.log(response.data)
         setMessage(response.data)
         window.location.reload()
+        
      
       }else{
         setMessage(response.error)
@@ -142,8 +148,11 @@ catch(error: any){
 }finally{
   setIsAddingClient(false)
 }
-
   }
+
+  
+
+ 
 
   return (
 
@@ -162,18 +171,20 @@ catch(error: any){
      
      
      {/* Form starts */}
-    <div className='  md:fixed  z-40  md:left-52 bg-gradient-to-br
-     from-blue-400 via-black to-gray-600 text-white   px-8 py-2 mt-3'>
-      <div className='text-center'>
-    <p className='font-extrabold text-xl px-4 py-4 text-white'>{message}</p>
+    <div className='  md:fixed md:right-6 md:mr-3  z-50   bg-gradient-to-br
+     from-blue-400 via-black to-gray-600 text-white   
+     px-8 py-2 mt-3 flex flex-col justify-center items-center'>
       
-    </div>
+    <p className='text-center font-extrabold text-xl 
+    px-4 py-4 text-white'>{message}</p>
+      
+  
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} 
       className=" "
           autoComplete='off'
           >
-         <div className=' grid grid-flow-row md:grid-cols-2 gap-3 
+         <div className=' grid grid-flow-row md:grid-cols-3 gap-3 
           px-4 py-4 font-extrabold '>
 
 
@@ -371,9 +382,7 @@ catch(error: any){
       
         
 
-        <Button type="submit" className='bg-blue-700 hover:bg-blue-700
-        py-2  rounded-2xl shadow-2xl'>ADD CLIENT</Button>
-        
+       
         </div>
         
         {isAddingClient?
@@ -381,7 +390,12 @@ catch(error: any){
             {'Adding client...'}
           </div>:null
           }
-
+       
+       <div className='flex justify-center items-center'>
+       <Button type="submit" className='bg-blue-700 hover:bg-blue-700
+        py-2  rounded-2xl shadow-2xl '>ADD CLIENT</Button>
+        </div>
+        
         
       </form>
     </Form>

@@ -127,6 +127,7 @@ interface ClientPayloadProps {
     const response: any = await modifyClient(payload)
     console.log(response)
      setIsModifying(false)
+     window.location.reload()
      
   };
 
@@ -200,7 +201,7 @@ interface ClientPayloadProps {
             <th className="px-4 py-2 bg-gray-800 border">Phone</th>
             <th className="px-4 py-2 bg-gray-800 border">Follow up</th>
             <th className="px-4 py-2 bg-gray-800 border">Address</th>
-            <th className="px-4 py-2 bg-gray-800 border">Contract Rate</th>
+            <th className="px-4 py-2 bg-gray-800 border">Service Fee</th>
             <th className="px-4 py-2 bg-gray-800 border">Contract Doc</th>
           
           </tr>
@@ -221,7 +222,6 @@ interface ClientPayloadProps {
                   <option value="">Select Action</option>
                   <option value="modify">Modify</option>
                   <option value="delete">Delete</option>
-                  <option value="delete">Send Email</option>
                 </select>
 
     {/* Modify Button */}
