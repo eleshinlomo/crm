@@ -199,7 +199,7 @@ useEffect(()=>{
 
             <p className='py-1'>
               <span className='text-red-600 font-extrabold mr-2'>AI ALERT!</span> 
-              Please follow up with contact at Facebook. Your last interraction was...</p>
+              Please follow up with the contact at Facebook. Your last interraction was...</p>
           </div>
            
            {/* Message */}
