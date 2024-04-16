@@ -123,11 +123,7 @@ catch(error: any){
     <div className='overflow-hidden flex flex-col justify-center
       items-center w-full'>
      
-     {isRegistering?
-          <div>
-            Verifying credentials...
-          </div>:null
-          }
+     
      
      <div className='text-center  pt-4 flex flex-col justify-center 
      items-center '>
@@ -156,8 +152,10 @@ catch(error: any){
             <FormItem>
               <FormLabel>Company</FormLabel>
               <FormControl>
-                <Input placeholder="Company name" {...field} 
-                className='text-black font-semibold' autoComplete='none' />
+                <Input placeholder="Company name" {...field} type='text'
+                className='border-0 outline-none 
+                focus=visible:ring-transparent text-black
+                focus-visible:ring-0' autoComplete='none' />
               </FormControl>
               
               <FormDescription>
@@ -176,8 +174,10 @@ catch(error: any){
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="Email" {...field}
-                className='text-black font-semibold' autoComplete='none'
+                <Input placeholder="Email" {...field} type='text'
+                className='border-0 outline-none 
+                focus=visible:ring-transparent text-black
+                focus-visible:ring-0' autoComplete='none'
                  />
               </FormControl>
               
@@ -200,8 +200,10 @@ catch(error: any){
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="Username" {...field}
-                className='text-black font-semibold' autoComplete='none'
+                <Input placeholder="Username" {...field} type='text'
+                className='border-0 outline-none 
+                focus=visible:ring-transparent text-black
+                focus-visible:ring-0' autoComplete='none'
                  />
               </FormControl>
               
@@ -222,7 +224,9 @@ catch(error: any){
               <FormLabel>Password</FormLabel>
               <FormControl>
                 <Input placeholder="Password" {...field} type='password' 
-                className='text-black font-semibold' autoComplete='none'
+                className='border-0 outline-none 
+                focus=visible:ring-transparent text-black
+                focus-visible:ring-0' autoComplete='none'
                 />
               </FormControl>
               
@@ -241,6 +245,11 @@ catch(error: any){
       </form>
     </Form>
     
+    {isRegistering?
+          <div className='py-2 text-blue-600'>
+            Verifying credentials...
+          </div>:null
+          }
     </div>
   )
 }

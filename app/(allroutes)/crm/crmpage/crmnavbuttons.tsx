@@ -18,6 +18,8 @@ const AdminNavButtons = () => {
       <Link href=''>Analytics</Link></Button>
     <Button className='rounded-2xl'>
       <Link href=''>Expenses</Link></Button>
+      <Button className='rounded-2xl'>
+      <Link href='/dashboard/emailsender'>Email Sender</Link></Button>
     <Button onClick={userLogout} className='rounded-2xl'>Logout</Button>
     {/* Add User */}
     {isAddingUser ?

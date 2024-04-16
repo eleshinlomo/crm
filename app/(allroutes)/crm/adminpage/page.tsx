@@ -19,7 +19,7 @@ const AdminPage = () => {
 
     const [users, setUsers] = useState<Array<any | null>>([])
     const [isAddingUser, setIsAddingUser] = useState<boolean>(false)
-    const [isSuperUser, setIsSuperUser] = useState<boolean>(false)
+    const [isSuperUser, setIsSuperUser] = useState<boolean>(true)
     const [modify, setModify] = useState<boolean>(false)
     const [isModifying, setIsModifying] = useState<boolean>(false)
     const [isDeleting, setIsDeleting] = useState<boolean>(false)

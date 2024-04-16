@@ -78,18 +78,18 @@ const FormSchema = z.object({
         firstname, 
         lastname, 
         sessionid,
-        credits,
         company,
-        email
+        email,
+        is_superuser
       } = response.data
       
       // Save User Info
       localStorage.setItem('username', username)
       localStorage.setItem('email', email)
       localStorage.setItem('sessionid', sessionid)
-      localStorage.setItem('credits', credits)
       localStorage.setItem('company', company)
       localStorage.setItem("userid", userid)
+      localStorage.setItem("superuser", is_superuser)
       setIsSigningIn(false)
       router.push('/dashboard/dashboardpage')
     

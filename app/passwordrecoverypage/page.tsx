@@ -36,6 +36,8 @@ const SignInPage = ()=>{
               <ArrowLeftSquareIcon className="mt-5  text-3xl" />
               <p className="  py-4">Fixupe</p>
               </Link>
+
+              {/* Sign up */}
               <div className="flex flex-1 gap-3">
               <p className="mt-1 ">Not Registered?</p>
                 <Button size='sm'  className='bg-gray-500 hover:bg-gray-500

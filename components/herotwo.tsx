@@ -6,6 +6,7 @@ import { Button } from "./ui/button"
 import {useEffect, useState} from 'react'
 import  Typewriter  from "@/components/typewriter"
 import Link from 'next/link'
+import { DemoLogin } from "./demologin"
 
 const Hero = ()=>{
 
@@ -64,12 +65,15 @@ With intuitive interfaces and powerful features,
  you can harness the full potential of AI without the complexity.</p>
 
 <div className="flex flex-col md:flex-row pt-8 gap-3 ">
-<Button variant='outline' size='sm'
+{/* <Button variant='outline' size='sm'
 className=" text-white bg-blue-500 rounded-2xl" 
-  ><Link href='/signuppage'>START FREE TRIAL</Link></Button>
-<Button variant='outline' size='sm'
+  ><Link href='/signuppage'>START FREE TRIAL</Link></Button> */}
+
+  <DemoLogin />
+
+<Button variant='outline' size='lg'
 className=" text-white bg-blue-500 rounded-2xl" 
-  ><Link href='/dashboard/dashboardpage'>DASHBOARD</Link></Button>
+  ><Link href='/signinpage'>SIGN IN</Link></Button>
 </div> 
 </div>
  

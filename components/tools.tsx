@@ -1,6 +1,7 @@
 "use client"
 import { AreaChartIcon, BookIcon, BotIcon, DatabaseIcon, 
-    ImageIcon, 
+    ImageIcon,
+    MailIcon, 
    
 } from "lucide-react";
 
@@ -97,6 +98,24 @@ export const Tools = [
           color: "text-blue-500",
           bgColor: "text-grey-500"
           },
+
+          {   
+        
+            label: "Transcriber",
+            icon: BotIcon,
+            href: "/dashboard/aitranscriber",
+            color: "text-pink-500",
+            bgColor: "text-grey-500"
+            },
+            
+            {
+            
+              label: "Content Writer",
+              icon: BookIcon,
+              href: "/dashboard/contentwriter",
+              color: "text-blue-500",
+              bgColor: "text-grey-500"
+              },
       ]
 
         },
@@ -137,29 +156,21 @@ export const Tools = [
 
   { 
       
-    id:'writing',
-    category: 'Writing Tools',
+    id:'Mailer',
+    category: 'Mailing Tools',
     href: "",
     tools: [
     
-  
-    {   
-        
-        label: "Transcriber",
-        icon: BotIcon,
-        href: "/dashboard/aitranscriber",
-        color: "text-pink-500",
+      {
+            
+        label: "Email sender",
+        icon: MailIcon,
+        href: "/dashboard/emailsender",
+        color: "text-blue-500",
         bgColor: "text-grey-500"
         },
-        
-        {
-        
-          label: "Content Writer",
-          icon: BookIcon,
-          href: "/dashboard/contentwriter",
-          color: "text-blue-500",
-          bgColor: "text-grey-500"
-          },
+  
+    
       ]},
     ]
 
