@@ -171,8 +171,8 @@ useEffect(()=>{
         <div className='bg-white text-black'>
     
         <Heading
-        title='Send emails to clients'
-        description = 'Maximize your business development with AI'
+        title='Automated follow up'
+        description = 'Our AI can automatically send email follow up and manage your clients in the CRM'
         icon={MessageSquare}
         iconColor='text-violet-500'
         bgColor='bg-violet-500/10'
@@ -193,11 +193,11 @@ useEffect(()=>{
             </p>
             
             </div>
-           
+
             </div>
 
 
-
+            <p className='py-1'><span className='text-red-600 font-extrabold'>Urgent</span>: Please follow up with contact at Facebook. Your last interraction was...</p>
           </div>
            
            {/* Message */}
