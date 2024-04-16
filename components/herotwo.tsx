@@ -7,10 +7,18 @@ import {useEffect, useState} from 'react'
 import  Typewriter  from "@/components/typewriter"
 import Link from 'next/link'
 import { DemoLogin } from "./demologin"
+import { loginChecker } from "./auth"
 
 const Hero = ()=>{
 
     const [customText, setCustomText] = useState<Array<string>>([])
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false) 
+    const [username, setUsername] = useState<string | null>(null)
+    const [sessionid, setSessionid] = useState<null | any>(null)
+    const [isChecking, setIsChecking] = useState<boolean>(false)
+
+  // URLs
+  const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 
   useEffect(()=>{
     setCustomText(
@@ -21,6 +29,36 @@ const Hero = ()=>{
       ]
     )
   }, [])
+
+
+
+  //  Login Checker Handler
+const handleLoginChecker = async ()=>{
+  try{
+  setIsChecking(true)
+  // Get sessionid and check validity
+  const session_id = localStorage.getItem('sessionid')
+  if (!session_id || session_id === null || session_id === 'undefined') throw new Error('Sessionid not found')
+  setSessionid(session_id)
+  const user = await loginChecker(sessionid)
+  const {username} = user
+  setUsername(username)
+  setIsChecking(false)
+  setUsername(localStorage.getItem('username'))
+  setIsLoggedIn(true)
+
+}
+catch(err){
+  console.log(err)
+}finally{
+  setIsChecking(false)
+}
+
+}
+
+useEffect(()=>{
+  handleLoginChecker()
+}, [])
 
     return (
         <div>
@@ -71,9 +109,16 @@ className=" text-white bg-blue-500 rounded-2xl"
 
   <DemoLogin />
 
+{isLoggedIn ?
+
+<Button variant='outline' size='lg'
+className=" text-white bg-blue-500 rounded-2xl" 
+  ><Link href='/dashboard/dashboardpage'>DASHBOARD</Link></Button>:
+
 <Button variant='outline' size='lg'
 className=" text-white bg-blue-500 rounded-2xl" 
   ><Link href='/signinpage'>SIGN IN</Link></Button>
+}
 </div> 
 </div>
  

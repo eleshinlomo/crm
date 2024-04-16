@@ -4,15 +4,17 @@ import VideoThumb from '@/public/boxes.png'
 import ModalVideo from '@/components/modal-video'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { Company } from './urls'
-import { useCompanyValue } from './contextprovider'
+import { loginChecker } from './auth'
 
 interface HeroPageProps {
  companyValue: string
 }
 
 const Hero = ()=>{
- 
+
+
+
+
   return (
     <section className="relative w-full">
 

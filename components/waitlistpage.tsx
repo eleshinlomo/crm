@@ -47,8 +47,8 @@ const HandleEmailWaitlist = async (e:any)=>{
        text-black
        font-extrabold'>
   
-  <p className='  py-2 text-muted-foreground '>Please join our newsletter to stay ahead 
-  of AI news and how it affects businesses.</p>
+  <p className='  py-2 text-muted-foreground '>Thanks for checking this project out. 
+  Please join my waitlist to stay informed about my project.</p>
             <p className='text-blue-500  '>{message}</p>
         <form className=' md:flex gap-3' onSubmit={HandleEmailWaitlist}>
           <input 

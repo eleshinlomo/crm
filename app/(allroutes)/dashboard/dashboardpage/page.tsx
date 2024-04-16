@@ -9,6 +9,7 @@ import DashboardTools from '@/components/tools';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link'
 import FeedbackPage from '@/app/feedbackpage/page';
+import WaitlistPage from '../waitlistpage/page';
 
 interface DashboardPageProps{
   company: string
@@ -48,7 +49,10 @@ const DashboardPage = () => {
           <h2 className="text-2xl md:text-4xl font-bold text-center">
             Complete Task Faster</h2>
           <p className=" font-light text-sm md:text-lg text-center">
-            Complete your task Faster - Fixupe Ultra fast Solution
+            Fixupe project is a work in progress.
+          </p>
+          <p className=" font-light text-sm md:text-lg text-center">
+            If you like what you see, please join our waitlist <WaitlistPage />
           </p>
         </div>
 
