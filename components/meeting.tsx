@@ -220,7 +220,7 @@ const removeTask = ()=>{
                 </PopoverContent>
               </Popover>
               <FormDescription className='flex'>
-                Stay commited with your task today. <SmileIcon />
+                Stay commited to your task today. <SmileIcon />
               </FormDescription>
               <FormMessage />
             </FormItem>

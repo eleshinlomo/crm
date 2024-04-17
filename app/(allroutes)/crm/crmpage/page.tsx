@@ -8,6 +8,7 @@ import { modifyClient } from '@/components/crudfunctionsadmin'
 import { AddClientPage } from './addclientpage'
 import Link from 'next/link'
 import CRMNavBar from './crmnavbar'
+import { EmailPopup } from '@/components/emailerpop'
 
 
 interface OnUserAdded{
@@ -222,12 +223,14 @@ interface ClientPayloadProps {
                   <option value="">Select Action</option>
                   <option value="modify">Modify</option>
                   <option value="delete">Delete</option>
+                  <option value="email">Email</option>
                 </select>
 
     {/* Modify Button */}
     {client.action === "modify" ?
-    <Button
-      className=" w-full py-2 px-2 bg-blue-500 hover:bg-blue-500 text-white rounded"
+    <Button size='sm'
+      className=" w-full px-2 bg-blue-500 hover:bg-blue-500 text-white
+       rounded-2xl"
       onClick={() =>handleModify(client.id)}
     >
       {isModifying ? 'Saving...' : 'Save'}
@@ -237,13 +240,20 @@ interface ClientPayloadProps {
 
 {/* // Delete Button */}
   { client.action === 'delete' ?
-<Button
-className=" w-full py-2 px-2 bg-red-500 hover:bg-red-500 text-white rounded"
+<Button size='sm'
+className=" w-full  px-2 bg-red-500 hover:bg-red-500 text-white rounded-2xl"
 onClick={() => handleDelete(client.id)}
 >
 {isDeleting ? 'Deleting...' : 'Confirm'}
 </Button> : null
 
+  }
+
+  {/* // Email Button */}
+  { client.action === 'email' ?
+
+<EmailPopup  /> 
+: null
   }
 
 </td>
@@ -256,7 +266,8 @@ onClick={() => handleDelete(client.id)}
               {client.action ?
               <input value={client.company} 
               onChange={(e)=>handleInputChange(e.target.value, 'company', client.id)}
-              className={client.action === 'modify' ? 'bg-blue-500' : 'bg-red-500'}
+              className={client.action === 'modify' ? 'bg-blue-500' : 
+              client.action === 'delete' ? 'bg-red-500 text-white' : 'bg-black text-white'}
               />
               : <div>{client.company}</div>
               }
@@ -267,7 +278,8 @@ onClick={() => handleDelete(client.id)}
               {client.action ?
               <input value={client.contact} 
               onChange={(e)=>handleInputChange(e.target.value, 'contact', client.id)}
-              className={client.action === 'modify' ? 'bg-blue-500' : 'bg-red-500'}
+              className={client.action === 'modify' ? 'bg-blue-500' : 
+              client.action === 'delete' ? 'bg-red-500 text-white' : 'bg-black text-white'}
               />
               : <div>{client.contact}</div>
               }
@@ -278,7 +290,8 @@ onClick={() => handleDelete(client.id)}
               {client.action ?
               <input value={client.email} 
               onChange={(e)=>handleInputChange(e.target.value, 'email', client.id)}
-              className={client.action === 'modify' ? 'bg-blue-500' : 'bg-red-500'}
+              className={client.action === 'modify' ? 'bg-blue-500' : 
+              client.action === 'delete' ? 'bg-red-500 text-white' : 'bg-black text-white'}
               />
               : <div>{client.email}</div>
               }
@@ -290,7 +303,8 @@ onClick={() => handleDelete(client.id)}
               {client.action ?
               <input value={client.mobile} 
               onChange={(e)=>handleInputChange(e.target.value, 'mobile', client.id)}
-              className={client.action === 'modify' ? 'bg-blue-500' : 'bg-red-500'}
+              className={client.action === 'modify' ? 'bg-blue-500' : 
+              client.action === 'delete' ? 'bg-red-500 text-white' : 'bg-black text-white'}
               />
               : <div>{client.mobile}</div>
               }
@@ -302,7 +316,8 @@ onClick={() => handleDelete(client.id)}
               {client.action ?
               <input value={client.phone} 
               onChange={(e)=>handleInputChange(e.target.value, 'phone', client.id)}
-              className={client.action === 'modify' ? 'bg-blue-500' : 'bg-red-500'}
+              className={client.action === 'modify' ? 'bg-blue-500' : 
+              client.action === 'delete' ? 'bg-red-500 text-white' : 'bg-black text-white'}
               />
               : <div>{client.phone}</div>
               }
@@ -314,7 +329,8 @@ onClick={() => handleDelete(client.id)}
               {client.action ?
               <input value={client.followup} 
               onChange={(e)=>handleInputChange(e.target.value, 'followup', client.id)}
-              className={client.action === 'modify' ? 'bg-blue-500' : 'bg-red-500'}
+              className={client.action === 'modify' ? 'bg-blue-500' : 
+              client.action === 'delete' ? 'bg-red-500 text-white' : 'bg-black text-white'}
               />
               : <div>{client.followup}</div>
               }
@@ -326,7 +342,8 @@ onClick={() => handleDelete(client.id)}
               {client.action ?
               <input value={client.address} 
               onChange={(e)=>handleInputChange(e.target.value, 'address', client.id)}
-              className={client.action === 'modify' ? 'bg-blue-500' : 'bg-red-500'}
+              className={client.action === 'modify' ? 'bg-blue-500' : 
+              client.action === 'delete' ? 'bg-red-500 text-white' : 'bg-black text-white'}
               />
               : <div>{client.address}</div>
               }
@@ -339,7 +356,8 @@ onClick={() => handleDelete(client.id)}
               {client.action ?
               <input value={client.servicefee} 
               onChange={(e)=>handleInputChange(e.target.value, 'servicefee', client.id)}
-              className={client.action === 'modify' ? 'bg-blue-500' : 'bg-red-500'}
+              className={client.action === 'modify' ? 'bg-blue-500' : 
+              client.action === 'delete' ? 'bg-red-500 text-white' : 'bg-black text-white'}
               />
               : <div>{client.servicefee}</div>
               }
@@ -350,7 +368,7 @@ onClick={() => handleDelete(client.id)}
               {client.action ?
               <input value={client.servicedoc} 
               className={client.action === 'modify' ? 'bg-blue-500' : 
-              'bg-red-500'} type='file'
+              client.action === 'delete' ? 'bg-red-500 text-white' : 'bg-black text-white'} type='file'
               />
               : <div>{client.servicedoc}</div>
               }

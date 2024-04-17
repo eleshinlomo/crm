@@ -21,6 +21,7 @@ import Image from 'next/image'
 import { SpinnerOne } from '@/components/spinner'
 import RefreshComponent  from '@/components/pagereferesher'
 
+
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
 
@@ -172,7 +173,7 @@ catch(error: any){
      
      {/* Form starts */}
     <div className='  md:fixed md:right-6 md:mr-3  z-50   bg-gradient-to-br
-     from-blue-400 via-black to-gray-600 text-white   
+     from-blue-900 via-black to-gray-600 text-white   
      px-8 py-2 mt-3 flex flex-col justify-center items-center'>
       
     <p className='text-center font-extrabold text-xl 
