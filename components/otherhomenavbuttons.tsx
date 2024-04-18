@@ -14,27 +14,27 @@ className=''>
 </Button> 
                         
                       <Button className='w-full'>
-                      <Link href='/dashboard/aitranscriber'
+                      <Link href='/dashboard/genai/aitranscriber'
                       className=''
                       >Transcriber</Link>
                       </Button>
 
                   
                       <Button className='w-full'>
-                        <Link href='/dashboard/voicerecorder'
+                        <Link href='/dashboard/genai/voicerecorder'
                       className=''
                       >Voice Recorder</Link>
                       </Button>
 
                     
                       <Button className='w-full'>
-                        <Link href='/dashboard/voicechat'
+                        <Link href='/dashboard/genai/voicechat'
                       className=''
                       >Voice Chat</Link>
                       </Button>
 
                       <Button className='w-full'>
-                        <Link href='/dashboard/contentwriter'
+                        <Link href='/dashboard/genai/contentwriter'
                       className=''
                       >Content Writer</Link>
                       </Button>
