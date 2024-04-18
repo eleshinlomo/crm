@@ -22,6 +22,7 @@ const TextChatPage = () => {
     
     const [message, setMessage] = useState<string | any>('')
     const [company, setCompany] = useState<string | null>(localStorage.getItem('company'))
+    const [username, setUserName] = useState<string | null>(localStorage.getItem('username'))
     const [currentCount, setCurrentCount] = useState<number>(0)
     const [emailResponse, setEmailResponse] = useState<Array<any | null>>([])
     const [isSending, setIsSending] = useState<boolean>(false)
@@ -60,7 +61,7 @@ const TextChatPage = () => {
     
       })
     
-      const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+      const sendEmail = async (data: z.infer<typeof FormSchema>) => {
         // Access the form data from the useForm hook
         const { receiver_email, email_subject, email_body } = data;
     
@@ -89,7 +90,6 @@ const TextChatPage = () => {
             if (!response) throw new Error('No response from server');
             const data: any = await response.json();
             if (data.ok) {
-                setMessage('')
                 console.log(data);
                 setIsSending(false)
                 setMessage(data.message);
@@ -160,8 +160,8 @@ useEffect(()=>{
         <div className='bg-white text-black'>
     
         <Heading
-        title='Automated follow up'
-        description = 'Our AI can automatically send email follow up and manage your clients in the CRM'
+        title='Automated Email Tool'
+        description = 'Our AI can automatically follow up with emails and manage your clients in the CRM'
         icon={MessageSquare}
         iconColor='text-violet-500'
         bgColor='bg-violet-500/10'
@@ -188,7 +188,7 @@ useEffect(()=>{
 
             <p className='py-1'>
               <span className='text-red-600 font-extrabold mr-2'>AI ALERT!</span> 
-              Please follow up with the contact at Facebook. Your last interraction was...</p>
+              You have 2 meetings today. Client xyz is for 2pm and ...</p>
           </div>
            
            {/* Message */}
@@ -203,7 +203,7 @@ useEffect(()=>{
             <div className='py-2'>
                      
                      <Form {...form}>
-                       <form onSubmit={form.handleSubmit(onSubmit)}
+                       <form onSubmit={form.handleSubmit(sendEmail)}
                        className='
                         border w-full px-3 md:px-6 bg-gradient-to-tr from-black
                         via-slate-800 to-black text-white 
