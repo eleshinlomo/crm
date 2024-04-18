@@ -4,7 +4,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
 
 
-  export const creditHandler = async ()=>{
+  export const creditFunction = async ()=>{
 
     const sessionid = localStorage.getItem('sessionid')
   

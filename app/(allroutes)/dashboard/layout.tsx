@@ -10,12 +10,15 @@ import Footer  from '@/components/footer';
 // @ts-ignore
 import { useSearchParams, useRouter , usePathname} from 'next/navigation';
 import type { Metadata } from 'next'
-import { creditHandler } from '@/components/credithandler';
+import { creditFunction } from '@/components/creditfunction';
 
 
 
 
 
+const creditHandler = ()=>{
+    creditFunction()
+}
 
 interface DashboardLayoutProps {
     company: string,
@@ -53,7 +56,10 @@ const DashboardLayout =({company, children}: DashboardLayoutProps)=>{
     const router = useRouter()
      
    
-
+   
+    useEffect(()=>{
+        creditFunction()
+    }, [])
    
 
     return(

@@ -10,7 +10,7 @@ import Footer  from '@/components/footer';
 // @ts-ignore
 import { useSearchParams, useRouter , usePathname} from 'next/navigation';
 import type { Metadata } from 'next'
-import { creditHandler } from '@/components/credithandler';
+import { creditFunction } from '@/components/creditfunction';
 
 
 
@@ -56,6 +56,9 @@ const AllRoutesLayout = ({
     const router = useRouter()
      
    
+    const creditHandler = ()=>{
+        creditFunction()
+    }
 
 //  Login Checker Handler
     const handleLoginChecker = async ()=>{
@@ -86,6 +89,7 @@ const AllRoutesLayout = ({
 
  useEffect(()=>{
     handleLoginChecker()
+    creditHandler()
  }, [])
 
 

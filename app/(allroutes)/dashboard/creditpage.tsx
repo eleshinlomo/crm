@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/button'
 import React, { useState, useEffect } from 'react'
 import { cn } from '@/lib/utils'
-import { creditHandler } from '@/components/credithandler'
+import { creditFunction } from '@/components/creditfunction'
 import Link from 'next/link'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
@@ -23,7 +23,7 @@ const CreditPage = () => {
     
 const handleCredit = async ()=>{
       try{
-    const response: any = await creditHandler()
+    const response: any = await creditFunction()
     if (response.message.ok){
       setData(response.message.data)
     }else{

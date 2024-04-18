@@ -1,5 +1,5 @@
 "use client"
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useReducer} from 'react'
 import * as z from 'zod'
 import {Heading} from '@/components/heading'
 import {  BotIcon, Download, MessageSquare, PhoneCallIcon} from 'lucide-react'
@@ -16,6 +16,7 @@ import Image from 'next/image'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Card, CardFooter } from '@/components/ui/card'
 import { Textarea } from '@/components/ui/textarea'
+import { creditFunction } from '@/components/creditfunction'
 
 
 
@@ -27,6 +28,8 @@ const ImagePage = () => {
     const [images, setImages] = useState<Array<string | any>>([])
     const [error, setError] = useState<string | any>('')
     const [url, setUrl] = useState<null | any>(null)
+    const [creditUpdated, setCreditUpdated] = useState<number | any>([])
+    const [isUpdated, setIsUpdated] = useState<boolean>(false)
     
 
     const router = useRouter()
@@ -57,7 +60,13 @@ const ImagePage = () => {
 
     const isLoading = form.formState.isSubmitting
 
-    
+
+  
+    const creditHandler = ()=>{
+      const intialCreditValue: number | any = creditFunction()
+      setCreditUpdated((prevState: any) => [...prevState, intialCreditValue])
+      return intialCreditValue
+    }
 
     const onSubmit = async (data: z.infer<typeof FormSchema>) => {
         console.log(data)
@@ -84,6 +93,10 @@ const ImagePage = () => {
            setError('')
             setImages([...images, image_url.message.data])
             
+            const newCredit: any = creditHandler()
+            setCreditUpdated((prevState: any) => [...prevState, newCredit])
+            
+            
         }else{
           setError(image_url.message.error)
           console.log(image_url.message.error)
@@ -97,7 +110,12 @@ const ImagePage = () => {
         form.reset()
         }
       };
+
+//      
       
+// useEffect(()=>{
+// creditHandler()
+// }, [])
 
   const headerText: any = 
   <div>

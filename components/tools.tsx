@@ -87,14 +87,14 @@ export const Tools = [
 
   {
     id:'3',
-    category: 'Sales Tools',
+    category: 'GenAI Tools',
     tools: [
 
         {
       
-          label: "image generator",
+          label: "Image generator",
           icon: ImageIcon,
-          href: "/dashboard/sales/imagepage",
+          href: "/dashboard/genai/imagepage",
           color: "text-blue-500",
           bgColor: "text-grey-500"
           },
@@ -103,16 +103,41 @@ export const Tools = [
         
             label: "Transcriber",
             icon: BotIcon,
-            href: "/dashboard/aitranscriber",
+            href: "/dashboard/genai/aitranscriber",
             color: "text-pink-500",
             bgColor: "text-grey-500"
             },
+
+            {
+      
+              label: "Voice over generator",
+              icon: ImageIcon,
+              href: "/dashboard/genai/voiceover",
+              color: "text-blue-500",
+              bgColor: "text-grey-500"
+              },
+            {
+            
+              label: "Voice Recorder",
+              icon: ImageIcon,
+              href: "/dashboard/genai/voicerecorder",
+              color: "text-blue-500",
+              bgColor: "text-grey-500"
+              },
+              {
+            
+                label: "Voice Chat",
+                icon: ImageIcon,
+                href: "/dashboard/genai/voicechat",
+                color: "text-blue-500",
+                bgColor: "text-grey-500"
+                },
             
             {
             
               label: "Content Writer",
               icon: BookIcon,
-              href: "/dashboard/contentwriter",
+              href: "/dashboard/genai/contentwriter",
               color: "text-blue-500",
               bgColor: "text-grey-500"
               },
@@ -120,38 +145,6 @@ export const Tools = [
 
         },
 
-
-    {
-      id:'media',
-      category: 'Conversation Tools',
-      tools: [
-        
-        {
-      
-          label: "voice over generator",
-          icon: ImageIcon,
-          href: "/dashboard/conversationtools/voiceover",
-          color: "text-blue-500",
-          bgColor: "text-grey-500"
-          },
-        {
-        
-          label: "Voice Recorder",
-          icon: ImageIcon,
-          href: "/dashboard/conversationtools/voicerecorder",
-          color: "text-blue-500",
-          bgColor: "text-grey-500"
-          },
-          {
-        
-            label: "Voice Chat",
-            icon: ImageIcon,
-            href: "/dashboard/conversationtools/voicechat",
-            color: "text-blue-500",
-            bgColor: "text-grey-500"
-            },
-        
-            ]},
 
 
   { 

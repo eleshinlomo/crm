@@ -19,9 +19,8 @@ import Title from '@/components/(audiotospeech)/Title'
 import { textToVoice } from '@/components/texttovoice'
 import { SpinnerOne } from '@/components/spinner'
 import Image from 'next/image'
-import { creditHandler } from '@/components/credithandler'
+import { creditFunction } from '@/components/creditfunction'
 import { Textarea } from '@/components/ui/textarea'
-
 
 
 
@@ -52,6 +51,12 @@ const TextChatPage = () => {
 <Image src={SpinnerOne} alt='loader' fill/></div>)
 
 
+// Credit Handler
+const creditHandler = ()=>{
+    creditFunction()
+}
+
+
     const onSubmit = async (values: z.infer<typeof formSchema>)=>{
         console.log(values)
         const sessionid = localStorage.getItem('sessionid')
@@ -69,7 +74,7 @@ const TextChatPage = () => {
          const newMessages = [...messages, userMessage]
          setMessages(newMessages)
          const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
-         const API_URL = `${BASE_URL}/voiceover/`
+         const API_URL = `${BASE_URL}/general/`
          const res = await fetch(API_URL, {
             mode: 'cors',
             method: 'POST',
@@ -86,11 +91,10 @@ const TextChatPage = () => {
            const data = await  res.json()
          
             if(data.message.ok) {
-            // Use Response for Text To Voice
             setMessage('')
             setTextMessage(data.message.data)
             setEditText(data.message.data)
-            await creditHandler()
+            creditHandler()
             
             // Continue with Chatbot
             const botMessage = {
@@ -121,6 +125,10 @@ const TextChatPage = () => {
     }
 
 
+    useEffect(()=>{
+        creditHandler()
+    }, [])
+
     // Update TextMessage
     const updateTextMessage = (e: any)=>{
         setUpdated(false)
@@ -136,60 +144,18 @@ const TextChatPage = () => {
     }
     
 
-// Handle Voice to Text
-    const handleTextToVoice = async (e: any)=>{
-        e.preventDefault()
-        const messageToConvert = textMessage
-        try{
-        setIsConvertingTextToAudio(true)
-        setAudioURL(null)
-        if(!messageToConvert) return {"error": "No textMessage found"}
-        console.log({"userMesssage": messageToConvert})
-        const blob: any = await textToVoice(messageToConvert)
-        if(blob){
-       
-            const chatbotBlob = new Blob([blob], {type: 'audio/wav'})
-            const chatbotBlobURL = URL.createObjectURL(chatbotBlob)
-
-            const botResponse = {
-                role: 'bot',
-                content: textMessage,
-                audio: chatbotBlobURL
-            }
-            
-            setMessages([...messages, botResponse])
-            
-            // const ChatbotAudio = new Audio(chatbotBlobURL)
-            // ChatbotAudio.play()
-    
-      setIsConvertingTextToAudio(false)
-    
-        }else{
-            console.log(blob.error)
-            setIsConvertingTextToAudio(false)
-        }
-    }
-    catch(err){
-        console.log(err)
-    }finally{
-        setIsConvertingTextToAudio(false)
-    }
-    }
-
-    
 
   return (
     <div className='flex flex-col justify-center'>
      
-     
 
      <p className="text-center font-extrabold text-2xl text-white py-8 px-4">
-        VOICE OVER CREATOR</p>
+        CONTENT WRITER</p>
         
         <div className='bg-white text-black'>
     
         <Heading
-        title='Create voice over for your projects 10x faster'
+        title='Create content faster than competition'
         description = 'Content production on steroid'
         icon={MessageSquare}
         iconColor='text-violet-500'
@@ -199,10 +165,6 @@ const TextChatPage = () => {
          <div className='px-4 lg:px-8'>
           <div>
            
-           {/* Announcements */}
-           <p className='text-center text-blue-900 font-extrabold'>
-            New ultra-real human voices coming soon...</p>
-
 
            {/* Message Form */}
             <div>
@@ -263,11 +225,11 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
               
              <FormItem className="col-span-12 lg:col-span-10">
              <FormControl className='M-0 P-0'>
-            <Textarea className='border border-black 
-            focus=visible:ring-transparent h-44
-            focus-visible:ring-0'
+            <Input className='border border-black 
+            focus=visible:ring-transparent
+            focus-visible:ring-0 '
             disabled={isLoading}
-            placeholder="Write a naration for this topic 'Top 10 Businesses In Botswana'"
+            placeholder="Write an email to all employees about TGIF"
             {...field}
              />
              </FormControl>
@@ -285,7 +247,7 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
           </div>
            
            {/* Error Message */}
-          <div className='text-center py-2 px-8 font-extrabold text-red-500'>
+          <div className='text-center py-2 px-8 text-red-500 font-extrabold'>
             {message}
           </div>
 
@@ -327,14 +289,9 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
                     
                     <div className={`w-full grid grid-flow-row md:grid-cols-${message.audio? 4 : 3} gap-1`}>
                 
-                {/* Convert to audio button */}
-                <Button onClick={(e)=>handleTextToVoice(e)} 
-                className='mt-2 rounded-2xl'>
-                    
-                    Convert to Audio
-                </Button>
+               
                  
-
+                {/* Edit Buttons */}
                 <Button  
                 className='mt-2 rounded-2xl'
                 onClick={()=>setIsEditing(true)}
@@ -349,21 +306,6 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
                     Use Text In Creator
                 </Button>
 
-                {message.audio ?
-                <div className='grid grid-flow-row md:grid-cols-2'>
-                <Button
-                className='mt-2 rounded-2xl'>
-                    
-                    Use Audio
-                </Button>
-                <Button
-                className='mt-2 rounded-2xl '>
-                    
-                    Use Text & Audio
-                </Button>
-                </div>
-                :null
-                } 
                 </div>
                 </div>
                 
@@ -421,7 +363,7 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
                 
                 }
 
-               
+                
                 </div>
                 
                 </div>
