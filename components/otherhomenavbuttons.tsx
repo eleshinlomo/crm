@@ -21,9 +21,9 @@ className=''>
 
                   
                       <Button className='w-full'>
-                        <Link href='/dashboard/genai/voicerecorder'
+                        <Link href='/aboutpage'
                       className=''
-                      >Voice Recorder</Link>
+                      >About us</Link>
                       </Button>
 
                     

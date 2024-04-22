@@ -7,6 +7,7 @@ import { Inter } from 'next/font/google'
 import { Company } from '@/components/urls'
 import DashboardTools from '@/components/tools'
 import { CompanyProvider } from '@/components/contextprovider'
+import ChatBotPage from './(allroutes)/chatbotpage'
 
 
 
@@ -40,9 +41,9 @@ const RootLayout = ({children}: RootLayoutProps)=> {
     <html lang="en">
       
       <body className={inter.className}>
-        <CompanyProvider companyValue={companyValue}>
+        
         {children}
-        </CompanyProvider>
+        <ChatBotPage />
         
       </body>
      
