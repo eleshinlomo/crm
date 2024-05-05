@@ -5,7 +5,7 @@ export const OtherHomeNavButtons = ()=>{
     return (
         <div className=''>
 
-  <div className='grid grid-cols-2 gap-3'>
+  <div className='grid grid-flow-row md:grid-cols-2 gap-3'>
     
 <Button className='w-full'>
 <Link href='/dashboard/dashboardpage'

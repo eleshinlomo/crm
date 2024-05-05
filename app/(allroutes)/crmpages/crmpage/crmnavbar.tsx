@@ -16,7 +16,7 @@ const CRMNavBar = () => {
 {/* Mobile */}
 <Button size='icon' className='mx-2 lg:hidden' 
 onClick={()=>isOpen ? setIsOpen(false): setIsOpen(true)}>
-{isOpen ? <MenuIcon />: <ShieldCloseIcon />}
+{isOpen ? <ShieldCloseIcon />: <MenuIcon />}
 </Button>
 {isOpen?
           <div>

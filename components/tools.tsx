@@ -90,14 +90,14 @@ export const Tools = [
     category: 'GenAI Tools',
     tools: [
 
-        {
+        // {
       
-          label: "Image generator",
-          icon: ImageIcon,
-          href: "/dashboard/genai/imagepage",
-          color: "text-blue-500",
-          bgColor: "text-grey-500"
-          },
+        //   label: "Image generator",
+        //   icon: ImageIcon,
+        //   href: "/dashboard/genai/imagepage",
+        //   color: "text-blue-500",
+        //   bgColor: "text-grey-500"
+        //   },
 
           {   
         

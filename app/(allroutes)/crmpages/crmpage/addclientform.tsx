@@ -14,6 +14,7 @@ import { AddClientPage } from "./addclientpage"
   
   export function AddClientForm() {
     return (
+        <div className="">
       <AlertDialog>
         <AlertDialogTrigger asChild>
           <Button size='sm' variant="outline" 
@@ -31,6 +32,7 @@ import { AddClientPage } from "./addclientpage"
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+      </div>
     )
   }
   

@@ -26,7 +26,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
 
 
-const registering = (<div className='relative w-24 h-24'>
+const registering = (<div className=' w-24 h-24'>
   <Image src={SpinnerOne} alt='spinner' fill/></div>)
 
 
@@ -157,7 +157,7 @@ catch(error: any){
 
   return (
 
-    <div className='relative'>
+    <div className=''>
      
      
      <div className='text-center flex flex-col justify-center 
