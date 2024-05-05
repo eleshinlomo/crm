@@ -10,6 +10,9 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link'
 import FeedbackPage from '@/app/feedbackpage/page';
 import WaitlistPage from '../waitlistpage/page';
+import CRM from '@/components/crm';
+import ClientPage from '../../crmpages/crmpage/page';
+
 
 interface DashboardPageProps{
   company: string
@@ -58,9 +61,8 @@ const DashboardPage = () => {
 
         {/* Start of Tools */}
         
-          <DashboardTools />
+          <ClientPage />
              
-        
       </div>
     </div>
   );

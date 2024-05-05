@@ -157,7 +157,7 @@ catch(error: any){
 
   return (
 
-    <div className='relative w-full'>
+    <div className='relative'>
      
      
      <div className='text-center flex flex-col justify-center 
@@ -172,9 +172,9 @@ catch(error: any){
      
      
      {/* Form starts */}
-    <div className='  md:fixed md:right-6 md:mr-3  z-50   bg-gradient-to-br
+    <div className=' bg-gradient-to-br
      from-blue-900 via-black to-gray-600 text-white   
-     px-8 py-2 mt-3 flex flex-col justify-center items-center'>
+      flex flex-col justify-center items-center'>
       
     <p className='text-center font-extrabold text-xl 
     px-4 py-4 text-white'>{message}</p>
@@ -182,11 +182,11 @@ catch(error: any){
   
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} 
-      className=" "
+      className=""
           autoComplete='off'
           >
-         <div className=' grid grid-flow-row md:grid-cols-3 gap-3 
-          px-4 py-4 font-extrabold '>
+         <div className='w-full grid grid-flow-row md:grid-cols-3 gap-3 
+          px-4 py-1 font-extrabold '>
 
 
         {/* Company */}
@@ -258,7 +258,7 @@ catch(error: any){
           name="mobile"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Mobile number(Optional)</FormLabel>
+              <FormLabel>Mobile(Optional)</FormLabel>
               <FormControl>
                 <Input placeholder="Mobile number" {...field} type='text' 
                 className='text-black font-semibold' autoComplete='none'
@@ -276,7 +276,7 @@ catch(error: any){
           name="phone"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Phone number(Optional)</FormLabel>
+              <FormLabel>Phone(Optional)</FormLabel>
               <FormControl>
                 <Input placeholder="Phone number" {...field}
                 className='text-black font-semibold' autoComplete='none'
@@ -363,7 +363,7 @@ catch(error: any){
           name="contractdoc"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Contract Document(Optional)</FormLabel>
+              <FormLabel>Contract(Optional)</FormLabel>
               <FormControl>
                 <Input placeholder="Follow up" {...field} type='file'
                 className='text-black font-semibold' autoComplete='none'
@@ -380,9 +380,6 @@ catch(error: any){
           )}
         />
         
-      
-        
-
        
         </div>
         
@@ -393,7 +390,7 @@ catch(error: any){
           }
        
        <div className='flex justify-center items-center'>
-       <Button type="submit" className='bg-blue-700 hover:bg-blue-700
+       <Button type="submit" className='bg-blue-700 hover:bg-blue-700 mb-2
         py-2  rounded-2xl shadow-2xl '>ADD CLIENT</Button>
         </div>
         

@@ -62,6 +62,20 @@ export const OtherDashButtons = () => {
           <Button className='w-full flex flex-1 justify-between'
           onClick={()=>{
             setIsOpen(!isOpen); 
+            router.push('/contactpage')
+            pathname   ? pathname : null
+          }}
+          >
+             Support
+            {isOpen?<ArrowBigRight /> : <ArrowBigDown/>}
+            </Button>
+        </div>
+
+        {/* Todo button */}
+        <div className='px-2 w-auto flex flex-col justify-center items-center'>
+          <Button className='w-full flex flex-1 justify-between'
+          onClick={()=>{
+            setIsOpen(!isOpen); 
             router.push('/dashboard/todolistpage')
             pathname   ? pathname : null
           }}

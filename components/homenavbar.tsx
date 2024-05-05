@@ -170,11 +170,7 @@ handleLoginChecker()
   </MenubarMenu> */}
   
   <MenubarMenu>
-    <MenubarTrigger>
-      <div className="h-6 w-8">
-      <UserAvatar />
-      </div>
-      </MenubarTrigger>
+   
     <MenubarContent className='flex flex-col mr-4'>
     {isLoggedIn?
           <Button size='sm' onClick={userLogout}

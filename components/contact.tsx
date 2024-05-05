@@ -17,9 +17,7 @@ px-6 text-black'>
                             <p>or</p>
                             <FeedbackPage />
                             
-                            <div className='relative w-72  h-72'>
-                                <Image src='/boyfriend.gif' alt='a man&apos;s picture' fill />
-                            </div>
+                         
                             </div>
 
                         </div>

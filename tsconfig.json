@@ -33,7 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "app/(document tools)/documentdash"  ],
+, "app/(document tools)/documentdash", "components/(chatbotfunctions.tsx)"  ],
   "exclude": [
     "node_modules"
   ],

@@ -1,11 +1,10 @@
 "use client"
 import {useState, useEffect} from 'react'
-import { getClients } from '@/components/(data)/crmdata'
+import { fetchClientsData } from '@/components/(data)/clientfunctions'
 import {useRouter} from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { deleteClient } from '@/components/crudfunctionsadmin'
 import { modifyClient } from '@/components/crudfunctionsadmin'
-import { AddClientPage } from './addclientpage'
 import Link from 'next/link'
 import CRMNavBar from './crmnavbar'
 import { EmailPopup } from '@/components/emailerpop'
@@ -17,7 +16,7 @@ interface OnUserAdded{
 
 
 
-const AdminPage = () => {
+const ClientPage = () => {
 
     const [clients, setClients] = useState<Array<any | null>>([])
     const [isAddingUser, setIsAddingUser] = useState<boolean>(false)
@@ -48,7 +47,7 @@ interface ClientPayloadProps {
 
     // Get clients Handler
     const handleGetClients = async ()=>{
-       const response = await getClients()
+       const response = await fetchClientsData()
        if (response.ok){
 
         const listOfClients = await response.data
@@ -429,4 +428,4 @@ onClick={() => handleDelete(client.id)}
   );
 }
 
-export default AdminPage
+export default ClientPage

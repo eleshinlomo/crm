@@ -74,14 +74,14 @@ const DashboardLayout =({company, children}: DashboardLayoutProps)=>{
             
         <div className="relative flex flex-1 gap-2 w-full overflow-hidden">
 
-            <div className="hidden h-full md:flex w-72 md:flex-col flex-1
+            <div className="hidden h-full md:flex w-44 md:flex-col flex-1
              md:fixed md:inset-y-0 z-[80] bg-gradient-to-r from-black
              via-gray-800 to-black overflow-y-auto">
 
                 <Sidebar />
             </div>
             
-           <main className=" w-full md:ml-72  ">
+           <main className=" w-full md:ml-44  ">
             <DashNavbar user={currentUser} />
             <div className='text-center flex flex-col flex-1 justify-center 
             items-center px-4 
