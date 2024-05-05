@@ -161,20 +161,15 @@ interface ClientPayloadProps {
    
 
     <div>
-   <p className="text-center bg-clip-text text-2xl py-4 font-extrabold">
-     BUSINESS DEVELOPMENT PAGE</p>
    <div className="text-center bg-clip-text text-xl py-1 font-extrabold">
+    <CRMNavBar />
     {clients && clients.length > 0 ? 
     <p>Total Clients:
     {clients.length}</p>
     :null
     }</div>
     
-    {/* Top Buttons */}
-    
-    <div className='lg:flex  py-2 gap-2'>
-    <CRMNavBar />
-     </div>
+   
     
     {/* Message */}
 

@@ -12,6 +12,7 @@ import FeedbackPage from '@/app/feedbackpage/page';
 import WaitlistPage from '../waitlistpage/page';
 import CRM from '@/components/crm';
 import ClientPage from '../../crmpages/crmpage/page';
+import CRMNavBar from '../../crmpages/crmpage/crmnavbar';
 
 
 interface DashboardPageProps{
@@ -40,9 +41,9 @@ const DashboardPage = () => {
         <div className='text-center flex flex-col justify-center items-center'>
           {/* <MessageFromDev /> */}
           <div>
-          
           <FeedbackPage />
           </div>
+          
 
 
         
@@ -50,7 +51,7 @@ const DashboardPage = () => {
 
         <div className="mb-8 px-4">
           <h2 className="text-2xl md:text-4xl font-bold text-center">
-            Complete Task Faster</h2>
+            CRM PAGE</h2>
           <p className=" font-light text-sm md:text-lg text-center">
             Fixupe project is a work in progress.
           </p>
