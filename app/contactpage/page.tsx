@@ -33,11 +33,10 @@ const handleFeedback = async (e:any)=>{
     setEmailBody('')
     setEmail('')
 }
-catch(err){
+catch(err: any){
     console.log(err)
-    setMessage('Feedback not sent')
+    setMessage(err)
 }finally{
-    setEmailBody('')
 }
   }
   
