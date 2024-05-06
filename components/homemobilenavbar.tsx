@@ -6,6 +6,7 @@ import { GOOGLE_LOGIN_URL } from './urls'
 import { GOOGLE_LOGOUT_URL } from './urls'
 import Waitlist from './waitlistpage'
 import { OtherHomeNavButtons } from './otherhomenavbuttons'
+import { useRouter } from 'next/navigation'
 
 //  Auth Functions
 import { loginChecker } from './auth'
@@ -27,6 +28,7 @@ export const HomeMobileNavBar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false)
   const [username, setUsername] = useState<string | null>(null)
   const [sessionid, setSessionid] = useState<null | any>(null)
+  const router = useRouter()
     
 
   //  Login Checker Handler
@@ -56,11 +58,16 @@ handleLoginChecker()
 
 
   return (
-    <div className=''>
+    <div className='md:hidden'>
       <div className='flex flex-col flex-1 gap-4'>
+        
+        <Button size='icon' variant='outline' 
+        onClick={()=>router.push('/')}>
         <div className='relative w-24 h-12'>
           <Image src='/logos/fixupe_logo.png' alt='logo' fill />
         </div>
+        </Button>
+        
 
 
         { isLoggedIn === true ?
@@ -71,7 +78,7 @@ handleLoginChecker()
 
         <OtherHomeNavButtons />
 
-        <div>
+        <div className=''>
           <Waitlist />
          </div>
 

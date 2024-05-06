@@ -8,6 +8,7 @@ import { modifyClient } from '@/components/crudfunctionsadmin'
 import Link from 'next/link'
 import { EmailPopup } from '@/components/emailerpop'
 import CRMNavBar from '@/app/(allroutes)/crmpages/crmpage/crmnavbar'
+import { boolean } from 'zod'
 
 
 interface OnUserAdded{
@@ -25,6 +26,7 @@ const CRM = () => {
     const [isDeleting, setIsDeleting] = useState<boolean>(false)
     const [message, setMessage] = useState<string | any>(null)
     const [username, setUsername] = useState<string | any>(null)
+    const [clientFetched, setClientFetched] = useState<boolean>(false);
   
 
 interface ClientPayloadProps {
@@ -47,7 +49,7 @@ interface ClientPayloadProps {
 
     // Get clients Handler
     const handleGetClients = async ()=>{
-       const response = await fetchClientsData()
+       const response = await fetchClientsData(clientFetched)
        if (response.ok){
 
         const listOfClients = await response.data

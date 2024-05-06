@@ -13,6 +13,39 @@ interface ClientPayloadProps {
     servicefee: string,
     contractdoc: string
   }
+
+  // Get Clients
+const BASE_URL: any = process.env.NEXT_PUBLIC_BASE_URL
+let clientFetched = false
+export const fetchClientsData = async (clientFetched: boolean)=>{
+    const sessionid = localStorage.getItem('sessionid')
+    try{
+    if(!sessionid) return
+    const response: any = await fetch(`${BASE_URL}/getclients/`, {
+         mode: 'cors',
+         method: 'GET',
+         headers: {
+            'Content-Type':'application/json',
+            'sessionid': sessionid
+        }
+        
+    })
+    if(!response) return "Server error"
+
+    const data = await response.json()
+    if(data){
+        clientFetched = true
+        return data
+    }else{
+        return response.error
+    }
+}
+catch(err){
+    console.log(err)
+}
+}
+
+
   // Client Delete
   export const deleteClient = async (clientid: string)=>{
   
@@ -78,32 +111,3 @@ interface ClientPayloadProps {
   }
   }
 
-
-const BASE_URL: any = process.env.NEXT_PUBLIC_BASE_URL
-export const fetchClientsData = async ()=>{
-    const sessionid = localStorage.getItem('sessionid')
-    try{
-    if(!sessionid) return
-    const response: any = await fetch(`${BASE_URL}/getclients/`, {
-         mode: 'cors',
-         method: 'GET',
-         headers: {
-            'Content-Type':'application/json',
-            'sessionid': sessionid
-        }
-        
-    })
-    if(!response) return "Server error"
-
-    const data = await response.json()
-    if(data){
-        
-        return data
-    }else{
-        return response.error
-    }
-}
-catch(err){
-    console.log(err)
-}
-}

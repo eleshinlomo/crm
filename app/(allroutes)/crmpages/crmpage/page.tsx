@@ -25,6 +25,7 @@ const ClientPage = () => {
     const [isDeleting, setIsDeleting] = useState<boolean>(false)
     const [message, setMessage] = useState<string | any>(null)
     const [username, setUsername] = useState<string | any>(null)
+    const [clientFetched, setClientFetched] = useState<boolean>(false)
   
 
 interface ClientPayloadProps {
@@ -47,11 +48,12 @@ interface ClientPayloadProps {
 
     // Get clients Handler
     const handleGetClients = async ()=>{
-       const response = await fetchClientsData()
+       const response = await fetchClientsData(clientFetched)
        if (response.ok){
 
         const listOfClients = await response.data
         setClients(listOfClients)
+        setClientFetched(true)
         
        }else{
         console.log(response.error)

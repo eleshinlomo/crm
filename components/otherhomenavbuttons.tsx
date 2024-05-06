@@ -12,47 +12,34 @@ export const OtherHomeNavButtons = ()=>{
 className=''>
     Dashboard</Link>
 </Button> 
-                        
-                      <Button className='w-full'>
-                      <Link href='/dashboard/genai/aitranscriber'
-                      className=''
-                      >Transcriber</Link>
-                      </Button>
 
-                  
-                      <Button className='w-full'>
-                        <Link href='/aboutpage'
-                      className=''
-                      >About us</Link>
-                      </Button>
 
+<Button className='w-full'>
+<Link href='/aboutpage'
+className=''
+>About us</Link>
+</Button>
+
+<Button className='w-full'>
+<Link href='/dashboard/dashboardpage'
+  className=''
+>CRM</Link>
+</Button>
+
+<Button className='w-full'>
+<Link href='/dashboard/dashboardpage'
+  className=''
+>GenAI</Link>
+</Button>
+
+<Button className='w-full'>
+<Link href='/'
+className=''
+>Settings</Link>
+</Button>
                     
-                      <Button className='w-full'>
-                        <Link href='/dashboard/genai/voicechat'
-                      className=''
-                      >Voice Chat</Link>
-                      </Button>
 
-                      <Button className='w-full'>
-                        <Link href='/dashboard/genai/contentwriter'
-                      className=''
-                      >Content Writer</Link>
-                      </Button>
-
-                      <Button className='w-full'>
-                        <Link href='/'
-                      className=''
-                      >Settings</Link>
-                      </Button>
-
-                      {/* <Button className='w-full'>
-                        <Link href='/pdftoword'
-                      className=''
-                      >PDFtoWord</Link>
-                      </Button> */}
-                      
-
-                      </div>
-        </div>
+</div>
+</div>
     )
 }

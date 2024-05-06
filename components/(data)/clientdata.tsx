@@ -75,6 +75,7 @@ export type Client = {
     const [clients, setClients] = useState<string>('');
     const [company, setCompany] = useState<string>('');
     const [isEditing, setIsEditing] = useState<boolean>(false);
+    const [clientFetched, setClientFetched] = useState<boolean>(false);
     const [editedData, setEditedData] = useState<null | any>(null);
     const [data, setData] = React.useState<Client[]>([]);
 
@@ -236,12 +237,13 @@ export type Client = {
     const fetchData = async (): Promise<Client[]>=>{
         
         // Get clients Handler
-           const response = await fetchClientsData()
+           const response = await fetchClientsData(clientFetched)
            console.log(response)
            const clientData = response.data
            if (clientData && clientData.length > 0){
             setData(clientData)
             setClients(clientData)
+            setClientFetched(true)
           }else{
             setMessage(response.message)
           }

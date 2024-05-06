@@ -19,7 +19,8 @@ import { Input } from "@/components/ui/input"
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { SpinnerOne } from '@/components/spinner'
-import RefreshComponent  from '@/components/pagereferesher'
+import { fetchClientsData } from '@/components/(data)/clientfunctions'
+
 
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
@@ -39,6 +40,7 @@ export const AddClientPage = ()=>{
 const [message, setMessage] = useState<string | any>('Add A New Client')
 const [isRegistered, setIsRegistered] = useState<boolean>(false)
 const [isAddingClient, setIsAddingClient] = useState<boolean>(false)
+const [clientFetched, setClientFetched] = useState<boolean>(false)
 const [usersource, setUsersource] = useState<string | any>('Fixupe')
 const [reloadComponent, setReloadComponent] = useState<boolean>(false)
 const [count, setCount] = useState<number>(0)
@@ -132,7 +134,8 @@ const FormSchema = z.object({
         setIsAddingClient(false)
         console.log(response.data)
         setMessage(response.data)
-        window.location.reload()
+        fetchClientsData(clientFetched)
+        setClientFetched(true)
         
      
       }else{
@@ -152,7 +155,9 @@ catch(error: any){
   }
 
   
-
+useEffect(()=>{
+fetchClientsData(clientFetched)
+}, [router, clientFetched])
  
 
   return (
