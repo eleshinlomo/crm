@@ -18,7 +18,6 @@ import { Tools} from '@/components/tools'
 // import { ConversationTools} from '@/components/tools'
 // import { DocumentTools} from '@/components/tools'
 // import { MediaTools} from '@/components/tools'
-import WaitlistPage from './waitlistpage';
 import { OtherDashButtons } from './otherdashbuttons';
 
 

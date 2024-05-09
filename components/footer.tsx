@@ -31,23 +31,23 @@ const Footer = ()=>{
             <h6 className="text-gray-800 font-medium mb-2">Products</h6>
             <ul className="text-sm">
               <li className="mb-2">
-                <Link href="/dashboard/crm/crmpage" className="text-gray-600 hover:text-gray-900 
+                <Link href="https://fixupe.com" className="text-gray-600 hover:text-gray-900 
                 transition duration-150 ease-in-out">CRM</Link>
               </li>
               <li className="mb-2">
-                <Link href="/dashboard/crm/phonebookpage" className="text-gray-600 hover:text-gray-900 
-                transition duration-150 ease-in-out">Phone Book</Link>
+                <Link href="https://myafros.com" className="text-gray-600 hover:text-gray-900 
+                transition duration-150 ease-in-out">Crypto AI Trader</Link>
               </li>
               <li className="mb-2">
-                <a href="/dashboard/sales/imagepage" className="text-gray-600 hover:text-gray-900 
+                <a href="https://imgbot.vercel.app" className="text-gray-600 hover:text-gray-900 
                 transition duration-150 ease-in-out">Image Generator</a>
               </li>
               <li className="mb-2">
-                <a href="#0" className="text-gray-600 hover:text-gray-900 
+                <a href="https://fixupe.com" className="text-gray-600 hover:text-gray-900 
                 transition duration-150 ease-in-out">Transcriber</a>
               </li>
               <li className="mb-2">
-                <a href="#0" className="text-gray-600 hover:text-gray-900 
+                <a href="https://fixupe.com" className="text-gray-600 hover:text-gray-900 
                 transition duration-150 ease-in-out">Mass Mailer</a>
               </li>
             </ul>
@@ -146,7 +146,7 @@ const Footer = ()=>{
 
           {/* Copyrights note */}
           <div className="text-sm text-gray-600 mr-4">
-            &copy; Fixupe.com. All rights reserved 2024.</div>
+            &copy; <a href='https://myafros.com'>myafros.com</a>. All rights reserved 2024.</div>
 
         </div>
 

@@ -1,7 +1,7 @@
 "use client"
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import Waitlist from '@/components/waitlistpage'
+import Waitlist from '@/components/waitlist'
 import React from 'react'
 
 const WaitlistPage = () => {

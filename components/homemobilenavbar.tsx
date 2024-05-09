@@ -4,7 +4,7 @@ import { Button } from "./ui/button"
 import  Image  from 'next/image'
 import { GOOGLE_LOGIN_URL } from './urls'
 import { GOOGLE_LOGOUT_URL } from './urls'
-import Waitlist from './waitlistpage'
+import Waitlist from './waitlist'
 import { OtherHomeNavButtons } from './otherhomenavbuttons'
 import { useRouter } from 'next/navigation'
 
