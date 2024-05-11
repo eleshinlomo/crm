@@ -86,21 +86,20 @@ useEffect(()=>{
 {/* Right side */}
 <div className="h-1/2 px-3 pb-2  my-3 ">
 <h1 className="text-2xl md:text-3xl font-extrabold leading-tighter 
-            tracking-tighter mb-4" data-aos="zoom-y-out">Run your business on
+            tracking-tighter mb-4" data-aos="zoom-y-out">EXPLORE AI POWERED 
+            <span className="bg-clip-text py-8 text-transparent
+             bg-gradient-to-r from-blue-800 to-teal-800"> CRM</span> ON
             <span className="bg-clip-text py-8 text-transparent
              bg-gradient-to-r from-blue-800 to-teal-800"> FIXUPE</span>
             </h1>
 <p className=" w-full ">
+Explore our world class CRM solution with integrated generative AI. 
 Our mission is to make AI accessible, intuitive, 
 and transformative for businesses. Whether you run an enterprise or 
 a start-up, our platform offers a 
-diverse range of AI tools and resources tailored to your needs.
+diverse range of AI tools embedded in the CRM offering the best client management experience.
 
-From machine learning models to natural language processing algorithms, 
-Fixupe provides a comprehensive suite of tools designed to streamline 
-your workflow, enhance decision-making, and unlock new possibilities. 
-With intuitive interfaces and powerful features,
- you can harness the full potential of AI without the complexity.</p>
+.</p>
 
 <div className="flex flex-col md:flex-row pt-8 gap-3 ">
 {/* <Button variant='outline' size='sm'

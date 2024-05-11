@@ -34,7 +34,7 @@ export default function Features() {
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
             <h1 className="h2 mb-4">See what we offer</h1>
             <p className="text-xl text-gray-600">
-              We are constantly adding essential tools for businesses to scale faster.</p>
+              We are constantly adding essential tools to the CRM.</p>
           </div>
 
           {/* Section content */}
@@ -45,26 +45,11 @@ export default function Features() {
               <div className="md:pr-4 lg:pr-12 xl:pr-16 mb-8">
                 <h3 className="h3 mb-3">CRM Tools</h3>
                 <p className="text-xl text-gray-600">
-                  Enjoy our free CRM tool that offers robust benefits. 
-                  Why pay for CRM when you can use our free for life crm with advance features no other CRM offers..</p>
+                  Enjoy our AI powered CRM with robust benefits.</p>
               </div>
               {/* Tabs buttons */}
               <div className="mb-8 md:mb-0">
-                <a
-                  className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 1 ? 'bg-white shadow-md border-gray-200 hover:shadow-lg' : 'bg-gray-200 border-transparent'}`}
-                  href="#0"
-                  onClick={(e) => { e.preventDefault(); setTab(1); }}
-                >
-                  <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1">Generative Image AI</div>
-                    <div className="text-gray-600">Generate copyright-free large HD images for any purpose .</div>
-                  </div>
-                  <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
-                    <svg className="w-3 h-3 fill-current" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M11.953 4.29a.5.5 0 00-.454-.292H6.14L6.984.62A.5.5 0 006.12.173l-6 7a.5.5 0 00.379.825h5.359l-.844 3.38a.5.5 0 00.864.445l6-7a.5.5 0 00.075-.534z" />
-                    </svg>
-                  </div>
-                </a>
+              
                 <a
                   className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 2 ? 'bg-white shadow-md border-gray-200 hover:shadow-lg' : 'bg-gray-200 border-transparent'}`}
                   href="#0"
@@ -118,7 +103,7 @@ export default function Features() {
                   >
                     <div className="inline-flex flex-col justify-center items-center w-full">
                       <p className='text-center text-blue-700 font-extrabold text-2xl'
-                      >ULTRA HD IMAGES</p>
+                      >AI POWERED CRM</p>
                        <div className='relative h-44 md:h-96 w-full'>
                       <Image className="md:max-w-none  left-0 transform animate-float"
                       src={FeaturesElement} fill alt='element'/>
