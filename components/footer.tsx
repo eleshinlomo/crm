@@ -28,14 +28,14 @@ const Footer = ()=>{
 
           {/* 2nd block */}
           <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
-            <h6 className="text-gray-800 font-medium mb-2">Products</h6>
+            <h6 className="text-gray-800 font-medium mb-2">Projects</h6>
             <ul className="text-sm">
               <li className="mb-2">
                 <Link href="https://fixupe.com" className="text-gray-600 hover:text-gray-900 
                 transition duration-150 ease-in-out">CRM</Link>
               </li>
               <li className="mb-2">
-                <Link href="https://myafros.com" className="text-gray-600 hover:text-gray-900 
+                <Link href="https://cryptoaitrader.vercel.app" className="text-gray-600 hover:text-gray-900 
                 transition duration-150 ease-in-out">Crypto AI Trader</Link>
               </li>
               <li className="mb-2">
