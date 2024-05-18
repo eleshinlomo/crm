@@ -8,7 +8,7 @@ import  Typewriter  from "@/components/typewriter"
 import Link from 'next/link'
 import { DemoLogin } from "./demologin"
 import { loginChecker } from "./auth"
-import SignInLandingPage from "@/app/signinlandingpage/page"
+import SignInLandingPage from "@/app/signinpage/signinlandingpage"
 
 const Hero = ()=>{
 

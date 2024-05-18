@@ -8,11 +8,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import Link from "next/link"
 
-const SignInLandingPage = () => {
+const SigninLadingpage = () => {
   return (
     <div>
     <Dialog>
@@ -31,17 +29,20 @@ const SignInLandingPage = () => {
           <Button className="w-full">
             Sign in with Google
           </Button>
+          
+          <Button className="w-full" asChild>
           <Link href='/signinpage'>
-          <Button className="w-full">
             Sign in with Email
+            </Link>
           </Button>
-          </Link>
+         
         </div>
-       
+       <DialogFooter>
+       </DialogFooter>
       </DialogContent>
     </Dialog>
     </div>
   )
 }
 
-export default SignInLandingPage
+export default SigninLadingpage
