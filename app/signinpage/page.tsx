@@ -52,10 +52,7 @@ const SignInPage = ()=>{
 
           </div>
         
-         
-         {/* Goggle Button */}
-         
-          <GOOGLESignInPage />
+       
         {/* Linkedin Button */}
 
         {/* <Button  className='border border-blue-500

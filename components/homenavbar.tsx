@@ -162,29 +162,23 @@ handleLoginChecker()
     <MenubarMenu>
     <MenubarTrigger><Link href='/contactpage'>Contact</Link></MenubarTrigger>
   </MenubarMenu>
-
-  {/* <MenubarMenu>
-    <MenubarTrigger asChild><Link href='/supportpage'>
-      <Button size='sm' variant='outline' className='rounded-xl text-white  bg-blue-700'>Support</Button>
-      </Link></MenubarTrigger>
-  </MenubarMenu> */}
+ 
   
   <MenubarMenu>
    
-    <MenubarContent className='flex flex-col mr-4'>
+  <MenubarTrigger>
     {isLoggedIn?
+          
           <Button size='sm' onClick={userLogout}
-          className='bg-gray-700 py-5'
+          className='bg-white hover:bg-white text-black py-5'
           >
           Sign Out
         </Button>:
          
-
-          <Button className='b hover:bgbg-gray-700gray-700 py-5'>
             <Link href='/signinpage'>Sign In</Link>
-          </Button>
+          
              }
-    </MenubarContent>
+    </MenubarTrigger>
   </MenubarMenu>
   
 </Menubar>

@@ -1,6 +1,5 @@
 "use client"
 import {useState, useEffect} from 'react'
-import { fetchClientsData } from '@/app/(allroutes)/crmpages/crmpage/(crmdata)/clientfunctions'
 import {useRouter} from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { deleteClient } from '@/components/crudfunctionsadmin'
@@ -8,6 +7,7 @@ import { modifyClient } from '@/components/crudfunctionsadmin'
 import Link from 'next/link'
 import CRMNavBar from './crmnavbar'
 import { EmailPopup } from '@/components/emailerpop'
+import { getClients } from './clientfunctions'
 
 
 interface OnUserAdded{
@@ -48,7 +48,7 @@ interface ClientPayloadProps {
 
     // Get clients Handler
     const handleGetClients = async ()=>{
-       const response = await fetchClientsData(clientFetched)
+       const response = await getClients()
        if (response.ok){
 
         const listOfClients = await response.data

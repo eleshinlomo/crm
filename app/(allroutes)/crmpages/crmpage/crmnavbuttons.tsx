@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { userLogout } from '@/components/auth'
 import { AddClientPage } from './addclientpage'
 import { Company } from '@/components/urls'
-import { AddClientForm } from './addclientform'
+
 
 const AdminNavButtons = () => {
     const [isAddingUser, setIsAddingUser] = useState<boolean>(false)
@@ -28,8 +28,7 @@ const AdminNavButtons = () => {
     <Button onClick={(e)=>setIsAddingUser(false)} 
     className='rounded-2xl w-full bg-blue-500 hover:bg-blue-500'>Close</Button>
      <AddClientPage />
-     </div>:
-      <AddClientForm />
+     </div>: null
      }
      
      
