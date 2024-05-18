@@ -3,6 +3,15 @@
 import Cookies from 'js-cookie'
 import {useRouter} from 'next/router'
 import {useState, useEffect} from 'react'
+import { Button } from './ui/button'
+
+const client_id = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID
+const GOOGLE_URL = process.env.NEXT_PUBLIC_GOOGLE_LOGIN_URL
+const redirect_uri = process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI
+const scope = process.env.NEXT_PUBLIC_GOOGLE_SCOPE
+const response_type = process.env.NEXT_PUBLIC_GOOGLE_RESPONSE_TYPE
+const state = process.env.NEXT_PUBLIC_GOOGLE_STATE
+const access_type = process.env.NEXT_PUBLIC_GOOGLE_ACCESS_TYPE
 
 
 
@@ -118,7 +127,36 @@ return null
    }
     
     }
-  
+
+
+
+// Google auth
+export const googleLogin = async () => {``
+  try {
+    const response = await fetch(`${BASE_URL}/googlelogin/`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        // Add any additional headers if needed
+      },
+      credentials: 'include', // Include credentials for CORS request
+    });
+
+    if (!response.ok) {
+      // Handle non-successful responses here
+      console.error('Error:', response.status, response.statusText);
+      return null;
+    }
+
+    const data: any = await response.json();
+    console.log(data);
+    return data; // Return the data if needed
+  } catch (error: any) {
+    console.error('Error:', error.message);
+    return null;
+  }
+};
+
 
 
    
@@ -147,8 +185,7 @@ return null
 //     })
 //     .then((data)=>{
 //      console.log(data)
-//     })
-//  }
+//     }
 
 
 

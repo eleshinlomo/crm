@@ -1,6 +1,6 @@
 "use client"
 import {useState, useEffect} from 'react'
-import { fetchClientsData } from '@/components/(data)/clientfunctions'
+import { fetchClientsData } from '@/app/(allroutes)/crmpages/crmpage/(crmdata)/clientfunctions'
 import {useRouter} from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { deleteClient } from '@/components/crudfunctionsadmin'

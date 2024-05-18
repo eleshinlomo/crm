@@ -15,6 +15,9 @@ import Link from 'next/link'
 import { SignInForm } from "./signinform"
 import { ArrowLeftSquareIcon, XIcon } from "lucide-react"
 import Image from 'next/image'
+import { googleLogin } from "@/components/auth"
+import GOOGLESignInPage from "@/components/googlesigninpage"
+
 
 
 
@@ -51,17 +54,8 @@ const SignInPage = ()=>{
         
          
          {/* Goggle Button */}
-         {/* <Button  className='border border-blue-500
-          bg-white text-black hover:bg-white'>
-         <Link href={`${ALLAUTH_BASE_URL}/accounts/login/`} 
-         className="flex flex-1 justify-between">
-          <div className="relative w-8 h-6">
-          <Image src='/logos/google_logo.png' alt='google logo' fill />
-          </div>
-         Sign in with Google
-          </Link>
-        </Button> */}
-
+         
+          <GOOGLESignInPage />
         {/* Linkedin Button */}
 
         {/* <Button  className='border border-blue-500
@@ -77,7 +71,7 @@ const SignInPage = ()=>{
         
        
         {/* Email */}
-        <div className="mt-5">
+        <div className="">
         <SignInForm />
         </div>
 

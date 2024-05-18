@@ -1,5 +1,5 @@
 'use client'
-import { ClientData } from '@/components/(data)/clientdata'
+import { ClientData } from '@/app/(allroutes)/crmpages/crmpage/(crmdata)/clientdata'
 import React from 'react'
 
 

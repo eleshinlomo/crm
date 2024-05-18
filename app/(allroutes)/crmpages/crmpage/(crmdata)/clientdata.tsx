@@ -35,6 +35,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { AddClientTrigger } from "../addClientTrigger"
+import { AddClientPage } from "../addclientpage"
 
 
 
@@ -279,6 +281,7 @@ export function ClientData() {
   return (
     <div className="w-full">
       <div className="flex items-center py-4">
+        {/* Search company */}
         <Input
           placeholder="Filter company..."
           value={(table.getColumn("company")?.getFilterValue() as string) ?? ""}
@@ -287,6 +290,9 @@ export function ClientData() {
           }
           className="max-w-sm"
         />
+        
+        {/* Add Client */}
+        <AddClientPage />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">

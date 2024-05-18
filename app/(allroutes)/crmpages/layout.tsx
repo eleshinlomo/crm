@@ -5,8 +5,6 @@ import { Inter } from 'next/font/google'
 
 
 
-const inter = Inter({ subsets: ['latin'] })
-
 export const metadata: Metadata = {
   title: 'CRM',
   description: 'Fixupe is a platform that provides Business Tools for a quick task completion',
@@ -21,12 +19,7 @@ export default function CRMLayout({
   return (
     
     <div>
-      
-      <main className=' '>
-
         {children}
-        </main>
-    
     </div>
      
     

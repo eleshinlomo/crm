@@ -12,7 +12,7 @@ import {
   import { Button } from "@/components/ui/button"
 import { AddClientPage } from "./addclientpage"
   
-  export function AddClientForm() {
+  export function AddClientTrigger() {
     return (
         <div className="">
       <AlertDialog>
@@ -22,10 +22,12 @@ import { AddClientPage } from "./addclientpage"
        rounded-2xl">
             Add Client</Button>
         </AlertDialogTrigger>
-        <AlertDialogContent>
+        <AlertDialogContent className="overflow-auto">
           <AlertDialogHeader>
-           <AddClientPage />
+            
           </AlertDialogHeader>
+          {/* Add Client Form */}
+          <AddClientPage />
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction>Continue</AlertDialogAction>
