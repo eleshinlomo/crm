@@ -218,14 +218,14 @@ export const columns: ColumnDef<Client>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(client.id)}
-            >
-              Copy Client ID
-            </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>Modify Client</DropdownMenuItem>
+            <DropdownMenuSeparator />
             <DropdownMenuItem>Delete Client</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Send Email</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Read Contract</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )
