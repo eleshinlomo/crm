@@ -35,28 +35,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { AddClientTrigger } from "../addClientTrigger"
 import { AddClientPage } from "../addclientpage"
 
 
 
 const data: Client[] = [
-
-  {
-    id: "5kma53ae",
-    company: 'Exxon',
-    contact: 'testing',
-    email: 'example@e.com',
-    mobile: '900099',
-    phone: '9595958',
-    followup: 'not contacted',
-    address: '1234 boyle street',
-    servicefee: '10%',
-    contractdoc: 'doc',
-    status: 'signed-contract',
-    amount: 80000
-    
-  },
 
   {
     id: "5kma53ae",
@@ -292,7 +275,10 @@ export function ClientData() {
         />
         
         {/* Add Client */}
+        <div className="mx-2 ">
         <AddClientPage />
+        </div>
+
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">

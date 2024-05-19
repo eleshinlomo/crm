@@ -38,20 +38,20 @@ const DashboardPage = () => {
     <div className='relative bg-white text-black'>
       <div className="">
 
-        <div className='text-center flex flex-col justify-center items-center'>
+        
           {/* <MessageFromDev /> */}
-          <div>
+          {/* <div>
           <FeedbackPage />
-          </div>
+          </div> */}
           
 
 
         
-        </div>
+        
 
         <div className="mb-8 px-4">
-          <h2 className="text-2xl md:text-4xl font-bold text-center">
-            CRM PAGE</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-center mt-3">
+            DASHBOARD</h2>
           <p className=" font-light text-sm md:text-lg text-center">
             Fixupe project is a work in progress.
           </p>

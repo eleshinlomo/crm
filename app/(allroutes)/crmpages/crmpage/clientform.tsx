@@ -16,7 +16,7 @@ const ClientForm = () => {
     <div>
     <Dialog>
       <DialogTrigger asChild>
-        <Button>Add Client</Button>
+        <Button className="px-4 text-sm " variant='outline' size='sm'>Add Client</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-black text-white">
         <DialogHeader>
@@ -32,7 +32,7 @@ const ClientForm = () => {
             </Label>
             <Input
               id="company"
-              defaultValue="Facebook"
+              defaultValue="Uber"
               className="col-span-3 text-black"
             />
           </div>
@@ -52,7 +52,7 @@ const ClientForm = () => {
             </Label>
             <Input
               id="username"
-              defaultValue="@peduarte"
+              defaultValue="2155555555"
               className="col-span-3 text-black"
             />
           </div>
@@ -62,7 +62,7 @@ const ClientForm = () => {
             </Label>
             <Input
               id="phone"
-              defaultValue="@peduarte"
+              defaultValue="2155555555"
               className="col-span-3 text-black"
             />
           </div>

@@ -61,29 +61,6 @@ export const Tools = [
     }]
   },
 
-  // CRM Tool
-
-  { 
-    id: 'CRM',
-    category: 'CRM',
-    tools: [
-      
-    {   
-      label: "crm",
-      icon: DatabaseIcon,
-      href: "/crm/crmpage",
-      color: "text-pink-500",
-      bgColor: "text-grey-500"
-    },
-    // {   
-    //   label: "Admin",
-    //   icon: DatabaseIcon,
-    //   href: "/crm/adminpage",
-    //   color: "text-pink-500",
-    //   bgColor: "text-grey-500"
-    // }
-  ]
-  },
 
   {
     id:'3',
