@@ -159,27 +159,27 @@ export const columns: ColumnDef<Client>[] = [
   },
   {
     accessorKey: "mobile",
-    header: "mobile",
+    header: "Mobile",
     cell: ({ row }) => <div className="capitalize">{row.getValue("mobile")}</div>,
   },
   {
     accessorKey: "phone",
-    header: "phone",
+    header: "Phone",
     cell: ({ row }) => <div className="capitalize">{row.getValue("phone")}</div>,
   },
   {
     accessorKey: "followup",
-    header: "followup",
+    header: "Follow up",
     cell: ({ row }) => <div className="capitalize">{row.getValue("followup")}</div>,
   },
   {
     accessorKey: "address",
-    header: "address",
+    header: "Address",
     cell: ({ row }) => <div className="capitalize">{row.getValue("address")}</div>,
   },
   {
     accessorKey: "servicefee",
-    header: "servicefee",
+    header: "Servicefee",
     cell: ({ row }) => <div className="capitalize">{row.getValue("company")}</div>,
   },
   // {
@@ -219,13 +219,19 @@ export const columns: ColumnDef<Client>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
+            <DropdownMenuItem>Send Email</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Phone Call</DropdownMenuItem>
+            <DropdownMenuSeparator />
             <DropdownMenuItem>Modify Client</DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>Delete Client</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Send Email</DropdownMenuItem>
-            <DropdownMenuSeparator />
             <DropdownMenuItem>Read Contract</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Analyse Data</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>AI Analysis</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )
