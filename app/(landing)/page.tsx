@@ -20,7 +20,7 @@ import ChatBotPage from '../(allroutes)/chatbotpage'
     
     return (
 
-      <div className='relative  h-full w-full'>
+      <div className='relative overflow-hidden'>
         <HomeNavBar />
         <Hero />
         <ModalVideoPage />
