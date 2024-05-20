@@ -21,13 +21,9 @@ const access_type = process.env.NEXT_PUBLIC_GOOGLE_ACCESS_TYPE
 
 
 
-
 // URLs
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
-interface PayloadProps {
-  payload: string
-}
 
 
    // Get Access Token
@@ -86,14 +82,12 @@ return null
 
  // Login Checker
  export const loginChecker =  async (sessionid: string)=>{
-  
-  const payload: any = sessionid
   const response: any = await fetch(`${BASE_URL}/loginchecker/`, {
       method: 'GET',
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
-        'sessionid': payload
+        'sessionid': sessionid
     },
       
   })
@@ -109,8 +103,6 @@ return null
 }
 
     
-
-
 
   // Logout
   export const userLogout = async ()=>{
