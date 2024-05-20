@@ -44,13 +44,12 @@ const data: Client[] = [
   {
     id: "5kma53ae",
     company: 'Exxon',
-    contact: 'testing',
-    email: 'example@e.com',
+    contact: 'Muyiwa Coles',
+    email: 'muyiwa@fakecompany.com',
     mobile: '900099',
-    phone: '9595958',
     followup: 'not contacted',
     address: '1234 boyle street',
-    servicefee: '10%',
+    servicefee: '25% of annual salary',
     contractdoc: 'doc',
     status: 'signed-contract',
     amount: 100000
@@ -60,13 +59,12 @@ const data: Client[] = [
   {
     id: "2",
     company: 'Facebook',
-    contact: 'testing',
-    email: 'example@facebook.com',
+    contact: 'Mark Jose',
+    email: 'mark@fakecompany.com',
     mobile: '900099',
-    phone: '9595958',
-    followup: 'not contacted',
+    followup: 'Let us meet at the office on Tuesday 4pm',
     address: '1234 San Francisco',
-    servicefee: '10%',
+    servicefee: '10% of annual salary',
     contractdoc: 'doc',
     status: 'in-talks',
     amount: 10000
@@ -74,13 +72,12 @@ const data: Client[] = [
   {
     id: "5kma53ae",
     company: 'Google',
-    contact: 'testing',
-    email: 'example@google.com',
+    contact: 'Justin Blakes',
+    email: 'justin@fakecompany.com',
     mobile: '900099',
-    phone: '9595958',
-    followup: 'not contacted',
+    followup: 'Not picking calls',
     address: '1234 boyle street',
-    servicefee: '10%',
+    servicefee: '1000000',
     contractdoc: 'doc',
     status: 'ongoing-contract',
     amount: 40000
@@ -95,7 +92,6 @@ export type Client = {
   contact: string,
   email: string,
   mobile: string,
-  phone: string,
   followup: string,
   address: string,
   servicefee: string,
@@ -144,6 +140,11 @@ export const columns: ColumnDef<Client>[] = [
     cell: ({ row }) => <div className="capitalize">{row.getValue("company")}</div>,
   },
   {
+    accessorKey: "contact",
+    header: "Contact",
+    cell: ({ row }) => <div className="capitalize">{row.getValue("contact")}</div>,
+  },
+  {
     accessorKey: "email",
     header: ({ column }) => {
       return (
@@ -157,20 +158,16 @@ export const columns: ColumnDef<Client>[] = [
       )
     }
   },
+  
   {
     accessorKey: "mobile",
     header: "Mobile",
     cell: ({ row }) => <div className="capitalize">{row.getValue("mobile")}</div>,
   },
   {
-    accessorKey: "phone",
-    header: "Phone",
-    cell: ({ row }) => <div className="capitalize">{row.getValue("phone")}</div>,
-  },
-  {
     accessorKey: "followup",
     header: "Follow up",
-    cell: ({ row }) => <div className="capitalize">{row.getValue("followup")}</div>,
+    cell: ({ row }) => <div className="">{row.getValue("followup")}</div>,
   },
   {
     accessorKey: "address",
@@ -179,8 +176,8 @@ export const columns: ColumnDef<Client>[] = [
   },
   {
     accessorKey: "servicefee",
-    header: "Servicefee",
-    cell: ({ row }) => <div className="capitalize">{row.getValue("company")}</div>,
+    header: "Servicefee($)",
+    cell: ({ row }) => <div className="capitalize">{row.getValue("servicefee")}</div>,
   },
   // {
   //   accessorKey: "contractdoc",
@@ -219,9 +216,9 @@ export const columns: ColumnDef<Client>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Send Email</DropdownMenuItem>
+            <DropdownMenuItem>Email Client</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Phone Call</DropdownMenuItem>
+            <DropdownMenuItem>Call Client</DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>Modify Client</DropdownMenuItem>
             <DropdownMenuSeparator />

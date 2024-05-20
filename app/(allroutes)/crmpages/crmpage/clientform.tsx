@@ -37,6 +37,16 @@ const ClientForm = () => {
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="contact" className="text-right">
+              Contact
+            </Label>
+            <Input
+              id="contact"
+              defaultValue="Phillipe Castrol"
+              className="col-span-3 text-black"
+            />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="email" className="text-right">
               Email
             </Label>
@@ -57,22 +67,32 @@ const ClientForm = () => {
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="phone" className="text-right">
-              Phone
-            </Label>
-            <Input
-              id="phone"
-              defaultValue="2155555555"
-              className="col-span-3 text-black"
-            />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="followup" className="text-right">
               Followup
             </Label>
             <Input
               id="followup"
               defaultValue="not contacted"
+              className="col-span-3 text-black"
+            />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="address" className="text-right">
+              Address
+            </Label>
+            <Input
+              id="address"
+              defaultValue="Somewhere in America"
+              className="col-span-3 text-black"
+            />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="servicefee" className="text-right">
+              Service fee($)
+            </Label>
+            <Input
+              id="service fee"
+              defaultValue="5000"
               className="col-span-3 text-black"
             />
           </div>

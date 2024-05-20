@@ -94,7 +94,7 @@ useEffect(()=>{
              bg-gradient-to-r from-blue-800 to-teal-800"> FIXUPE</span>
             </h1>
 <p className=" w-full ">
-Explore our world class CRM solution with integrated generative AI. 
+Explore our world class CRM solution with integrated conversational AI. 
 Our mission is to make AI accessible, intuitive, 
 and transformative for businesses. Whether you run an enterprise or 
 a start-up, our platform offers a 
