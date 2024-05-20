@@ -5,6 +5,11 @@ import {useRouter} from 'next/router'
 import {useState, useEffect} from 'react'
 import { Button } from './ui/button'
 
+interface EmailLoginProps {
+  email: string,
+  password: string
+}
+
 const client_id = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID
 const GOOGLE_URL = process.env.NEXT_PUBLIC_GOOGLE_LOGIN_URL
 const redirect_uri = process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI
@@ -15,10 +20,12 @@ const access_type = process.env.NEXT_PUBLIC_GOOGLE_ACCESS_TYPE
 
 
 
+
+
 // URLs
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
-interface PayloadProp {
+interface PayloadProps {
   payload: string
 }
 
@@ -45,7 +52,12 @@ export const getAccessToken = async (code: any)=>{
 
 
 // Email Login
-export const emailLogin = async (data: any)=>{
+let data =  {
+ email: '',
+ password: ''
+}
+
+export const emailLogin = async (data: EmailLoginProps)=>{
 try{
   const processPayload = await fetch(`${BASE_URL}/loginuser/`, {
       mode: 'cors',

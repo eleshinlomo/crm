@@ -115,14 +115,11 @@ const AllRoutesLayout = ({
 
             { isLoggedIn ?
     
-
             <div className=''>
             {children}
             </div> :
 
         // Not logged In
-
-
            <div>
             <UserNotLoggedPage />
             </div>
