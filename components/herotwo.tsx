@@ -85,7 +85,7 @@ useEffect(()=>{
 </div>
 
 {/* Right side */}
-<div className="h-1/2 px-3 pb-2  my-3 ">
+<div className="h-1/3 pt-6 pb-6 md:pb-0 px-3   mt-3 ">
 <h1 className="text-2xl md:text-3xl font-extrabold leading-tighter 
             tracking-tighter mb-4" data-aos="zoom-y-out">EXPLORE AI POWERED 
             <span className="bg-clip-text py-8 text-transparent
@@ -99,8 +99,7 @@ Our mission is to make AI accessible, intuitive,
 and transformative for businesses. Whether you run an enterprise or 
 a start-up, our platform offers a 
 diverse range of AI tools embedded in the CRM offering the best client management experience.
-
-.</p>
+</p>
 
 <div className="flex flex-col md:flex-row pt-8 gap-3 ">
 {/* <Button variant='outline' size='sm'

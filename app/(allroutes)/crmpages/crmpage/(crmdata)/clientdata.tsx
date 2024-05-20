@@ -229,9 +229,7 @@ export const columns: ColumnDef<Client>[] = [
             <DropdownMenuSeparator />
             <DropdownMenuItem>Read Contract</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Analyse Data</DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>AI Analysis</DropdownMenuItem>
+            <DropdownMenuItem>Analyse Sales(AI)</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )

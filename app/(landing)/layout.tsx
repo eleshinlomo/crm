@@ -24,11 +24,11 @@ export default function DefaultLayout({
 
   return (
     <>
-      <main className="grow">
+      <div className="grow">
 
         {children}
 
-      </main>
+      </div>
 
     </>
   )

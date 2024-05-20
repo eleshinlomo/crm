@@ -12,14 +12,13 @@ import Link from "next/link"
 
 const SigninLadingpage = () => {
   return (
-    <div>
+    <div className="">
     <Dialog>
       <DialogTrigger asChild>
         <Button variant='outline' size='lg'
-        className=" text-white bg-blue-500 rounded-2xl w-full" >
-            Sign in</Button>
+        className=" text-white bg-blue-500 rounded-2xl w-full" >Sign in</Button>
       </DialogTrigger>
-      <DialogContent className="w-[250px] flex flex-col justify-center items-center  bg-black text-white">
+      <DialogContent className="sm:max-w-[425px] bg-black text-white">
         <DialogHeader>
           <DialogTitle>Sign in</DialogTitle>
           <DialogDescription>

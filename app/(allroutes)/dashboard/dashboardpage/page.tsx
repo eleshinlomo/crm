@@ -52,11 +52,11 @@ const DashboardPage = () => {
         <div className="mb-8 px-4">
           <h2 className="text-2xl md:text-4xl font-bold text-center mt-3">
             DASHBOARD</h2>
-          <p className=" font-light text-sm md:text-lg text-center">
+          <p className="text-sm md:text-lg text-center font-semibold">
             Fixupe project is a work in progress.
           </p>
           <p className=" font-light text-sm md:text-lg text-center">
-            If you like what you see, please join our waitlist <WaitlistPage />
+            Please join our waitlist <WaitlistPage />
           </p>
         </div>
 
