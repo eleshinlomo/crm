@@ -22,7 +22,7 @@ const SigninLadingpage = () => {
         <DialogHeader>
           <DialogTitle>Sign in</DialogTitle>
           <DialogDescription>
-            How would you like to sign in.
+            How would you like to sign in?
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
