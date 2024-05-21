@@ -118,7 +118,7 @@ handleLoginChecker()
 </div>
 </SheetTrigger>
 
-<SheetContent side='top' className=' bg-black'>
+<SheetContent side= 'top' className=' bg-black'>
   <div className=''>
   <HomeMobileNavBar />
   </div>

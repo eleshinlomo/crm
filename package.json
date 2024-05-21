@@ -11,6 +11,7 @@
     "dependencies": {
         "@headlessui/react": "^1.7.18",
         "@hookform/resolvers": "^3.3.2",
+        "@next/third-parties": "^14.2.3",
         "@radix-ui/react-accordion": "^1.1.2",
         "@radix-ui/react-alert-dialog": "^1.0.5",
         "@radix-ui/react-avatar": "^1.0.4",
@@ -36,7 +37,7 @@
         "date-fns": "^3.3.1",
         "js-cookie": "^3.0.5",
         "lucide-react": "^0.263.0",
-        "next": "14.0.1",
+        "next": "^14.2.3",
         "react": "^18",
         "react-day-picker": "^8.10.0",
         "react-dom": "^18",
@@ -44,6 +45,7 @@
         "react-markdown": "^9.0.0",
         "react-media-recorder": "^1.6.5",
         "react-simple-typewriter": "^5.0.1",
+        "sharp": "^0.33.4",
         "tailwind-merge": "^2.0.0",
         "tailwindcss-animate": "^1.0.7",
         "zod": "^3.22.4"
