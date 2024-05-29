@@ -89,7 +89,7 @@ export const Tools = [
       
               label: "Content Writer",
               icon: ImageIcon,
-              href: "/dashboard/genai/voiceover",
+              href: "/dashboard/genai/contentwriter",
               color: "text-blue-500",
               bgColor: "text-grey-500"
               },

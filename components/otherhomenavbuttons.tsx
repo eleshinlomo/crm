@@ -27,7 +27,7 @@ className=''
 </Button>
 
 <Button className='w-full'>
-<Link href='/dashboard/dashboardpage'
+<Link href='/dashboard/genai/contentwriter'
   className=''
 >GenAI</Link>
 </Button>

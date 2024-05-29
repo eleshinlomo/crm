@@ -193,14 +193,14 @@ const creditHandler = ()=>{
      
      
 
-     <p className="text-center font-extrabold text-2xl text-white py-8 px-4">
-        VOICE OVER CREATOR</p>
+     <p className="text-center font-extrabold text-2xl py-8 px-4">
+        CONTENT CREATOR</p>
         
         <div className='bg-white text-black'>
     
         <Heading
-        title='Create voice over for your projects 10x faster'
-        description = 'Content production on steroid'
+        title='Generate text and audio content 10x faster'
+        description = 'Content production on steroids'
         icon={MessageSquare}
         iconColor='text-violet-500'
         bgColor='bg-violet-500/10'
