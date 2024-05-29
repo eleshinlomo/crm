@@ -43,10 +43,10 @@ const ClientForm = ({onClientAdded}: ClientFormProps) => {
   const [mobile, setMobile] = useState<string>('')
   const [followup, setFollowup] = useState<string>('Not contacted')
   const [address, setAddress] = useState<string>('')
-  const [servicefee, setServicefee] = useState<number>()
+  const [servicefee, setServicefee] = useState<string>('0')
   const [isAddingClient, setIsAddingClient] = useState<boolean>(false)
   const [message, setMessage] = useState<string>('')
-  const [contractdoc, setContractdoc] = useState<File | null>(null)
+  const [contractdoc, setContractdoc] = useState<File | null>()
   const [sessionId, setSessionId] = useState<string>('')
   const [totalClients, setTotalClients] = useState(0)
   
@@ -64,7 +64,7 @@ const ClientForm = ({onClientAdded}: ClientFormProps) => {
       mobile,
       followup,
       address,
-      servicefee:0
+      servicefee
     }
     const response = await addClient(payload)
     setIsAddingClient(false)
@@ -205,7 +205,7 @@ const ClientForm = ({onClientAdded}: ClientFormProps) => {
               type='number'
               name='servicefee'
               value={servicefee}
-              onChange={(e)=>setServicefee(Number(e.target.value))}
+              onChange={(e)=>setServicefee(e.target.value)}
               className="col-span-3 text-black"
             />
           </div>

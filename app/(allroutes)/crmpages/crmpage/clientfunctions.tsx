@@ -9,7 +9,7 @@ export interface DataTypes {
     mobile: string,
     followup: string,
     address: string,
-    servicefee: number,
+    servicefee: string,
     status: "lead" | "in-talks" | "signed-contract" | "ongoing-contract",
   }
 
