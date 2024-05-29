@@ -41,27 +41,28 @@ import { deleteClient, getClients} from '../clientfunctions'
 import { getSessionid } from '../clientfunctions'
 import { getTotalClients } from '../clientfunctions'
 import { DeleteProps } from '../clientfunctions'
+import { DataTypes } from '../clientfunctions'
 
 
 
 
 
-let data: Client[] = []
-export interface Client {
-  id: number,
-  company: string,
-  contact: string,
-  email: string,
-  mobile: string,
-  followup: string,
-  address: string,
-  servicefee: string,
-  status: "lead" | "in-talks" | "signed-contract" | "ongoing-contract",
+let data: DataTypes[] = []
+// export interface Client {
+//   id: number,
+//   company: string,
+//   contact: string,
+//   email: string,
+//   mobile: string,
+//   followup: string,
+//   address: string,
+//   servicefee: string,
+//   status: "lead" | "in-talks" | "signed-contract" | "ongoing-contract",
   
-}
+// }
 
-export interface ClientArrayProps {
- clients: Client[]
+export interface ClientArrayType {
+ clients: DataTypes[]
 }
 
 interface Deleteprops {
@@ -71,7 +72,7 @@ interface Deleteprops {
 export function ClientData() {
 
   const [sorting, setSorting] = useState<SortingState>([])
-  const [clients, setClients] = useState<Client[]>([])
+  const [clients, setClients] = useState<DataTypes[]>([])
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
   const [sessionid, setSessionid] = useState<string>('')
   const [message, setMessage] = useState<string>('')
@@ -82,7 +83,7 @@ export function ClientData() {
 
 
   // Columns
-const columns: ColumnDef<Client>[] = [
+const columns: ColumnDef<DataTypes>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -227,7 +228,7 @@ const columns: ColumnDef<Client>[] = [
    const sessionid: any = getSessionid()
    if (!sessionid) return
    const clientData = await getClients(sessionid)
-   const clientArray: Client[]  = clientData.data as Client[]
+   const clientArray: DataTypes[]  = clientData.data as DataTypes[]
    clientArray.sort((a,b)=>b.id - a.id)
    setClients(clientArray)
    return clientArray
@@ -294,7 +295,8 @@ const handleDeleteClient = async (clientId: number) => {
 
   return (
     <div className="w-full">
-      <p className='text-center'>Total clients: {totalClients? totalClients : 'Counting clients...'}</p>
+      <p className='text-center'>Total clients: {totalClients? totalClients : 
+      'Counting clients...'}</p>
       <div className="flex items-center py-4">
         {/* Search company */}
         <Input
