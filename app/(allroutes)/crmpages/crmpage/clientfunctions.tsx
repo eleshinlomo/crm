@@ -1,41 +1,73 @@
 
 // CLIENT CRUD
 
-interface ClientPayloadProps {
-  company: string,
-  contact: string,
-  mobile: string,
-  followup: string,
-  address: string,
-  servicefee: string,
-  contractdoc: string,
+export interface DataTypes {
+    id:number,
+    company: string,
+    contact: string,
+    email: string,
+    mobile: string,
+    followup: string,
+    address: string,
+    servicefee: number,
+    status: "lead" | "in-talks" | "signed-contract" | "ongoing-contract",
   }
 
 
-const BASE_URL: any = process.env.NEXT_PUBLIC_BASE_URL
-const payload = {
-  company: "",
-  contact: "",
-  mobile: "",
-  followup: "",
-  address: "",
-  servicefee: "",
-  contractdoc: "",
+
+export interface DeleteProps {
+  clientId: number;
 }
+
+
+const BASE_URL: any = process.env.NEXT_PUBLIC_BASE_URL
+
 
 // Get sessionId
-const getSessionid = ()=>{
+export const getSessionid = ()=>{
   if (typeof window !== 'undefined'){
   const sessionid: string | null = localStorage.getItem('sessionid')
+  if (sessionid !== null || sessionid !== 'undefined'){
   return sessionid
+  }
 }else{
-  throw new Error('Window is undefined')
+  return null
 }
 }
 
+
+// Add Client
+export const addClient = async (payload: DataTypes) => {
+  try{
+  const sessionid = getSessionid()
+  if (!sessionid || sessionid === 'undefined' || sessionid === null) return
+  const response = await fetch(`${BASE_URL}/registerclient/`, {
+    mode: 'cors',
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+      "sessionid": sessionid
+    },
+    body: JSON.stringify(payload)
+})
+if (!response) throw new Error('No response from server')
+const data: any = response.json()
+if (data.ok){
+  return data
+}else {
+  console.log(data.error)
+  return data.error
+}
+  }
+  catch(err){
+    console.error(err)
+  }
+  }
+
+
 // Fetch Client Data
-export const getClients = async ()=>{
-    const sessionid = getSessionid()
+export const getClients = async (sessionid: string)=>{
+    
     try{
     if(!sessionid) return
     const response: any = await fetch(`${BASE_URL}/getclients/`, {
@@ -50,10 +82,12 @@ export const getClients = async ()=>{
     if(!response) return "Server error"
 
     const data = await response.json()
-    if(data){
+    if(data.ok === true){
+        console.log(data)
         return data
     }else{
-        return response.error
+        console.log(data.error)
+        return data.error
     }
 }
 catch(err){
@@ -61,22 +95,36 @@ catch(err){
 }
 }
 
+// Total Clients
+export const getTotalClients = async ()=>{
+  const sessionid = getSessionid()
+  if (!sessionid) return 'Totalclients fetch failed as no sessionid found'
+  const response = await getClients(sessionid)
+  const allClients = response.data
+  if (allClients && allClients.length > 0){
+   const totalClients = allClients.length
+   return totalClients
+  }else{
+    return 0
+  }
+}
+
 
   // Client Delete
-  export const deleteClient = async (clientid: string)=>{
+  export const deleteClient = async (clientId: number)=>{
   
-    if(!clientid) return
+    if(!clientId) return
     try{
     
     const response: any = await fetch(`${BASE_URL}/deleteclient/`, {
-      method: 'POST',
+      method: 'DELETE',
       mode: 'cors',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
   
       },
-      body: JSON.stringify({clientid})
+      body: JSON.stringify({clientId})
     })
     if(!response)throw new Error("No response from server")
     const dataResponse = await response.json()
@@ -126,32 +174,5 @@ catch(err){
   }
   
 
-  // Add Client
-  export const addClient = async (payload: ClientPayloadProps) => {
-  try{
-  const sessionid = getSessionid()
-  if (!sessionid || sessionid === 'undefined' || sessionid === null) return
-  const response = await fetch(`${BASE_URL}/registerclient/`, {
-    mode: 'cors',
-    method: 'POST',
-    headers: {
-      "Content-Type": "application/json",
-      "sessionid": sessionid
-    },
-    body: JSON.stringify(payload)
-})
-if (!response) return
-const data: any = response.json()
-if (data.ok){
-  return data
-}else {
-  console.log(data.error)
-  return data.error
-}
-  }
-  catch(err){
-    console.error(err)
-  }
-  }
-
+  
 

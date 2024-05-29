@@ -1,12 +1,12 @@
 import React from 'react'
 
-const AdminAnalyticsPage = () => {
+const CRMAnalyticsPage = () => {
   return (
 
     <div>
-        Admin Expenses Page
+        CRM Expenses Page
     </div>
   )
 }
 
-export default AdminAnalyticsPage
+export default CRMAnalyticsPage

@@ -17,6 +17,7 @@ import HomeNavBar from './homenavbar'
 import { getUserProfile } from './userprofile'
 import DatePage from './date'
 import CreditPage from '@/app/(allroutes)/dashboard/creditpage'
+import { motion } from 'framer-motion'
 
 
 

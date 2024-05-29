@@ -1,18 +1,12 @@
 "use client"
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { ArrowBigDown, ArrowBigRight, ArrowRight, EyeIcon, OptionIcon } from 'lucide-react';
-import { Card } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
-import DashboardTools from '@/components/tools';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link'
-import FeedbackPage from '@/app/feedbackpage/page';
 import WaitlistPage from '../waitlistpage/page';
-import CRM from '@/components/crm';
 import ClientPage from '../../crmpages/crmpage/page';
-import CRMNavBar from '../../crmpages/crmpage/crmnavbar';
+import {motion} from 'framer-motion'
 
 
 interface DashboardPageProps{
@@ -35,29 +29,33 @@ const DashboardPage = () => {
   };
 
   return (
-    <div className='relative bg-white text-black'>
+    <motion.div 
+    initial={{
+     x: -500,
+     opacity: 0,
+     scale: 0.5
+   }}
+
+   animate={{
+     x: 0,
+     opacity: 1,
+     scale: 1
+   }}
+   transition={{duration: 0.5}}
+    className='relative bg-white text-black'>
+      
       <div className="">
-
-        
-          {/* <MessageFromDev /> */}
-          {/* <div>
-          <FeedbackPage />
-          </div> */}
           
-
-
-        
-        
 
         <div className="mb-8 px-4">
           <h2 className="text-2xl md:text-4xl font-bold text-center mt-3">
             DASHBOARD</h2>
           <p className="text-sm md:text-lg text-center font-semibold">
-            Fixupe project is a work in progress.
+          Feel free to explore the features of the CRM.
           </p>
-          <p className=" font-light text-sm md:text-lg text-center">
-            Please join our waitlist <WaitlistPage />
-          </p>
+          <div className="flex justify-center ">
+            <WaitlistPage />
+          </div>
         </div>
 
         {/* Start of Tools */}
@@ -65,7 +63,7 @@ const DashboardPage = () => {
           <ClientPage />
              
       </div>
-    </div>
+    </motion.div>
   );
 };
 

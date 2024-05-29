@@ -9,6 +9,7 @@ import Link from 'next/link'
 import { DemoLogin } from "./demologin"
 import { loginChecker } from "./auth"
 import SignInLandingPage from "@/app/signinpage/signinlandingpage"
+import {motion} from 'framer-motion'
 
 const Hero = ()=>{
 
@@ -85,7 +86,7 @@ useEffect(()=>{
 </div>
 
 {/* Right side */}
-<div className="h-1/3 pt-6 pb-6 md:pb-0 px-3   mt-3 ">
+<div  className="h-1/3 pt-6 pb-6 md:pb-0 px-3   mt-3 ">
 <h1 className="text-2xl md:text-3xl font-extrabold leading-tighter 
             tracking-tighter mb-4" data-aos="zoom-y-out">EXPLORE AI POWERED 
             <span className="bg-clip-text py-8 text-transparent

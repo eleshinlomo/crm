@@ -40,7 +40,7 @@ import { userLogout } from './auth'
 import { loginChecker } from './auth'
 import { OtherHomeNavButtons } from './otherhomenavbuttons'
 import DatePage from './date'
-
+import {motion} from 'framer-motion'
 
 
 
@@ -144,7 +144,19 @@ handleLoginChecker()
 <DatePage />
 </div>
 
-<div className='mr-2 text-black'>
+<motion.div 
+    initial={{
+     x: -500,
+     opacity: 0,
+     scale: 0.5
+   }}
+
+   animate={{
+     x: 0,
+     opacity: 1,
+     scale: 1
+   }}
+   transition={{duration: 0.5}} className='mr-2 text-black'>
 <Menubar className=" gap-3">
   <MenubarMenu>
     <MenubarTrigger><Link href='/'>Home</Link></MenubarTrigger>
@@ -184,7 +196,7 @@ handleLoginChecker()
 </Menubar>
               
         
-    </div>
+    </motion.div>
      
     <div className='md:hidden mt-2 h-7 w-7'>
           <UserAvatar />

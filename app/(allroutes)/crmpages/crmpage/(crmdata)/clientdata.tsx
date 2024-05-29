@@ -1,5 +1,6 @@
 "use client"
 
+import {useState, useEffect} from 'react'
 import * as React from "react"
 import {
   ColumnDef,
@@ -35,59 +36,19 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { AddClientPage } from "../addclientpage"
+import ClientForm from "../clientform"
+import { deleteClient, getClients} from '../clientfunctions'
+import { getSessionid } from '../clientfunctions'
+import { getTotalClients } from '../clientfunctions'
+import { DeleteProps } from '../clientfunctions'
 
 
 
-const data: Client[] = [
 
-  {
-    id: "5kma53ae",
-    company: 'Exxon',
-    contact: 'Muyiwa Coles',
-    email: 'muyiwa@fakecompany.com',
-    mobile: '900099',
-    followup: 'not contacted',
-    address: '1234 boyle street',
-    servicefee: '25% of annual salary',
-    contractdoc: 'doc',
-    status: 'signed-contract',
-    amount: 100000
-    
-  },
-  
-  {
-    id: "2",
-    company: 'Facebook',
-    contact: 'Mark Jose',
-    email: 'mark@fakecompany.com',
-    mobile: '900099',
-    followup: 'Let us meet at the office on Tuesday 4pm',
-    address: '1234 San Francisco',
-    servicefee: '10% of annual salary',
-    contractdoc: 'doc',
-    status: 'in-talks',
-    amount: 10000
-  },
-  {
-    id: "5kma53ae",
-    company: 'Google',
-    contact: 'Justin Blakes',
-    email: 'justin@fakecompany.com',
-    mobile: '900099',
-    followup: 'Not picking calls',
-    address: '1234 boyle street',
-    servicefee: '1000000',
-    contractdoc: 'doc',
-    status: 'ongoing-contract',
-    amount: 40000
-    
-  },
-]
 
-export type Client = {
-
-  id: string,
+let data: Client[] = []
+export interface Client {
+  id: number,
   company: string,
   contact: string,
   email: string,
@@ -95,15 +56,33 @@ export type Client = {
   followup: string,
   address: string,
   servicefee: string,
-  contractdoc: string
-  status: "pending" | "in-talks" | "signed-contract" | "ongoing-contract",
-  amount: number
+  status: "lead" | "in-talks" | "signed-contract" | "ongoing-contract",
   
 }
 
-// Columns
+export interface ClientArrayProps {
+ clients: Client[]
+}
 
-export const columns: ColumnDef<Client>[] = [
+interface Deleteprops {
+  clientId: number;
+}
+
+export function ClientData() {
+
+  const [sorting, setSorting] = useState<SortingState>([])
+  const [clients, setClients] = useState<Client[]>([])
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+  const [sessionid, setSessionid] = useState<string>('')
+  const [message, setMessage] = useState<string>('')
+  const [totalClients, setTotalClients] = useState<number>(0)
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
+    []
+  )
+
+
+  // Columns
+const columns: ColumnDef<Client>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -146,17 +125,8 @@ export const columns: ColumnDef<Client>[] = [
   },
   {
     accessorKey: "email",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Email
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    }
+    header: "Email",
+    cell: ({ row }) => <div className="">{row.getValue("email")}</div>,
   },
   
   {
@@ -203,8 +173,8 @@ export const columns: ColumnDef<Client>[] = [
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const client = row.original
-
+    
+    const client = row.original
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -216,35 +186,63 @@ export const columns: ColumnDef<Client>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Email Client</DropdownMenuItem>
+            <DropdownMenuItem>
+            <Button variant='ghost'>
+                Email Client
+              </Button>
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Call Client</DropdownMenuItem>
+            <DropdownMenuItem>
+              <Button variant='ghost' onClick={async ()=>{handleDeleteClient(client.id)}}>
+                Delete Client
+              </Button>
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Modify Client</DropdownMenuItem>
+            <DropdownMenuItem>
+              <Button variant='ghost'>
+                Modify Client
+              </Button>
+              </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Delete Client</DropdownMenuItem>
+            <DropdownMenuItem>
+            <Button variant='ghost'>
+                Read Contract
+              </Button>
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Read Contract</DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Analyse Sales(AI)</DropdownMenuItem>
+            <DropdownMenuItem>
+            <Button variant='ghost'>
+                Analyse Sales(AI)
+              </Button>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )
     },
   },
 ]
+   
+  // Get Clients
+  const getAllClients = async ()=>{
+   const sessionid: any = getSessionid()
+   if (!sessionid) return
+   const clientData = await getClients(sessionid)
+   const clientArray: Client[]  = clientData.data as Client[]
+   clientArray.sort((a,b)=>b.id - a.id)
+   setClients(clientArray)
+   return clientArray
+  }
 
-export function ClientData() {
-  const [sorting, setSorting] = React.useState<SortingState>([])
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
+  useEffect(()=>{
+    getAllClients()
+  }, [])
+
+
   const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
+  React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
-
   const table = useReactTable({
-    data,
+    data:clients,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -261,9 +259,42 @@ export function ClientData() {
       rowSelection,
     },
   })
+  
+  
+  
+//  GET Total number of clients
+const fetchTotalClients = async ()=>{
+  const allClients = await getAllClients()
+  if (allClients && allClients.length > 0){
+  setClients(allClients)
+  const total = await getTotalClients()
+  setTotalClients(total)
+  }
+}
+useEffect(()=>{
+fetchTotalClients()
+},[])
+
+
+// Delete Client
+const handleDeleteClient = async (clientId: number) => {
+  try {
+    if (!clientId) return;
+    await deleteClient(clientId);
+    // Refresh the clients list after deletion
+    const updatedClientsArray = await getAllClients();
+    if (updatedClientsArray && updatedClientsArray.length > 0)
+    setClients(updatedClientsArray)
+    const total = await getTotalClients();
+    setTotalClients(total);
+  } catch (error) {
+    console.error("Failed to delete client:", error);
+  }
+};
 
   return (
     <div className="w-full">
+      <p className='text-center'>Total clients: {totalClients? totalClients : 'Counting clients...'}</p>
       <div className="flex items-center py-4">
         {/* Search company */}
         <Input
@@ -277,7 +308,7 @@ export function ClientData() {
         
         {/* Add Client */}
         <div className="mx-2 ">
-        <AddClientPage />
+        <ClientForm onClientAdded={fetchTotalClients} />
         </div>
 
         <DropdownMenu>

@@ -1,4 +1,7 @@
+'use client'
+import {useState, useEffect} from 'react'
 import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
 import {
   Dialog,
   DialogContent,
@@ -10,49 +13,151 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { addClient, getClients, getSessionid, getTotalClients } from './clientfunctions'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { DataTypes } from './clientfunctions'
 
-const ClientForm = () => {
+
+interface ClientFormProps {
+  onClientAdded: ()=>void;
+  }
+
+
+
+const BASE_URL: any = process.env.NEXT_PUBLIC_BASE_URL
+
+
+const ClientForm = ({onClientAdded}: ClientFormProps) => {
+  
+  
+  const [company, setCompany] = useState<string>('')
+  const [status, setStatus] = useState<"lead" | "in-talks" | "signed-contract" | "ongoing-contract">('lead')
+  const [contact, setContact] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [mobile, setMobile] = useState<string>('')
+  const [followup, setFollowup] = useState<string>('Not contacted')
+  const [address, setAddress] = useState<string>('')
+  const [servicefee, setServicefee] = useState<number>(0)
+  const [isAddingClient, setIsAddingClient] = useState<boolean>(false)
+  const [message, setMessage] = useState<string>('')
+  const [contractdoc, setContractdoc] = useState<File | null>(null)
+  const [sessionId, setSessionId] = useState<string>('')
+  const [totalClients, setTotalClients] = useState(0)
+  
+
+  const handleAddClient = async (e: React.FormEvent)=>{
+    try {
+    e.preventDefault()
+    setIsAddingClient(true)
+    const payload: DataTypes = {
+      id:0,
+      company,
+      status,
+      contact,
+      email,
+      mobile,
+      followup,
+      address,
+      servicefee
+    }
+    const response = await addClient(payload)
+    setIsAddingClient(false)
+    setMessage('Client has been added')
+    onClientAdded()
+  }
+
+  catch(err){
+   console.log(err)
+  }finally{
+      setCompany(''),
+      setStatus('lead'),
+      setContact(''),
+      setEmail(''),
+      setMobile(mobile),
+      setFollowup(followup),
+      setAddress(''),
+      setServicefee(servicefee)
+      setIsAddingClient(false)
+    }
+  
+}
+
+
   return (
     <div>
+    
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="px-4 text-sm " variant='outline' size='sm'>Add Client</Button>
+        <Button className="px-4 text-sm bg-blue-500 hover:bg-blue-500 " variant='default' size='sm'>
+          Add Client</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-black text-white">
         <DialogHeader>
           <DialogTitle>Add Client</DialogTitle>
           <DialogDescription>
             Add a new client to your CRM.
+            <p>All fields except &apos;Company&apos; are optional.</p>
           </DialogDescription>
         </DialogHeader>
+        <p className='text-center'>{message}</p>
+        <form onSubmit={handleAddClient}>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="company" className="text-right">
               Company
             </Label>
-            <Input
-              id="company"
-              defaultValue="Uber"
+             <Input
+              name= 'company'
+              value= {company}
+              onChange={(e)=>setCompany(e.target.value)}
               className="col-span-3 text-black"
+              required
             />
           </div>
+          <div className="grid grid-cols-4 items-center gap-4 bg-black">
+          <Label htmlFor="contact" className="text-right">
+           Status
+          </Label>
+          <Select value={status} onValueChange={(value)=>setStatus(value as "lead" | "in-talks" | "signed-contract" | "ongoing-contract")}>
+          <SelectTrigger className="text-black">
+          <SelectValue placeholder="Select status"/>
+          </SelectTrigger>
+          <SelectContent className="col-span-3 text-black">
+          <SelectItem value="lead">Lead</SelectItem>
+          <SelectItem value="in-talks">In-talks</SelectItem>
+          <SelectItem value="signed-contract">Signed-contract</SelectItem>
+          <SelectItem value="ongoing-contract">Ongoing-contract</SelectItem>
+          </SelectContent>
+          </Select>
+
+          </div>
+          
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="contact" className="text-right">
               Contact
             </Label>
             <Input
-              id="contact"
-              defaultValue="Phillipe Castrol"
+              name='contact'
+              value={contact}
+              onChange={(e)=>setContact(e.target.value)}
               className="col-span-3 text-black"
             />
           </div>
+          
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="email" className="text-right">
               Email
             </Label>
             <Input
-              id="email"
-              defaultValue="example@email.com"
+              name='email'
+              value={email}
+              onChange={(e)=>setEmail(e.target.value)}
               className="col-span-3 text-black"
             />
           </div>
@@ -61,8 +166,10 @@ const ClientForm = () => {
               Mobile
             </Label>
             <Input
-              id="username"
-              defaultValue="2155555555"
+              type='number'
+              name='mobile'
+              value={mobile}
+              onChange={(e)=>setMobile(e.target.value)}
               className="col-span-3 text-black"
             />
           </div>
@@ -72,7 +179,9 @@ const ClientForm = () => {
             </Label>
             <Input
               id="followup"
-              defaultValue="not contacted"
+              name='followup'
+              value={followup}
+              onChange={(e)=>setFollowup(e.target.value)}
               className="col-span-3 text-black"
             />
           </div>
@@ -82,7 +191,9 @@ const ClientForm = () => {
             </Label>
             <Input
               id="address"
-              defaultValue="Somewhere in America"
+              name='address'
+              value={address}
+              onChange={(e)=>setAddress(e.target.value)}
               className="col-span-3 text-black"
             />
           </div>
@@ -91,18 +202,25 @@ const ClientForm = () => {
               Service fee($)
             </Label>
             <Input
-              id="service fee"
-              defaultValue="5000"
+              type='number'
+              name='servicefee'
+              value={servicefee}
+              onChange={(e)=>setServicefee(Number(e.target.value))}
               className="col-span-3 text-black"
             />
           </div>
+          <Button type="submit" onClick={()=>handleAddClient}>
+          {isAddingClient? 'Adding Client...':
+          'Add Client'}
+          </Button>
+         
         </div>
-        <DialogFooter>
-          <Button type="submit">Add Client</Button>
-        </DialogFooter>
+        </form>
+      
       </DialogContent>
     </Dialog>
     </div>
+  
   )
 }
 

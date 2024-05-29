@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react';
 import { generalChatbot } from '@/components/(chatbotfunctions.tsx)/generalchatbot';
-
+import {motion} from 'framer-motion'
 const ChatBotPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Array<string | any>>([]);
@@ -50,7 +50,19 @@ const ChatBotPage = () => {
         {isOpen ? 'CLOSE' : 'CHAT'}
       </button>
       {isOpen && (
-        <div className="bg-white w-80 h-96 fixed bottom-20 right-10 shadow-lg rounded-lg">
+        <motion.div 
+        initial={{
+         x: -500,
+         opacity: 0,
+         scale: 0.5
+       }}
+    
+       animate={{
+         x: 0,
+         opacity: 1,
+         scale: 1
+       }}
+       transition={{duration: 0.5}} className="bg-white w-80 h-96 fixed bottom-20 right-10 shadow-lg rounded-lg">
           <div className="p-4">
             <h3 className="text-lg font-extrabold mb-2 text-center">Fixupe Support</h3>
             {/* Chat messages */}
@@ -95,7 +107,7 @@ const ChatBotPage = () => {
               
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   );
