@@ -9,6 +9,7 @@ import { voiceToText } from "@/components/voicetotext";
 import { SpinnerOne } from "@/components/spinner";
 import Image from 'next/image'
 import { Empty } from "@/components/empty";
+import CopyButton from "@/components/copybutton";
 
 const Controller = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -148,9 +149,15 @@ const transcribing = (<div className='relative h-16 w-16'>
           {transcribing}
         </div>:null
         }
-
-        <p className="text-start py-4 px-2 md:px-24  overflow-y-scroll">{transcribedMessage?
-         transcribedMessage : null}</p>
+         
+        {/* Transcribed Message */}
+        <div className="text-start py-4 px-2 md:px-24  overflow-y-scroll">
+          {transcribedMessage?
+          <div className="flex flex-col gap-2">
+          <CopyButton textToCopy={transcribedMessage} />
+          {transcribedMessage}
+          </div> : null}
+          </div>
         </div>:null
         }
         </div>
