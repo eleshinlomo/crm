@@ -43,7 +43,7 @@ const ClientForm = ({onClientAdded}: ClientFormProps) => {
   const [mobile, setMobile] = useState<string>('')
   const [followup, setFollowup] = useState<string>('Not contacted')
   const [address, setAddress] = useState<string>('')
-  const [servicefee, setServicefee] = useState<number>(0)
+  const [servicefee, setServicefee] = useState<number>()
   const [isAddingClient, setIsAddingClient] = useState<boolean>(false)
   const [message, setMessage] = useState<string>('')
   const [contractdoc, setContractdoc] = useState<File | null>(null)
@@ -64,7 +64,7 @@ const ClientForm = ({onClientAdded}: ClientFormProps) => {
       mobile,
       followup,
       address,
-      servicefee
+      servicefee:0
     }
     const response = await addClient(payload)
     setIsAddingClient(false)

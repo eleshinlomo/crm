@@ -2,6 +2,7 @@
 
 import {useState, useEffect} from 'react'
 import * as React from "react"
+import Link from 'next/link'
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -42,24 +43,13 @@ import { getSessionid } from '../clientfunctions'
 import { getTotalClients } from '../clientfunctions'
 import { DeleteProps } from '../clientfunctions'
 import { DataTypes } from '../clientfunctions'
+import EmailPage from '@/app/(allroutes)/dashboard/emailpage/page'
 
 
 
 
 
 let data: DataTypes[] = []
-// export interface Client {
-//   id: number,
-//   company: string,
-//   contact: string,
-//   email: string,
-//   mobile: string,
-//   followup: string,
-//   address: string,
-//   servicefee: string,
-//   status: "lead" | "in-talks" | "signed-contract" | "ongoing-contract",
-  
-// }
 
 export interface ClientArrayType {
  clients: DataTypes[]
@@ -150,26 +140,7 @@ const columns: ColumnDef<DataTypes>[] = [
     header: "Servicefee($)",
     cell: ({ row }) => <div className="capitalize">{row.getValue("servicefee")}</div>,
   },
-  // {
-  //   accessorKey: "contractdoc",
-  //   header: "Contract",
-  //   cell: ({ row }) => <div className="capitalize">{row.getValue("contractdoc")}</div>,
-  // },
-  // {
-  //   accessorKey: "amount",
-  //   header: () => <div className="text-right">Amount</div>,
-  //   cell: ({ row }) => {
-  //     const amount = parseFloat(row.getValue("amount"))
 
-  //     // Format the amount as a dollar amount
-  //     const formatted = new Intl.NumberFormat("en-US", {
-  //       style: "currency",
-  //       currency: "USD",
-  //     }).format(amount)
-
-  //     return <div className="text-right font-medium">{formatted}</div>
-  //   },
-  // },
   {
     id: "actions",
     enableHiding: false,
@@ -188,13 +159,14 @@ const columns: ColumnDef<DataTypes>[] = [
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-            <Button variant='ghost'>
-                Email Client
+            <Button variant='ghost' asChild>
+               <Link href='/dashboard/emailpage'>Email Client</Link>
               </Button>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <Button variant='ghost' onClick={async ()=>{handleDeleteClient(client.id)}}>
+              <Button variant='ghost' onClick={async ()=>{
+                handleDeleteClient(client.id)}}>
                 Delete Client
               </Button>
             </DropdownMenuItem>

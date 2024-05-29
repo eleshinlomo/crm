@@ -121,27 +121,6 @@ export const Tools = [
       ]
 
         },
-
-
-
-  { 
-      
-    id:'Mailer',
-    category: 'Mailing Tools',
-    href: "",
-    tools: [
-    
-      {
-            
-        label: "Email sender",
-        icon: MailIcon,
-        href: "/dashboard/emailsender",
-        color: "text-blue-500",
-        bgColor: "text-grey-500"
-        },
-  
-    
-      ]},
     ]
 
     const DashboardTools = ()=> {
