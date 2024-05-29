@@ -17,7 +17,7 @@ const CopyButton = ({textToCopy}: CopyTextTypes) => {
   };
 
   return (
-    <div>
+    <div className='flex gap-4'>
        <p>{message}</p>
       <Button onClick={copyToClipboard}>Copy</Button>
     </div>
