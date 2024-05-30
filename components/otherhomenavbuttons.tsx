@@ -33,6 +33,12 @@ className=''
 </Button>
 
 <Button className='w-full'>
+<Link href='/pdftoword'
+  className=''
+>PdftoWord</Link>
+</Button>
+
+<Button className='w-full'>
 <Link href='/'
 className=''
 >Settings</Link>

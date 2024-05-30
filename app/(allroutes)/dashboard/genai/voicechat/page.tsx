@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Title from "@/components/(audiotospeech)/Title";
 import {RecordMessage} from "@/components/(audiotospeech)/RecordMessage";
 import Link from 'next/link'
@@ -8,20 +8,24 @@ import Link from 'next/link'
 const Controller = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<any[]>([]);
+  const [count, setCount] = useState<number>(0)
 
   // const data = "This is a fake blob"
   // const blob = new Blob([data], {type: "text/plain"})
   // const url = URL.createObjectURL(blob)
   // console.log(url)
 
- 
+ const getUserRecordedMessage = (mediaBlobUrl: any) =>{
+  const myMessage = { sender: "you", mediaBlobUrl };
+  return myMessage
+
+ }
   const handleStop = async (mediaBlobUrl: any) => {
     setIsLoading(true);
-    console.log(mediaBlobUrl);
   
     // Append recorded message to messages
-    const myMessage = { sender: "you", mediaBlobUrl };
-    const messagesArr = [...messages, myMessage];
+    const userRecordedMessage = getUserRecordedMessage(mediaBlobUrl)
+    const messagesArr = [...messages, userRecordedMessage];
   
     try {
       // Play audio immediately
@@ -108,15 +112,16 @@ const Controller = () => {
                   <div>
                     <p className="py-2 text-muted-foreground">
                   Download audio response</p>
-                    </div>: 
+                    </div>
+                    : 
                     <div>
-                      <p className="py-2 text-muted-foreground">
-                  Download audio prompt</p>
                       </div>
+                      
                 }
                 {/* Sender */}
                 <div className=" ">
-                  
+                <p className="py-2 text-muted-foreground">
+                  Download audio prompt</p>
                   <p
                     className={
                       audio.sender == "bola"
@@ -126,6 +131,7 @@ const Controller = () => {
                   >
                     {audio.sender.toUpperCase()}
                   </p>
+                  
 
                   {/* Message */}
                   <audio
@@ -134,8 +140,10 @@ const Controller = () => {
                     controls
                     
                   />
+                
                 </div>
               </div>
+              
             );
           })}
 

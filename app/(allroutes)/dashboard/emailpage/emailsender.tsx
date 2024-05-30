@@ -29,8 +29,18 @@ const EmailSender = () => {
     
     const [senderEmail, setSenderEmail] = useState<string | any>(localStorage.getItem('email') || null)
     const [emailBody, setEmailBody] = useState<string>('')
-    const [recieverEmail, setRecieverEmail] = useState<string>('')
+    const [email, setEmail] = useState('')
+    const [recieverEmail, setRecieverEmail] = useState<string>(''|| email)
     const [emailSubject, setEmailSubject] = useState<string>('')
+    
+    const getBulkEmail = ()=>{
+      let emailList: string[] = []
+      const userEmail = 'seun.olatunji2@gmail.com'
+      emailList.push(userEmail)
+      emailList.forEach(email => {
+      setEmail(userEmail)
+    });
+  }
     
    
 
@@ -64,6 +74,7 @@ const EmailSender = () => {
       const sendEmail = async (data: z.infer<typeof FormSchema>) => {
         // Access the form data from the useForm hook
         const { receiver_email, email_subject, email_body } = data;
+        
     
        
     
@@ -94,6 +105,7 @@ const EmailSender = () => {
                 setIsSending(false)
                 setMessage(data.message);
                 getCurrentCount()
+                form.reset()
             } else {
                 console.log(data.error);
                 setIsSending(false)
@@ -103,7 +115,6 @@ const EmailSender = () => {
             console.log(err);
             setMessage("No response! Unable to fetch from server. Check internet connection");
         } finally {
-            form.reset()
             setIsSending(false)
         }
     };
@@ -167,9 +178,10 @@ useEffect(()=>{
         bgColor='bg-violet-500/10'
          />
 
-         <div className='px-4 lg:px-8'>
-          <div>
-           
+         <div className='px-4 lg:px-8 md:flex  justify-between w-full'>
+
+          {/* Text on left */}
+          <div className='md:w-1/2'>
            {/* Announcements */}
            <div className='flex gap-2 text-sm md:text-md'>
             <p className='text-red-500 font-extrabold '>
@@ -185,29 +197,48 @@ useEffect(()=>{
 
             </div>
 
-
             <p className='py-1'>
               <span className='text-red-600 font-extrabold mr-2'>AI ALERT!</span> 
               You have 2 meetings today. Client xyz is for 2pm and ...</p>
               <p>Last follow up message: ...</p>
+      
+      {/*Email List */}
+          <div>
+          <p className='my-4 text-center md:text-start '> 
+          <span className='bg-blue-800 text-white rounded-2xl py-2 px-4'>
+            Client Email Lists</span></p>
+          <div className='flex gap-2 mt-3 mx-2'>
+            <Button size='sm' onClick={getBulkEmail}>
+              Leads
+            </Button>
+            <Button size='sm'>
+              Contacted
+            </Button>
+            <Button size='sm'>
+              Signed
+            </Button>
+            <Button size='sm'>
+              Existing
+            </Button>
           </div>
-           
-           {/* Message */}
+          </div>
+
+          </div>
+  
           
 
            
 
-           {/* Message Form */}
-           <div>
-            
-
+           {/* Form */}
+           <div className='md:w-1/2'>
+          
             <div className='py-2'>
                      
                      <Form {...form}>
                        <form onSubmit={form.handleSubmit(sendEmail)}
                        className='
-                        border w-full px-3 md:px-6 bg-gradient-to-tr from-black
-                        via-slate-800 to-black text-white 
+                        border  px-3 md:px-6 bg-gradient-to-tr from-black
+                        via-slate-800 to-black text-white  
                        focus-within:shadow-sm 
                         flex flex-col gap-2 mt-2
                        '
