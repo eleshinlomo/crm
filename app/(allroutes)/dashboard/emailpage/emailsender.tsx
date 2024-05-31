@@ -30,16 +30,13 @@ const EmailSender = () => {
     const [senderEmail, setSenderEmail] = useState<string | any>(localStorage.getItem('email') || null)
     const [emailBody, setEmailBody] = useState<string>('')
     const [email, setEmail] = useState('')
-    const [recieverEmail, setRecieverEmail] = useState<string>(''|| email)
+    const [recieverEmail, setRecieverEmail] = useState<string>('')
     const [emailSubject, setEmailSubject] = useState<string>('')
     
     const getBulkEmail = ()=>{
       let emailList: string[] = []
-      const userEmail = 'seun.olatunji2@gmail.com'
-      emailList.push(userEmail)
-      emailList.forEach(email => {
-      setEmail(userEmail)
-    });
+      const userEmail: string = 'seun.olatunji2@gmail.com'
+      setRecieverEmail(userEmail)
   }
     
    
@@ -47,7 +44,7 @@ const EmailSender = () => {
     const FormSchema = z.object({
 
         email_body: z.string().min(0, {
-          message: " Please enter email boy.",
+          message: " Please enter email.",
         }),
 
         email_subject: z.string().min(0, {
@@ -63,9 +60,9 @@ const EmailSender = () => {
         const form = useForm<z.infer<typeof FormSchema>>({
           resolver: zodResolver(FormSchema),
           defaultValues: {
-            email_body: "",
-            email_subject: "",
-            receiver_email: "",
+            email_body: emailBody,
+            email_subject: emailSubject,
+            receiver_email: recieverEmail,
             
           },
     
@@ -75,15 +72,11 @@ const EmailSender = () => {
         // Access the form data from the useForm hook
         const { receiver_email, email_subject, email_body } = data;
         
-    
-       
-    
-        const payload = {
+        let payload = {
             receiver_email,
             email_subject,       
             email_body
         };
-        
     
         try {
           setIsSending(true)
@@ -103,9 +96,19 @@ const EmailSender = () => {
             if (data.ok) {
                 console.log(data);
                 setIsSending(false)
-                setMessage(data.message);
-                getCurrentCount()
                 form.reset()
+                setMessage(data.message);
+                const newCount = await getCurrentCount()
+                if(newCount){
+                    setCurrentCount(newCount)
+                    setMessage(data.message);
+                }
+                
+
+                
+                
+                
+
             } else {
                 console.log(data.error);
                 setIsSending(false)
@@ -138,11 +141,9 @@ const EmailSender = () => {
       const data: any = await response.json();
       setMessage('')
       if (data.ok) {
+          const count = data.data
+          return count
 
-          const counter = data.data
-           setCurrentCount(counter)
-          
-          
       } else {
           console.log(data.error);
           setMessage(data.error);
@@ -155,14 +156,20 @@ const EmailSender = () => {
   }
 };
 
+const getCountHandler = async ()=>{
+    const count = await getCurrentCount()
+    if (count){
+    setCurrentCount(count)
+    }
+}
 
 useEffect(()=>{
-  getCurrentCount()
-}, [currentCount])
+   getCountHandler()
+}, [ ])
 
   return (
 
-    <div className='bg-black text-white flex flex-col justify-center'>
+    <div className='bg-black text-white flex flex-col justify-center pb-8'>
      
      
      <p className="text-center font-extrabold text-2xl  py-8 px-4">
@@ -185,7 +192,7 @@ useEffect(()=>{
            {/* Announcements */}
            <div className='flex gap-2 text-sm md:text-md'>
             <p className='text-blue-500 font-extrabold '>
-              <span className=''>MAX DAILY EMAIL:</span> 30</p>
+              <span className=''>MAX DAILY EMAIL:</span> 300</p>
             <div className='flex gap-1'>
               <p className='font-extrabold'>TOTAL NO. OF EMAIL SENT TODAY:
             </p>
@@ -229,9 +236,8 @@ useEffect(()=>{
 
            
 
-           {/* Form */}
+           {/* Email Form */}
            <div className='md:w-1/2'>
-          
             <div className='py-2'>
                      
                      <Form {...form}>
@@ -240,21 +246,19 @@ useEffect(()=>{
                         border  px-3 md:px-6 bg-gradient-to-tr from-black
                         via-slate-800 to-black text-white  
                        focus-within:shadow-sm 
-                        flex flex-col gap-2 mt-2
+                        flex flex-col gap-2 
                        '
                        >
         <div className='flex gap-2 justify-between font-extrabold py-2'>
         <p className=''>From:</p>
-        <p className=' text-red-400 text-center hidden  md:flex'>
-            {message}
-          </p>
+         {/* Mobile display only */}
+         <p className=' text-red-400 text-center'>
+         {message}
+        </p>
           <p>{company?.toUpperCase()}</p>
         </div>
 
-        {/* Mobile display only */}
-        <p className=' text-red-400 text-center md:hidden'>
-         {message}
-        </p>
+       
         <Input placeholder='From' value={senderEmail} className='text-black font-extrabold' />
         
 
@@ -294,17 +298,17 @@ useEffect(()=>{
           )}
         />
 
-                           {/* Email Body */}
-                          <FormField 
-                          name="email_body"
-                          render={({ field })=>(
+         {/* Email Body */}
+        <FormField 
+        name="email_body"
+        render={({ field })=>(
                
-                            <FormItem className="col-span-12 lg:col-span-10">
-                            <FormControl className='M-0 P-0'>
-                           <Textarea className='border border-black outline-none  
-                           text-md text-black
-                           focus=visible:ring-transparent h-44
-                           focus-visible:ring-0' 
+        <FormItem className="col-span-12 lg:col-span-10">
+        <FormControl className='M-0 P-0'>
+        <Textarea className='border border-black outline-none  
+        text-md text-black
+        focus=visible:ring-transparent h-44
+        focus-visible:ring-0' 
                         //    disabled={isLoading}
                            {...field}
                            placeholder="Write your text here"

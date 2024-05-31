@@ -1,5 +1,5 @@
 "use client"
-import {useState, useEffect} from 'react'
+import {useState, useEffect, ReactElement} from 'react'
 import * as z from 'zod'
 import {Heading} from '@/components/heading'
 import {  MessageSquare, SmilePlusIcon } from 'lucide-react'
@@ -9,6 +9,7 @@ import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from '@/
 import { Input } from "@/components/ui/input"
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
+import Image from 'next/image'
 
 
 interface EmailSenderProps {
@@ -18,7 +19,21 @@ interface EmailSenderProps {
 
 const BASE_URL: any = process.env.NEXT_PUBLIC_BASE_URL;
 
-const TextChatPage = () => {
+const emailBodyContent = <div>
+     
+        Hi Rachel,
+        Please find attached invoice for the well completions 
+        serices rendered at RIG AR504 between January 1st, 2024 to May 05, 2024.
+     
+
+     <p>Thank you for your business</p>
+
+     <p>Regards,
+        Malik
+     </p>
+    </div>
+
+const InvoiceMailer = () => {
     
     const [message, setMessage] = useState<string | any>('')
     const [company, setCompany] = useState<string | null>(localStorage.getItem('company'))
@@ -28,16 +43,30 @@ const TextChatPage = () => {
     const [isSending, setIsSending] = useState<boolean>(false)
     
     const [senderEmail, setSenderEmail] = useState<string | any>(localStorage.getItem('email') || null)
-    const [emailBody, setEmailBody] = useState<string>('')
-    const [recieverEmail, setRecieverEmail] = useState<string>('')
-    const [emailSubject, setEmailSubject] = useState<string>('')
+    const [emailBody, setEmailBody] = useState<string>('Please find attached invoice')
+    const [email, setEmail] = useState('')
+    const [recieverEmail, setRecieverEmail] = useState<string>('client@client.com')
+    const [emailSubject, setEmailSubject] = useState<string>('Invoice for new completion')
+
+    
+   
+    
+    
+    const getBulkEmail = ()=>{
+      let emailList: string[] = []
+      const userEmail = 'seun.olatunji2@gmail.com'
+      emailList.push(userEmail)
+      emailList.forEach(email => {
+      setEmail(userEmail)
+    });
+  }
     
    
 
     const FormSchema = z.object({
 
         email_body: z.string().min(0, {
-          message: " Please enter email boy.",
+          message: " Please enter email.",
         }),
 
         email_subject: z.string().min(0, {
@@ -53,9 +82,9 @@ const TextChatPage = () => {
         const form = useForm<z.infer<typeof FormSchema>>({
           resolver: zodResolver(FormSchema),
           defaultValues: {
-            email_body: "",
-            email_subject: "",
-            receiver_email: "",
+            email_body: emailBody,
+            email_subject: emailSubject,
+            receiver_email: recieverEmail,
             
           },
     
@@ -64,15 +93,12 @@ const TextChatPage = () => {
       const sendEmail = async (data: z.infer<typeof FormSchema>) => {
         // Access the form data from the useForm hook
         const { receiver_email, email_subject, email_body } = data;
-    
-       
-    
-        const payload = {
+        
+        let payload = {
             receiver_email,
             email_subject,       
             email_body
         };
-        
     
         try {
           setIsSending(true)
@@ -92,8 +118,19 @@ const TextChatPage = () => {
             if (data.ok) {
                 console.log(data);
                 setIsSending(false)
+                form.reset()
                 setMessage(data.message);
-                getCurrentCount()
+                const newCount = await getCurrentCount()
+                if(newCount){
+                    setCurrentCount(newCount)
+                    setMessage(data.message);
+                }
+                
+
+                
+                
+                
+
             } else {
                 console.log(data.error);
                 setIsSending(false)
@@ -103,7 +140,6 @@ const TextChatPage = () => {
             console.log(err);
             setMessage("No response! Unable to fetch from server. Check internet connection");
         } finally {
-            form.reset()
             setIsSending(false)
         }
     };
@@ -127,11 +163,9 @@ const TextChatPage = () => {
       const data: any = await response.json();
       setMessage('')
       if (data.ok) {
+          const count = data.data
+          return count
 
-          const counter = data.data
-           setCurrentCount(counter)
-          
-          
       } else {
           console.log(data.error);
           setMessage(data.error);
@@ -144,85 +178,95 @@ const TextChatPage = () => {
   }
 };
 
+const getCountHandler = async ()=>{
+    const count = await getCurrentCount()
+    if (count){
+    setCurrentCount(count)
+    }
+}
 
 useEffect(()=>{
-  getCurrentCount()
-}, [currentCount])
+   getCountHandler()
+}, [ ])
 
   return (
 
-    <div className='flex flex-col justify-center'>
+    <div className='bg-black text-white flex flex-col justify-center pb-8'>
      
      
      <p className="text-center font-extrabold text-2xl  py-8 px-4">
-        EMAIL SENDER</p>
+        INVOICE SENDER</p>
         
-        <div className='bg-white text-black'>
+        <div className=''>
     
         <Heading
-        title='Automated Email Tool'
-        description = 'Our AI can automatically follow up with emails and manage your clients in the CRM'
+        title='Automated Invoice Tool'
+        description = 'Client info has been automatically captured from the CRM'
         icon={MessageSquare}
         iconColor='text-violet-500'
         bgColor='bg-violet-500/10'
          />
 
-         <div className='px-4 lg:px-8'>
-          <div>
-           
-           {/* Announcements */}
-           <div className='flex gap-2 text-sm md:text-md'>
-            <p className='text-red-500 font-extrabold '>
-              <span className='text-black'>MAX DAILY EMAIL:</span> 30</p>
-            <div className='flex gap-1'>
-              <p className='font-extrabold'>TOTAL NO. OF EMAIL SENT TODAY:
-            </p>
-            <p className='text-red-500 font-extrabold text-md'>
-            {currentCount}
-            </p>
-            
-            </div>
+         <div className='px-4 lg:px-8 md:flex  justify-between w-full'>
 
-            </div>
+          {/* Text on left */}
+          <div className='md:w-1/2'>
+          <p>
+            You are sending invoice to: ....
+          </p>
 
+          <p>
+            For the service: ....
+          </p>
 
-            <p className='py-1'>
-              <span className='text-red-600 font-extrabold mr-2'>AI ALERT!</span> 
-              You have 2 meetings today. Client xyz is for 2pm and ...</p>
+          <p>
+            Date: ....
+          </p>
+
+          <p>
+            Amount of: ....
+          </p>
+
+          <p className='py-2 font-extrabold text-xl'>Preview your invoice document below</p>
+          
+          <div className='relative h-32 w-32'>
+          <Image src='' alt='' fill />
           </div>
-           
-           {/* Message */}
+          </div>
+  
           
 
            
 
-           {/* Message Form */}
-           <div>
-            
-
+           {/* Email Form */}
+           <div className='md:w-1/2'>
+           {/* <p className=' text-red-400 text-center   md:flex my-2'>
+            {message}
+          </p> */}
             <div className='py-2'>
                      
                      <Form {...form}>
                        <form onSubmit={form.handleSubmit(sendEmail)}
                        className='
-                        border w-full px-3 md:px-6 bg-gradient-to-tr from-black
-                        via-slate-800 to-black text-white 
+                        border  px-3 md:px-6 bg-gradient-to-tr from-black
+                        via-slate-800 to-black text-white  
                        focus-within:shadow-sm 
-                        flex flex-col gap-2 mt-2
+                        flex flex-col gap-2 
                        '
                        >
         <div className='flex gap-2 justify-between font-extrabold py-2'>
         <p className=''>From:</p>
+         {/* Mobile display only */}
+         <p className=' text-red-400 text-center'>
+         {message}
+        </p>
         <p className=' text-red-400 text-center hidden  md:flex'>
-            {message}
+            {email}
           </p>
           <p>{company?.toUpperCase()}</p>
         </div>
 
-        {/* Mobile display only */}
-        <p className=' text-red-400 text-center md:hidden'>
-         {message}
-        </p>
+       
         <Input placeholder='From' value={senderEmail} className='text-black font-extrabold' />
         
 
@@ -262,17 +306,17 @@ useEffect(()=>{
           )}
         />
 
-                           {/* Email Body */}
-                          <FormField 
-                          name="email_body"
-                          render={({ field })=>(
+         {/* Email Body */}
+        <FormField 
+        name="email_body"
+        render={({ field })=>(
                
-                            <FormItem className="col-span-12 lg:col-span-10">
-                            <FormControl className='M-0 P-0'>
-                           <Textarea className='border border-black outline-none  
-                           text-md text-black
-                           focus=visible:ring-transparent h-44
-                           focus-visible:ring-0' 
+        <FormItem className="col-span-12 lg:col-span-10">
+        <FormControl className='M-0 P-0'>
+        <Textarea className='border border-black outline-none  
+        text-md text-black
+        focus=visible:ring-transparent h-44
+        focus-visible:ring-0' 
                         //    disabled={isLoading}
                            {...field}
                            placeholder="Write your text here"
@@ -287,7 +331,7 @@ useEffect(()=>{
                          w-full rounded-2xl my-2'
                         //  disabled={isLoading}
                          >
-                          {isSending? 'Sending mail...': 'SEND EMAIL'}
+                          {isSending? 'Sending invoice...': 'SEND INVOICE'}
                          </Button>
                          
                        </form>
@@ -309,4 +353,4 @@ useEffect(()=>{
   )
 }
 
-export default TextChatPage
+export default InvoiceMailer

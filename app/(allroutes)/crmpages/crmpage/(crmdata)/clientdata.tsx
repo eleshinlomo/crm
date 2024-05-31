@@ -163,7 +163,13 @@ const columns: ColumnDef<DataTypes>[] = [
                <Link href='/dashboard/emailpage'>Email Client</Link>
               </Button>
             </DropdownMenuItem>
+            <DropdownMenuSeparator /><DropdownMenuItem>
+            <Button variant='ghost' asChild>
+               <Link href='/dashboard/invoicemailer'>Send Invoice</Link>
+              </Button>
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
+
             <DropdownMenuItem>
               <Button variant='ghost' onClick={async ()=>{
                 handleDeleteClient(client.id)}}>

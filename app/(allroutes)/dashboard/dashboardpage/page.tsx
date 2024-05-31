@@ -29,20 +29,7 @@ const DashboardPage = () => {
   };
 
   return (
-    <motion.div 
-    initial={{
-     x: -500,
-     opacity: 0,
-     scale: 0.5
-   }}
-
-   animate={{
-     x: 0,
-     opacity: 1,
-     scale: 1
-   }}
-   transition={{duration: 0.5}}
-    className='relative bg-white text-black'>
+    <div className='relative bg-white text-black'>
       
       <div className="">
           
@@ -63,7 +50,7 @@ const DashboardPage = () => {
           <ClientPage />
              
       </div>
-    </motion.div>
+    </div>
   );
 };
 
