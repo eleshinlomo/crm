@@ -162,13 +162,13 @@ useEffect(()=>{
 
   return (
 
-    <div className='flex flex-col justify-center'>
+    <div className='bg-black text-white flex flex-col justify-center'>
      
      
      <p className="text-center font-extrabold text-2xl  py-8 px-4">
         EMAIL SENDER</p>
         
-        <div className='bg-white text-black'>
+        <div className=''>
     
         <Heading
         title='Automated Email Tool'
@@ -184,12 +184,12 @@ useEffect(()=>{
           <div className='md:w-1/2'>
            {/* Announcements */}
            <div className='flex gap-2 text-sm md:text-md'>
-            <p className='text-red-500 font-extrabold '>
-              <span className='text-black'>MAX DAILY EMAIL:</span> 30</p>
+            <p className='text-blue-500 font-extrabold '>
+              <span className=''>MAX DAILY EMAIL:</span> 30</p>
             <div className='flex gap-1'>
               <p className='font-extrabold'>TOTAL NO. OF EMAIL SENT TODAY:
             </p>
-            <p className='text-red-500 font-extrabold text-md'>
+            <p className='text-blue-500 font-extrabold text-md'>
             {currentCount}
             </p>
             
@@ -207,7 +207,7 @@ useEffect(()=>{
           <p className='my-4 text-center md:text-start '> 
           <span className='bg-blue-800 text-white rounded-2xl py-2 px-4'>
             Client Email Lists</span></p>
-          <div className='flex gap-2 mt-3 mx-2'>
+          <div className='flex gap-2 mt-3 '>
             <Button size='sm' onClick={getBulkEmail}>
               Leads
             </Button>
