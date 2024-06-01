@@ -76,11 +76,11 @@ export const OtherDashButtons = () => {
           <Button className='w-full flex flex-1 justify-between'
           onClick={()=>{
             setIsOpen(!isOpen); 
-            router.push('/dashboard/todolistpage')
+            router.push('https://myafros.com')
             pathname   ? pathname : null
           }}
           >
-             To Do
+             My Afros
             {isOpen?<ArrowBigRight /> : <ArrowBigDown/>}
             </Button>
         </div>
