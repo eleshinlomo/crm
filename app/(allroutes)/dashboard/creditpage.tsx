@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { cn } from '@/lib/utils'
 import { creditFunction } from '@/components/creditfunction'
 import Link from 'next/link'
+import { CreditCountType } from '@/components/creditfunction'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
@@ -11,11 +12,9 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
 const CreditPage = () => {
 
-  interface creditState {
-    credits: string
-  }
 
   const [data, setData] = useState<Array<string | any>>([])
+  const [credits, setCredits] = useState(0)
 
   
   
@@ -24,11 +23,7 @@ const CreditPage = () => {
 const handleCredit = async ()=>{
       try{
     const response: any = await creditFunction()
-    if (response.message.ok){
       setData(response.message.data)
-    }else{
-      console.log(response.message.error)
-    }
   }
 catch(err){
   console.log(err)
@@ -52,7 +47,8 @@ useEffect(()=>{
         data.map((plan, index)=>
         <div key={index}>
         <div className='' >
-          <p>Your credit is {plan.credits || plan.trial}</p></div>
+          <p>Your credit is {plan.credits}</p>
+          </div>
         
         <div className=''>
               <div>

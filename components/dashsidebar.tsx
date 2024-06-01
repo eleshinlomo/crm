@@ -68,7 +68,7 @@ interface toolisOpenProps{
                 {Tools.map((category: any, index: any) => (
                   <div key={index}>
                     <div className=''>
-                      {category.category === 'Dashboard' || 
+                      {category.category === 'CRM' || 
                       category.category === 'Settings' || 
                       category.category === 'Home' 
                         ?

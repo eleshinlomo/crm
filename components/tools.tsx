@@ -50,7 +50,7 @@ export const Tools = [
   
   { 
     id: 'dash',
-    category: 'Dashboard',
+    category: 'CRM',
     href: "/dashboard/dashboardpage",
     tools: [{   
       label: "Viewing Dashboard",

@@ -2,7 +2,10 @@
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
-
+export interface CreditCountType {
+credits: number | any;
+plan: string
+}
 
   export const creditFunction = async ()=>{
 
@@ -22,8 +25,8 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
     })
     if(!response)throw new Error("No response from server")
     const dataResponse = await response.json()
-    if(dataResponse){
-        return dataResponse
+    if(dataResponse.message.ok){
+      return dataResponse
     }else{
       console.log(dataResponse.message.error)
       return dataResponse.message.error
@@ -33,6 +36,10 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
     console.log(err)
   }
   }
+
+
+
+
 
  
 
