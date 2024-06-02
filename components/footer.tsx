@@ -35,21 +35,21 @@ const Footer = ()=>{
                 transition duration-150 ease-in-out">My Afros</Link>
               </li>
               <li className="mb-2">
-                <Link href="https://fixupe.com" className="text-gray-600 hover:text-gray-900 
+                <Link href="https://crm.myafros.com/" className="text-gray-600 hover:text-gray-900 
                 transition duration-150 ease-in-out">CRM</Link>
               </li>
               
               <li className="mb-2">
-                <a href="https://imgbot.vercel.app" className="text-gray-600 hover:text-gray-900 
+                <a href="https://imgbot.myafros.com/" className="text-gray-600 hover:text-gray-900 
                 transition duration-150 ease-in-out">Image Generator</a>
               </li>
               <li className="mb-2">
-                <a href="https://fixupe.com" className="text-gray-600 hover:text-gray-900 
-                transition duration-150 ease-in-out">Transcriber</a>
+                <a href="https://crm.myafros.com/dashboard/genai/voicerecorder" className="text-gray-600 hover:text-gray-900 
+                transition duration-150 ease-in-out">Voice Recorder</a>
               </li>
               <li className="mb-2">
-                <a href="https://fixupe.com" className="text-gray-600 hover:text-gray-900 
-                transition duration-150 ease-in-out">Mass Mailer</a>
+                <a href="https://crm.myafros.com/dashboard/genai/contentwriter" className="text-gray-600 hover:text-gray-900 
+                transition duration-150 ease-in-out">Content Writer</a>
               </li>
             </ul>
           </div>
