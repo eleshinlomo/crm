@@ -12,8 +12,8 @@ return (
         items-center gap-3  border  font-extrabold'>
             
             
-    <div className='relative h-4 py-16 w-32'>
-    <Image src='/logos/fixupe_logo.png' alt='logo' fill />
+    <div className='relative h-12  w-16'>
+    <Image src='/logos/logo.png' alt='logo' fill />
     </div>
     <p className='text-2xl'>Please Sign in</p>
 
