@@ -55,11 +55,11 @@ interface toolisOpenProps{
           <div className=" py-2 flex-1">
             <Link href="/" className="flex items-center pl-3 mb-14">
               <div className="relative w-8 h-8 mr-4">
-                <Image fill alt="logo" src="/logos/fixupe_logo.png" />
+                <Image fill alt="logo" src="/logos/logo.png" />
               </div>
-              <h1 className={cn("text-2xl font-bold", montserrat.className)}>
-                Fixupe
-              </h1>
+              <h3 className={cn("text-sm font-bold", montserrat.className)}>
+                MYAFROS CRM
+              </h3>
             </Link>
   
             <div className=" w-full pt-12 shadow-2xl">

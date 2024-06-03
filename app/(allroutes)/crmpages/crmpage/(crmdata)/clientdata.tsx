@@ -207,9 +207,13 @@ const columns: ColumnDef<DataTypes>[] = [
    if (!sessionid) return
    const clientData = await getClients(sessionid)
    const clientArray: DataTypes[]  = clientData.data as DataTypes[]
+   if (clientArray && clientArray.length > 0){
    clientArray.sort((a,b)=>b.id - a.id)
    setClients(clientArray)
    return clientArray
+   }else{
+    return
+   }
   }
 
   useEffect(()=>{
@@ -262,8 +266,9 @@ const handleDeleteClient = async (clientId: number) => {
     await deleteClient(clientId);
     // Refresh the clients list after deletion
     const updatedClientsArray = await getAllClients();
-    if (updatedClientsArray && updatedClientsArray.length > 0)
+    if (updatedClientsArray){
     setClients(updatedClientsArray)
+    }
     const total = await getTotalClients();
     setTotalClients(total);
   } catch (error) {
@@ -273,8 +278,8 @@ const handleDeleteClient = async (clientId: number) => {
 
   return (
     <div className="w-full">
-      <p className='text-center'>Total clients: {totalClients? totalClients : 
-      'Counting clients...'}</p>
+      {/* Total clients */}
+      <p className='text-center'>Total clients: {totalClients? totalClients : 0}</p>
       <div className="flex items-center py-4">
         {/* Search company */}
         <Input
@@ -361,7 +366,7 @@ const handleDeleteClient = async (clientId: number) => {
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  You have no client.
                 </TableCell>
               </TableRow>
             )}

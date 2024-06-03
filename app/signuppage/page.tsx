@@ -31,7 +31,7 @@ const SignUpPage = ()=>{
               <div className="">
               <Link href='/' className="flex flex-1 w-full text-3xl">
               <ArrowLeftSquareIcon className="mt-5  text-3xl" />
-              <p className="  py-4">Fixupe</p>
+              <p className="  py-4">MYAFROS CRM</p>
               </Link>
               <div className="flex flex-1 gap-3">
               <p className="mt-1 ">Already Registered?</p>

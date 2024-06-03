@@ -101,14 +101,14 @@ export const Tools = [
               color: "text-blue-500",
               bgColor: "text-grey-500"
               },
-              {
+              // {
             
-                label: "Voice Chat",
-                icon: ImageIcon,
-                href: "/dashboard/genai/voicechat",
-                color: "text-blue-500",
-                bgColor: "text-grey-500"
-                },
+              //   label: "Voice Chat",
+              //   icon: ImageIcon,
+              //   href: "/dashboard/genai/voicechat",
+              //   color: "text-blue-500",
+              //   bgColor: "text-grey-500"
+              //   },
             
            
       ]
