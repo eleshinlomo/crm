@@ -99,8 +99,8 @@ handleLoginChecker()
 <div className='flex'>
 <div className='md:flex  w-full flex-1'>
         <Link href='/'>
-          <div className='relative w-12 h-8 my-2'>
-        <Image src="/logos/fixupe_logo.png" alt="logo" fill />
+          <div className='relative w-16 h-12 my-2'>
+        <Image src="/logos/logo.png" alt="logo" fill />
         </div>
         </Link>
       </div>
@@ -174,10 +174,13 @@ handleLoginChecker()
     <MenubarMenu>
     <MenubarTrigger><Link href='/contactpage'>Contact</Link></MenubarTrigger>
   </MenubarMenu>
- 
+
   
   <MenubarMenu>
-   
+    <MenubarTrigger><Link href='https://myafros.com'>MyAfros</Link></MenubarTrigger>
+  </MenubarMenu>
+ 
+  <MenubarMenu>
   <MenubarTrigger>
     {isLoggedIn?
           
@@ -192,6 +195,7 @@ handleLoginChecker()
              }
     </MenubarTrigger>
   </MenubarMenu>
+
   
 </Menubar>
               

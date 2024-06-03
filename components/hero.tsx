@@ -90,9 +90,7 @@ useEffect(()=>{
 <h1 className="text-2xl md:text-3xl font-extrabold leading-tighter 
             tracking-tighter mb-4" data-aos="zoom-y-out">EXPLORE AI POWERED 
             <span className="bg-clip-text py-8 text-transparent
-             bg-gradient-to-r from-blue-800 to-teal-800"> CRM</span> ON
-            <span className="bg-clip-text py-8 text-transparent
-             bg-gradient-to-r from-blue-800 to-teal-800"> FIXUPE</span>
+             bg-gradient-to-r from-blue-800 to-teal-800"> CRM</span> 
             </h1>
 <p className=" w-full ">
 Explore our world class CRM solution with integrated AI Agents. 
