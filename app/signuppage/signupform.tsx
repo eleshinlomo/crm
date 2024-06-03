@@ -97,6 +97,7 @@ const FormSchema = z.object({
         setMessage(response.data)
         setIsRegistered(true)
         setIsRegistering(false)
+        form.reset()
       }else{
         setMessage(response.error)
         console.log(response.error)
