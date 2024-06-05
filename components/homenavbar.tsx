@@ -178,10 +178,6 @@ handleLoginChecker()
   <MenubarMenu>
     <MenubarTrigger><Link href='https://blog.myafros.com'>Blog</Link></MenubarTrigger>
   </MenubarMenu>
-
-  <MenubarMenu>
-    <MenubarTrigger><Link href='https://myafros.com'>MyAfros</Link></MenubarTrigger>
-  </MenubarMenu>
  
   <MenubarMenu>
   <MenubarTrigger>

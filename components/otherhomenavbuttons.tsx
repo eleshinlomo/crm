@@ -33,15 +33,15 @@ className=''
 </Button>
 
 <Button className='w-full'>
-<Link href='/pdftoword'
+<Link href='https://imgbot.myafros.com'
   className=''
->PdftoWord</Link>
+>ImageBot</Link>
 </Button>
 
 <Button className='w-full'>
-<Link href='/'
+<Link href='https://myafros.com'
 className=''
->Settings</Link>
+>MyAfros</Link>
 </Button>
                     
 
