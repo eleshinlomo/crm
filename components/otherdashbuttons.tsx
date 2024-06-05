@@ -20,7 +20,7 @@ export const OtherDashButtons = () => {
           <Button className='w-full flex flex-1 justify-between'
           onClick={()=>{
             setIsOpen(!isOpen); 
-            router.push('/dashboard/textreaderpage')
+            router.push('/dashboard/genai/textreaderpage')
             pathname   ? pathname : null
           }}
           >

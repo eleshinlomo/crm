@@ -91,7 +91,7 @@ const FormSchema = z.object({
       localStorage.setItem("userid", userid)
       localStorage.setItem("superuser", is_superuser)
       setIsSigningIn(false)
-      router.push('/dashboard/dashboardpage')
+      router.push('/dashboard/genai/textreaderpage')
     
   }else{
     console.log(response.error)

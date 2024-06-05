@@ -132,14 +132,7 @@ const TextChatPage = () => {
 
             <div className='flex flex-col justify-center items-center'>
                      
-                     {/* Is Converting Text To Voice Blob */}
-                     <div className=' flex flex-col justify-center items-center'>
-                            {isConvertingTextToAudio ?
-                            <div>
-                            {loading}
-                            </div>:null
-                            }
-                            </div>
+                     
             
                      <Form {...form}>
                        <form onSubmit={(e)=>handleVoiceToText(e)}
@@ -174,7 +167,14 @@ const TextChatPage = () => {
                       </Form>
             </div>
             
-
+          {/* Is Converting Text To Voice Blob */}
+          <div className=' flex flex-col justify-center items-center'>
+                            {isConvertingTextToAudio ?
+                            <div>
+                            {loading}
+                            </div>:null
+                            }
+                            </div>
 
 
             {messages.length == 0 && !isLoading && (
