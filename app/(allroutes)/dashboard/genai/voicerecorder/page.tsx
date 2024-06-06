@@ -25,10 +25,10 @@ const Controller = () => {
   // console.log(url)
 
 
-  const loading = (<div className='relative h-16 w-16'>
+  const loading = (<div className='relative h-6 w-6'>
     <Image src={SpinnerOne} alt='loader' fill/></div>)
 
-const transcribing = (<div className='relative h-16 w-16'>
+const transcribing = (<div className='relative h-6 w-6'>
 <Image src={SpinnerOne} alt='loader' fill/></div>)
 
 //  Handle Start and Stop
@@ -140,6 +140,7 @@ const transcribing = (<div className='relative h-16 w-16'>
        
         <p className="font-extrabold py-4">
           Want to convert recorded voice to text?</p>
+        <div className="flex">
         <Button onClick={handleTranscription} className="rounded-2xl">
           Transcribe
         </Button>
@@ -149,15 +150,22 @@ const transcribing = (<div className='relative h-16 w-16'>
           {transcribing}
         </div>:null
         }
+        </div>
          
-        {/* Transcribed Message */}
-        <div className="text-start py-4 px-2 md:px-24  overflow-y-scroll">
-          {transcribedMessage?
-          <div className="flex flex-col gap-2">
-          <CopyButton textToCopy={transcribedMessage} />
-          {transcribedMessage}
-          </div> : null}
+         {/* Transcribed Message */}
+         <div className='text-start w-full py-8 px-4 border  shadow-2xl overflow-y-scroll'>
+            <p className='font-extrabold py-8 text-center'>Transcription</p>
+           
+            {typeof message === 'string'?message:null}
+             
+            {transcribedMessage? 
+            <div>
+            <CopyButton textToCopy={transcribedMessage} />
+            {transcribedMessage}
+          </div>: 
+            <p className='text-center'>No text available</p>}
           </div>
+        
         </div>:null
         }
         </div>

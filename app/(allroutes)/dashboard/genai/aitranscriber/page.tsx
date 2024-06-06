@@ -21,6 +21,7 @@ const VoiceToTextPage = () => {
         setIsLoading(true)
         const response: any = await voiceToText(e, fileInput)
         if (response.ok){
+        setMessage('')
         setTranscribedMessage(response.data)
         setIsLoading(false)
         }else{
@@ -69,10 +70,12 @@ const VoiceToTextPage = () => {
             <p className='font-extrabold py-8 text-center'>Transcription</p>
            
             {typeof message === 'string'?message:null}
-            {/* <div>
-              <CopyButton text={message} />
-            </div> */}
-            {transcribedMessage? transcribedMessage: 
+             
+            {transcribedMessage? 
+            <div>
+            <CopyButton textToCopy={transcribedMessage} />
+            {transcribedMessage}
+          </div>: 
             <p className='text-center'>No text available</p>}
           </div>
            

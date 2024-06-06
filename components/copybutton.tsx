@@ -2,11 +2,11 @@
 import React, { useState } from 'react';
 import { Button } from './ui/button';
 
-interface CopyTextTypes {
+export interface CopyButtonType {
 textToCopy: string;
 }
 
-const CopyButton = ({textToCopy}: CopyTextTypes) => {
+const CopyButton = ({textToCopy}: CopyButtonType) => {
   const [message, setMessage] = useState<string>('')
   // State to hold the text to copy
 
