@@ -135,7 +135,8 @@ handleLoginChecker()
 
 <div className='text-white'>
 {username?
-        <p className='mt-2 font-extrabold '>Hi {username[0].toUpperCase() + username.slice(1)}</p>:
+        <p className='mt-2 font-extrabold '>
+          Hi {username[0].toUpperCase() + username.slice(1)}</p>:
         <p className='mt-2 font-extrabold'>Hi {'Guest'}</p>
         }
 </div>
@@ -144,19 +145,7 @@ handleLoginChecker()
 <DatePage />
 </div>
 
-<motion.div 
-    initial={{
-     x: -500,
-     opacity: 0,
-     scale: 0.5
-   }}
-
-   animate={{
-     x: 0,
-     opacity: 1,
-     scale: 1
-   }}
-   transition={{duration: 0.5}} className='mr-2 text-black'>
+<div className='mr-2 text-black'>
 <Menubar className=" gap-3">
   <MenubarMenu>
     <MenubarTrigger><Link href='/'>Home</Link></MenubarTrigger>
@@ -199,7 +188,7 @@ handleLoginChecker()
 </Menubar>
               
         
-    </motion.div>
+    </div>
      
     <div className='md:hidden mt-2 h-7 w-7'>
           <UserAvatar />
