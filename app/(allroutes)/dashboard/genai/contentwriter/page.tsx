@@ -324,8 +324,6 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
     
                  >
 
-                 
-
                 
                 {/* Avatars and header buttons */}
                 {message.role == 'user' ? <UserAvatar /> : 
