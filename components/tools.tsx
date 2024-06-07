@@ -101,6 +101,13 @@ export const Tools = [
               color: "text-blue-500",
               bgColor: "text-grey-500"
               },
+              {
+                label: "Text Reader",
+                icon: ImageIcon,
+                href: "/dashboard/genai/textreaderpage",
+                color: "text-blue-500",
+                bgColor: "text-grey-500"
+                },
               // {
             
               //   label: "Voice Chat",

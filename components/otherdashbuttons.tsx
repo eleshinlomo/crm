@@ -20,12 +20,12 @@ export const OtherDashButtons = () => {
           <Button className='w-full flex flex-1 justify-between'
           onClick={()=>{
             setIsOpen(!isOpen); 
-            router.push('/dashboard/genai/textreaderpage')
+            router.push('https://imgbot.myafros.com')
             pathname   ? pathname : null
           }}
           >
-             Text Reader
-            {isOpen?<ArrowBigRight /> : <ArrowBigDown/>}
+             ImageBot
+            <ArrowBigRight/>
             </Button>
         </div>
 
@@ -39,7 +39,7 @@ export const OtherDashButtons = () => {
           }}
           >
              Top up credit
-            {isOpen?<ArrowBigRight /> : <ArrowBigDown/>}
+            <ArrowBigRight />
             </Button>
         </div>
 
@@ -67,7 +67,7 @@ export const OtherDashButtons = () => {
           }}
           >
              Support
-            {isOpen?<ArrowBigRight /> : <ArrowBigDown/>}
+            <ArrowBigRight /> 
             </Button>
         </div>
 
@@ -81,7 +81,7 @@ export const OtherDashButtons = () => {
           }}
           >
              My Afros
-            {isOpen?<ArrowBigRight /> : <ArrowBigDown/>}
+            <ArrowBigRight /> 
             </Button>
         </div>
 
