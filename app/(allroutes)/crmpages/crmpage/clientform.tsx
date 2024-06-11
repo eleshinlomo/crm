@@ -46,9 +46,7 @@ const ClientForm = ({onClientAdded}: ClientFormProps) => {
   const [servicefee, setServicefee] = useState<string>('0')
   const [isAddingClient, setIsAddingClient] = useState<boolean>(false)
   const [message, setMessage] = useState<string>('')
-  const [contractdoc, setContractdoc] = useState<File | null>()
-  const [sessionId, setSessionId] = useState<string>('')
-  const [totalClients, setTotalClients] = useState(0)
+ 
   
 
   const handleAddClient = async (e: React.FormEvent)=>{
@@ -68,7 +66,7 @@ const ClientForm = ({onClientAdded}: ClientFormProps) => {
     }
     const response = await addClient(payload)
     setIsAddingClient(false)
-    setMessage('Client has been added')
+    setMessage(response.message)
     onClientAdded()
   }
 

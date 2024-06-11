@@ -19,6 +19,11 @@ export interface DeleteProps {
   clientId: number;
 }
 
+export interface ModifyProps {
+  clientid: number;
+  company: string
+}
+
 
 const BASE_URL: any = process.env.NEXT_PUBLIC_BASE_URL
 
@@ -142,11 +147,17 @@ export const getTotalClients = async ()=>{
   
   
   //   Client Modify
-  export const modifyClient = async (clientId: string)=>{
+  export const modifyClient = async ({clientid, company}: ModifyProps)=>{
   
     const sessionid = localStorage.getItem('sessionid')
     if (!sessionid || sessionid === 'undefined' || sessionid === null) return console.error('sessionid not found')
-    if(!clientId) return
+    if(!clientid) return
+
+    const payload = {
+      clientid: clientid,
+      company: company
+    }
+
     try{
     
     const response: any = await fetch(`${BASE_URL}/modifyclient/`, {
@@ -157,7 +168,7 @@ export const getTotalClients = async ()=>{
         'Content-Type': 'application/json',
   
       },
-      body: JSON.stringify(clientId)
+      body: JSON.stringify(payload)
     })
     if(!response)throw new Error("No response from server")
     const dataResponse = await response.json()
