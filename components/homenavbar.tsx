@@ -179,7 +179,7 @@ handleLoginChecker()
           Sign Out
         </Button>:
          
-            <Link href='/signinpage'>Sign In</Link>
+            <Link href='/authpages/signinpage'>Sign In</Link>
           
              }
     </MenubarTrigger>

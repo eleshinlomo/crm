@@ -81,7 +81,7 @@ const SignInForm = () => {
   }
 
   return (
-    <div>
+
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -151,8 +151,6 @@ const SignInForm = () => {
       </Container>
     </ThemeProvider>
 
-    <Footer />
-    </div>
   );
 }
 

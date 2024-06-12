@@ -15,6 +15,7 @@ import Link from 'next/link'
 import { ArrowLeftSquareIcon, XIcon } from "lucide-react"
 import Image from 'next/image'
 import SignUpForm from "./signupform"
+import HomeNavBar from "@/components/homenavbar"
 
 
 
@@ -23,6 +24,8 @@ const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 
 const SignUpPage = ()=>{
   return (
+  <div>
+    <HomeNavBar />
    <div className="h-full md:flex flex-col  justify-around w-full
    items-center gap-3 pt-12 ">
               
@@ -80,6 +83,7 @@ const SignUpPage = ()=>{
         </div>
        
        
+        </div>
 
         </div>
         
