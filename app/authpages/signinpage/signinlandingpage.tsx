@@ -26,12 +26,12 @@ const SigninLadingpage = () => {
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          <Button className="w-full bg-white hover:bg-white text-black">
+          {/* <Button className="w-full bg-white hover:bg-white text-black">
             Sign in with Google
-          </Button>
+          </Button> */}
           
           <Button className="w-full bg-white hover:bg-white text-black" asChild>
-          <Link href='/signinpage'>
+          <Link href='/authpages/signinpage'>
             Sign in with Email
             </Link>
           </Button>

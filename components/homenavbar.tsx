@@ -14,7 +14,7 @@ import Link from 'next/link'
 import { UserAvatar } from "./user-avater"
 import Image from 'next/image'
 import { Button } from './ui/button'
-import { Menu} from 'lucide-react'
+import { BotIcon, FileIcon, HomeIcon, Menu} from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet'
 import { HomeMobileNavBar } from './homemobilenavbar'
 import {
@@ -41,6 +41,7 @@ import { loginChecker } from './auth'
 import { OtherHomeNavButtons } from './otherhomenavbuttons'
 import DatePage from './date'
 import {motion} from 'framer-motion'
+import { SvgIcon } from '@mui/material'
 
 
 
@@ -100,7 +101,7 @@ handleLoginChecker()
 <div className='md:flex  w-full flex-1'>
         <Link href='/'>
           <div className='relative w-16 h-12 my-2'>
-        <Image src="/logos/logo.png" alt="logo" fill />
+        <HomeIcon className='h-8 w-8' />
         </div>
         </Link>
       </div>

@@ -10,6 +10,15 @@ interface EmailLoginProps {
   password: string
 }
 
+interface RegisterUserProps {
+  
+  username: string;
+  email: string;
+  password: string;
+  usersource: string;
+  company: string;
+}
+
 const client_id = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID
 const GOOGLE_URL = process.env.NEXT_PUBLIC_GOOGLE_LOGIN_URL
 const redirect_uri = process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI
@@ -47,11 +56,32 @@ export const getAccessToken = async (code: any)=>{
     
 
 
-// Email Login
-let data =  {
- email: '',
- password: ''
-}
+export const registerUserWithEmail = async (data: RegisterUserProps)=>{
+  try{
+    const processPayload = await fetch(`${BASE_URL}/registeruser/`, {
+        mode: 'cors',
+        method: 'POST',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
+    })
+  
+    const response: any = await processPayload.json()
+    if(!response) {
+      return {"error": "No response from server"}
+     
+    }else{
+    return response
+  }
+    
+  }
+  catch(error: any){
+  console.log(error.message.error)
+  return null
+  
+  }
+  
+  }
+
 
 export const emailLogin = async (data: EmailLoginProps)=>{
 try{
