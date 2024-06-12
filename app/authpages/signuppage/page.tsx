@@ -14,8 +14,7 @@ import { Button } from "@/components/ui/button"
 import Link from 'next/link'
 import { ArrowLeftSquareIcon, XIcon } from "lucide-react"
 import Image from 'next/image'
-import { SignUpForm } from "./signupform"
-import NewSignUpForm from "./newsignupform"
+import SignUpForm from "./signupform"
 
 
 
@@ -77,7 +76,7 @@ const SignUpPage = ()=>{
         {/* Email */}
         <div className="
          mt-5">
-        < NewSignUpForm />
+        < SignUpForm />
         </div>
        
        

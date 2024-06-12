@@ -1,252 +1,163 @@
-"use client"
-
+import * as React from 'react';
 import {useState, useEffect} from 'react'
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
-
-import { Button } from "@/components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { useRouter } from 'next/navigation'
-import Image from 'next/image'
-import { SpinnerOne } from '@/components/spinner'
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Footer from '@/components/footer';
+import { emailLogin } from '@/components/auth';
+import { useRouter } from 'next/navigation';
+import { registerUserWithEmail } from '@/components/auth';
 
 
 
-const registering = (<div className='relative w-10 h-10 '>
-  <Image src={SpinnerOne} alt='spinner' fill/></div>)
+const defaultTheme = createTheme();
 
-export const SignUpForm = ()=>{
+const SignUpForm = () => {
 
-const [message, setMessage] = useState<string | any>('Sign up with Email')
-const [isRegistered, setIsRegistered] = useState<boolean>(false)
-const [isRegistering, setIsRegistering] = useState<boolean>(false)
-const [usersource, setUsersource] = useState<string | any>('Fixupe')
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [company, setCompany] = useState<string>('')
+  const [username, setUsername] = useState<string>('')
+  const [usersource, setUsersource] = useState<string>('fixupe')
+  const [message, setMessage] = useState<string | any>('Sign up with Email')
+  const [isSiginingIn, setIsSigningIn] = useState(false)
 
-// Router
-const router = useRouter()
-
-
-const FormSchema = z.object({
-  company: z.string().min(2, {
-    message: "Company name must be at least 2 characters.",
-  }),
-
-    email: z.string().min(2, {
-      message: "Email must be at least 2 characters.",
-    }),
-
-    password: z.string().min(6, {
-      message: " Password must be at least 6 characters.",
-    }),
-
-    username: z.string().min(2, {
-      message: " Username must be at least 2 characters.",
-    }),
-
-    usersource: z.string().min(2, {
-      message: " Username must be at least 2 characters.",
-    }),
-
-    
-  
-  })
-
+  const router = useRouter()
+  const payload = {
+    username,
+    email,
+    password,
+    company,
+    usersource
+  }
   
 
-    const form = useForm<z.infer<typeof FormSchema>>({
-      resolver: zodResolver(FormSchema),
-      defaultValues: {
-        company: "",
-        email: "",
-        password: "",
-        usersource: usersource,
-        username: ""
-      },
-
-  })
-
-  const onSubmit = async (data: z.infer<typeof FormSchema>) => {
-    
+  const handleSubmit = async (e: React.FormEvent<HTMLElement>) => {
     try{
-      setIsRegistering(true)
-    const processPayload = await fetch(`${BASE_URL}/registeruser/`, {
-        mode: 'cors',
-        method: 'POST',
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(data)
-    })
-
-    const response: any = await processPayload.json()
-    if(!response) {
-     setMessage("Server error! No response from server")
-     setIsRegistering(false)
-    }else{
-        if(response.ok === true){
-        setMessage(response.data)
-        setIsRegistered(true)
-        setIsRegistering(false)
-        form.reset()
-      }else{
-        setMessage(response.error)
-        console.log(response.error)
-        setIsRegistering(false)
-      }
-    }
+    e.preventDefault()
+    setIsSigningIn(true)
+    setMessage('Registering user...')
+    const response: any = await registerUserWithEmail(payload)
+    if(response.ok){
+    const serverMessage = response.message
+    setMessage(serverMessage)
+    setCompany('')
+    setPassword('')
+    setEmail('')
+    setUsername('')
+  }else{
+    console.log(response.error)
+    setMessage(response.error)
+  }
 }
+  catch(err: any){
+    console.log(err)
+    setMessage("No response! Unable to fetch from server. Check internet connection")
 
-catch(error: any){
-  console.log(error.message)
-  setMessage("No response! Unable to fetch from server. Check internet connection")
-}finally{
-  setIsRegistering(false)
-}
-
+  }finally{
+    setIsSigningIn(false)
+  }
+    
   }
 
   return (
-
-    <div className='overflow-hidden flex flex-col justify-center
-      items-center w-full'>
-     
-     
-     
-     <div className='text-center  pt-4 flex flex-col justify-center 
-     items-center '>
-        <p className='font-extrabold text-xl px-4 '>{message}</p>
-        
-         
-        
-    </div>
-     
-
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} 
-      className=" flex flex-col justify-center items-center 
-       bg-gray-800 text-white mt-4 w-full "
-       autoComplete='off'
-       >
-
-
-         <div className='grid grid-flow-row md:grid-cols-2 gap-3 
-         shadow-xl px-4 py-4 '>
-        {/* Company */}
-        <FormField
-          control={form.control}
-          name="company"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Company</FormLabel>
-              <FormControl>
-                <Input placeholder="Company name" {...field} type='text'
-                className='border-0 outline-none 
-                focus=visible:ring-transparent text-black
-                focus-visible:ring-0' autoComplete='none' />
-              </FormControl>
-              
-              <FormDescription>
-                
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Email */}
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="Email" {...field} type='text'
-                className='border-0 outline-none 
-                focus=visible:ring-transparent text-black
-                focus-visible:ring-0' autoComplete='none'
-                 />
-              </FormControl>
-              
-              <FormDescription>
-                
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        
-        {/* App Name */}
-        <input type='hidden' name='usersource' value={usersource} />
-
-        {/* Username */}
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input placeholder="Username" {...field} type='text'
-                className='border-0 outline-none 
-                focus=visible:ring-transparent text-black
-                focus-visible:ring-0' autoComplete='none'
-                 />
-              </FormControl>
-              
-              <FormDescription>
-                
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-{/* Password */}
-<FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input placeholder="Password" {...field} type='password' 
-                className='border-0 outline-none 
-                focus=visible:ring-transparent text-black
-                focus-visible:ring-0' autoComplete='none'
-                />
-              </FormControl>
-              
-              <FormDescription className='text-white'>
-                Case sensitive.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        </div>
-
-        <Button type="submit" className='bg-gray-500
-        my-3 hover:bg-gray-500'>Sign Up</Button>
-      </form>
-    </Form>
-    
-    {isRegistering?
-          <div className='py-2 text-blue-600'>
-            Verifying credentials...
-          </div>:null
-          }
-    </div>
-  )
+    <ThemeProvider theme={defaultTheme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h5" variant="h5" className='text-center'>
+            {message}
+          </Typography>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <input type='hidden' name='usersource' />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              value={username}
+              onChange={(e)=>setUsername(e.target.value)}
+              label="Username"
+              name="username"
+              autoComplete="username"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              value={email}
+              onChange={(e)=>setEmail(e.target.value)}
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              value={password}
+              onChange={(e)=>setPassword(e.target.value)}
+              autoComplete="current-password"
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              value={company}
+              onChange={(e)=>setCompany(e.target.value)}
+              label="company"
+              name="company"
+              autoComplete="company"
+              autoFocus
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              style={{ marginTop: 3, marginBottom: 2, backgroundColor: 'blue' }}
+            >
+              Sign up
+            </Button>
+            <Grid container>
+              <Grid item>
+                <Link href="/authpages/signinpage" variant="body2">
+                  {"Already registered? Sign in"}
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+      </Container>
+    </ThemeProvider>
+  );
 }
+
+export default SignUpForm

@@ -1,3 +1,4 @@
+import Footer from "@/components/footer"
 
 
 
@@ -9,6 +10,7 @@ const AuthLayout = ({children}: {children: React.ReactNode})=> {
       <div>
         
         {children}
+        <Footer />
         
       </div>
     
