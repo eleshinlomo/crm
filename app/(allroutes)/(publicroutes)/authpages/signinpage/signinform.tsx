@@ -16,29 +16,27 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Footer from '@/components/footer';
 import { emailLogin } from '@/components/auth';
 import { useRouter } from 'next/navigation';
-import { registerUserWithEmail } from '@/components/auth';
 
 
 
 const defaultTheme = createTheme();
 
-const SignUpForm = () => {
+const SignInForm = () => {
 
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  const [company, setCompany] = useState<string>('')
-  const [username, setUsername] = useState<string>('')
-  const [usersource, setUsersource] = useState<string>('fixupe')
-  const [message, setMessage] = useState<string | any>('Sign up with Email')
+  const [message, setMessage] = useState<string | any>('Sign in with Email')
   const [isSiginingIn, setIsSigningIn] = useState(false)
 
   const router = useRouter()
   const payload = {
-    username,
     email,
-    password,
-    company,
-    usersource
+    password
+  }
+  
+  const displaySignInText = ()=>{
+    const siginingIn = 'Signing...'
+    setMessage(siginingIn)
   }
   
 
@@ -46,15 +44,27 @@ const SignUpForm = () => {
     try{
     e.preventDefault()
     setIsSigningIn(true)
-    setMessage('Registering user...')
-    const response: any = await registerUserWithEmail(payload)
+    setMessage('Signing in...')
+    const response: any = await emailLogin(payload)
     if(response.ok){
-    const serverMessage = response.message
-    setMessage(serverMessage)
-    setCompany('')
-    setPassword('')
-    setEmail('')
-    setUsername('')
+      
+      const {
+        userid, 
+        username, 
+        sessionid,
+        company,
+        email,
+      } = response.data
+      
+      // Save User Info
+      localStorage.setItem('username', username)
+      localStorage.setItem('email', email)
+      localStorage.setItem('sessionid', sessionid)
+      localStorage.setItem('company', company)
+      localStorage.setItem("userid", userid)
+      setIsSigningIn(false)
+      router.push('/dashboard/dashboardpage')
+    
   }else{
     console.log(response.error)
     setMessage(response.error)
@@ -71,36 +81,24 @@ const SignUpForm = () => {
   }
 
   return (
+
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.primary' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h5" variant="h5" className='text-center'>
             {message}
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <input type='hidden' name='usersource' />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              value={username}
-              onChange={(e)=>setUsername(e.target.value)}
-              label="Username"
-              name="username"
-              autoComplete="username"
-              autoFocus
-            />
             <TextField
               margin="normal"
               required
@@ -123,17 +121,6 @@ const SignUpForm = () => {
               onChange={(e)=>setPassword(e.target.value)}
               autoComplete="current-password"
             />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              value={company}
-              onChange={(e)=>setCompany(e.target.value)}
-              label="company"
-              name="company"
-              autoComplete="company"
-              autoFocus
-            />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
@@ -143,13 +130,19 @@ const SignUpForm = () => {
               fullWidth
               variant="contained"
               style={{ marginTop: 3, marginBottom: 2, backgroundColor: 'blue' }}
+              className='rounded-2xl'
             >
-              Sign up
+              Sign In
             </Button>
             <Grid container>
+              <Grid item xs>
+                <Link href="/authpages/forgotpasswordpage" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
               <Grid item>
-                <Link href="/authpages/signinpage" variant="body2">
-                  {"Already registered? Sign in"}
+                <Link href="/authpages/signuppage" variant="body2">
+                  {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
             </Grid>
@@ -157,7 +150,8 @@ const SignUpForm = () => {
         </Box>
       </Container>
     </ThemeProvider>
+
   );
 }
 
-export default SignUpForm
+export default SignInForm

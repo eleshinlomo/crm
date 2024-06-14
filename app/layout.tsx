@@ -1,12 +1,11 @@
 
 
 import {GoogleTagManager} from '@next/third-parties/google'
-import Footer from '@/components/footer'
 import './globals.css'
-import {useState, useEffect} from 'react'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import ChatBotPage from './(allroutes)/chatbotpage'
+import ChatBotPage from './(allroutes)/(publicroutes)/chatbotpage'
+
 
 
 

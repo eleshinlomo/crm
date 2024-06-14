@@ -1,4 +1,4 @@
-import WaitlistPage from "@/app/(allroutes)/dashboard/waitlistpage/page";
+
 import Waitlist from "./waitlist";
 
 export default function Newsletter() {

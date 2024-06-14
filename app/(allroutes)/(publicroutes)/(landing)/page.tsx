@@ -12,7 +12,8 @@ import HomeNavBar from '@/components/homenavbar'
 import Footer  from '@/components/footer'
 import CookiePage from '@/components/cookiepage'
 import ModalVideoPage from '../modalvideopage/page'
-import ChatBotPage from '../(allroutes)/chatbotpage'
+import ChatBotPage from '../chatbotpage'
+
 
 
   

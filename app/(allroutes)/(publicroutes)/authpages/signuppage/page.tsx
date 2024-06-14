@@ -26,11 +26,11 @@ const SignUpPage = ()=>{
   return (
   <div>
     <HomeNavBar />
-   <div className="h-full md:flex flex-col  justify-around w-full
-   items-center gap-3 pt-12 ">
+   <div className=" md:flex flex-col  justify-around w-full
+   items-center gap-3 pt-4 ">
               
-              <div className="h-auto flex flex-col justify-center items-center 
-              gap-2  w-full md:w-1/2">
+              <div className=" flex flex-col justify-center items-center 
+              gap-2  w-full ">
               <div className="">
               <Link href='/' className="flex flex-1 w-full text-3xl">
               <ArrowLeftSquareIcon className="mt-5  text-3xl" />
@@ -77,8 +77,7 @@ const SignUpPage = ()=>{
        
        
         {/* Email */}
-        <div className="
-         mt-5">
+        <div className="">
         < SignUpForm />
         </div>
        

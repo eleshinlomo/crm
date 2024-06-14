@@ -8,10 +8,6 @@ import { ArrowBigDown, ArrowBigRight, ArrowDown, Code, CodeIcon, EyeIcon,
    ImageIcon, LayoutDashboard, LogOutIcon, MenuIcon, 
    MessageSquare, Music2Icon, Settings, VideoIcon } from "lucide-react";
 import {usePathname, useRouter} from 'next/navigation'
-import { AvatarImage } from "./ui/avatar";
-import { DIRTY } from "zod";
-import { GOOGLE_LOGOUT_URL } from "./urls";
-import CreditPage from "@/app/(allroutes)/dashboard/creditpage";
 import { Button } from "./ui/button";
 // AI Tools
 import { Tools} from '@/components/tools'

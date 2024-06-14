@@ -1,5 +1,5 @@
 'use client'
-import { ClientData } from '@/app/(allroutes)/crmpages/crmpage/(crmdata)/clientdata'
+import { ClientData } from './(crmdata)/clientdata'; 
 import React, {useState, useEffect} from 'react'
 import { DataTypes } from './clientfunctions'
 

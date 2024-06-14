@@ -4,9 +4,9 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link'
-import WaitlistPage from '../waitlistpage/page';
 import ClientPage from '../../crmpages/crmpage/page';
 import {motion} from 'framer-motion'
+import WaitlistPage from '@/app/(allroutes)/(publicroutes)/waitlistpage/page';
 
 
 interface DashboardPageProps{

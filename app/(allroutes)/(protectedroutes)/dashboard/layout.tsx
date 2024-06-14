@@ -21,7 +21,6 @@ const creditHandler = ()=>{
 }
 
 interface DashboardLayoutProps {
-    company: string,
     children: React.ReactNode
 }
 // URLs
@@ -32,24 +31,13 @@ import { loginChecker } from '@/components/auth';
 
 
 
-// Login Status
-const checking ="Checking login status. Please wait..."
 
-const DashboardLayout =({company, children}: DashboardLayoutProps)=>{
+const DashboardLayout =({children}: DashboardLayoutProps)=>{
 
-    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
-    const [isAuthenticated, setIsAuthenticated] = useState<Boolean>(false)
-    const [isChecking, setIsChecking] = useState<boolean>(false)
-    const [message, setMessage] = useState<String>("")
+    
     const [currentUser, setCurrentUser] = useState(null)
-    const [isSessionId, setIsSessionId] = useState(false)
-    const [csrftoken, setCsrftoken] = useState<string | null>(null)
     const [error, setError] = useState<string | any>("")
-    const [isAdmin, setIsAdmin] = useState<boolean>(false)
-    const [username, setUsername] = useState<string | null>(null)
-    const [anonymousUser, setAnonymousUser] = useState<string | null>(null)
-    const [credit, setCredit] = useState<null | any>(null)
-    const [sessionid, setSessionid] = useState<null | any>(null)
+    
 
     
     const path = usePathname()
@@ -64,14 +52,7 @@ const DashboardLayout =({company, children}: DashboardLayoutProps)=>{
 
     return(
          <div className='overflow-hidden'>
-
-            
-
-             <div className='text-center font-extrabold'>
-              <p>{error? error: null}</p>
-             </div>
-
-            
+  
         <div className="relative flex flex-1 gap-2 w-full overflow-hidden">
 
             <div className="hidden h-full md:flex w-44 md:flex-col flex-1

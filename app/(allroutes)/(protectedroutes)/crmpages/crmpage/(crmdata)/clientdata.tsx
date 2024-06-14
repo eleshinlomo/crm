@@ -44,7 +44,7 @@ import { getTotalClients } from '../clientfunctions'
 import { DeleteProps } from '../clientfunctions'
 import { DataTypes } from '../clientfunctions'
 import { ModifyProps } from '../clientfunctions'
-import EmailPage from '@/app/(allroutes)/dashboard/emailpage/page'
+
 
 
 

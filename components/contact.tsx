@@ -1,4 +1,4 @@
-import FeedbackPage from '@/app/feedbackpage/page'
+import FeedbackPage from '@/app/(allroutes)/(publicroutes)/feedbackpage/page'
 import Image from 'next/image'
 
 export const Contact = () => {

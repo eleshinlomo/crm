@@ -1,5 +1,5 @@
 import ModalVideo from '@/components/modal-video'
-import VideoThumb from '../../public/bubble.png'
+import VideoThumb from '@/public/boxes.png'
 import React from 'react'
 
 const ModalVideoPage = () => {

@@ -1,7 +1,8 @@
-import SigninLadingpage from '@/app/authpages/signinpage/signinlandingpage'
+
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import Link from 'next/link'
+import SigninLadingpage from './signinpage/signinlandingpage'
 
 const UserNotLoggedPage = () =>{
 

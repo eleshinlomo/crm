@@ -8,8 +8,8 @@ import  Typewriter  from "@/components/typewriter"
 import Link from 'next/link'
 import { DemoLogin } from "./demologin"
 import { loginChecker } from "./auth"
-import SignInLandingPage from "@/app/authpages/signinpage/signinlandingpage"
 import {motion} from 'framer-motion'
+import SigninLadingpage from "@/app/(allroutes)/(publicroutes)/authpages/signinpage/signinlandingpage"
 
 const Hero = ()=>{
 
@@ -112,7 +112,7 @@ className=" text-white bg-blue-500 rounded-2xl"
 <Button variant='outline' size='lg'
 className=" text-white bg-blue-500 rounded-2xl" 
   ><Link href='/dashboard/dashboardpage'>DASHBOARD</Link></Button>:
-<SignInLandingPage />
+<SigninLadingpage />
 }
 </div> 
 </div>
