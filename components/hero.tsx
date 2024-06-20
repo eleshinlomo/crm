@@ -66,7 +66,7 @@ useEffect(()=>{
         <div>
 
 <div className=" flex flex-col justify-between bg-gradient-to-br  
-            from-black via-blue-900 to-black text-white px-2 w-full">
+            from-black via-black/50 to-black/80 text-white px-2 w-full">
 
 
 
@@ -88,7 +88,7 @@ useEffect(()=>{
 <h1 className="text-2xl md:text-3xl font-extrabold leading-tighter 
             tracking-tighter mb-4" data-aos="zoom-y-out">EXPLORE AI POWERED 
             <span className="bg-clip-text py-8 text-transparent
-             bg-gradient-to-r from-blue-800 to-white"> CRM</span> 
+             bg-gradient-to-r from-blue-500 to-white"> CRM</span> 
             </h1>
 <p className=" w-full ">
 Explore our world class CRM solution with integrated AI Agents. 

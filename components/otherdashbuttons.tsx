@@ -15,7 +15,7 @@ export const OtherDashButtons = () => {
     <div className='flex flex-col gap-2'>
 
       {/* Text Reader button */}
-      <div className='px-2 w-auto flex flex-col justify-center items-center'>
+      <div className='px-2 w-auto flex flex-col justify-center items-center text-white'>
           <Button className='w-full flex flex-1 justify-between'
           onClick={()=>{
             setIsOpen(!isOpen); 

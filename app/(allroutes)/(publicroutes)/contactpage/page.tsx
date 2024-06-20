@@ -27,15 +27,15 @@ const handleFeedback = async (e:any)=>{
     const response = await SupportMessageHandler(e, payload)
     if(response.ok){
     setMessage(response.message)
-    }else{
-        console.log(response.error)
-    }
     setEmailBody('')
     setEmail('')
+    }else{
+        console.log(response.error)
+        setMessage(response.message)
+    }
 }
 catch(err: any){
     console.log(err)
-    setMessage(err)
 }finally{
 }
   }
@@ -48,39 +48,36 @@ catch(err: any){
 
     <div className=''>
       <div className=' flex flex-col justify-center 
-      items-center text-center text-black'>
-        <HomeNavBar />
+      items-center text-center px-4'>
 
         <p className='mt-16 font-extrabold px-4'>Send a message to support</p>
           
-          <div className='relative bg-black h-72 w-72  mt-24 md:mt-8 mb-4 rounded-2xl '>
+          <div className=' bg-black/50 w-full md:w-1/2  rounded-2xl text-white'>
             <p className='font-mono text-center px-6 text-white py-3'>
                 {message}</p>
-        <form className='flex flex-col gap-2 px-6 absolute z-10  top-24 right-0 left-5 my-3' 
+        <form className='flex flex-col gap-2 px-6 my-3' 
         onSubmit={handleFeedback}>
           <Input placeholder='Enter email' value={email} name='email' type='email'
           onChange={(e)=>setEmail(e.target.value)}
            />
           {/* Email Subject */}
           <Input  value={emailSubject} name='emailSubject' type='hidden'
-           onChange={(e)=>setEmailSubject(e.target.value)}
-          />
+           onChange={(e)=>setEmailSubject(e.target.value)}/>
 
             {/* Email Body */}
           <Textarea
-          className='border border-black px-1 text-start '
+          className='border border-white px-1 text-start'
           value={emailBody}
           name='emailBody'
           placeholder='Enter your message here'
           onChange={(e)=>setEmailBody(e.target.value)}
            required />
-           <Button type='submit' className=' ' variant='default'>
+           <Button type='submit' className='bg-black/50 text-white rounded-2xl' variant='outline'>
             Submit Message</Button>
         </form>
         </div>
       </div>
 
-      <Footer />
       </div>
     )
   
