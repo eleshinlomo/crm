@@ -26,7 +26,7 @@ export const RecordMessage = ({ handleStop }: Props) => {
           
             
 <div className="text-center flex justify-between items-center">
-<Button className="bg-black text-white rounded-2xl" 
+<Button className="rounded-2xl bg-blue-500 hover:bg-blue-500 text-white" 
 onClick={startRecording}>Record</Button>
 
 
@@ -38,7 +38,7 @@ onClick={startRecording}>Record</Button>
               }
             />
             
-<Button className="bg-black text-white rounded-2xl" 
+<Button className=" rounded-2xl bg-blue-500 hover:bg-blue-500 text-white" 
 onClick={stopRecording}>Stop</Button>
 
 </div>

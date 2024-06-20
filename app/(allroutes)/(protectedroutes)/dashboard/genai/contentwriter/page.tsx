@@ -284,7 +284,7 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
              </FormItem>
              )}
              />
-             <Button className='col-span-12 lg:col-span-2 w-full rounded-2xl bg-blue-500 hover:bg-blue-500 ' disabled={isLoading}>
+             <Button className='col-span-12 lg:col-span-2 w-full rounded-2xl bg-blue-500 hover:bg-blue-500 text-white ' disabled={isLoading}>
               GO
              </Button>
            </form>
@@ -333,7 +333,7 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
                     }
                   <div className='flex md:flex-row justify-center'>
                     
-                    <div className={`w-full grid grid-flow-row md:grid-cols-2 gap-1`}>
+                    <div className={`w-full grid grid-flow-row md:grid-cols-2 gap-1 text-white`}>
                 
                 {/* Convert to audio button */}
                 <Button onClick={(e)=>handleTextToVoice(e)} 

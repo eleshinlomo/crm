@@ -159,7 +159,7 @@ const TextChatPage = () => {
                          </FormItem>
                          )}
                          />
-                         <Button type='submit' className='col-span-12 lg:col-span-2 w-full rounded-2xl'
+                         <Button type='submit' className='col-span-12 lg:col-span-2 w-full rounded-2xl bg-blue-500 hover:bg-blue-500 text-white'
                          disabled={isLoading}>
                           READ TEXT
                          </Button>
