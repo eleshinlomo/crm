@@ -12,10 +12,10 @@ export const OtherDashButtons = () => {
     const pathname= usePathname()
     const router = useRouter();
   return (
-    <div className='flex flex-col gap-2'>
+    <div className='flex flex-col gap-2 text-white'>
 
       {/* Text Reader button */}
-      <div className='px-2 w-auto flex flex-col justify-center items-center text-white'>
+      <div className='px-2 w-auto flex flex-col justify-center items-center'>
           <Button className='w-full flex flex-1 justify-between'
           onClick={()=>{
             setIsOpen(!isOpen); 

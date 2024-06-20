@@ -53,7 +53,7 @@ const VoiceToTextPage = () => {
           />
 
           <Button type='submit' 
-          className=' text-white p-2 rounded-2xl'>
+          className=' bg-blue-500 hover:bg-blue-500 text-white p-2 rounded-2xl'>
           
           Transcribe</Button>
           </form>
@@ -82,7 +82,7 @@ const VoiceToTextPage = () => {
            <div>
             <p className='py-4'>Don&apos;t have an Audio file?</p>
           <Link href='/dashboard/genai/voicerecorder'>
-            <Button className=' text-white p-2 rounded-2xl'>
+            <Button className='bg-blue-500 hover:bg-blue-500  text-white p-2 rounded-2xl'>
             Use Voice Recorder
           </Button>
           </Link>

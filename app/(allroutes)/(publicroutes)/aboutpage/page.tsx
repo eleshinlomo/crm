@@ -6,7 +6,6 @@ const AboutPage = () => {
 
     <div>
 
-    <HomeNavBar />
     <div className='px-4 pt-8'>
 
         <div className='flex flex-col gap-2 pb-3'>

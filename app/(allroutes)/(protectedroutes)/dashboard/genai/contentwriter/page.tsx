@@ -221,7 +221,7 @@ const creditHandler = ()=>{
 // Editing Mode
 <div className='flex flex-col justify-center items-center'>
 <div className='text-center'>
-<Button className='my-4 rounded-2xl' onClick={()=>setIsEditing(false)}>
+<Button className=' bg-blue-500 hover:bg-blue-500 my-4 rounded-2xl' onClick={()=>setIsEditing(false)}>
     Close Editing</Button>
     <p>{updated? 'Updated': null}</p>
 </div>
@@ -249,7 +249,7 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
   </FormItem>
   )}
   />
-  <Button className='col-span-12 lg:col-span-2 w-full rounded-2xl' disabled={isLoading}>
+  <Button className=' bg-blue-500 hover:bg-blue-500 col-span-12 lg:col-span-2 w-full rounded-2xl' disabled={isLoading}>
    Update Text
   </Button>
 </form>
@@ -284,7 +284,7 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
              </FormItem>
              )}
              />
-             <Button className='col-span-12 lg:col-span-2 w-full rounded-2xl' disabled={isLoading}>
+             <Button className='col-span-12 lg:col-span-2 w-full rounded-2xl bg-blue-500 hover:bg-blue-500 ' disabled={isLoading}>
               GO
              </Button>
            </form>
@@ -337,14 +337,14 @@ focus-within:shadow-sm grid grid-cols-12 gap-2
                 
                 {/* Convert to audio button */}
                 <Button onClick={(e)=>handleTextToVoice(e)} 
-                className='mt-2 rounded-2xl'>
+                className='mt-2 rounded-2xl bg-blue-500 hover:bg-blue-500 '>
                     
                     Convert to Audio
                 </Button>
                  
 
                 <Button  
-                className='mt-2 rounded-2xl'
+                className='mt-2 rounded-2xl bg-blue-500 hover:bg-blue-500 '
                 onClick={()=>setIsEditing(true)}
                 >
                     
