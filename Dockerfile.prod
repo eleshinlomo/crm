@@ -1,0 +1,19 @@
+FROM node:18-alpine 
+
+WORKDIR /app
+
+COPY . .
+
+COPY package*.json .
+
+COPY startprod.sh .
+
+RUN npm install
+
+RUN npm run build
+
+RUN chmod +x /app/startprod.sh
+
+EXPOSE 3001
+
+CMD ["sh", "/app/startprod.sh"]

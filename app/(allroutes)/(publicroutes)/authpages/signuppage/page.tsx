@@ -25,7 +25,7 @@ const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 const SignUpPage = ()=>{
   return (
   <div>
-    <HomeNavBar />
+    
    <div className=" md:flex flex-col  justify-around w-full
    items-center gap-3 pt-4 ">
               

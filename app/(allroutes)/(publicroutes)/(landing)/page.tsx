@@ -13,6 +13,8 @@ import Footer  from '@/components/footer'
 import CookiePage from '@/components/cookiepage'
 import ModalVideoPage from '../modalvideopage/page'
 import ChatBotPage from '../chatbotpage'
+import NewsletterForm from '../newsletter/newsletterform'
+import NewsletterPage from '../newsletter/page'
 
 
 
@@ -22,14 +24,13 @@ import ChatBotPage from '../chatbotpage'
     return (
 
       <div className='relative overflow-hidden flex flex-col justify-center'>
-        <HomeNavBar />
+        
         <Hero />
         <ModalVideoPage />
         <Features />
         <FeaturesBlocks />
         <Testimonials />
-        <Newsletter />
-        <Footer />
+        <NewsletterPage />
         <ChatBotPage />
         <CookiePage />
       </div>

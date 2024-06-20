@@ -1,9 +1,6 @@
 // @ts-ignore
 
-import Cookies from 'js-cookie'
-import {useRouter} from 'next/router'
-import {useState, useEffect} from 'react'
-import { Button } from './ui/button'
+
 
 interface EmailLoginProps {
   email: string,
@@ -19,13 +16,6 @@ interface RegisterUserProps {
   company: string;
 }
 
-const client_id = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID
-const GOOGLE_URL = process.env.NEXT_PUBLIC_GOOGLE_LOGIN_URL
-const redirect_uri = process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI
-const scope = process.env.NEXT_PUBLIC_GOOGLE_SCOPE
-const response_type = process.env.NEXT_PUBLIC_GOOGLE_RESPONSE_TYPE
-const state = process.env.NEXT_PUBLIC_GOOGLE_STATE
-const access_type = process.env.NEXT_PUBLIC_GOOGLE_ACCESS_TYPE
 
 
 

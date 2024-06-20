@@ -88,7 +88,7 @@ handleLoginChecker()
  
 
     return(
-       <div className='py-4 bg-black text-white w-full'>
+       <div className='py-4  w-full'>
         
         <div className='    
         md:flex flex-1 justify-between  px-2 shadow-2xl  '>
@@ -146,15 +146,15 @@ handleLoginChecker()
 <DatePage />
 </div>
 
-<div className='mr-2 text-black'>
-<Menubar className=" gap-3">
+<div className='mr-2  '>
+<Menubar className=" ">
   <MenubarMenu>
     <MenubarTrigger><Link href='/'>Home</Link></MenubarTrigger>
   </MenubarMenu>
 
   <MenubarMenu>
     <MenubarTrigger>Services</MenubarTrigger>
-    <MenubarContent className='flex flex-col mr-4'>
+    <MenubarContent className='flex flex-col mr-4 bg-white'>
       <MenubarItem>
         <OtherHomeNavButtons />
       </MenubarItem>

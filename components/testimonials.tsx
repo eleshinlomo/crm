@@ -85,7 +85,7 @@ export default function Testimonials() {
                   <Image className="relative rounded-full" src={TestimonialImage} width={96} height={96} alt="Testimonial 01" />
                 </div>
                 <blockquote className="text-xl font-medium mb-4">
-                  “ Fixupe tools are essential for every business that needs to scale in this AI age. “
+                  “ MyAfros tools are essential for every business that needs to scale in this AI age. “
                 </blockquote>
                 <cite className="block font-bold text-lg not-italic mb-1">Kola Aje</cite>
                 <div className="text-gray-600">

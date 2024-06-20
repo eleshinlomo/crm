@@ -8,7 +8,7 @@ import type { Metadata } from 'next'
 import { creditFunction } from '@/components/creditfunction';
 // Auth Functions
 import { loginChecker } from '@/components/auth';
-import UserNotLoggedPage from '../(publicroutes)/authpages/usernotloggedinpage';
+import UserNotLoggedPage from '../(publicroutes)/authpages/usernotloggedinpage/page';
 
 
 
@@ -16,8 +16,6 @@ import UserNotLoggedPage from '../(publicroutes)/authpages/usernotloggedinpage';
 
 interface ProtectedRoutesProps {
     children: React.ReactNode
-    sessionid: string,
-    isLoggedIn: boolean
 }
 
 
@@ -39,12 +37,10 @@ const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
     const [isChecking, setIsChecking] = useState<boolean>(false)
     const [message, setMessage] = useState<String>("")
     const [currentUser, setCurrentUser] = useState(null)
-    const [isSessionId, setIsSessionId] = useState(false)
     const [csrftoken, setCsrftoken] = useState<string | null>(null)
     const [error, setError] = useState<string | any>("")
     const [isAdmin, setIsAdmin] = useState<boolean>(false)
     const [username, setUsername] = useState<string | null>(null)
-    const [credit, setCredit] = useState<null | any>(null)
     const [sessionid, setSessionid] = useState<null | any>(null)
 
     
@@ -62,6 +58,7 @@ const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
         setIsChecking(true)
         // Get sessionid and check validity
         const session_id = localStorage.getItem('sessionid')
+        if (!session_id) return
         if (!session_id || session_id === null || session_id === 'undefined') throw new Error('Sessionid not found')
         setSessionid(session_id)
         const response = await loginChecker(sessionid)

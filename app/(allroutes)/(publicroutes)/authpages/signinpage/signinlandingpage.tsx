@@ -16,7 +16,7 @@ const SigninLadingpage = () => {
     <Dialog>
       <DialogTrigger asChild>
         <Button variant='outline' size='lg'
-        className=" text-white bg-blue-500 rounded-2xl w-full" >Sign in</Button>
+        className=" text-white bg-blue-500 rounded-2xl w-full py-4 px-12" >Sign in</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-black text-white">
         <DialogHeader>

@@ -1,7 +1,7 @@
 
 
 import {GoogleTagManager} from '@next/third-parties/google'
-import './globals.css'
+import '../styles/globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import ChatBotPage from './(allroutes)/(publicroutes)/chatbotpage'

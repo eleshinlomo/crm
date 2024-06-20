@@ -1,0 +1,73 @@
+'use client'
+import {useState, useEffect} from 'react'
+import { BASE_URL } from '@/components/urls'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+
+
+
+const NewsletterForm = ()=>{
+
+    const [email, setEmail] = useState<string>('')
+    const [message, setMessage] = useState<string>('Subscribe to Newsletter')
+
+const HandleEmailWaitlist = async (e:any)=>{
+    
+    try{
+    e.preventDefault()
+    const payload = {
+      email
+    }
+     console.log(BASE_URL)
+    const response: any = await fetch(`${BASE_URL}/waitlist/`, {
+      method: 'POST',
+      mode: 'cors',
+      body: JSON.stringify(payload),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    if(!response.ok) throw new Error("Problem with waitlist server")
+    const data = await response.json()
+    if (!data){
+      setMessage('No response from server')
+    }else{
+      setMessage('Your email has been received')
+    }
+    setEmail('')
+  }
+  catch(err: any){
+     setMessage(`"Error": ${err.message}`)
+  }
+  }
+  
+  
+    return (
+
+    <div>
+      <div className='py-4  
+       text-black
+       font-extrabold'>
+  
+            <p className='text-blue-500 py-2  '>{message}</p>
+        <form className=' md:flex gap-3' onSubmit={HandleEmailWaitlist}>
+          <Input
+          className='border border-blue-500 px-1  text-white'
+          value={email}
+          name='email'
+          placeholder='Enter your email'
+          onChange={(e)=>setEmail(e.target.value)}
+          type='email'
+           required /><br/>
+           <Button type='submit' className=' bg-blue-500 hover:bg-blue-500 mt-2 md:m-0 rounded-2xl text-white' variant='default'>
+            Subscribe
+           </Button>
+        </form>
+      </div>
+      </div>
+    )
+  
+
+}
+
+  export default NewsletterForm

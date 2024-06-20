@@ -3,6 +3,7 @@
 import WaitlistPage from '@/app/(allroutes)/(publicroutes)/waitlistpage/page'
 import Logo from './logo'
 import Link from 'next/link'
+import NewsletterButton from '@/app/(allroutes)/(publicroutes)/newsletter/newsletterbtn'
 
 
 const Footer = ()=>{
@@ -105,10 +106,10 @@ const Footer = ()=>{
 
           {/* 5th block */}
           <div className="sm:col-span-6 md:col-span-3 lg:col-span-3">
-            <h6 className="text-gray-800 font-medium mb-2">Subscribe</h6>
+            <h6 className="text-gray-800 font-medium mb-2">Newsletter</h6>
             <p className="text-sm text-gray-600 mb-4">Get the latest news and articles to your inbox every month.</p>
             
-                <WaitlistPage />
+                <NewsletterButton />
           </div>
           
 

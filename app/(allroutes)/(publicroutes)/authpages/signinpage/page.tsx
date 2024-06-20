@@ -28,7 +28,7 @@ const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 const SignInPage = ()=>{
   return (
   <div>
-    <HomeNavBar />
+    
    <div className="h-full  md:flex flex-col  justify-around w-full
    items-center gap-3 pt-9 ">
   
