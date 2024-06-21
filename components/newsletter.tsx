@@ -41,7 +41,8 @@ export default function Newsletter() {
                 {/* CTA content */}
                 <div className="text-center lg:text-left lg:max-w-xl">
                   <h3 className="h3 text-white mb-2">Want more news on how AI is changing businesses?</h3>
-                  <p className="text-gray-300 text-lg mb-6">Subscribe to our email list to stay ahead of the curve in this dynamic AI age.</p>
+                  <p className="text-gray-300 text-lg mb-6">Subscribe to our email list to stay ahead of the 
+                    curve in this dynamic AI age.</p>
   
                   {/* CTA form */}
                   <Waitlist />

@@ -9,6 +9,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import Link from "next/link"
+import { getGoogleAccessToken } from "@/components/auth"
 
 const SigninLadingpage = () => {
   return (
@@ -26,9 +27,10 @@ const SigninLadingpage = () => {
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          {/* <Button className="w-full bg-white hover:bg-white text-black">
+          {/* Google Button */}
+          <Button className="w-full bg-white hover:bg-white text-black" onClick={getGoogleAccessToken}>
             Sign in with Google
-          </Button> */}
+          </Button>
           
           <Button className="w-full bg-white hover:bg-white text-black" asChild>
           <Link href='/authpages/signinpage'>

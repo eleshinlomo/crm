@@ -3,7 +3,7 @@ import { createContext, useContext, ReactNode } from 'react';
 
 interface CompanyContextProps {
   companyValue: string;
-}
+}  
 
 interface CompanyProviderProps {
   companyValue: string;

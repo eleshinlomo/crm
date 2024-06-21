@@ -1,5 +1,5 @@
 "use client"
-import { BotIcon, BriefcaseIcon, ComputerIcon, MailPlusIcon, PiIcon } from "lucide-react"
+
 import Image from 'next/image'
 import { CtaBlockPage } from "./ctablock"
 import { Button } from "./ui/button"
@@ -79,6 +79,7 @@ useEffect(()=>{
 <div className="">
 <Typewriter customText={customText} />
 </div>
+
 {/* <Image src='/program-3460032_1920.jpg' alt='woman' fill /> */}
 <video src='/videos/legwork.mp4' autoPlay loop muted className=""></video>
 </div>

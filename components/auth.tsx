@@ -1,7 +1,6 @@
 // @ts-ignore
 
 
-
 interface EmailLoginProps {
   email: string,
   password: string
@@ -16,30 +15,51 @@ interface RegisterUserProps {
   company: string;
 }
 
+export interface GoogleAccessParamsProps {
+  client_id: string;
+  redirect_uri: string;
+  response_type: string;
+  scope: string;
+  include_granted_scopes: string;
+  state: string;
+}
+
 
 
 
 
 // URLs
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+const GOOGLE_ACCESS_TOKEN_URL = process.env.NEXT_PUBLIC_GOOGLE_ACCESS_TOKEN_URL
+const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID
 
 
+const google_params : GoogleAccessParamsProps = {
+
+  client_id: `${CLIENT_ID}`,
+  redirect_uri: 'https://crm.myafros.com',
+  response_type: 'token',
+  scope: 'https://www.googleapis.com/auth/drive.metadata.readonly',
+  include_granted_scopes: 'true',
+  state: 'pass-through value'
+
+}
 
    // Get Access Token
-export const getAccessToken = async (code: any)=>{
-  console.log({"Code found! Now sending for verification": code})
-  const response: any = await fetch(`${BASE_URL}/getaccesstoken/`, {
+export const getGoogleAccessToken = async ()=>{
+  console.log({"Googles params": google_params})
+  const response: any = await fetch(`${GOOGLE_ACCESS_TOKEN_URL}`, {
     mode: 'cors',
     method: 'POST',
     credentials: 'include',
     headers: {
       "Content-Type": 'application/json',
-      "Authorization": `Bearer ${code}`
-    }
+    },
+    body: JSON.stringify(google_params)
   })
   const data = await response.json()
 
-  if(!data) console.log("Endpoint call successful but No response code recieved from the server")
+  if(!data) console.log("Server error", response)
       console.log(data)
       return data
 }
