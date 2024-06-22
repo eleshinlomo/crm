@@ -3,12 +3,17 @@ import {useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import Image from 'next/image'
 // @ts-ignore
-import { useSearchParams, useRouter , usePathname} from 'next/navigation';
+import { useSearchParams, usePathname} from 'next/navigation';
 import type { Metadata } from 'next'
 import { creditFunction } from '@/components/creditfunction';
 // Auth Functions
 import { loginChecker } from '@/components/auth';
 import UserNotLoggedPage from '../(publicroutes)/authpages/usernotloggedinpage/page';
+import { getGoogleAccessToken } from '@/components/auth';
+import { getGoogleUserInfo } from '@/components/auth';
+import { DashNavbar } from '@/components/dashnavbar';
+import { useRouter } from 'next/navigation';
+
 
 
 
@@ -17,6 +22,8 @@ import UserNotLoggedPage from '../(publicroutes)/authpages/usernotloggedinpage/p
 interface ProtectedRoutesProps {
     children: React.ReactNode
 }
+
+
 
 
 
@@ -46,11 +53,40 @@ const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
     
     const path = usePathname()
     const router = useRouter()
+    const params = useSearchParams()
+    const authCode: any = params?.get('code')
      
    
     const creditHandler = ()=>{
         creditFunction()
     }
+
+
+useEffect(()=>{
+    if(!checking && !isLoggedIn){
+        router.push('/userisnotloggedinpage')
+    }
+}, [])
+
+//   Get google accessToken
+  const handleGetAccessToken =async ()=>{
+    if(!authCode) return
+    const response = await getGoogleAccessToken(authCode)
+    if(response && response.access_token){
+    const gAccessToken = response.access_token
+    localStorage.setItem('accessToken', gAccessToken)
+    const userInfo = await getGoogleUserInfo(gAccessToken)
+    const username = userInfo.given_name
+    localStorage.setItem('username', username)
+    console.log(userInfo)
+    setIsLoggedIn(true)
+    }
+  }
+
+  useEffect(()=>{
+    handleGetAccessToken()
+  }, [])
+
 
 //  Login Checker Handler
     const handleLoginChecker = async ()=>{
@@ -70,6 +106,7 @@ const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
         await creditHandler()
     }
      console.log(response.error)
+     setIsLoggedIn(false)
     }
     catch(err){
         console.log(err)
@@ -83,14 +120,13 @@ const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
  useEffect(()=>{
     handleLoginChecker()
     creditHandler()
- }, [])
+ }, [isLoggedIn])
 
 
 
     return(
          <div className=''>
-
-            
+            <DashNavbar updateAuth={handleLoginChecker} isLoggedIn={isLoggedIn} />
 
              <div className='text-center font-extrabold'>
               <p>{error? error: null}</p>
@@ -112,9 +148,9 @@ const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
             </div> :
 
         // Not logged In
-           <div>
+           
             <UserNotLoggedPage />
-            </div>
+            
 
          }
 

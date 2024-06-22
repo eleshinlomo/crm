@@ -14,10 +14,10 @@ import { Button } from "@/components/ui/button"
 import Link from 'next/link'
 import { ArrowLeftSquareIcon, XIcon } from "lucide-react"
 import Image from 'next/image'
-import { googleLogin } from "@/components/auth"
 import GOOGLESignInPage from "@/components/googlesigninpage"
 import SignInForm from "./signinform"
 import HomeNavBar from "@/components/homenavbar"
+import GoogleSignInButton from "./googlesigninbtn"
 
 
 
@@ -44,7 +44,7 @@ const SignInPage = ()=>{
               </Link>
               <div className="flex flex-1 gap-3">
               <p className="mt-1 ">Not Registered?</p>
-                <Button size='sm'  className='bg-gray-500 hover:bg-gray-500
+                <Button size='sm'  className='bg-blue-500 hover:bg-gray-500 rounded-2xl text-white
                 shadow-2xl  '>
                     <Link href='/authpages/signuppage'>
                     Sign Up
@@ -69,6 +69,7 @@ const SignInPage = ()=>{
           </Link>
         </Button> */}
         
+        <GoogleSignInButton />
        
         {/* Email */}
         <div className="">

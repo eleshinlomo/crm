@@ -1,8 +1,6 @@
-export const metadata = {
-    title: 'Home - CRM',
-    description: 'CRM tools powered by AI',
-  }
-  
+'use client'
+
+import {useState, useEffect} from 'react'
 import Hero from '@/components/hero'
 import Features from '@/components/features'
 import FeaturesBlocks from '@/components/features-blocks'
@@ -15,6 +13,7 @@ import ModalVideoPage from '../modalvideopage/page'
 import ChatBotPage from '../chatbotpage'
 import NewsletterForm from '../newsletter/newsletterform'
 import NewsletterPage from '../newsletter/page'
+
 
 
 

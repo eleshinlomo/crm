@@ -24,48 +24,101 @@ export interface GoogleAccessParamsProps {
   state: string;
 }
 
+export interface AuthTokenProp {
+  authCode: string | null | 'undefined'
+}
 
 
 
 
 // URLs
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
-const GOOGLE_ACCESS_TOKEN_URL = process.env.NEXT_PUBLIC_GOOGLE_ACCESS_TOKEN_URL
 const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID
+const CLIENT_SECRET = process.env.NEXT_PUBLIC_CLIENT_SECRET
+const AUTH_USER_REDIRECT_URL = process.env.NEXT_PUBLIC_AUTH_USER_REDIRECT_URL
 
 
-const google_params : GoogleAccessParamsProps = {
+const clientId = `${CLIENT_ID}`;
+const redirectUri = `${AUTH_USER_REDIRECT_URL}`;
+const scope = 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/drive.metadata.readonly';
+const responseType = 'code';
 
-  client_id: `${CLIENT_ID}`,
-  redirect_uri: 'https://crm.myafros.com',
-  response_type: 'token',
-  scope: 'https://www.googleapis.com/auth/drive.metadata.readonly',
-  include_granted_scopes: 'true',
-  state: 'pass-through value'
+// Get Google Code URL
+export const googleAuthCodeUrl = `https://accounts.google.com/o/oauth2/v2/auth?response_type=${responseType}&client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
 
-}
+   
 
-   // Get Access Token
-export const getGoogleAccessToken = async ()=>{
-  console.log({"Googles params": google_params})
-  const response: any = await fetch(`${GOOGLE_ACCESS_TOKEN_URL}`, {
-    mode: 'cors',
+// Get Access Token
+export const getGoogleAccessToken = async (authCode: string)=>{
+
+  const google_params = {
+
+    client_id: `${CLIENT_ID}`,
+    client_secret: `${CLIENT_SECRET}`,
+    redirect_uri: `${AUTH_USER_REDIRECT_URL}`,
+    grant_type: 'authorization_code',
+    code: authCode,
+    state: 'pass-through value'
+  
+  }
+
+  try{
+  
+  const response: any = await fetch(`https://oauth2.googleapis.com/token`, {
     method: 'POST',
-    credentials: 'include',
     headers: {
-      "Content-Type": 'application/json',
+      "Content-Type": 'application/x-www-form-urlencoded',
     },
-    body: JSON.stringify(google_params)
+    body: new URLSearchParams(google_params).toString(),
   })
-  const data = await response.json()
+ 
+  if (!response.ok) {
+    console.log("Error response", response);
+    throw new Error(`Error: ${response.statusText}`);
+  }
 
-  if(!data) console.log("Server error", response)
-      console.log(data)
-      return data
+  const data = await response.json();
+  return data;
+
+  
 }
+catch (error) {
+  console.error("Server error", error);
+  return null;
+}
+}
+
+
+// Get Google User Info
+export const getGoogleUserInfo = async (accessToken: string) => {
+  if(!accessToken) return
+  try {
+    const response = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.log("Error fetching user info", errorData);
+      throw new Error(`Error: ${response.statusText}`);
+    }
+
+    const userInfo = await response.json();
+    return userInfo;
+  } catch (error) {
+    console.error("Error fetching user info", error);
+    return null;
+  }
+};
+
+
+
     
 
-
+// Register user with email
 export const registerUserWithEmail = async (data: RegisterUserProps)=>{
   try{
     const processPayload = await fetch(`${BASE_URL}/registeruser/`, {
@@ -85,7 +138,7 @@ export const registerUserWithEmail = async (data: RegisterUserProps)=>{
     
   }
   catch(error: any){
-  console.log(error.message.error)
+  console.log('Server error', error)
   return null
   
   }
@@ -163,6 +216,7 @@ return null
     localStorage.removeItem('credits')
     localStorage.removeItem('company')
     localStorage.removeItem('email')
+    localStorage.removeItem('accessToken')
     window.location.href=`/`
     return data
    }else{
@@ -174,32 +228,7 @@ return null
 
 
 
-// Google auth
-export const googleLogin = async () => {``
-  try {
-    const response = await fetch(`${BASE_URL}/googlelogin/`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        // Add any additional headers if needed
-      },
-      credentials: 'include', // Include credentials for CORS request
-    });
 
-    if (!response.ok) {
-      // Handle non-successful responses here
-      console.error('Error:', response.status, response.statusText);
-      return null;
-    }
-
-    const data: any = await response.json();
-    console.log(data);
-    return data; // Return the data if needed
-  } catch (error: any) {
-    console.error('Error:', error.message);
-    return null;
-  }
-};
 
 
 
@@ -213,23 +242,6 @@ export const googleLogin = async () => {``
     
 
    
-   
-
-// export const handleLogout = async ()=>{
-   
-//     await fetch(`${BASE_URL}/accounts/logout/`, {
-//      mode: 'cors',
-//      method: 'POST',
-//      credentials: 'include',
-//      headers: {"Content-Type": 'application/json'}
-//     })
-//     .then((res)=>{
-//        if(!res) throw new Error("No response from server")
-//        return res.json()
-//     })
-//     .then((data)=>{
-//      console.log(data)
-//     }
 
 
 

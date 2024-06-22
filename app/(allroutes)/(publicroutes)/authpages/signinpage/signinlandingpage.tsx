@@ -1,3 +1,4 @@
+import {useState, useEffect} from 'react'
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -10,8 +11,14 @@ import {
 } from "@/components/ui/dialog"
 import Link from "next/link"
 import { getGoogleAccessToken } from "@/components/auth"
+import { googleAuthCodeUrl } from '@/components/auth' 
+import { useSearchParams } from "next/navigation"
+import { AuthTokenProp } from '@/components/auth'
+import GoogleSignInButton from './googlesigninbtn'
 
 const SigninLadingpage = () => {
+  
+
   return (
     <div className="">
     <Dialog>
@@ -26,14 +33,12 @@ const SigninLadingpage = () => {
             How would you like to sign in?
           </DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
+        <div className="flex flex-col justify-center items-center">
           {/* Google Button */}
-          <Button className="w-full bg-white hover:bg-white text-black" onClick={getGoogleAccessToken}>
-            Sign in with Google
-          </Button>
+         <GoogleSignInButton />
           
-          <Button className="w-full bg-white hover:bg-white text-black" asChild>
-          <Link href='/authpages/signinpage'>
+          <Button className="border border-blue-500 rounded-2xl mb-2 mt-4   md:w-full bg-white hover:bg-white text-black text-md" asChild>
+          <Link href='/authpages/signinpage' >
             Sign in with Email
             </Link>
           </Button>

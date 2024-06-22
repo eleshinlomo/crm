@@ -7,12 +7,11 @@ import Link from 'next/link'
 import { UserAvatar } from './user-avater'
 // import ProfileAvatar  from './profile-avatar'
 import { GOOGLE_LOGOUT_URL } from './urls'
-
+import SignOutPage from '@/app/(allroutes)/(publicroutes)/authpages/signoutpage/page'
+import { SignOutProps } from '@/app/(allroutes)/(publicroutes)/authpages/signoutpage/page'
 // Auth Functions
-
 import { userLogout } from './auth'
 import HomeNavBar from './homenavbar'
-
 // UserProfile
 import { getUserProfile } from './userprofile'
 import DatePage from './date'
@@ -20,28 +19,51 @@ import CreditPage from '@/app/(allroutes)/(protectedroutes)/creditpage'
 import { motion } from 'framer-motion'
 
 
+interface DashNavProps {
+  isLoggedIn: boolean;
+  updateAuth: ()=>void;
+}
 
-export const DashNavbar = (user: any) => {
+const handleLogout = ()=>{
+  userLogout()
+}
+
+export const DashNavbar = ({isLoggedIn}: DashNavProps) => {
+
 const [isOpen, setIsOpen] = useState<boolean>(false)
 const [userUsername, setUserUsername] = useState<null | any>(null)
 const [userData, setUserData] = useState<null | any>(null)
 const [company, setCompany] = useState<null | any>(null)
 
 
-// User Profile Handler
-useEffect(()=>{
-const handleUserProfile = ()=>{
-    const userprofile = getUserProfile()
-    if (userprofile !==null){
-      setUserData(userprofile)
-    const {username, company} = userprofile
-    
-    setUserUsername(username)
-    setCompany(company)
-    }else{
-      return
-    }
+// User Profile Handler for Google login
+const getUsername = ()=>{
+if(typeof window !== 'undefined' || typeof window !==null){
+  const userName = localStorage.getItem('username')
+  setUserUsername(userName)
 }
+}
+
+useEffect(()=>{
+  getUsername()
+}, [userUsername])
+
+// User Profile Handler for Email login
+
+const handleUserProfile = ()=>{
+  const userprofile = getUserProfile()
+  if (userprofile !==null){
+    setUserData(userprofile)
+  const {username, company} = userprofile
+  
+  setUserUsername(username)
+  setCompany(company)
+  }else{
+    return
+  }
+
+}
+useEffect(()=>{
 handleUserProfile()
 },[])
 
@@ -73,7 +95,6 @@ const handleToggle = ()=>{
            {isOpen?
           <div>
             
-
             <div className='absolute right-6 bg-black text-white 
              flex flex-col
             p-4 z-50'>
@@ -85,9 +106,9 @@ const handleToggle = ()=>{
               <Button className=' my-1 px-12'>
               Update Profile
               </Button>
-            <Button className=' my-1 px-12' onClick={userLogout}>
-              Sign Out
-              </Button>
+              <div className=''>
+              <SignOutPage isLoggedIn={isLoggedIn} updateAuth={handleLogout} />
+              </div>
               </div>
 
             </div>:null

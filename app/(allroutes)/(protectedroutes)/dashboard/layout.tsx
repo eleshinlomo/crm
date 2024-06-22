@@ -63,7 +63,6 @@ const DashboardLayout =({children}: DashboardLayoutProps)=>{
             </div>
             
            <main className=" w-full md:ml-44  ">
-            <DashNavbar user={currentUser} />
             <div className='text-center flex flex-col flex-1 justify-center 
             items-center px-4 
              '> 

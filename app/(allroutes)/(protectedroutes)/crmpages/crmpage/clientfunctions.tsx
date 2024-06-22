@@ -103,7 +103,7 @@ catch(err){
 // Total Clients
 export const getTotalClients = async ()=>{
   const sessionid = getSessionid()
-  if (!sessionid) return 'Totalclients fetch failed as no sessionid found'
+  if (!sessionid) return 'Totalclient not found. Suspicious authentication'
   const response = await getClients(sessionid)
   const allClients = response.data
   if (allClients && allClients.length > 0){

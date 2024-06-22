@@ -95,7 +95,7 @@ const SignInForm = () => {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.primary' }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h5" variant="h5" className='text-center'>
+          <Typography component="h6" variant="h6" className='text-center text-md'>
             {message}
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
