@@ -38,8 +38,8 @@ const SignUpPage = ()=>{
               </Link>
               <div className="flex flex-1 gap-3">
               <p className="mt-1 ">Already Registered?</p>
-                <Button size='sm'  className='bg-gray-500 hover:bg-gray-900
-                shadow-2xl  '>
+                <Button size='sm'  className='bg-blue-500 hover:bg-blue-500 text-white 
+                rounded-2xl  '>
                     <Link href='/authpages/signinpage'>
                     Sign in
                     </Link>

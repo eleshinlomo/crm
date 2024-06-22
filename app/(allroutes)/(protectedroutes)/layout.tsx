@@ -17,8 +17,6 @@ import { useRouter } from 'next/navigation';
 
 
 
-
-
 interface ProtectedRoutesProps {
     children: React.ReactNode
 }
@@ -54,7 +52,7 @@ const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
     const path = usePathname()
     const router = useRouter()
     const params = useSearchParams()
-    const authCode: any = params?.get('code')
+    
      
    
     const creditHandler = ()=>{
@@ -70,6 +68,7 @@ useEffect(()=>{
 
 //   Get google accessToken
   const handleGetAccessToken =async ()=>{
+    const authCode: any = params?.get('code')
     if(!authCode) return
     const response = await getGoogleAccessToken(authCode)
     if(response && response.access_token){
@@ -78,7 +77,6 @@ useEffect(()=>{
     const userInfo = await getGoogleUserInfo(gAccessToken)
     const username = userInfo.given_name
     localStorage.setItem('username', username)
-    console.log(userInfo)
     setIsLoggedIn(true)
     }
   }
@@ -94,20 +92,24 @@ useEffect(()=>{
         setIsChecking(true)
         // Get sessionid and check validity
         const session_id = localStorage.getItem('sessionid')
-        if (!session_id) return
-        if (!session_id || session_id === null || session_id === 'undefined') throw new Error('Sessionid not found')
+        const accessToken = localStorage.getItem('accessToken')
         setSessionid(session_id)
-        const response = await loginChecker(sessionid)
-        if (response.ok){
-        setCurrentUser(response)
-        setIsChecking(false)
-        setUsername(localStorage.getItem('username'))
+        if (!sessionid || !accessToken) return
+        const response: any = await loginChecker({sessionid, accessToken})
+        if (sessionid !== null || sessionid !== 'undefined'){
+        
+        if(response.ok && sessionid){
+            setCurrentUser(response)
+            setIsChecking(false)
+            setUsername(localStorage.getItem('username'))
+            setIsLoggedIn(true)
+        }}
+
+        if(accessToken){
         setIsLoggedIn(true)
-        await creditHandler()
+        setIsChecking(false)
     }
-     console.log(response.error)
-     setIsLoggedIn(false)
-    }
+  }
     catch(err){
         console.log(err)
     }finally{
@@ -126,7 +128,7 @@ useEffect(()=>{
 
     return(
          <div className=''>
-            <DashNavbar updateAuth={handleLoginChecker} isLoggedIn={isLoggedIn} />
+            
 
              <div className='text-center font-extrabold'>
               <p>{error? error: null}</p>
@@ -144,6 +146,7 @@ useEffect(()=>{
             { isLoggedIn ?
     
             <div className=''>
+            <DashNavbar updateAuth={handleLoginChecker} isLoggedIn={isLoggedIn} />
             {children}
             </div> :
 

@@ -7,8 +7,7 @@ import Link from 'next/link'
 import { UserAvatar } from './user-avater'
 // import ProfileAvatar  from './profile-avatar'
 import { GOOGLE_LOGOUT_URL } from './urls'
-import SignOutPage from '@/app/(allroutes)/(publicroutes)/authpages/signoutpage/page'
-import { SignOutProps } from '@/app/(allroutes)/(publicroutes)/authpages/signoutpage/page'
+import SignOutPage from '@/app/(allroutes)/(publicroutes)/authpages/signoutpage'
 // Auth Functions
 import { userLogout } from './auth'
 import HomeNavBar from './homenavbar'
@@ -24,8 +23,8 @@ interface DashNavProps {
   updateAuth: ()=>void;
 }
 
-const handleLogout = ()=>{
-  userLogout()
+const handleLogout = async ()=>{
+  await userLogout()
 }
 
 export const DashNavbar = ({isLoggedIn}: DashNavProps) => {
@@ -107,7 +106,7 @@ const handleToggle = ()=>{
               Update Profile
               </Button>
               <div className=''>
-              <SignOutPage isLoggedIn={isLoggedIn} updateAuth={handleLogout} />
+              <SignOutPage isLoggedIn={isLoggedIn} updateAuth={()=>handleLogout} />
               </div>
               </div>
 

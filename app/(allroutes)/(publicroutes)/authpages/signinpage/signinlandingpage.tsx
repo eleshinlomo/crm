@@ -24,12 +24,12 @@ const SigninLadingpage = () => {
     <Dialog>
       <DialogTrigger asChild>
         <Button variant='outline' size='lg'
-        className=" text-white bg-blue-500 rounded-2xl w-full py-4 px-12" >Sign in</Button>
+        className=" text-white bg-blue-500 hover:bg-blue-500 rounded-2xl w-full py-4 px-12" >Sign in</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] bg-black text-white">
+      <DialogContent className="sm:max-w-[425px] bg-blue-500 text-white text-center">
         <DialogHeader>
-          <DialogTitle>Sign in</DialogTitle>
-          <DialogDescription>
+          <DialogTitle className='text-center'>Sign in</DialogTitle>
+          <DialogDescription className='text-center'>
             How would you like to sign in?
           </DialogDescription>
         </DialogHeader>
@@ -37,7 +37,7 @@ const SigninLadingpage = () => {
           {/* Google Button */}
          <GoogleSignInButton />
           
-          <Button className="border border-blue-500 rounded-2xl mb-2 mt-4   md:w-full bg-white hover:bg-white text-black text-md" asChild>
+          <Button className="border border-blue-500 rounded-2xl mb-2 mt-4   bg-white hover:bg-white text-black text-md" asChild>
           <Link href='/authpages/signinpage' >
             Sign in with Email
             </Link>

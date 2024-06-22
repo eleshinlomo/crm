@@ -42,6 +42,7 @@ import { OtherHomeNavButtons } from './otherhomenavbuttons'
 import DatePage from './date'
 import {motion} from 'framer-motion'
 import { SvgIcon } from '@mui/material'
+import SignOutPage from '@/app/(allroutes)/(publicroutes)/authpages/signoutpage'
 
 
 
@@ -171,17 +172,7 @@ handleLoginChecker()
  
   <MenubarMenu>
   <MenubarTrigger>
-    {isLoggedIn?
-          
-          <Button size='sm' onClick={userLogout}
-          className='bg-white hover:bg-white text-black py-5'
-          >
-          Sign Out
-        </Button>:
-         
-            <Link href='/authpages/signinpage'>Sign In</Link>
-          
-             }
+   <SignOutPage isLoggedIn={isLoggedIn} updateAuth={handleLoginChecker} />
     </MenubarTrigger>
   </MenubarMenu>
 

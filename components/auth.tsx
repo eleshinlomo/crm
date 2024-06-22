@@ -28,6 +28,11 @@ export interface AuthTokenProp {
   authCode: string | null | 'undefined'
 }
 
+export interface LoginCheckerProps {
+  sessionid: string | null;
+  accessToken: string | null;
+}
+
 
 
 
@@ -173,27 +178,56 @@ return null
 }
 
 
- // Login Checker
- export const loginChecker =  async (sessionid: string)=>{
+// Email user login checker
+const emailUserChecker = async (sessionid: string | null)=>{
+  if(sessionid && sessionid !==null){
   const response: any = await fetch(`${BASE_URL}/loginchecker/`, {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-        'sessionid': sessionid
-    },
-      
-  })
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      'sessionid': sessionid
+  },
+    
+})
 
-  if (!response) throw new Error('Server not responding')
-  const data: any = await response.json()
-  if (data.ok){
-      return data
-  }else{
-  return response
-  }
-  
+if (!response) throw new Error('Server not responding')
+const data: any = await response.json()
+if (data.ok){
+    return data
 }
+
+}else{
+  return 'User sessionid not found'
+}
+
+}
+
+// Google user login checker
+const googleUserChecker = (accessToken: string | null)=>{
+  if(accessToken && accessToken !==null){
+  const data = localStorage.getItem('username')
+  return data
+  }else{
+    return 'Google access token not found'
+  }
+}
+
+ // General Login Checker
+ export const loginChecker =  async ({sessionid, accessToken}: LoginCheckerProps)=>{
+  let response: {[key:string]: any} | null = {}
+  if(sessionid){
+   const emailUser = await emailUserChecker(sessionid)
+   response['emailUser'] = emailUser
+  }
+  if (accessToken){
+  const googleUser = googleUserChecker(accessToken)
+  response['googleUser'] = googleUser
+}
+  
+return response
+}
+ 
 
     
 

@@ -9,9 +9,10 @@ const nextConfig = {
       // Add other domains if needed
     ],
   },
-  env: {
-    NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL
-  }
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
+ 
 };
 
 module.exports = nextConfig;
