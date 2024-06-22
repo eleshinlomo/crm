@@ -98,8 +98,7 @@ useEffect(()=>{
         const response: any = await loginChecker({sessionid, accessToken})
         if (sessionid !== null || sessionid !== 'undefined'){
         
-        if(response.ok && sessionid){
-            setCurrentUser(response)
+        if(response.ok){
             setIsChecking(false)
             setUsername(localStorage.getItem('username'))
             setIsLoggedIn(true)

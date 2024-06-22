@@ -163,14 +163,17 @@ try{
   const response: any = await processPayload.json()
   if(!response) {
     return {"error": "No response from server"}
-   
+  }
+  const responseData: any = response.json()
+  if(responseData.ok){
+    return responseData
   }else{
-  return response
-}
+    responseData.error
+  }
   
 }
 catch(error: any){
-console.log(error.message.error)
+console.log(error)
 return null
 
 }
