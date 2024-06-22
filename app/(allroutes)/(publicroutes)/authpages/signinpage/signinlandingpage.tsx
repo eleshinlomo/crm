@@ -35,7 +35,7 @@ const SigninLadingpage = () => {
         </DialogHeader>
         <div className="flex flex-col justify-center items-center">
           {/* Google Button */}
-         <GoogleSignInButton />
+         {/* <GoogleSignInButton /> */}
           
           <Button className="border border-blue-500 rounded-2xl mb-2 mt-4   bg-white hover:bg-white text-black text-md" asChild>
           <Link href='/authpages/signinpage' >
