@@ -14,7 +14,6 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Footer from '@/components/footer';
 import { SendIcon } from 'lucide-react';
-import HomeNavBar from '@/components/homenavbar';
 
 
 
@@ -34,7 +33,7 @@ const [email, setEmail] = useState<string>('')
 
   return (
     <div>
-    <HomeNavBar />
+    
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />

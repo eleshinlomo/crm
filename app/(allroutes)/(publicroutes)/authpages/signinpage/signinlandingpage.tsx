@@ -16,7 +16,7 @@ import { useSearchParams } from "next/navigation"
 import { AuthTokenProp } from '@/components/auth'
 import GoogleSignInButton from './googlesigninbtn'
 
-const SigninLadingpage = () => {
+const SigninLandingpage = () => {
   
 
   return (
@@ -35,7 +35,9 @@ const SigninLadingpage = () => {
         </DialogHeader>
         <div className="flex flex-col justify-center items-center">
           {/* Google Button */}
-         {/* <GoogleSignInButton /> */}
+         <GoogleSignInButton />
+
+         
           
           <Button className="border border-blue-500 rounded-2xl mb-2 mt-4   bg-white hover:bg-white text-black text-md" asChild>
           <Link href='/authpages/signinpage' >
@@ -43,6 +45,11 @@ const SigninLadingpage = () => {
             </Link>
           </Button>
          
+          <Button className="border border-blue-500 rounded-2xl mb-2 mt-4   bg-white hover:bg-white text-black text-md" asChild>
+          <Link href='/authpages/signuppage' >
+            Sign up with email
+            </Link>
+          </Button>
         </div>
        <DialogFooter>
        </DialogFooter>
@@ -52,4 +59,4 @@ const SigninLadingpage = () => {
   )
 }
 
-export default SigninLadingpage
+export default SigninLandingpage

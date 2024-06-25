@@ -15,7 +15,7 @@ import Link from 'next/link'
 import { ArrowLeftSquareIcon, XIcon } from "lucide-react"
 import Image from 'next/image'
 import SignUpForm from "./signupform"
-import HomeNavBar from "@/components/homenavbar"
+
 
 
 

@@ -2,14 +2,14 @@
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import Link from 'next/link'
-import HomeNavBar from '@/components/homenavbar'
+
 
 const UserNotLoggedPage = () =>{
 
 return (
 
 <div>
-<HomeNavBar />
+
 <div className='w-full pt-12 flex flex-col justify-center items-center
     font-extrabold gap-4'>
 

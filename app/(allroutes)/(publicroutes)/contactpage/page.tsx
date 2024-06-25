@@ -4,8 +4,6 @@ import { BASE_URL } from '@/components/urls'
 import { Button } from '@/components/ui/button'
 import { SupportMessageHandler } from '@/components/supportmessagehandler' 
 import { Textarea } from '@/components/ui/textarea'
-import HomeNavBar from '@/components/homenavbar'
-import Footer from '@/components/footer'
 import { Input } from '@/components/ui/input'
 
 

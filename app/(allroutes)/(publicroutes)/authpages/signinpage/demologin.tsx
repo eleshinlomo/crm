@@ -102,17 +102,12 @@ const signingIn = (<div className='relative w-24 h-24'>
                 <input value={email} type='hidden' />
                 <input value={password} type='hidden' />
                 <Button size='lg' variant='outline' type='submit' 
-                className='text-white bg-blue-500 rounded-2xl w-full'>
-                    LIVE DEMO
+                className='px-8 py-8 text-lg font-medium text-center text-white bg-blue-500 hover:bg-blue-500 hover:text-white rounded-2xl'>
+                    {isSiginingIn? 'Entering...' : 'TRY FREE'}
                     </Button>
               </form>
           
-      {isSiginingIn?
-     <div className='pl-2 py-2'>
-      Signing in...
-      </div>:null
-      
-     }
+    
      
     
     </div>

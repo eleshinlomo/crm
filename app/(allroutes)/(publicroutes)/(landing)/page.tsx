@@ -1,12 +1,11 @@
 'use client'
 
 import {useState, useEffect} from 'react'
-import Hero from '@/components/hero'
+import {Hero} from '@/components/hero'
 import Features from '@/components/features'
 import FeaturesBlocks from '@/components/features-blocks'
 import Testimonials from '@/components/testimonials'
 import Newsletter from '@/components/newsletter'
-import HomeNavBar from '@/components/homenavbar'
 import Footer  from '@/components/footer'
 import CookiePage from '@/components/cookiepage'
 import ModalVideoPage from '../modalvideopage/page'

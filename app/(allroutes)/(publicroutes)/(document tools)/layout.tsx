@@ -1,7 +1,6 @@
 
 
 import Footer  from "@/components/footer";
-import HomeNavBar from "@/components/homenavbar";
 import { Button } from "@/components/ui/button";
 import { FileIcon } from "lucide-react";
 import type { Metadata } from 'next'
@@ -24,8 +23,6 @@ const DocumentPageLayout = ({
 
     return(
          <div className='w-full h-full'>
-
-            <HomeNavBar />
 
            <main className="">
             <div className="text-center flex flex-1 flex-col justify-center items-center gap-3">

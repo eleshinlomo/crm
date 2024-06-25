@@ -14,9 +14,7 @@ import { Button } from "@/components/ui/button"
 import Link from 'next/link'
 import { ArrowLeftSquareIcon, XIcon } from "lucide-react"
 import Image from 'next/image'
-import GOOGLESignInPage from "@/components/googlesigninpage"
 import SignInForm from "./signinform"
-import HomeNavBar from "@/components/homenavbar"
 import GoogleSignInButton from "./googlesigninbtn"
 
 

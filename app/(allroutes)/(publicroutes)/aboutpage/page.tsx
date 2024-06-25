@@ -1,4 +1,4 @@
-import HomeNavBar from '@/components/homenavbar'
+
 import React from 'react'
 
 const AboutPage = () => {

@@ -1,5 +1,5 @@
 
-import HomeNavBar from '@/components/homenavbar'
+import {HomeNavbar} from '@/components/homenavbar'
 import React from 'react'
 
 interface PublicRouteProps {
@@ -10,7 +10,7 @@ interface PublicRouteProps {
 const PublicRoutesLayout = ({children} : PublicRouteProps)=>{
     return (
         <div>
-         <HomeNavBar />
+         <HomeNavbar />
          {children}
         </div>
     )

@@ -8,10 +8,7 @@ const nextConfig = {
       "oaidalleapiprodscus.blob.core.windows.net",
       // Add other domains if needed
     ],
-  },
-  experimental: {
-    missingSuspenseWithCSRBailout: false,
-  },
+  }
  
 };
 

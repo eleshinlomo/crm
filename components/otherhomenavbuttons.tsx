@@ -15,9 +15,9 @@ className=''>
 
 
 <Button className='w-full'>
-<Link href='/aboutpage'
+<Link href='/vccalculator'
 className=''
->About us</Link>
+>VC Calculator</Link>
 </Button>
 
 <Button className='w-full'>

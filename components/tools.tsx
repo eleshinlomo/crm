@@ -1,7 +1,8 @@
 "use client"
 import { AreaChartIcon, BookIcon, BotIcon, DatabaseIcon, 
     ImageIcon,
-    MailIcon, 
+    MailIcon,
+    ZapIcon, 
    
 } from "lucide-react";
 
@@ -59,21 +60,10 @@ export const Tools = [
       bgColor: "text-grey-500"
     }]
   },
-
-
   {
     id:'3',
     category: 'GenAI Tools',
     tools: [
-
-        // {
-      
-        //   label: "Image generator",
-        //   icon: ImageIcon,
-        //   href: "/dashboard/genai/imagepage",
-        //   color: "text-blue-500",
-        //   bgColor: "text-grey-500"
-        //   },
 
           {   
         
@@ -114,12 +104,22 @@ export const Tools = [
               //   href: "/dashboard/genai/voicechat",
               //   color: "text-blue-500",
               //   bgColor: "text-grey-500"
-              //   },
-            
-           
-      ]
-
-        },
+              //   },     
+            ]},
+            {
+              id:'4',
+              category: 'Other Tools',
+              tools: [
+          
+                    {   
+                  
+                      label: "VC Calculator",
+                      icon: ZapIcon,
+                      href: "/vccalculator",
+                      color: "text-pink-500",
+                      bgColor: "text-grey-500"
+                      },
+                    ]}
     ]
 
     const DashboardTools = ()=> {
