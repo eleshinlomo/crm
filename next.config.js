@@ -9,7 +9,6 @@ const nextConfig = {
       // Add other domains if needed
     ],
   }
- 
 };
 
 module.exports = nextConfig;

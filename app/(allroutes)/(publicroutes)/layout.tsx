@@ -1,5 +1,5 @@
 
-import {HomeNavbar} from '@/components/homenavbar'
+import HomeNavbar from '@/components/homenavbar'
 import React from 'react'
 
 interface PublicRouteProps {

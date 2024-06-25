@@ -2,33 +2,16 @@
 
 import {useState, useEffect} from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
 import Image from 'next/image'
-
 import { Button } from "@/components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useRouter } from 'next/navigation'
 import { SpinnerOne } from '@/components/spinner'
 
-
 // Auth Functions
 import { emailLogin } from '@/components/auth' 
 
-interface SignupFormProps {
-  saveUsername: string,
-}
 
-const PASSWORD_RESET_URL = process.env.NEXT_PUBLIC_PASS_RESET_URL
 
 export const DemoLogin = ()=>{
 

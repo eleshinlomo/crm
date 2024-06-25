@@ -6,7 +6,7 @@ import Logo from '../public/logos/logo.png'
 import { Disclosure } from "@headlessui/react";
 import SigninLandingpage from "@/app/(allroutes)/(publicroutes)/authpages/signinpage/signinlandingpage";
 
-export const HomeNavbar = () => {
+const HomeNavbar = () => {
   const navigation = [
     {name: "Home",
      link: "/"
@@ -76,3 +76,5 @@ export const HomeNavbar = () => {
     </div>
   );
 }
+
+export default HomeNavbar

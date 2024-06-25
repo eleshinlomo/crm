@@ -1,6 +1,5 @@
 "use client"
 import {useState, useEffect} from 'react'
-import PropTypes from 'prop-types'
 import Image from 'next/image'
 // @ts-ignore
 import { useSearchParams, usePathname} from 'next/navigation';
@@ -38,13 +37,9 @@ const checking ="Checking login status. Please wait..."
 const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
 
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
-    const [isAuthenticated, setIsAuthenticated] = useState<Boolean>(false)
     const [isChecking, setIsChecking] = useState<boolean>(false)
     const [message, setMessage] = useState<String>("")
-    const [currentUser, setCurrentUser] = useState(null)
-    const [csrftoken, setCsrftoken] = useState<string | null>(null)
     const [error, setError] = useState<string | any>("")
-    const [isAdmin, setIsAdmin] = useState<boolean>(false)
     const [username, setUsername] = useState<string | null>(null)
     const [sessionid, setSessionid] = useState<null | any>(null)
 
