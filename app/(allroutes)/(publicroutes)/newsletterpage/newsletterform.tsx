@@ -46,20 +46,20 @@ const HandleEmailWaitlist = async (e:any)=>{
 
     <div>
       <div className='py-4  
-       text-black
+       text-white
        font-extrabold'>
   
-            <p className='text-blue-500 py-2  '>{message}</p>
+            <p className=' py-2  '>{message}</p>
         <form className=' md:flex gap-3' onSubmit={HandleEmailWaitlist}>
           <Input
-          className='border border-blue-500 px-1  text-white'
+          className='border border-white px-1  text-white rounded-2xl'
           value={email}
           name='email'
           placeholder='Enter your email'
           onChange={(e)=>setEmail(e.target.value)}
           type='email'
            required /><br/>
-           <Button type='submit' className=' bg-blue-500 hover:bg-blue-500 mt-2 md:m-0 rounded-2xl text-white' variant='default'>
+           <Button type='submit' className=' bg-blue-900 hover:bg-blue-900 mt-2 md:m-0 rounded-2xl text-white' variant='default'>
             Subscribe
            </Button>
         </form>

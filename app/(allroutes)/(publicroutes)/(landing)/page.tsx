@@ -8,7 +8,7 @@ import Testimonials from '@/components/testimonials'
 import CookiePage from '@/components/cookiepage'
 import ModalVideoPage from '../modalvideopage/page'
 import ChatBotPage from '../chatbotpage'
-import NewsletterPage from '../newsletter/page'
+import NewsletterPage from '../newsletterpage/page'
 
 
 

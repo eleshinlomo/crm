@@ -3,7 +3,7 @@
 import WaitlistPage from '@/app/(allroutes)/(publicroutes)/waitlistpage/page'
 import Logo from './logo'
 import Link from 'next/link'
-import NewsletterButton from '@/app/(allroutes)/(publicroutes)/newsletter/newsletterbtn'
+import NewsletterButton from '@/app/(allroutes)/(publicroutes)/newsletterpage/newsletterbtn'
 
 
 const Footer = ()=>{

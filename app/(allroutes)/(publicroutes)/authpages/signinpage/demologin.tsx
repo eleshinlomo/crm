@@ -86,7 +86,7 @@ const signingIn = (<div className='relative w-24 h-24'>
                 <input value={password} type='hidden' />
                 <Button size='lg' variant='outline' type='submit' 
                 className='px-8 py-8 text-lg font-medium text-center text-white bg-blue-500 hover:bg-blue-500 hover:text-white rounded-2xl'>
-                    {isSiginingIn? 'Entering...' : 'TRY FREE'}
+                    {isSiginingIn? 'Entering...' : 'TRY FREE CRM'}
                     </Button>
               </form>
           

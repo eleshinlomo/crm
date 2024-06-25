@@ -32,7 +32,7 @@ const Hero = () => {
               <DemoLogin />
               <Link href='https://imgbot.myafros.com'>
               <Button className=" px-8 py-8 text-lg font-medium text-center text-white bg-blue-500 hover:bg-blue-500 hover:text-white rounded-2xl">
-                TRY IMAGE</Button>
+                TRY FREE IMAGE</Button>
                 </Link>
             </div>
           </div>
