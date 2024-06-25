@@ -50,21 +50,24 @@ catch(err: any){
 
         <p className='mt-16 font-extrabold px-4'>Send a message to support</p>
           
-          <div className=' bg-black/50 w-full md:w-1/2  rounded-2xl text-white'>
+          <div className=' bg-blue-500 w-full md:w-1/2  rounded-2xl text-white'>
             <p className='font-mono text-center px-6 text-white py-3'>
                 {message}</p>
         <form className='flex flex-col gap-2 px-6 my-3' 
         onSubmit={handleFeedback}>
           <Input placeholder='Enter email' value={email} name='email' type='email'
           onChange={(e)=>setEmail(e.target.value)}
+          className='rounded-2xl'
            />
           {/* Email Subject */}
           <Input  value={emailSubject} name='emailSubject' type='hidden'
-           onChange={(e)=>setEmailSubject(e.target.value)}/>
+           onChange={(e)=>setEmailSubject(e.target.value)}
+            
+           />
 
             {/* Email Body */}
           <Textarea
-          className='border border-white px-1 text-start'
+          className='border border-white px-1 text-start'  className='rounded-2xl'
           value={emailBody}
           name='emailBody'
           placeholder='Enter your message here'
