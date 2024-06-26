@@ -67,7 +67,7 @@ catch(err: any){
 
             {/* Email Body */}
           <Textarea
-          className='border border-white px-1 text-start'  className='rounded-2xl'
+          className='border border-white px-1 text-start rounded-2xl' 
           value={emailBody}
           name='emailBody'
           placeholder='Enter your message here'
