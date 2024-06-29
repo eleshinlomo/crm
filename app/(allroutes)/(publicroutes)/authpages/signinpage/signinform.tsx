@@ -34,11 +34,7 @@ const SignInForm = () => {
     password
   }
   
-  const displaySignInText = ()=>{
-    const siginingIn = 'Signing...'
-    setMessage(siginingIn)
-  }
-  
+
 
   const handleSubmit = async (e: React.FormEvent<HTMLElement>) => {
     try{
@@ -47,27 +43,11 @@ const SignInForm = () => {
     setMessage('Signing in...')
     const response: any = await emailLogin(payload)
     if(response.ok){
-      
-      const {
-        userid, 
-        username, 
-        sessionid,
-        company,
-        email,
-      } = response.data
-      
-      // Save User Info
-      localStorage.setItem('username', username)
-      localStorage.setItem('email', email)
-      localStorage.setItem('sessionid', sessionid)
-      localStorage.setItem('company', company)
-      localStorage.setItem("userid", userid)
-      setIsSigningIn(false)
       router.push('/dashboard/dashboardpage')
     
   }else{
-    console.log(response.error)
-    setMessage(response.error)
+    console.log(response)
+    setMessage(response)
   }
 }
   catch(err: any){

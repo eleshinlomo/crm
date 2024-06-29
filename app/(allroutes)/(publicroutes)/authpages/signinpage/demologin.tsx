@@ -37,33 +37,9 @@ const signingIn = (<div className='relative w-24 h-24'>
     setIsSigningIn(true)
     setMessage('')
     const response: any = await emailLogin(payload)
-    if(response.ok){
-      
-      const {
-        userid, 
-        username, 
-        firstname, 
-        lastname, 
-        sessionid,
-        credits,
-        company,
-        email
-      } = response.data
-      
-      // Save User Info
-      localStorage.setItem('username', username)
-      localStorage.setItem('email', email)
-      localStorage.setItem('sessionid', sessionid)
-      localStorage.setItem('credits', credits)
-      localStorage.setItem('company', company)
-      localStorage.setItem("userid", userid)
-      setIsSigningIn(false)
+    if (response.ok){
       router.push('/dashboard/dashboardpage')
-    
-  }else{
-    console.log(response.error)
-    setMessage(response.error)
-  }
+    }
 }
   catch(err: any){
     console.log(err)

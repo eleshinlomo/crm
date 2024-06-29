@@ -2,6 +2,8 @@
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
 export const generalChatbot = async (userMessage: any)=>{
+  
+  console.log(userMessage)
     const payload = {
         "user_message": userMessage
     }

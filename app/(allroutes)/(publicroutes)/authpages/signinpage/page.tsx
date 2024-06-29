@@ -15,7 +15,7 @@ import Link from 'next/link'
 import { ArrowLeftSquareIcon, XIcon } from "lucide-react"
 import Image from 'next/image'
 import SignInForm from "./signinform"
-import GoogleSignInButton from "./googlesigninbtn"
+
 
 
 
@@ -67,7 +67,7 @@ const SignInPage = ()=>{
           </Link>
         </Button> */}
         
-        <GoogleSignInButton />
+
        
         {/* Email */}
         <div className="">

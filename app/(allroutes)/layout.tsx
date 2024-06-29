@@ -4,6 +4,7 @@ import Footer from '@/components/footer'
 import React, {useState, useEffect} from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import ChatbotPage from './(publicroutes)/chatbot/page'
 
 
 
@@ -25,6 +26,7 @@ const AllRoutesLayout = ({children}: AllRoutesProps) => {
   return (
     <div>
     {children}
+    <ChatbotPage />
     <Footer />
     </div>
   )

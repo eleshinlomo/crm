@@ -1,12 +1,30 @@
 "use client";
+
+import {useState, useEffect} from 'react'
 import Link from "next/link";
 import ThemeChanger from "./darkswitch";
 import Image from "next/image"
 import Logo from '../public/logos/logo.png'
 import { Disclosure } from "@headlessui/react";
 import SigninLandingpage from "@/app/(allroutes)/(publicroutes)/authpages/signinpage/signinlandingpage";
+import { Button } from './ui/button';
+import { loginChecker } from './auth';
+import { LoginCheckerProps } from './auth';
 
-const HomeNavbar = () => {
+
+interface HomeNavbarProps {
+  isLoggedIn: boolean
+}
+
+const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
+
+  const [isChecking, setIsChecking] = useState<boolean>(false)
+  const [message, setMessage] = useState<string>('Sign in')
+
+
+  
+  
+
   const navigation = [
     {name: "Home",
      link: "/"
@@ -78,9 +96,13 @@ const HomeNavbar = () => {
                           {item.name}
                       </Link>
                     ))}
-                    <Link href='/' className="w-full px-6 py-2 mt-3 text-center text-white bg-blue-500 rounded-2xl lg:ml-5">         
-                        Get Started
-                    </Link>
+                    {isLoggedIn? 
+                     <Link href='/dashboard/dashboardpage'>
+                      <Button>
+                      Dasboard
+                      </Button>
+                      </Link>
+                    :<SigninLandingpage />}
                   </>
                 </Disclosure.Panel>
                  {/* End of Mobile View */}
@@ -105,7 +127,13 @@ const HomeNavbar = () => {
         </div>
 
         <div className="hidden mr-3 space-x-4 lg:flex nav__item">
-          <SigninLandingpage />
+        {isLoggedIn? 
+        <Link href='/dashboard/dashboardpage'>
+          <Button>
+            Dasboard
+            </Button>
+          </Link>
+          :<SigninLandingpage />}
 
           <ThemeChanger />
         </div>

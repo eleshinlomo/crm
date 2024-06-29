@@ -49,15 +49,15 @@ const SignUpForm = () => {
     setMessage('Registering user...')
     const response: any = await registerUserWithEmail(payload)
     if(response.ok){
-    const serverMessage = response.message
+    const serverMessage = response.data
     setMessage(serverMessage)
     setCompany('')
     setPassword('')
     setEmail('')
     setUsername('')
   }else{
-    console.log(response.error)
-    setMessage(response.error)
+    console.log(response)
+    setMessage(response)
   }
 }
   catch(err: any){

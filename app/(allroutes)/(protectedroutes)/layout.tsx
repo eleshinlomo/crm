@@ -6,12 +6,15 @@ import { useSearchParams, usePathname} from 'next/navigation';
 import type { Metadata } from 'next'
 import { creditFunction } from '@/components/creditfunction';
 // Auth Functions
-import { loginChecker } from '@/components/auth';
 import UserNotLoggedPage from '../(publicroutes)/authpages/usernotloggedinpage/page';
 import { getGoogleAccessToken } from '@/components/auth';
 import { getGoogleUserInfo } from '@/components/auth';
 import { DashNavbar } from '@/components/dashnavbar';
 import { useRouter } from 'next/navigation';
+import HomeNavbar from '@/components/homenavbar';
+import SigninLandingpage from '../(publicroutes)/authpages/signinpage/signinlandingpage';
+import { LoginCheckerProps } from '@/components/auth';
+import { loginChecker } from '@/components/auth';
 
 
 
@@ -20,16 +23,8 @@ interface ProtectedRoutesProps {
     children: React.ReactNode
 }
 
-
-
-
-
 // URLs
 const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
-
-
-
-
 
 // Login Status
 const checking ="Checking login status. Please wait..."
@@ -38,10 +33,11 @@ const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
 
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
     const [isChecking, setIsChecking] = useState<boolean>(false)
-    const [message, setMessage] = useState<String>("")
+    const [message, setMessage] = useState<string | React.ReactNode>("Checking status")
     const [error, setError] = useState<string | any>("")
     const [username, setUsername] = useState<string | null>(null)
     const [sessionid, setSessionid] = useState<null | any>(null)
+    
 
     
     const path = usePathname()
@@ -54,12 +50,6 @@ const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
         creditFunction()
     }
 
-
-useEffect(()=>{
-    if(!checking && !isLoggedIn){
-        router.push('/userisnotloggedinpage')
-    }
-}, [])
 
 //   Get google accessToken
   const handleGetAccessToken =async ()=>{
@@ -82,39 +72,36 @@ useEffect(()=>{
 
 
 //  Login Checker Handler
-    const handleLoginChecker = async ()=>{
+    const LoginCheckerHandler = async ()=>{
         try{
         setIsChecking(true)
-        // Get sessionid and check validity
-        const session_id = localStorage.getItem('sessionid')
+        setMessage('Signing in...')
+        const sessionid = localStorage.getItem('sessionid')
         const accessToken = localStorage.getItem('accessToken')
-        setSessionid(session_id)
-        if (!sessionid || !accessToken) return
-        const response: any = await loginChecker({sessionid, accessToken})
-        if (sessionid !== null || sessionid !== 'undefined'){
-        
+        if((sessionid && sessionid !==null) || (accessToken && accessToken !==null)){
+        const payload: LoginCheckerProps = {sessionid, accessToken, error}
+        if(!payload) return
+        const response: any = await loginChecker(payload)
         if(response.ok){
-            setIsChecking(false)
-            setUsername(localStorage.getItem('username'))
             setIsLoggedIn(true)
-        }}
-
-        if(accessToken){
-        setIsLoggedIn(true)
-        setIsChecking(false)
-    }
-  }
+            setMessage('')
+        }else{
+            setMessage(response.error)
+           }
+        }else{
+            setMessage('User not authenticated')
+        }
+       }
     catch(err){
         console.log(err)
     }finally{
         setIsChecking(false)
-    }
-    
+    } 
 }
    
 
  useEffect(()=>{
-    handleLoginChecker()
+    LoginCheckerHandler()
     creditHandler()
  }, [isLoggedIn])
 
@@ -123,10 +110,6 @@ useEffect(()=>{
     return(
          <div className=''>
             
-
-             <div className='text-center font-extrabold'>
-              <p>{error? error: null}</p>
-             </div>
 
              {isChecking ?
             <div>
@@ -140,19 +123,14 @@ useEffect(()=>{
             { isLoggedIn ?
     
             <div className=''>
-            <DashNavbar updateAuth={handleLoginChecker} isLoggedIn={isLoggedIn} />
+            <DashNavbar updateAuth={LoginCheckerHandler} isLoggedIn={isLoggedIn} />
             {children}
-            </div> :
-
-        // Not logged In
-           
-            <UserNotLoggedPage />
-            
-
-         }
-
-
-         
+            </div>: 
+            <div className='flex flex-col'>
+            <HomeNavbar isLoggedIn={isLoggedIn} />
+            <UserNotLoggedPage message={message} />
+            </div>
+         } 
 
         </div>
     )

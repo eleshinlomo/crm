@@ -1,45 +1,79 @@
 'use client'
 import { useState } from 'react';
-import { generalChatbot } from '@/components/(chatbotfunctions.tsx)/generalchatbot';
 import {motion} from 'framer-motion'
-const ChatBotPage = () => {
+import { generalChatbot } from './chatbotfunctions';
+
+
+interface Message {
+  user: string;
+  userText?: string;
+  botText?: string;
+}
+
+
+interface ChatbotProps {
+  header: string
+}
+
+const ChatbotTemplate = ({header}: ChatbotProps) => {
+
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Array<string | any>>([]);
-  const [userMessage, setUserMessage] = useState<string>('');
-  const [initialMessage, setInitialMessage] = useState<string>('Hello! How can I help you?')
+  const [userMessage, setUserMessage] = useState<string>('')
+  const [initialMessage, setInitialMessage] = useState<Message[]>([{user: 'bot', botText: 'Hello, how can I help you today?'}])
+  const [messages, setMessages] = useState<Message[]>(initialMessage)
+ 
+
   
-  const sendChatMessages = async (e: any)=>{
+const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
+  setUserMessage(e.target.value)
 
-    try {
-     e.preventDefault()
-    // User Messages
-        const userMessages = {
-            user: 'user',
-            userText: userMessage
-        }
-        setMessages((prevMessages)=>[...prevMessages, userMessages])
-        setUserMessage('')
+}
 
 
-    // Bot Messages
-    if(!userMessage) return
-    const getBotResponse = await generalChatbot(userMessage)
-    
-    const botResponse = getBotResponse.message.data
-    const botMessages = {
-        user: 'bot',
-        botText: botResponse
-    }
-    setMessages((prevMessages)=> [...prevMessages, botMessages])
+const submitForm = async (e: React.FormEvent<HTMLFormElement>)=>{
 
+  try {
+   e.preventDefault()
+  // User Messages
+  const trimedUserMessage = userMessage.trim()
+  if (!trimedUserMessage) return 
+
+      const userMessages = {
+          user: 'user',
+          userText: trimedUserMessage
+      }
+      setMessages((prevMessages)=>[...prevMessages, userMessages])
+      setUserMessage('')
+
+
+  // Bot Messages
+  const getBotResponse = await generalChatbot(trimedUserMessage)
+  
+  const botResponse = getBotResponse.message.data
+  const botMessages = {
+      user: 'bot',
+      botText: botResponse
   }
+  setMessages((prevMessages)=> [...prevMessages, botMessages])
 
-  catch(err){
-   console.log(err)
-  }finally{
-    
-  }
-  }
+}
+
+catch(err){
+ console.log(err)
+}finally{
+  
+}
+}
+
+const payload = {
+  
+}
+const handleFormSubmit=  (e: React.FormEvent<HTMLFormElement>)=>{
+ e.preventDefault()
+ submitForm(e)
+}
+
+
 
   return (
     <div className="fixed bottom-10 left-0 right-0 md:right-10 z-50">
@@ -64,12 +98,12 @@ const ChatBotPage = () => {
        }}
        transition={{duration: 0.5}} className="bg-white w-80 h-96 fixed bottom-20 right-10 shadow-lg rounded-lg">
           <div className="p-4">
-            <h3 className="text-lg font-extrabold mb-2 text-center">Fixupe Support</h3>
+            <h3 className="text-lg font-extrabold mb-2 text-center">{header}</h3>
             {/* Chat messages */}
             <div className="overflow-y-auto h-64">
               <div className="text-gray-600 mb-2">
                 {/* {Messages Start} */}
-                {messages.length > 0 ?
+                {messages && messages.length > 0 ?
                <div>
                 {messages.slice().reverse().map((message, index)=>
                 <div key={index} className=''>
@@ -83,8 +117,7 @@ const ChatBotPage = () => {
                  }
                 </div>
                 )}
-                </div>:  
-                <div>{initialMessage}</div>
+                </div>: null
                }
                {/* {Messages Stops} */}
               </div>
@@ -92,12 +125,12 @@ const ChatBotPage = () => {
               {/* Add more chat messages here */}
             </div>
             {/* Input field */}
-            <div onSubmit={sendChatMessages} className="">
-              <form>
+            <div  className="">
+              <form onSubmit={handleFormSubmit}>
               <input
                 name='userMessage'
                 value={userMessage}
-                onChange={(e)=>setUserMessage(e.target.value)}
+                onChange={handleChange}
                 type="text"
                 placeholder="Type your message..."
                 className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none"
@@ -113,4 +146,4 @@ const ChatBotPage = () => {
   );
 };
 
-export default ChatBotPage;
+export default ChatbotTemplate;

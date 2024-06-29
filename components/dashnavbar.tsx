@@ -105,7 +105,7 @@ const handleToggle = ()=>{
               Update Profile
               </Button>
               <div className=''>
-              <SignOutPage isLoggedIn={isLoggedIn} updateAuth={()=>handleLogout} />
+              <Button className='w-full' onClick={handleLogout}>Logout</Button>
               </div>
               </div>
 

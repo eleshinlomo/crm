@@ -14,6 +14,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Footer from '@/components/footer';
 import { SendIcon } from 'lucide-react';
+import { getPasswordResetLink} from '@/components/auth';
 
 
 
@@ -22,13 +23,22 @@ const defaultTheme = createTheme();
 const ForgotPasswordPage = () => {
 
 const [email, setEmail] = useState<string>('')
+const [message, setMessage] = useState<string>('Enter email to get a reset link.')
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-    });
+    if(email === ''){
+      setMessage('Email is required')
+    }
+    if(!email) return
+    setMessage('Confirming user email...')
+    const data = await getPasswordResetLink(email);
+    if (data.ok){
+      setMessage(data.data)
+      setEmail('')
+    }else{
+      setMessage(data)
+    }
   };
 
   return (
@@ -49,14 +59,12 @@ const [email, setEmail] = useState<string>('')
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h5" variant="h5" className='text-center'>
-            Enter your email address and we will send you a link 
-            to reset your password.
+            {message}
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate 
           sx={{ mt: 1 }}>
             <TextField
               margin="normal"
-              required
               fullWidth
               value={email}
               onChange={(e)=>setEmail(e.target.value)}
@@ -64,6 +72,7 @@ const [email, setEmail] = useState<string>('')
               name="email"
               autoComplete="email"
               autoFocus
+              required
             />
             <Button
               type="submit"

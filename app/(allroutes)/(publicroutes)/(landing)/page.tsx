@@ -7,8 +7,8 @@ import FeaturesBlocks from '@/components/features-blocks'
 import Testimonials from '@/components/testimonials'
 import CookiePage from '@/components/cookiepage'
 import ModalVideoPage from '../modalvideopage/page'
-import ChatBotPage from '../chatbotpage'
 import NewsletterPage from '../newsletterpage/page'
+import ChatbotPage from '../chatbot/page'
 
 
 
@@ -26,7 +26,6 @@ import NewsletterPage from '../newsletterpage/page'
         <FeaturesBlocks />
         <Testimonials />
         <NewsletterPage />
-        <ChatBotPage />
         <CookiePage />
       </div>
     )

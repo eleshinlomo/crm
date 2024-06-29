@@ -4,8 +4,8 @@ import {GoogleTagManager} from '@next/third-parties/google'
 import '../styles/globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import ChatBotPage from './(allroutes)/(publicroutes)/chatbotpage'
 import {Suspense} from 'react'
+
 
 
 
@@ -35,7 +35,6 @@ const RootLayout = ({children}: RootLayoutProps)=> {
         
         <Suspense fallback={<div>Loading...</div>}>
         {children}
-        <ChatBotPage />
         </Suspense>
         <GoogleTagManager gtmId='G-TWYHZMCD1T' />
         

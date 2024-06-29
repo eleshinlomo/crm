@@ -14,7 +14,10 @@ import { getGoogleAccessToken } from "@/components/auth"
 import { googleAuthCodeUrl } from '@/components/auth' 
 import { useSearchParams } from "next/navigation"
 import { AuthTokenProp } from '@/components/auth'
-import GoogleSignInButton from './googlesigninbtn'
+import Image from 'next/image'
+import googleLogo from '@/public/logos/google_logo.png'
+import myafrosLogo from '@/public/logos/logo.png'
+
 
 const SigninLandingpage = () => {
   
@@ -35,21 +38,27 @@ const SigninLandingpage = () => {
         </DialogHeader>
         <div className="flex flex-col justify-center items-center">
           {/* Google Button */}
-         <GoogleSignInButton />
+      
+          
+        <Button className="flex  border border-blue-500 rounded-2xl mb-2 mt-4   bg-white hover:bg-white text-black text-md" 
+          onClick={()=>window.location.href=googleAuthCodeUrl}
+          >
+          <div className="relative h-6 w-8">
+          <Image src={googleLogo} alt='google logo' fill />
+          </div>
+            Sign in with Google
+          </Button>
 
          
-          
-          <Button className="border border-blue-500 rounded-2xl mb-2 mt-4   bg-white hover:bg-white text-black text-md" asChild>
+          <Button className="flex gap-2 border border-blue-500 rounded-2xl mb-2 mt-4   bg-white hover:bg-white text-black text-md">
+          <div className="relative h-6 w-8">
+          <Image src={myafrosLogo} alt='google logo' fill />
+          </div>
           <Link href='/authpages/signinpage' >
             Sign in with Email
             </Link>
           </Button>
-         
-          <Button className="border border-blue-500 rounded-2xl mb-2 mt-4   bg-white hover:bg-white text-black text-md" asChild>
-          <Link href='/authpages/signuppage' >
-            Sign up with email
-            </Link>
-          </Button>
+
         </div>
        <DialogFooter>
        </DialogFooter>

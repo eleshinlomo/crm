@@ -29,8 +29,9 @@ export interface AuthTokenProp {
 }
 
 export interface LoginCheckerProps {
-  sessionid: string | null;
-  accessToken: string | null;
+  sessionid?: string | null;
+  accessToken?: string | null;
+  error?: string | React.ReactNode
 }
 
 
@@ -124,23 +125,23 @@ export const getGoogleUserInfo = async (accessToken: string) => {
     
 
 // Register user with email
-export const registerUserWithEmail = async (data: RegisterUserProps)=>{
+export const registerUserWithEmail = async (payload: RegisterUserProps)=>{
   try{
-    const processPayload = await fetch(`${BASE_URL}/registeruser/`, {
+    const response = await fetch(`${BASE_URL}/registeruser/`, {
         mode: 'cors',
         method: 'POST',
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(data)
+        body: JSON.stringify(payload)
     })
   
-    const response: any = await processPayload.json()
-    if(!response) {
-      return {"error": "No response from server"}
-     
-    }else{
-    return response
-  }
-    
+    const data: any = await response.json()
+    if(!response.ok) return {"error": "No response from server"}
+  
+     if(data.ok){
+      return data
+     }else{
+      return data.error
+     }
   }
   catch(error: any){
   console.log('Server error', error)
@@ -151,24 +152,31 @@ export const registerUserWithEmail = async (data: RegisterUserProps)=>{
   }
 
 
-export const emailLogin = async (data: EmailLoginProps)=>{
+// Email Login
+export const emailLogin = async (payload: EmailLoginProps)=>{
 try{
-  const processPayload = await fetch(`${BASE_URL}/loginuser/`, {
+  const response = await fetch(`${BASE_URL}/loginuser/`, {
       mode: 'cors',
       method: 'POST',
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(data)
+      body: JSON.stringify(payload)
   })
 
-  const response: any = await processPayload.json()
-  if(!response) {
-    return {"error": "No response from server"}
-  }
-  const responseData: any = response.json()
-  if(responseData.ok){
-    return responseData
+  if(!response.ok) return {"error": "No response from server"}
+
+  const data: any = await response.json()
+  
+  if(data.ok){
+
+    const {userid, username, email, sessionid, company} = data.data
+    localStorage.setItem('userid', userid)
+    localStorage.setItem('username', username)
+    localStorage.setItem('email', email)
+    localStorage.setItem('sessionid', sessionid)
+    localStorage.setItem('company', company)
+    return data
   }else{
-    responseData.error
+    return data.error
   }
   
 }
@@ -181,57 +189,47 @@ return null
 }
 
 
-// Email user login checker
-const emailUserChecker = async (sessionid: string | null)=>{
-  if(sessionid && sessionid !==null){
-  const response: any = await fetch(`${BASE_URL}/loginchecker/`, {
-    method: 'GET',
+ // General Login Checker
+ export const loginChecker =  async (payload: LoginCheckerProps)=>{
+  let {error, sessionid, accessToken} = payload
+ 
+  try{
+  
+  // Sessionid
+  if(sessionid){
+   const response = await fetch(`${BASE_URL}/loginchecker/`, {
     mode: 'cors',
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'sessionid': sessionid
-  },
-    
-})
+     'sessionid': sessionid
+    }
+ })
 
-if (!response) throw new Error('Server not responding')
-const data: any = await response.json()
-if (data.ok){
-    return data
-}
+ if(!response) throw new Error('Server error')
 
-}else{
-  return 'User sessionid not found'
-}
-
-}
-
-// Google user login checker
-const googleUserChecker = (accessToken: string | null)=>{
-  if(accessToken && accessToken !==null){
-  const data = localStorage.getItem('username')
+ const data: any = await response.json()
   return data
-  }else{
-    return 'Google access token not found'
-  }
-}
-
- // General Login Checker
- export const loginChecker =  async ({sessionid, accessToken}: LoginCheckerProps)=>{
-  let response: {[key:string]: any} | null = {}
-  if(sessionid){
-   const emailUser = await emailUserChecker(sessionid)
-   response['emailUser'] = emailUser
-  }
-  if (accessToken){
-  const googleUser = googleUserChecker(accessToken)
-  response['googleUser'] = googleUser
 }
   
-return response
-}
- 
 
+//  AccessToken
+if(accessToken){
+  console.log(accessToken)
+  return {'ok': true}
+ 
+}
+
+return {'ok': false, error: 'User not authenticated'}
+
+}
+  catch(err){
+   console.log(err)
+   return err
+  }
+ }
+ 
+  
     
 
   // Logout
@@ -262,6 +260,34 @@ return response
    }
     
     }
+
+
+// Password reset link
+export const getPasswordResetLink = async (email: string)=>{
+  try{
+    const response = await fetch(`${BASE_URL}/passwordresetlink/`, {
+        mode: 'cors',
+        method: 'POST',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({email})
+    })
+  
+    if(!response.ok) return {"error": "No response from server"}
+    const data: any = await response.json()
+   
+     if(data.ok){
+      return data
+     }else{
+      return data.error
+     }
+  }
+  catch(error: any){
+  console.log('Server error', error)
+  return null
+  
+  }
+  
+  }
 
 
 
