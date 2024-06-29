@@ -3,13 +3,13 @@ import Image from "next/image";
 import { Container } from "./container";
 import heroImg from "../public/images/crm_image.png";
 import { Button } from "./ui/button";
-import { DemoLogin } from "@/app/(allroutes)/(publicroutes)/authpages/signinpage/demologin";
 import Link from "next/link";
 import { AmazonLogo } from "./companies";
 import { VerizonLogo } from "./companies";
 import { MicrosoftLogo } from "./companies";
 import { NetflixLogo } from "./companies";
 import { SonyLogo } from "./companies";
+import { DemoLogin } from "@/app/(allroutes)/(publicroutes)/authpages/signinpage/demologin";
 
 const Hero = () => {
   return (

@@ -6,10 +6,10 @@ import ThemeChanger from "./darkswitch";
 import Image from "next/image"
 import Logo from '../public/logos/logo.png'
 import { Disclosure } from "@headlessui/react";
-import SigninLandingpage from "@/app/(allroutes)/(publicroutes)/authpages/signinpage/signinlandingpage";
 import { Button } from './ui/button';
 import { loginChecker } from './auth';
 import { LoginCheckerProps } from './auth';
+import SigninLandingpage from '@/app/(allroutes)/(publicroutes)/authpages/signinpage/signinlandingpage';
 
 
 interface HomeNavbarProps {

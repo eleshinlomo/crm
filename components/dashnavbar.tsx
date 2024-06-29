@@ -6,8 +6,6 @@ import DashMobileSidebar from "./dashmobilesidebar"
 import Link from 'next/link'
 import { UserAvatar } from './user-avater'
 // import ProfileAvatar  from './profile-avatar'
-import { GOOGLE_LOGOUT_URL } from './urls'
-import SignOutPage from '@/app/(allroutes)/(publicroutes)/authpages/signoutpage'
 // Auth Functions
 import { userLogout } from './auth'
 // UserProfile
