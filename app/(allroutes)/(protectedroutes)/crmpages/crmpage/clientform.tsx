@@ -92,7 +92,8 @@ const ClientForm = ({onClientAdded}: ClientFormProps) => {
     
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="px-4 text-sm bg-blue-500 hover:bg-blue-500 " variant='default' size='sm'>
+        <Button className="px-4 text-sm bg-blue-500 text-white hover:bg-blue-500 rounded-2xl" 
+        variant='default' size='sm'>
           Add Client</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-black text-white">
@@ -114,7 +115,7 @@ const ClientForm = ({onClientAdded}: ClientFormProps) => {
               name= 'company'
               value= {company}
               onChange={(e)=>setCompany(e.target.value)}
-              className="col-span-3 text-black"
+              className="col-span-3  border border-white rounded-2xl"
               required
             />
           </div>
@@ -123,10 +124,10 @@ const ClientForm = ({onClientAdded}: ClientFormProps) => {
            Status
           </Label>
           <Select value={status} onValueChange={(value)=>setStatus(value as "lead" | "in-talks" | "signed-contract" | "ongoing-contract")}>
-          <SelectTrigger className="text-black">
+          <SelectTrigger className="text-white ">
           <SelectValue placeholder="Select status"/>
           </SelectTrigger>
-          <SelectContent className="col-span-3 text-black">
+          <SelectContent className="col-span-3 text-black ">
           <SelectItem value="lead">Lead</SelectItem>
           <SelectItem value="in-talks">In-talks</SelectItem>
           <SelectItem value="signed-contract">Signed-contract</SelectItem>
@@ -144,7 +145,7 @@ const ClientForm = ({onClientAdded}: ClientFormProps) => {
               name='contact'
               value={contact}
               onChange={(e)=>setContact(e.target.value)}
-              className="col-span-3 text-black"
+              className="col-span-3 border border-white rounded-2xl"
             />
           </div>
           
@@ -156,7 +157,7 @@ const ClientForm = ({onClientAdded}: ClientFormProps) => {
               name='email'
               value={email}
               onChange={(e)=>setEmail(e.target.value)}
-              className="col-span-3 text-black"
+              className="col-span-3  border border-white rounded-2xl"
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
@@ -168,7 +169,7 @@ const ClientForm = ({onClientAdded}: ClientFormProps) => {
               name='mobile'
               value={mobile}
               onChange={(e)=>setMobile(e.target.value)}
-              className="col-span-3 text-black"
+              className="col-span-3 border border-white rounded-2xl"
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
@@ -180,7 +181,7 @@ const ClientForm = ({onClientAdded}: ClientFormProps) => {
               name='followup'
               value={followup}
               onChange={(e)=>setFollowup(e.target.value)}
-              className="col-span-3 text-black"
+              className="col-span-3  border border-white rounded-2xl"
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
@@ -192,7 +193,7 @@ const ClientForm = ({onClientAdded}: ClientFormProps) => {
               name='address'
               value={address}
               onChange={(e)=>setAddress(e.target.value)}
-              className="col-span-3 text-black"
+              className="col-span-3  border border-white rounded-2xl"
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
@@ -204,10 +205,10 @@ const ClientForm = ({onClientAdded}: ClientFormProps) => {
               name='servicefee'
               value={servicefee}
               onChange={(e)=>setServicefee(e.target.value)}
-              className="col-span-3 text-black"
+              className="col-span-3  border border-white rounded-2xl"
             />
           </div>
-          <Button type="submit" onClick={()=>handleAddClient}>
+          <Button type="submit" onClick={()=>handleAddClient} className='bg-blue-500 hover:bg-blue-500 rounded-2xl'>
           {isAddingClient? 'Adding Client...':
           'Add Client'}
           </Button>
