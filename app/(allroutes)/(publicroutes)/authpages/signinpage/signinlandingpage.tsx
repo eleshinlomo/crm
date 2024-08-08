@@ -19,6 +19,10 @@ import googleLogo from '@/public/logos/google_logo.png'
 import myafrosLogo from '@/public/logos/logo.png'
 
 
+interface SigninLandingpageProps {
+
+  isSignInPageLoaded: boolean
+}
 const SigninLandingpage = () => {
   
 
@@ -27,7 +31,7 @@ const SigninLandingpage = () => {
     <Dialog>
       <DialogTrigger asChild>
         <Button variant='outline' size='lg'
-        className=" text-white bg-blue-500 hover:bg-blue-500 rounded-2xl w-full py-4 px-12" >Sign in</Button>
+        className=" text-white bg-blue-500 hover:bg-blue-500 hover:text-white rounded-2xl w-full py-4 px-12" >Sign in</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-blue-500 text-white text-center">
         <DialogHeader>

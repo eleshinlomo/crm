@@ -17,13 +17,16 @@ import Image from 'next/image'
 import SignInForm from "./signinform"
 
 
-
+interface SignPageProps {
+  signInPageLoaded: boolean
+}
 
 
 // URLs
 const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 
-const SignInPage = ()=>{
+const SignInPage = ({signInPageLoaded} : SignPageProps)=>{
+  
   return (
   <div>
     

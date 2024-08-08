@@ -7,13 +7,13 @@ import Image from "next/image"
 import Logo from '../public/logos/logo.png'
 import { Disclosure } from "@headlessui/react";
 import { Button } from './ui/button';
-import { loginChecker } from './auth';
+import { loginChecker, userLogout } from './auth';
 import { LoginCheckerProps } from './auth';
 import SigninLandingpage from '@/app/(allroutes)/(publicroutes)/authpages/signinpage/signinlandingpage';
 
 
 interface HomeNavbarProps {
-  isLoggedIn: boolean
+  isLoggedIn: boolean;
 }
 
 const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
@@ -102,7 +102,7 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
                       Dasboard
                       </Button>
                       </Link>
-                    :<SigninLandingpage />}
+                    :<SigninLandingpage  />}
                   </>
                 </Disclosure.Panel>
                  {/* End of Mobile View */}
@@ -128,11 +128,17 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
 
         <div className="hidden mr-3 space-x-4 lg:flex nav__item">
         {isLoggedIn? 
-        <Link href='/dashboard/dashboardpage'>
-          <Button>
+          <div className='flex gap-3'>
+          <Link href='/dashboard/dashboardpage'>
+          <Button className='bg-blue-500 text-white rounded-2xl hover:bg-blue-500'>
             Dasboard
             </Button>
           </Link>
+          <Button className='bg-blue-500 text-white rounded-2xl hover:bg-blue-500' onClick={userLogout}>
+            Sign Out
+            </Button>
+          
+          </div>
           :<SigninLandingpage />}
 
           <ThemeChanger />

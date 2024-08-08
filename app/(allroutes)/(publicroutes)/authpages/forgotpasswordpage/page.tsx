@@ -34,9 +34,11 @@ const [message, setMessage] = useState<string>('Enter email to get a reset link.
     setMessage('Confirming user email...')
     const data = await getPasswordResetLink(email);
     if (data.ok){
+      console.log(data)
       setMessage(data.data)
       setEmail('')
     }else{
+      console.log(data)
       setMessage(data)
     }
   };

@@ -11,13 +11,17 @@ import { NetflixLogo } from "./companies";
 import { SonyLogo } from "./companies";
 import { DemoLogin } from "@/app/(allroutes)/(publicroutes)/authpages/signinpage/demologin";
 
-const Hero = () => {
+interface HeroProps {
+  isLoggedIn: boolean
+}
+const Hero = ({isLoggedIn}: HeroProps) => {
   return (
     <>
       <Container className="flex flex-wrap">
         <div className="flex items-center w-full lg:w-1/2 md:pl-4">
           <div className="max-w-2xl mb-8">
-            <h1 className="text-4xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
+            <h1 className="text-4xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight
+             xl:text-6xl xl:leading-tight dark:text-white">
               MyAfros CRM
             </h1>
             <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300">
@@ -29,7 +33,18 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
-              <DemoLogin />
+              
+            
+            {isLoggedIn?
+               <Link href='/dashboard/dashboardpage'>
+              <Button className=" px-8 py-8 text-lg font-medium text-center text-white bg-blue-500 hover:bg-blue-500 hover:text-white rounded-2xl">
+              DASHBOARD</Button>
+            </Link>:
+             <Link href='https://imgbot.myafros.com'>
+              <Button className=" px-8 py-8 text-lg font-medium text-center text-white bg-blue-500 hover:bg-blue-500 hover:text-white rounded-2xl">
+                GET STARTED</Button>
+              </Link>
+            }
               <Link href='https://imgbot.myafros.com'>
               <Button className=" px-8 py-8 text-lg font-medium text-center text-white bg-blue-500 hover:bg-blue-500 hover:text-white rounded-2xl">
                 TRY FREE IMAGE</Button>

@@ -11,16 +11,18 @@ import NewsletterPage from '../newsletterpage/page'
 import ChatbotPage from '../chatbot/page'
 
 
-
+interface HomeProps {
+  isLoggedIn: boolean
+}
 
   
-  export default function Home() {
+  export default function Home({isLoggedIn}: HomeProps) {
     
     return (
 
       <div className='relative overflow-hidden flex flex-col justify-center'>
         
-        <Hero />
+        <Hero isLoggedIn={isLoggedIn} />
         <ModalVideoPage />
         <Features />
         <FeaturesBlocks />

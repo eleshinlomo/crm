@@ -42,6 +42,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID
 const CLIENT_SECRET = process.env.NEXT_PUBLIC_CLIENT_SECRET
 const AUTH_USER_REDIRECT_URL = process.env.NEXT_PUBLIC_AUTH_USER_REDIRECT_URL
+console.log('BASE URL', BASE_URL)
 
 
 const clientId = `${CLIENT_ID}`;
@@ -113,6 +114,7 @@ export const getGoogleUserInfo = async (accessToken: string) => {
     }
 
     const userInfo = await response.json();
+    console.log('Google User Info', userInfo)
     return userInfo;
   } catch (error) {
     console.error("Error fetching user info", error);
@@ -190,13 +192,11 @@ return null
 
 
  // General Login Checker
- export const loginChecker =  async (payload: LoginCheckerProps)=>{
-  let {error, sessionid, accessToken} = payload
- 
+ export const loginChecker =  async ()=>{
+  const sessionid = localStorage.getItem('sessionid')
   try{
-  
   // Sessionid
-  if(sessionid){
+  if(!sessionid) throw new Error('No sessionid found')
    const response = await fetch(`${BASE_URL}/loginchecker/`, {
     mode: 'cors',
     method: 'GET',
@@ -210,17 +210,7 @@ return null
 
  const data: any = await response.json()
   return data
-}
   
-
-//  AccessToken
-if(accessToken){
-  console.log(accessToken)
-  return {'ok': true}
- 
-}
-
-return {'ok': false, error: 'User not authenticated'}
 
 }
   catch(err){
