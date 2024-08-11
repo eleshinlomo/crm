@@ -3,7 +3,7 @@ import { loginChecker } from '@/components/auth'
 import HomeNavbar from '@/components/homenavbar'
 import React from 'react'
 import {useState, useEffect} from 'react'
-import Home from './(landing)/page'
+import Home from '../(landing)/page'
 
 interface PublicRouteProps {
 
@@ -12,7 +12,7 @@ interface PublicRouteProps {
 
 const PublicRoutesLayout = ({children} : PublicRouteProps)=>{
  
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
 
     const handleLoginChecker = async ()=>{
         const response: any = await loginChecker()
@@ -32,7 +32,7 @@ const PublicRoutesLayout = ({children} : PublicRouteProps)=>{
 
     return (
         <div>
-        <HomeNavbar isLoggedIn={isLoggedIn} />
+         <HomeNavbar isLoggedIn={isLoggedIn} />
          {isLoggedIn ?
          <Home isLoggedIn={isLoggedIn} />
          :

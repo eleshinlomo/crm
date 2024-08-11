@@ -39,7 +39,7 @@ export const HomeMobileNavBar = () => {
   const session_id = localStorage.getItem('sessionid')
   if (!session_id || session_id === null || session_id === 'undefined') throw new Error('Sessionid not found')
   setSessionid(session_id)
-  const response = await loginChecker(sessionid)
+  const response = await loginChecker()
   if (response.ok){
   setUsername(localStorage.getItem('username'))
   setIsLoggedIn(true)

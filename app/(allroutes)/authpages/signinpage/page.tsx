@@ -1,19 +1,8 @@
 "use client"
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
+
 import { Button } from "@/components/ui/button"
 import Link from 'next/link'
 import { ArrowLeftSquareIcon, XIcon } from "lucide-react"
-import Image from 'next/image'
 import SignInForm from "./signinform"
 
 
@@ -25,13 +14,13 @@ interface SignPageProps {
 // URLs
 const ALLAUTH_BASE_URL = process.env.NEXT_PUBLIC_ALLAUTH_BASE_URL
 
-const SignInPage = ({signInPageLoaded} : SignPageProps)=>{
-  
+const SignInPage = ()=>{
+
   return (
   <div>
     
    <div className="h-full  md:flex flex-col  justify-around w-full
-   items-center gap-3 pt-9 ">
+   items-center gap-3 pt-2 ">
   
           
               
@@ -45,7 +34,7 @@ const SignInPage = ({signInPageLoaded} : SignPageProps)=>{
               </Link>
               <div className="flex flex-1 gap-3">
               <p className="mt-1 ">Not Registered?</p>
-                <Button size='sm'  className='bg-blue-500 hover:bg-gray-500 rounded-2xl text-white
+                <Button size='sm'  className='bg-blue-500 hover:bg-blue-500 rounded-2xl text-white
                 shadow-2xl  '>
                     <Link href='/authpages/signuppage'>
                     Sign Up

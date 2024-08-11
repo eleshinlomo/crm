@@ -13,7 +13,8 @@ import { useRouter } from 'next/navigation';
 import HomeNavbar from '@/components/homenavbar';
 import { LoginCheckerProps } from '@/components/auth';
 import { loginChecker } from '@/components/auth';
-import UserNotLoggedPage from '../(publicroutes)/authpages/usernotloggedinpage';
+import UserNotLoggedPage from '../authpages/usernotloggedinpage';
+
 
 
 
@@ -81,7 +82,7 @@ const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
         if((sessionid && sessionid !==null) || (accessToken && accessToken !==null)){
         const payload: LoginCheckerProps = {sessionid, accessToken, error}
         if(!payload) return
-        const response: any = await loginChecker(payload)
+        const response: any = await loginChecker()
         if(response.ok){
             setIsLoggedIn(true)
             setMessage('')

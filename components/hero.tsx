@@ -9,7 +9,7 @@ import { VerizonLogo } from "./companies";
 import { MicrosoftLogo } from "./companies";
 import { NetflixLogo } from "./companies";
 import { SonyLogo } from "./companies";
-import { DemoLogin } from "@/app/(allroutes)/(publicroutes)/authpages/signinpage/demologin";
+
 
 interface HeroProps {
   isLoggedIn: boolean

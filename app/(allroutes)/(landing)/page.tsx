@@ -6,17 +6,17 @@ import Features from '@/components/features'
 import FeaturesBlocks from '@/components/features-blocks'
 import Testimonials from '@/components/testimonials'
 import CookiePage from '@/components/cookiepage'
-import ModalVideoPage from '../modalvideopage/page'
-import NewsletterPage from '../newsletterpage/page'
-import ChatbotPage from '../chatbot/page'
+import ModalVideoPage from '../(publicroutes)/modalvideopage/page'
+import NewsletterPage from '../(publicroutes)/newsletterpage/page'
 
 
-interface HomeProps {
-  isLoggedIn: boolean
-}
+
+// interface HomeProps {
+//   isLoggedIn: boolean | any
+// }
 
   
-  export default function Home({isLoggedIn}: HomeProps) {
+  const Home = (isLoggedIn: any) =>{
     
     return (
 
@@ -32,3 +32,5 @@ interface HomeProps {
       </div>
     )
   }
+
+  export default Home
