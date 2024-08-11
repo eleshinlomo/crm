@@ -14,6 +14,7 @@ import { SonyLogo } from "./companies";
 interface HeroProps {
   isLoggedIn: boolean
 }
+
 const Hero = ({isLoggedIn}: HeroProps) => {
   return (
     <>
@@ -40,7 +41,7 @@ const Hero = ({isLoggedIn}: HeroProps) => {
               <Button className=" px-8 py-8 text-lg font-medium text-center text-white bg-blue-500 hover:bg-blue-500 hover:text-white rounded-2xl">
               DASHBOARD</Button>
             </Link>:
-             <Link href='https://imgbot.myafros.com'>
+             <Link href='/dashboard/dashboardpage'>
               <Button className=" px-8 py-8 text-lg font-medium text-center text-white bg-blue-500 hover:bg-blue-500 hover:text-white rounded-2xl">
                 GET STARTED</Button>
               </Link>

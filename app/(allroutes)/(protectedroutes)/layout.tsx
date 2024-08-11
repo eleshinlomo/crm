@@ -34,7 +34,7 @@ const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
 
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
     const [isChecking, setIsChecking] = useState<boolean>(false)
-    const [message, setMessage] = useState<string | React.ReactNode>("Checking status")
+    const [message, setMessage] = useState<string>("Checking status")
     const [error, setError] = useState<string | any>("")
     const [username, setUsername] = useState<string | null>(null)
     const [sessionid, setSessionid] = useState<null | any>(null)
@@ -77,34 +77,28 @@ const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
         try{
         setIsChecking(true)
         setMessage('Signing in...')
-        const sessionid = localStorage.getItem('sessionid')
-        const accessToken = localStorage.getItem('accessToken')
-        if((sessionid && sessionid !==null) || (accessToken && accessToken !==null)){
-        const payload: LoginCheckerProps = {sessionid, accessToken, error}
-        if(!payload) return
         const response: any = await loginChecker()
         if(response.ok){
             setIsLoggedIn(true)
             setMessage('')
         }else{
             setMessage(response.error)
+            setIsLoggedIn(false)
            }
-        }else{
-            setMessage('User not authenticated')
-        }
        }
     catch(err){
         console.log(err)
+        setError('Please sign in')
     }finally{
         setIsChecking(false)
+        setError('Please sign in')
     } 
 }
    
 
  useEffect(()=>{
     LoginCheckerHandler()
-    creditHandler()
- }, [isLoggedIn])
+ }, [isLoggedIn, error, message])
 
 
 
@@ -129,7 +123,7 @@ const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
             </div>: 
             <div className='flex flex-col'>
             <HomeNavbar isLoggedIn={isLoggedIn} />
-            <UserNotLoggedPage message={message} />
+            <UserNotLoggedPage message={error? error : message} />
             </div>
          } 
 

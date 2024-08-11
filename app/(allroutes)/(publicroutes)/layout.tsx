@@ -3,7 +3,7 @@ import { loginChecker } from '@/components/auth'
 import HomeNavbar from '@/components/homenavbar'
 import React from 'react'
 import {useState, useEffect} from 'react'
-import Home from '../(landing)/page'
+
 
 interface PublicRouteProps {
 
@@ -33,14 +33,7 @@ const PublicRoutesLayout = ({children} : PublicRouteProps)=>{
     return (
         <div>
          <HomeNavbar isLoggedIn={isLoggedIn} />
-         {isLoggedIn ?
-         <Home isLoggedIn={isLoggedIn} />
-         :
-         <div>
-         {/* Send users to public routes if not logged in */}
          {children}
-         </div>
-        }
         </div>
     )
 }

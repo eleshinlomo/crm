@@ -78,7 +78,7 @@ const SignInForm = () => {
           <Typography  className={`text-center text-sm font-extrabold`} >
             {message}
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate className='flex flex-col flex-1 gap-3 mt-3'>
+          <Box component="form" onSubmit={handleSubmit} noValidate className='grid place-items-center gap-3 mt-3'>
           <input
               required
               value={email}

@@ -8,18 +8,20 @@ import Testimonials from '@/components/testimonials'
 import CookiePage from '@/components/cookiepage'
 import ModalVideoPage from '../(publicroutes)/modalvideopage/page'
 import NewsletterPage from '../(publicroutes)/newsletterpage/page'
+import HomeNavbar from '@/components/homenavbar'
 
 
 
-// interface HomeProps {
-//   isLoggedIn: boolean | any
-// }
+interface HomeProps {
+  isLoggedIn: boolean
+}
 
   
-  const Home = (isLoggedIn: any) =>{
+  const Home = ({isLoggedIn}: HomeProps) =>{
     
     return (
-
+      <div>
+        <HomeNavbar isLoggedIn={isLoggedIn} />
       <div className='relative overflow-hidden flex flex-col justify-center'>
         
         <Hero isLoggedIn={isLoggedIn} />
@@ -29,6 +31,7 @@ import NewsletterPage from '../(publicroutes)/newsletterpage/page'
         <Testimonials />
         <NewsletterPage />
         <CookiePage />
+      </div>
       </div>
     )
   }

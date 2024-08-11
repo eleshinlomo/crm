@@ -87,7 +87,7 @@ const SignUpForm = () => {
           <Typography component="h5" variant="h5" className='text-center text-sm font-extrabold'>
             {message}
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate  className='flex flex-col flex-1 gap-2 mt-2 '>
+          <Box component="form" onSubmit={handleSubmit} noValidate  className='grid place-items-center gap-2 mt-2 '>
             <input type='hidden' name='usersource' />
             <input
               required
