@@ -12,12 +12,12 @@ import HomeNavbar from '@/components/homenavbar'
 
 
 
-interface HomeProps {
-  isLoggedIn: boolean
-}
+
 
   
-  const Home = ({isLoggedIn}: HomeProps) =>{
+  const Home = () =>{
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     
     return (
       <div>

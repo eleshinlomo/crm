@@ -62,7 +62,7 @@ const DashboardLayout =({children}: DashboardLayoutProps)=>{
                 <Sidebar />
             </div>
             
-           <main className=" w-full md:ml-44  ">
+           <div className=" w-full md:ml-44  ">
             <div className='text-center flex flex-col flex-1 justify-center 
             items-center px-4 
              '> 
@@ -79,7 +79,7 @@ const DashboardLayout =({children}: DashboardLayoutProps)=>{
              <div className=''>
             {children}
             </div>
-           </main>
+           </div>
 
            
         </div>
@@ -91,10 +91,6 @@ const DashboardLayout =({children}: DashboardLayoutProps)=>{
     )
 }
 
-DashboardLayout.PropTypes = {
-    isLoggedIn: PropTypes.bool.isRequired,
-    setIsLoggedIn: PropTypes.func.isRequired,
-}
 
 export default DashboardLayout
 

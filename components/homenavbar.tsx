@@ -9,7 +9,7 @@ import { Disclosure } from "@headlessui/react";
 import { Button } from './ui/button';
 import { loginChecker, userLogout } from './auth';
 import { LoginCheckerProps } from './auth';
-import SigninLandingpage from '@/app/(allroutes)/authpages/signinpage/signinlandingpage';
+import SigninLandingpage from '@/app/(allroutes)/(publicroutes)/authpages/signinpage/signinlandingpage';
 
 
 

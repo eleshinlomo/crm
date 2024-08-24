@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 import HomeNavbar from '@/components/homenavbar';
 import { LoginCheckerProps } from '@/components/auth';
 import { loginChecker } from '@/components/auth';
-import UserNotLoggedPage from '../authpages/usernotloggedinpage';
+import UserNotLoggedPage from '../(publicroutes)/authpages/usernotloggedinpage';
 
 
 
@@ -54,6 +54,7 @@ const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
 
 //   Get google accessToken
   const handleGetAccessToken =async ()=>{
+
     const authCode: any = params?.get('code')
     if(!authCode) return
     const response = await getGoogleAccessToken(authCode)
@@ -65,6 +66,7 @@ const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
     localStorage.setItem('username', username)
     setIsLoggedIn(true)
     }
+
   }
 
   useEffect(()=>{
@@ -99,8 +101,6 @@ const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
  useEffect(()=>{
     LoginCheckerHandler()
  }, [isLoggedIn, error, message])
-
-
 
     return(
          <div className=''>
