@@ -23,14 +23,14 @@ const Hero = ({isLoggedIn}: HeroProps) => {
           <div className="max-w-2xl mb-8">
             <h1 className="text-4xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight
              xl:text-6xl xl:leading-tight dark:text-white">
-              MyAfros CRM
+              My Apps
             </h1>
             <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300">
-            Explore our world class CRM solution with integrated AI Agents. 
-            Our mission is to make AI accessible, intuitive, 
+            Explore world class apps with integrated AI Agents. 
+            On a mission to make software solutions accessible, intuitive, 
             and transformative for businesses. Whether you run an enterprise or 
-            a start-up, our platform offers a 
-            diverse range of AI tools embedded in the CRM offering the best client management experience.
+            a start-up, our apps offer a 
+            diverse range of AI tools offering the best client management experience.
             </p>
 
             <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">

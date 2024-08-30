@@ -36,8 +36,8 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
     {name: "Contact",
      link: 'contactpage'
     },
-    {name: "My Afros",
-     link: 'https://myafros.com'
+    {name: "ImageGenAI",
+     link: 'https://imgbot.myafros.com'
     },
     {name: "Blog",
      link: 'https://blog.myafros.com'
@@ -63,7 +63,7 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
                         className="w-8"
                       />
                     </span>
-                    <span>MyAfros CRM</span>
+                    <span>MyAfros</span>
                   </span>
                 </Link>
                  {/* Start of Mobile View */}
@@ -100,7 +100,7 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
                     {isLoggedIn? 
                      <Link href='/dashboard/dashboardpage'>
                       <Button>
-                      Dasboard
+                      Dashboard
                       </Button>
                       </Link>
                     :<SigninLandingpage  />}
@@ -132,7 +132,7 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
           <div className='flex gap-3'>
           <Link href='/dashboard/dashboardpage'>
           <Button className='bg-blue-500 text-white rounded-2xl hover:bg-blue-500'>
-            Dasboard
+            Dashboard
             </Button>
           </Link>
           <Button className='bg-blue-500 text-white rounded-2xl hover:bg-blue-500' onClick={userLogout}>
