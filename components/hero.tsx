@@ -23,10 +23,10 @@ const Hero = ({isLoggedIn}: HeroProps) => {
 
   useEffect(()=>{
     setTypewriterText([
-      'Explore',
-      'Discover',
-      'Generate',
-      'Scale'
+      'Explore...',
+      'Discover...',
+      'Generate...',
+      'Scale...'
     ])
   },[])
 
