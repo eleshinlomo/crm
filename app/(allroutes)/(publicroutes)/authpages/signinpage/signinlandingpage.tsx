@@ -43,17 +43,16 @@ const SigninLandingpage = () => {
         <div className="flex flex-col justify-center items-center">
           {/* Google Button */}
       
-          
-        <Button className="flex  border border-blue-500 rounded-2xl mb-2 mt-4   bg-white hover:bg-white text-black text-md" 
+        {/* <Button className="flex  border border-blue-500 rounded-2xl mb-2 mt-4   bg-white hover:bg-white text-black text-md" 
           onClick={()=>window.location.href=googleAuthCodeUrl}
           >
           <div className="relative h-6 w-8">
           <Image src={googleLogo} alt='google logo' fill />
           </div>
             Sign in with Google
-          </Button>
+          </Button> */}
 
-         
+         {/* Sign in with email */}
           <Button className="flex gap-2 border border-blue-500 rounded-2xl mb-2 mt-4   bg-white hover:bg-white text-black text-md">
           <div className="relative h-6 w-8">
           <Image src={myafrosLogo} alt='google logo' fill />

@@ -123,7 +123,8 @@ const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
             </div>: 
             <div className='flex flex-col'>
             <HomeNavbar isLoggedIn={isLoggedIn} />
-            <UserNotLoggedPage message={error? error : message} />
+            <UserNotLoggedPage message={error? <a href='/authpages/signinpage' className='text-blue-500'>
+            Sign in</a> : message} />
             </div>
          } 
 

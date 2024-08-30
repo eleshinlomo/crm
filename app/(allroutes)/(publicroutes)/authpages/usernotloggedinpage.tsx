@@ -2,9 +2,10 @@
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import Link from 'next/link'
+import React from 'react'
 
 interface UserNotLoggedPageProps {
-  message: string 
+  message: string | React.ReactNode
 }
 
 const UserNotLoggedPage = ({message}: UserNotLoggedPageProps) =>{
