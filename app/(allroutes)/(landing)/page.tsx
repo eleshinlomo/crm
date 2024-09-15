@@ -4,7 +4,6 @@ import {useState, useEffect} from 'react'
 import Hero from '@/components/hero'
 import Features from '@/components/features'
 import FeaturesBlocks from '@/components/features-blocks'
-import Testimonials from '@/components/testimonials'
 import CookiePage from '@/components/cookiepage'
 import ModalVideoPage from '../(publicroutes)/modalvideopage/page'
 import NewsletterPage from '../(publicroutes)/newsletterpage/page'
@@ -28,9 +27,8 @@ import HomeNavbar from '@/components/homenavbar'
         <ModalVideoPage />
         <Features />
         <FeaturesBlocks />
-        <Testimonials />
         <NewsletterPage />
-        <CookiePage />
+        {/* <CookiePage /> */}
       </div>
       </div>
     )

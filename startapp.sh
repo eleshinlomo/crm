@@ -3,5 +3,5 @@
 echo $NODE_ENV
 echo $NEXT_PUBLIC_BASE_URL
 
-npm run start
+npm run dev
 

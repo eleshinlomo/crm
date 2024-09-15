@@ -5,11 +5,11 @@ import { Container } from "./container";
 import heroImg from "../public/images/crm_image.png";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { AmazonLogo } from "./companies";
-import { VerizonLogo } from "./companies";
-import { MicrosoftLogo } from "./companies";
-import { NetflixLogo } from "./companies";
-import { SonyLogo } from "./companies";
+import { AmazonLogo } from "./clientlogos";
+import { VerizonLogo } from "./clientlogos";
+import { MicrosoftLogo } from "./clientlogos";
+import { NetflixLogo } from "./clientlogos";
+import { SonyLogo } from "./clientlogos";
 import Typewriter from './typewriter';
 
 
@@ -43,8 +43,8 @@ const Hero = ({isLoggedIn}: HeroProps) => {
             Explore world class apps with integrated AI Agents. 
             On a mission to make software solutions accessible, intuitive, 
             and transformative for businesses. Whether you run an enterprise or 
-            a start-up, our apps offer a 
-            diverse range of AI tools offering the best client management experience.
+            a start-up, explore  
+            diverse range of tools offering the best solutions for business scaling.
             </p>
 
             <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
@@ -81,32 +81,7 @@ const Hero = ({isLoggedIn}: HeroProps) => {
           </div>
         </div>
       </Container>
-      <Container>
-        <div className="flex flex-col justify-center">
-          <div className="text-xl text-center text-gray-700 dark:text-white">
-            Trusted by <span className="text-indigo-600">many</span>{" "}
-            customers worldwide
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-5 mt-10 md:justify-around">
-            <div className="pt-2 text-gray-400 dark:text-gray-400">
-              <AmazonLogo />
-            </div>
-            <div className="text-gray-400 dark:text-gray-400">
-              <VerizonLogo />
-            </div>
-            <div className="text-gray-400 dark:text-gray-400">
-              <MicrosoftLogo />
-            </div>
-            <div className="pt-1 text-gray-400 dark:text-gray-400">
-              <NetflixLogo />
-            </div>
-            <div className="pt-2 text-gray-400 dark:text-gray-400">
-              <SonyLogo />
-            </div>
-          </div>
-        </div>
-      </Container>
+      
     </>
   );
 }

@@ -10,9 +10,9 @@ export default function FeaturesBlocks() {
           <div className="py-12 md:py-20">
   
             {/* Section header */}
-            <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-              <h2 className="h2 mb-4">Explore the solutions</h2>
-              <p className="text-xl text-gray-600">Check out our most used business tools by everyday people like you.</p>
+            <div className="max-w-3xl mx-auto text-center pb-4 md:pb-4">
+              <h2 className="text-2xl mb-4">Explore latest projects</h2>
+              <p className="text-xl text-gray-600">Take a look at some of the latest projects.</p>
             </div>
   
             {/* Items */}
@@ -33,9 +33,10 @@ export default function FeaturesBlocks() {
                   </g>
                 </svg>
                 <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">
-                  CMS</h4>
+                  E-FARM</h4>
                 <p className=" text-center">
-                  Keeps your clients&apos; details with follow-ups organised.</p>
+                  Marketplace for farmers to sell directly to customers.</p>
+                  <button className='rounded-2xl bg-white text-black px-4'>Visit website</button>
               </div>
   
               {/* 2nd item */}
@@ -51,9 +52,10 @@ export default function FeaturesBlocks() {
                   </g>
                 </svg>
                 <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">
-                  Phone Book</h4>
+                  PETROLAGE</h4>
                 <p className=" text-center">
-                  Phone Book allows you to manually or programatically call your clients.</p>
+                  Staffing firm leveraging on modern tech.</p>
+                  <a href='https://petrolage.tech'><button className='rounded-2xl bg-white text-black px-4'>Visit website</button></a>
               </div>
   
               {/* 3rd item */}
@@ -69,8 +71,9 @@ export default function FeaturesBlocks() {
                     </g>
                   </g>
                 </svg>
-                <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">Calendar</h4>
-                <p className=" text-center">Manage meetings and receive alerts when a meeting is coming up.</p>
+                <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">IMAGE GENERATOR</h4>
+                <p className=" text-center">Use our AI solution to generate images for your projects.</p>
+                <a href='https://imgbot.myafros.com/'><button className='rounded-2xl bg-white text-black px-4'>Visit website</button></a>
               </div>
   
   

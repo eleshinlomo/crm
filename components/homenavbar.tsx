@@ -36,9 +36,7 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
     {name: "Contact",
      link: 'contactpage'
     },
-    {name: "ImageGenAI",
-     link: 'https://imgbot.myafros.com'
-    },
+    
     {name: "Blog",
      link: 'https://blog.myafros.com'
     },
