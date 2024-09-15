@@ -36,7 +36,7 @@ export default function FeaturesBlocks() {
                   E-FARM</h4>
                 <p className=" text-center">
                   Marketplace for farmers to sell directly to customers.</p>
-                  <button className='rounded-2xl bg-white text-black px-4'>Visit website</button>
+                  <a href='https://efarms.vercel.app/'><button className='rounded-2xl bg-white text-black px-4'>Visit website</button></a>
               </div>
   
               {/* 2nd item */}
