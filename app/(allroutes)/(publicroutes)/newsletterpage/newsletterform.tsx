@@ -44,10 +44,8 @@ const HandleEmailWaitlist = async (e:any)=>{
   
     return (
 
-    <div>
-      <div className='py-4  
-       text-white
-       font-extrabold'>
+    <div className='w-full'>
+      <div className='py-4  text-white font-extrabold '>
   
             <p className=' py-2  '>{message}</p>
         <form className=' md:flex gap-3' onSubmit={HandleEmailWaitlist}>

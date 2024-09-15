@@ -1,4 +1,4 @@
-export default function FeaturesBlocks() {
+export default function Projects() {
     return (
       <section className="relative">
   

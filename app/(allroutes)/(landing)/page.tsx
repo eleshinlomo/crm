@@ -2,12 +2,13 @@
 
 import {useState, useEffect} from 'react'
 import Hero from '@/components/hero'
-import Features from '@/components/features'
-import FeaturesBlocks from '@/components/features-blocks'
 import CookiePage from '@/components/cookiepage'
 import ModalVideoPage from '../(publicroutes)/modalvideopage/page'
 import NewsletterPage from '../(publicroutes)/newsletterpage/page'
 import HomeNavbar from '@/components/homenavbar'
+import Projects from '@/components/projects'
+import TechStack from '@/components/techstack'
+import Features from '@/components/features'
 
 
 
@@ -25,9 +26,12 @@ import HomeNavbar from '@/components/homenavbar'
         
         <Hero isLoggedIn={isLoggedIn} />
         <ModalVideoPage />
-        <Features />
-        <FeaturesBlocks />
-        <NewsletterPage />
+       <Projects />
+       <TechStack />
+       <Features />
+      
+        {/* <NewsletterPage /> */}
+       
         {/* <CookiePage /> */}
       </div>
       </div>
