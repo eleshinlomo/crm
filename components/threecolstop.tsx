@@ -44,7 +44,7 @@ const ThreeColsTop = ()=> {
             Secured Authentication
               </h6>
           <p className="mt-2 mb-4 text-gray-500">
-            Focused on building secured abd fast apps.
+            Focused on building secured and fast apps.
               </p>
         </div>
         <div className="w-full lg:w-3/12 px-4 text-center">
