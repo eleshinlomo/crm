@@ -20,3 +20,6 @@ However, I have seen a lot of issues while trying to run all this in one single 
 After all the modifications, this app will now become just the frontend to link with the standalone apps. This will make my apps lighter and easier for me to manage as a separate concern.
 
 This project also showcases some of the Non-NDA projects that I am either currently building for clients or projects that I have already delivered to clients. 
+
+-Consideration-
+Currently, I am using different authentication for all my apps. This does not seem efficient and becoming demanding for me to have to manage multiple authentication for different apps. I have plans underway to have a single sign-on which I think will also give a better user experience. Once users sign-in on this page, they will be able to use all my apps. This permissions will only be for my own personal apps. The projects that I have built for clients remain external and I have no way of allowing access to their apps once the app has left development and delivered to the client.
