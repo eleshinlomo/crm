@@ -2,13 +2,12 @@
 
 import {useState, useEffect} from 'react'
 import Hero from '@/components/hero'
-import ModalVideoPage from '../(publicroutes)/modalvideopage/page'
 import HomeNavbar from '@/components/headers/homenavbar'
 import Projects from '@/components/projects'
-import TechStack from '@/components/techstack'
 import Features from '@/components/features'
 import TopSlanted from '@/components/topslanted'
 import ThreeColsTop from '@/components/threecolstop'
+import ModalVideoPage from '../(publicroutes)/modalvideopage/page'
 
 
 
@@ -27,7 +26,6 @@ import ThreeColsTop from '@/components/threecolstop'
         <Hero isLoggedIn={isLoggedIn} />
         <ModalVideoPage />
         <Projects />
-        
         <ThreeColsTop />
         <TopSlanted />
        <Features />

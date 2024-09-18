@@ -1,10 +1,10 @@
-import ModalVideo from '@/components/modal-video'
+import ModalVideo from '@/components/modalvideo/modal-video'
 import VideoThumb from '@/public/boxes.png'
 import React from 'react'
 
 const ModalVideoPage = () => {
   return (
-    <div className='pt-6'>
+    <div className='pt-6 bg-white'>
         {/* Hero image */}
         <ModalVideo
             thumb={VideoThumb}

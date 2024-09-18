@@ -41,7 +41,7 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
   ];
 
   return (
-    <div className="w-full bg-blue-900 text-white">
+    <div className="w-full bg-blue-700 text-white">
       <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between ">
         {/* Logo  */}
         <Disclosure>
