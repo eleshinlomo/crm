@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react'
 import  Link  from 'next/link'
-import { Button } from "./ui/button"
+import { Button } from '../ui/button'
 import  Image  from 'next/image'
-import { GOOGLE_LOGIN_URL } from './urls'
-import { GOOGLE_LOGOUT_URL } from './urls'
-import Waitlist from './waitlist'
+import { GOOGLE_LOGIN_URL } from '../urls'
+import { GOOGLE_LOGOUT_URL } from '../urls'
+import Waitlist from '../waitlist'
 import { OtherHomeNavButtons } from './otherhomenavbuttons'
 import { useRouter } from 'next/navigation'
 
 //  Auth Functions
-import { loginChecker } from './auth'
-import { userLogout } from './auth'
+import { loginChecker } from '../auth'
+import { userLogout } from '../auth'
 
 
 

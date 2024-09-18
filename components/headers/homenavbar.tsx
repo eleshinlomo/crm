@@ -2,13 +2,12 @@
 
 import {useState, useEffect} from 'react'
 import Link from "next/link";
-import ThemeChanger from "./darkswitch";
+import ThemeChanger from "../darkswitch";
 import Image from "next/image"
-import Logo from '../public/logos/logo.png'
 import { Disclosure } from "@headlessui/react";
-import { Button } from './ui/button';
-import { loginChecker, userLogout } from './auth';
-import { LoginCheckerProps } from './auth';
+import Logo from '@/public/logos/logo.png'
+import { Button } from '../ui/button';
+import { loginChecker, userLogout } from '../auth';
 import SigninLandingpage from '@/app/(allroutes)/(publicroutes)/authpages/signinpage/signinlandingpage';
 
 
@@ -24,7 +23,6 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
 
 
   
-  
 
   const navigation = [
     {name: "Home",
@@ -34,7 +32,7 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
      link: '/aboutpage'
     },
     {name: "Contact",
-     link: 'contactpage'
+     link: '/contactpage'
     },
     
     {name: "Blog",
@@ -43,7 +41,7 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
   ];
 
   return (
-    <div className="w-full">
+    <div className="w-full bg-blue-900 text-white">
       <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between ">
         {/* Logo  */}
         <Disclosure>
@@ -51,7 +49,7 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
             <>
               <div className="flex flex-wrap items-center justify-between w-full lg:w-auto">
                 <Link href="/">
-                  <span className="flex items-center space-x-2 text-2xl font-medium text-blue-500 dark:text-gray-100">
+                  <span className="flex items-center space-x-2 text-4xl font-medium  dark:text-gray-100">
                     <span>
                       <Image
                         src={Logo}
@@ -91,7 +89,7 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
                 <Disclosure.Panel className="flex flex-wrap w-full my-5 lg:hidden">
                   <>
                     {navigation.map((item, index) => (
-                      <Link key={index} href={item.link} className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none">
+                      <Link key={index} href={item.link} className="w-full px-4 py-2 -ml-4  rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none">
                           {item.name}
                       </Link>
                     ))}
@@ -117,7 +115,7 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
           <ul className="items-center justify-end flex-1 pt-6 list-none lg:pt-0 lg:flex">
             {navigation.map((menu, index) => (
               <li className="mr-3 nav__item" key={index}>
-                <Link href={menu.link} className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800">
+                <Link href={menu.link} className="inline-block px-4 py-2 text-lg font-normal  no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800">
                     {menu.name}
                 </Link>
               </li>

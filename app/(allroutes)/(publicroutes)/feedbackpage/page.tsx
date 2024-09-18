@@ -2,7 +2,7 @@
 import {useState, useEffect} from 'react'
 import { BASE_URL } from '@/components/urls'
 import { Button } from '@/components/ui/button'
-import { FeedbackHandler } from '@/components/feedbackhandler'
+import { FeedbackHandler } from '@/components/contacts/feedbackhandler'
 import { Textarea } from '@/components/ui/textarea'
 
 

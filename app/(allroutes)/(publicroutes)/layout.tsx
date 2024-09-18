@@ -1,6 +1,6 @@
 'use client'
 import { loginChecker } from '@/components/auth'
-import HomeNavbar from '@/components/homenavbar'
+import HomeNavbar from '@/components/headers/homenavbar'
 import React from 'react'
 import {useState, useEffect} from 'react'
 

@@ -16,7 +16,7 @@ const Typewriter = ({textarray} : TypewriterProps) => {
 
   return (
     <div>
-      <div className=' font-extrabold text-start text-xl md:text-2xl'>
+      <div className=' font-extrabold text-start text-4xl md:text-5xl text-blue-400'>
       <span className="bg-clip-text py-8 ">{text? text:null}</span>
         <Cursor cursorColor='transparent' />
       </div>

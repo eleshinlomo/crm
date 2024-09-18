@@ -1,6 +1,6 @@
 export default function Projects() {
     return (
-      <section className="relative">
+      <section className="relative bg-blue-700 text-white">
   
         {/* Section background (needs .relative class on parent and next sibling elements) */}
         <div className="absolute inset-0 top-1/2 md:mt-24 lg:mt-0  pointer-events-none" aria-hidden="true"></div>
@@ -11,8 +11,8 @@ export default function Projects() {
   
             {/* Section header */}
             <div className="max-w-3xl mx-auto text-center pb-4 md:pb-4">
-              <h2 className="text-2xl mb-4">Explore latest projects</h2>
-              <p className="text-xl text-gray-600">Take a look at some of the latest projects.</p>
+              <h2 className="text-2xl mb-4  font-extrabold text-shadow-2xl">EXPLORE LATEST PROJECTS</h2>
+              <p className="text-xl ">Take a look at some of the latest projects.</p>
             </div>
   
             {/* Items */}
@@ -73,7 +73,7 @@ export default function Projects() {
                 </svg>
                 <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">IMAGE GENERATOR</h4>
                 <p className=" text-center">Use our AI solution to generate images for your projects.</p>
-                <a href='https://imgbot.myafros.com/'><button className='rounded-2xl bg-white text-black px-4'>Visit website</button></a>
+                <a href='https://imgbot.myafros.com/'><button className='rounded-2xl bg-white text-black px-4 bg:shadow-4xl'>Visit website</button></a>
               </div>
   
   

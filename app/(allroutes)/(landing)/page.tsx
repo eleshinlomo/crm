@@ -2,13 +2,13 @@
 
 import {useState, useEffect} from 'react'
 import Hero from '@/components/hero'
-import CookiePage from '@/components/cookiepage'
 import ModalVideoPage from '../(publicroutes)/modalvideopage/page'
-import NewsletterPage from '../(publicroutes)/newsletterpage/page'
-import HomeNavbar from '@/components/homenavbar'
+import HomeNavbar from '@/components/headers/homenavbar'
 import Projects from '@/components/projects'
 import TechStack from '@/components/techstack'
 import Features from '@/components/features'
+import TopSlanted from '@/components/topslanted'
+import ThreeColsTop from '@/components/threecolstop'
 
 
 
@@ -22,12 +22,14 @@ import Features from '@/components/features'
     return (
       <div>
         <HomeNavbar isLoggedIn={isLoggedIn} />
-      <div className='relative overflow-hidden flex flex-col justify-center'>
+      <div className='relative overflow-hidden flex flex-col justify-center bg-blue-100'>
         
         <Hero isLoggedIn={isLoggedIn} />
         <ModalVideoPage />
-       <Projects />
-       <TechStack />
+        <Projects />
+        
+        <ThreeColsTop />
+        <TopSlanted />
        <Features />
       
         {/* <NewsletterPage /> */}

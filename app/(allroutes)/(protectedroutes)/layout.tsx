@@ -10,7 +10,7 @@ import { getGoogleAccessToken } from '@/components/auth';
 import { getGoogleUserInfo } from '@/components/auth';
 import { DashNavbar } from '@/components/dashnavbar';
 import { useRouter } from 'next/navigation';
-import HomeNavbar from '@/components/homenavbar';
+import HomeNavbar from '@/components/headers/homenavbar';
 import { LoginCheckerProps } from '@/components/auth';
 import { loginChecker } from '@/components/auth';
 import UserNotLoggedPage from '../(publicroutes)/authpages/usernotloggedinpage';

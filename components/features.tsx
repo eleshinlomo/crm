@@ -68,7 +68,7 @@ return (
       <p className="mt-2 mb-4 text-gray-500">
         Top-notch e-commerce application portfolio.
           </p>
-    </div>
+    </div> 
   </div>
 </div>
 </section>

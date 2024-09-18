@@ -50,7 +50,7 @@ catch(err: any){
 
         <p className='mt-16 font-extrabold px-4'>Send a message to support</p>
           
-          <div className=' bg-blue-400 w-full md:w-1/2  rounded-2xl '>
+          <div className='  w-full md:w-1/2  rounded-2xl '>
             <p className='font-mono text-center px-6  py-3'>
                 {message}</p>
         <form className='flex flex-col gap-2 px-6 my-3' 
@@ -67,7 +67,7 @@ catch(err: any){
 
             {/* Email Body */}
           <Textarea
-          className='border border-white px-1 text-start rounded-2xl' 
+          className='border border-black px-1 text-start rounded-2xl' 
           value={emailBody}
           name='emailBody'
           placeholder='Enter your message here'
