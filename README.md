@@ -18,3 +18,5 @@ This project used to be a standalone project containing various app which includ
 However, I have seen a lot of issues while trying to run all this in one single project so I am moving all the apps into their separate project to become a standalone. However, I would still like to use the same backend to manage all the services leveraging on Docker.
 
 After all the modifications, this app will now become just the frontend to link with the standalone apps. This will make my apps lighter and easier for me to manage as a separate concern.
+
+This project also showcases some of the Non-NDA projects that I am either currently building for clients or projects that I have already delivered to clients. 
