@@ -59,7 +59,7 @@ const HomeNavbar = ({isLoggedIn}: HomeNavbarProps) => {
                         className="w-8"
                       />
                     </span>
-                    <span>MyAfros</span>
+                    
                   </span>
                 </Link>
                  {/* Start of Mobile View */}
