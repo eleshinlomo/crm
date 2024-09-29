@@ -4,14 +4,15 @@ import React from 'react'
 
 const ModalVideoPage = () => {
   return (
-    <div className='pt-6 bg-white'>
+    <div className=''>
         {/* Hero image */}
         <ModalVideo
             thumb={VideoThumb}
             thumbWidth={400}
             thumbHeight={600}
             thumbAlt="Modal video thumbnail"
-            video="/videos/video.mp4"
+            video="/videos/myafros_intro.mp4"
+            modalText = 'Video walk-through'
             videoWidth={1920}
             videoHeight={1080} />
     </div>

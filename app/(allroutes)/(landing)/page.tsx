@@ -21,7 +21,7 @@ import ModalVideoPage from '../(publicroutes)/modalvideopage/page'
     return (
       <div>
         <HomeNavbar isLoggedIn={isLoggedIn} />
-      <div className='relative overflow-hidden flex flex-col justify-center bg-blue-100'>
+      <div className='relative overflow-hidden flex flex-col justify-center'>
         
         <Hero isLoggedIn={isLoggedIn} />
         <ModalVideoPage />
