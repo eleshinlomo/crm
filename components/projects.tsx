@@ -33,10 +33,10 @@ export default function Projects() {
                   </g>
                 </svg>
                 <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">
-                  E-FARM</h4>
+                  E-COMMERCE</h4>
                 <p className=" text-center">
-                  Marketplace for farmers to sell directly to customers.</p>
-                  <a href='https://efarms.vercel.app/'><button className='rounded-2xl bg-white text-black px-4'>Visit website</button></a>
+                  Fully functional marketplace integrated with stripe payment.</p>
+                  <a href='https://efarms.vercel.app/' target='_blank'><button className='rounded-2xl bg-white text-black px-4'>Visit website</button></a>
               </div>
   
               {/* 2nd item */}
@@ -52,10 +52,10 @@ export default function Projects() {
                   </g>
                 </svg>
                 <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">
-                  PETROLAGE</h4>
+                  FULLSTACK</h4>
                 <p className=" text-center">
-                  Staffing firm leveraging on modern tech.</p>
-                  <a href='https://petrolage.tech'><button className='rounded-2xl bg-white text-black px-4'>Visit website</button></a>
+                  A client-server application getting data from database.</p>
+                  <a href='https://petrolage.tech' target='_blank'><button className='rounded-2xl bg-white text-black px-4'>Visit website</button></a>
               </div>
   
               {/* 3rd item */}
@@ -71,9 +71,9 @@ export default function Projects() {
                     </g>
                   </g>
                 </svg>
-                <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">IMAGE GENERATOR</h4>
+                <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">ARTIFICIAL INTELLIGENCE</h4>
                 <p className=" text-center">Use our AI solution to generate images for your projects.</p>
-                <a href='https://imgbot.myafros.com/'><button className='rounded-2xl bg-white text-black px-4 bg:shadow-4xl'>Visit website</button></a>
+                <a href='https://imgbot.myafros.com/' target='_blank'><button className='rounded-2xl bg-white text-black px-4 bg:shadow-4xl'>Visit website</button></a>
               </div>
   
   
