@@ -4,7 +4,7 @@ import React from 'react'
 
 const ModalVideoPage = () => {
   return (
-    <div className=''>
+    <div className='py-8'>
         {/* Hero image */}
         <ModalVideo
             thumb={VideoThumb}

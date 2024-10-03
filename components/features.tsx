@@ -24,7 +24,7 @@ return (
   </svg>
 </div>
 
-<div className="container mx-auto px-4 lg:pt-24 lg:pb-64">
+<div className="container mx-auto px-4 pt-24 lg:pb-8">
   <div className="flex flex-wrap text-center justify-center">
     <div className="w-full lg:w-6/12 px-4">
       <h2 className="text-4xl font-semibold text-white">

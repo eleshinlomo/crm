@@ -4,26 +4,24 @@ const TopSlanted = () => {
 
 return (
  <div>
-<div className="relative pt-16 pb-32 flex content-center items-center justify-center bg-blue-700" 
-    style={{
-      minHeight: "75vh"
-    }}>
+<div className="relative  py-32 flex text-center items-center justify-center bg-blue-700" 
+   >
     {/* <div className="absolute top-0 w-full h-full bg-center bg-cover"
       style={{
         backgroundImage: `${hero_bg_img}`
       }}>
       <span id="blackOverlay" className="w-full h-full absolute opacity-75 bg-black"></span>
     </div> */}
-    <div className="container relative mx-auto">
-      <div className="items-center flex flex-wrap">
-        <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-          <div className="pr-12">
+    <div className=" w-full">
+      <div className=" flex bottom flex-wrap justify-center items-center">
+        <div className="text-center">
+          <div className="flex flex-col justify-center px-4">
             <h1 className="text-white font-extrabold text-4xl md:text-5xl">
               Making your dream come true with codes.
                 </h1>
             <p className="mt-4 text-lg text-blue-300">
               Explore some of the world&apos;s problems getting solved with technology.
-                </p>
+            </p>
           </div>
         </div>
   

@@ -29,7 +29,7 @@ const Barchart = () => {
 
     // set the dimensions and margins of the graph
     const margin = { top: 30, right: 30, bottom: 70, left: 60 },
-      width = 460 - margin.left - margin.right,
+      width = 350 - margin.left - margin.right,
       height = 400 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
@@ -80,8 +80,8 @@ const Barchart = () => {
   }, []);
 
   return <div className="relative w-full ">
-         <p className="absolute left-[100px] top-[10px] text-center text-2xl">AI Adoption By Country</p>
-         <svg  height={400} id="barchart" ref={ref} className="w-[400px] md:w-[530px] " />
+         <p className="absolute  left-[50px]   top-[-4px] text-center text-2xl">AI Adoption By Country</p>
+         <svg  height={400} id="barchart" ref={ref} className=" md:w-[430px] " />
          </div>;
 };
 
