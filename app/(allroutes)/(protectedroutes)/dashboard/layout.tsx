@@ -1,7 +1,7 @@
 "use client"
 import {useState, useEffect, ReactNode} from 'react'
-import Sidebar from "@/components/dashsidebar";
-import {DashNavbar} from "@/components/dashnavbar";
+import Sidebar from "@/components/navbars/dashsidebar";
+import {DashNavbar} from "@/components/navbars/dashnavbar";
 import { Button } from '@/components/ui/button';
 import  Link  from 'next/link';
 import PropTypes from 'prop-types'

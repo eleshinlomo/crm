@@ -1,9 +1,9 @@
 export default function Projects() {
     return (
-      <section className="relative bg-blue-700 text-white">
+      <section className="relative ">
   
         {/* Section background (needs .relative class on parent and next sibling elements) */}
-        <div className="absolute inset-0 top-1/2 md:mt-24 lg:mt-0  pointer-events-none" aria-hidden="true"></div>
+        {/* <div className="absolute inset-0 top-1/2 md:mt-24 lg:mt-0  pointer-events-none" aria-hidden="true"></div> */}
         
   
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
@@ -73,7 +73,8 @@ export default function Projects() {
                 </svg>
                 <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">ARTIFICIAL INTELLIGENCE</h4>
                 <p className=" text-center">Use our AI solution to generate images for your projects.</p>
-                <a href='https://imgbot.myafros.com/' target='_blank'><button className='rounded-2xl bg-white text-black px-4 bg:shadow-4xl'>Visit website</button></a>
+                <a href='/' target='_blank'><button className='rounded-2xl bg-white text-black px-4 bg:shadow-4xl'>
+                  Visit website</button></a>
               </div>
   
   

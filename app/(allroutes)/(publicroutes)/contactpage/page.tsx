@@ -53,12 +53,11 @@ catch(err: any){
           <div className='  w-full md:w-1/2  rounded-2xl '>
             <p className='font-mono text-center px-6  py-3'>
                 {message}</p>
-        <form className='flex flex-col gap-2 px-6 my-3' 
+        <form className='flex flex-col justify-center items-center gap-2 px-6 my-3' 
         onSubmit={handleFeedback}>
           <Input placeholder='Enter email' value={email} name='email' type='email'
           onChange={(e)=>setEmail(e.target.value)}
-          className='rounded-2xl'
-           />
+          className='rounded-2xl'/>
           {/* Email Subject */}
           <Input  value={emailSubject} name='emailSubject' type='hidden'
            onChange={(e)=>setEmailSubject(e.target.value)}
@@ -67,7 +66,7 @@ catch(err: any){
 
             {/* Email Body */}
           <Textarea
-          className='border border-black px-1 text-start rounded-2xl' 
+          className='bg-black/50 border border-white px-2 text-start rounded-2xl' 
           value={emailBody}
           name='emailBody'
           placeholder='Enter your message here'

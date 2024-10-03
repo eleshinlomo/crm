@@ -11,7 +11,7 @@ const AboutPage = () => {
         <div className='flex flex-col gap-2 pb-3'>
         <h3 className='font-extrabold'>About Fixupe</h3>
         <p>
-        At Fixupe, our mission is clear: to make AI accessible, 
+        At Myafros, our mission is clear, to make AI accessible, 
         intuitive, and transformative for businesses worldwide. 
         Whether you&apos;re at the helm of a multinational enterprise 
         or steering the course of a dynamic start-up,
@@ -34,7 +34,7 @@ const AboutPage = () => {
 
         <div className='flex flex-col gap-2 pb-3'>
          <h3 className='font-extrabold'>Tailored Solutions for Your Workflow</h3>
-        <p>At Fixupe, we recognize that no two businesses are alike. 
+        <p>We recognize that no two businesses are alike. 
             That&apos;s why our platform offers tailored solutions to meet 
             your specific requirements. Whether you&apos;re seeking to optimize 
             processes, gain valuable insights, or enhance decision-making, 
@@ -46,7 +46,7 @@ const AboutPage = () => {
         <div className='flex flex-col gap-2 pb-3'>
         <h3 className='font-extrabold'>Simplify Complexity, Unlock Potential</h3>
         <p>
-        With Fixupe, harnessing the power of AI has never been easier. 
+        With Myafros, harnessing the power of AI has never been easier. 
         Our intuitive interfaces and powerful features allow you to unlock the 
         full potential of AI without the complexity. Say goodbye to steep learning 
         curves and hello to effortless innovation.

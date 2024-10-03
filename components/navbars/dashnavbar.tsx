@@ -1,18 +1,19 @@
 "use client"
 import {useState, useEffect} from 'react'
 import { LogOutIcon, Menu } from "lucide-react"
-import { Button } from "./ui/button"
+import { Button } from "../ui/button"
 import DashMobileSidebar from "./dashmobilesidebar"
 import Link from 'next/link'
-import { UserAvatar } from './user-avater'
+import { UserAvatar } from '../user-avater'
 // import ProfileAvatar  from './profile-avatar'
 // Auth Functions
-import { userLogout } from './auth'
+import { userLogout } from '../auth'
 // UserProfile
-import { getUserProfile } from './userprofile'
-import DatePage from './date'
+import { getUserProfile } from '../userprofile'
+import DatePage from '../date'
 import CreditPage from '@/app/(allroutes)/(protectedroutes)/creditpage'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 
 interface DashNavProps {
@@ -71,23 +72,29 @@ const handleToggle = ()=>{
 
   
   return (
-    <div className="flex flex-col px-2 bg-black text-white pb-2">
+    <div className=" px-2  pb-2">
       {/* Mobile */}
-      
-      <div className='relative flex  justify-between '>
-        <DashMobileSidebar />
-         
+      <DashMobileSidebar />
+
+      <div className='flex  justify-between items-center '>
+        
+        {/* Logo */}
+        <a href='/'>
+         <div className='relative h-8 w-12'>
+          <Image src='/logos/logo.png' alt='logo' fill />
+         </div>
+         </a>
+
         <CreditPage />
 
+
+        {/* User Profile */}
         <div className=''>
 
           <Button size='icon' className='h-6 w-6 mt-5 mr-3' onClick={handleToggle}>
           <UserAvatar  />
           </Button>
-          
-           
 
-           {/* User Profile */}
            {isOpen?
           <div>
             

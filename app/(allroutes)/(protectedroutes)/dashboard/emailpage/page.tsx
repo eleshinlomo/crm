@@ -11,7 +11,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import EmailSender from "./emailsender"
-import { DashNavbar } from "@/components/dashnavbar"
+import { DashNavbar } from "@/components/navbars/dashnavbar"
 
 const EmailPage = ()=>{
   return (

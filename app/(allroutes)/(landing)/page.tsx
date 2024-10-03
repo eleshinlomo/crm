@@ -2,7 +2,7 @@
 
 import {useState, useEffect} from 'react'
 import Hero from '@/components/hero'
-import HomeNavbar from '@/components/headers/homenavbar'
+import HomeNavbar from '@/components/navbars/homenavbar'
 import Projects from '@/components/projects'
 import Features from '@/components/features'
 import TopSlanted from '@/components/topslanted'

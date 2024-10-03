@@ -15,7 +15,7 @@ const ChatbotPage = ()=>{
     return (
     
         <div>
-            <ChatbotTemplate  header={header} />
+            <ChatbotTemplate />
            
           
         </div>

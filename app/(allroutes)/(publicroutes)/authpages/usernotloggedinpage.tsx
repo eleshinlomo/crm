@@ -20,7 +20,7 @@ return (
   <p className='text-lg font-extrabold py-2'>{message}</p>
 
     <div className='relative w-72 h-72 md:w-96 md:h-96 mb-4'>
-    <Image src='/images/image_guy.png' alt='guy pics' fill />
+    <Image src='/images/ai_girl2.png' alt='computer keypad pics' fill />
     </div>
 
     </div>

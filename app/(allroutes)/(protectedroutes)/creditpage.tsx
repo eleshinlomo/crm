@@ -15,6 +15,7 @@ const CreditPage = () => {
 
   const [data, setData] = useState<Array<string | any>>([])
   const [credits, setCredits] = useState(0)
+  const [message, setMessage] = useState<string>('')
 
   
   
@@ -22,11 +23,17 @@ const CreditPage = () => {
     
 const handleCredit = async ()=>{
       try{
+    setMessage('Fetching credit...')
     const response: any = await creditFunction()
+     if(response.ok){
+      setMessage('')
       setData(response.message.data)
+     }
+      
   }
 catch(err){
   console.log(err)
+  setMessage('Unable to fetch credit value')
 }
 }
 
@@ -39,9 +46,8 @@ useEffect(()=>{
   
   return (
     <div className=''>
-
-      <div className='text-center flex flex-col justify-center 
-      items-center text-xs'>
+    
+      <div className='text-xs'>
         <div className='py-4'>
         {data.length > 0?  
         data.map((plan, index)=>
@@ -67,7 +73,7 @@ useEffect(()=>{
 
           </div>):
           <div className=''>
-            <p>Fetching credit...suspicious authentication.</p>
+            <p>{message}</p>
           </div>
           }
         

@@ -8,13 +8,13 @@ import { ArrowBigDown, ArrowBigRight, ArrowDown, Code, CodeIcon, EyeIcon,
    ImageIcon, LayoutDashboard, LogOutIcon, MenuIcon, 
    MessageSquare, Music2Icon, Settings, VideoIcon } from "lucide-react";
 import {usePathname, useRouter} from 'next/navigation'
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 // AI Tools
 import { Tools} from '@/components/tools'
 // import { ConversationTools} from '@/components/tools'
 // import { DocumentTools} from '@/components/tools'
 // import { MediaTools} from '@/components/tools'
-import { OtherDashButtons } from './otherdashbuttons';
+import { OtherDashButtons } from '../otherdashbuttons';
 
 
 

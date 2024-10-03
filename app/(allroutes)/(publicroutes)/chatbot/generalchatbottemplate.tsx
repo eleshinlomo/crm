@@ -11,11 +11,9 @@ interface Message {
 }
 
 
-interface ChatbotProps {
-  header: string
-}
 
-const ChatbotTemplate = ({header}: ChatbotProps) => {
+
+const ChatbotTemplate = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [userMessage, setUserMessage] = useState<string>('')
@@ -76,7 +74,7 @@ const handleFormSubmit=  (e: React.FormEvent<HTMLFormElement>)=>{
 
 
   return (
-    <div className="fixed bottom-10 left-0 right-0 md:right-10 z-50">
+    <div className="fixed bottom-10 left-0 right-0 md:right-10 z-50 bg-black text-white">
       <button
         className="bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg fixed bottom-10 right-10 z-50"
         onClick={() => setIsOpen(!isOpen)}
@@ -96,12 +94,12 @@ const handleFormSubmit=  (e: React.FormEvent<HTMLFormElement>)=>{
          opacity: 1,
          scale: 1
        }}
-       transition={{duration: 0.5}} className="bg-white w-80 h-96 fixed bottom-20 right-10 shadow-lg rounded-lg">
-          <div className="p-4">
-            <h3 className="text-lg font-extrabold mb-2 text-center">{header}</h3>
+       transition={{duration: 0.5}} className="bg-black/70 border border-blue-500 w-80 h-[450px] fixed bottom-20 right-10 shadow-lg rounded-2xl">
+          <div className="">
+            <h3 className="text-lg font-extrabold mb-8 text-center bg-blue-600 py-2">My Afros Support</h3>
             {/* Chat messages */}
-            <div className="overflow-y-auto h-64">
-              <div className="text-gray-600 mb-2">
+            <div className="overflow-y-auto h-64 px-2 text-white">
+              <div className=" mb-2">
                 {/* {Messages Start} */}
                 {messages && messages.length > 0 ?
                <div>
@@ -109,10 +107,10 @@ const handleFormSubmit=  (e: React.FormEvent<HTMLFormElement>)=>{
                 <div key={index} className=''>
                  {message.user === 'user'?
                 //  User messsages
-                 <div className='bg-blue-200 rounded-2xl py-2 px-2 mb-2'><span className='font-extrabold text-blue-700 items-start '>
+                 <div className='bg-white text-black rounded-2xl py-2 px-2 mb-2'><span className='font-extrabold text-blue-700 items-start '>
                     You: </span>{message.userText}</div>:
                 // Bot messages
-                 <div className='bg-green-200 rounded-2xl py-2 px-2 mb-2'><span className='font-extrabold text-green-700 items-end'>
+                 <div className='bg-blue-800 rounded-2xl py-2 px-2 mb-2'><span className='font-extrabold items-end'>
                   Bot: </span>{message.botText}</div>
                  }
                 </div>
@@ -125,7 +123,7 @@ const handleFormSubmit=  (e: React.FormEvent<HTMLFormElement>)=>{
               {/* Add more chat messages here */}
             </div>
             {/* Input field */}
-            <div  className="">
+            <div  className="px-2 mt-10">
               <form onSubmit={handleFormSubmit}>
               <input
                 name='userMessage'
@@ -133,7 +131,7 @@ const handleFormSubmit=  (e: React.FormEvent<HTMLFormElement>)=>{
                 onChange={handleChange}
                 type="text"
                 placeholder="Type your message..."
-                className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none"
+                className="w-full border text-black border border-blue-600 rounded-2xl px-2 py-2 focus:outline-none"
                 required
               />
               </form>

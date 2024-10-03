@@ -8,9 +8,9 @@ import { creditFunction } from '@/components/creditfunction';
 // Auth Functions
 import { getGoogleAccessToken } from '@/components/auth';
 import { getGoogleUserInfo } from '@/components/auth';
-import { DashNavbar } from '@/components/dashnavbar';
+import { DashNavbar } from '@/components/navbars/dashnavbar';
 import { useRouter } from 'next/navigation';
-import HomeNavbar from '@/components/headers/homenavbar';
+import HomeNavbar from '@/components/navbars/homenavbar';
 import { LoginCheckerProps } from '@/components/auth';
 import { loginChecker } from '@/components/auth';
 import UserNotLoggedPage from '../(publicroutes)/authpages/usernotloggedinpage';
@@ -32,7 +32,7 @@ const checking ="Checking login status. Please wait..."
 
 const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
 
-    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true)
     const [isChecking, setIsChecking] = useState<boolean>(false)
     const [message, setMessage] = useState<string>("Checking status")
     const [error, setError] = useState<string | any>("")
@@ -85,7 +85,7 @@ const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
             setMessage('')
         }else{
             setMessage(response.error)
-            setIsLoggedIn(false)
+            // setIsLoggedIn(false)
            }
        }
     catch(err){
@@ -124,7 +124,7 @@ const ProtectedRoutesLayout = ({children}: ProtectedRoutesProps)=>{
             <div className='flex flex-col'>
             <HomeNavbar isLoggedIn={isLoggedIn} />
             <UserNotLoggedPage message={error? <a href='/authpages/signinpage' className='text-blue-500'>
-            Sign in</a> : message} />
+            Please sign in</a> : message} />
             </div>
          } 
 

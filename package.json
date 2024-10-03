@@ -40,6 +40,7 @@
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.0.0",
         "cmdk": "^0.2.0",
+        "d3": "^7.9.0",
         "date-fns": "^3.3.1",
         "docxtemplater": "^3.47.4",
         "framer-motion": "^11.2.4",
