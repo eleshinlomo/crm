@@ -11,8 +11,8 @@ export default function Projects() {
   
             {/* Section header */}
             <div className="max-w-3xl mx-auto text-center pb-4 md:pb-4">
-              <h2 className="text-2xl mb-4  font-extrabold text-shadow-2xl">EXPLORE LATEST PROJECTS</h2>
-              <p className="text-xl ">Take a look at some of the latest projects.</p>
+              <h2 className="text-2xl mb-4  font-extrabold text-shadow-2xl">PORTFOLIO</h2>
+              <p className="text-xl ">Some projects currently supporting.</p>
             </div>
   
             {/* Items */}
@@ -33,7 +33,7 @@ export default function Projects() {
                   </g>
                 </svg>
                 <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">
-                  E-COMMERCE</h4>
+                  E-FARMS</h4>
                 <p className=" text-center">
                   Fully functional marketplace integrated with stripe payment.</p>
                   <a href='https://efarms.vercel.app/' target='_blank'><button className='rounded-2xl bg-white text-black px-4'>Visit website</button></a>
@@ -52,10 +52,10 @@ export default function Projects() {
                   </g>
                 </svg>
                 <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">
-                  FULLSTACK</h4>
+                  FIXUPE</h4>
                 <p className=" text-center">
-                  A client-server application getting data from database.</p>
-                  <a href='https://petrolage.tech' target='_blank'><button className='rounded-2xl bg-white text-black px-4'>Visit website</button></a>
+                  Validate your business idea in a minute with auto landing page.</p>
+                  <a href='https://fixupe.com' target='_blank'><button className='rounded-2xl bg-white text-black px-4'>Visit website</button></a>
               </div>
   
               {/* 3rd item */}
